@@ -191,13 +191,13 @@ const GAMES = [
   {
     slug: "clair-obscur-expedition-33",
     title: "Clair Obscur: Expedition 33",
-    blurb: "Picto and Lumina builds, party synergies, parry timing, and boss strategies for the expedition.",
+    blurb: "Complete field guide: parry-driven combat, the Pictos &amp; Luminas build system, status engines, the six Expeditioners, party comps, and delete-button builds.",
     genres: ["RPG", "JRPG"],
     href: "guides/clair-obscur-expedition-33/index.html",
-    status: "planned",
+    status: "live",
     featured: false,
     accent: "#8a3b6a",
-    updated: "Planned"
+    updated: "Jun 2026"
   },
   {
     slug: "diablo-3",

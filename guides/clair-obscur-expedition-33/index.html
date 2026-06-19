@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clair Obscur: Expedition 33 — Complete Field Guide | The Arcanum</title>
+<meta name="description" content="A complete Clair Obscur: Expedition 33 field guide: parry-driven combat, the Pictos & Luminas build system, status engines (Burn, Mark, Stains, Perfection), the six Expeditioners, party comps, delete-button build archetypes, and boss tips." />
+<meta property="og:title" content="Clair Obscur: Expedition 33 — The Arcanum" />
+<meta property="og:description" content="Parry, build a status engine, delete the boss. The complete field guide." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0a0d; --bg2:#15101a;
+    --panel:rgba(23,17,26,0.86);
+    --gold:#cfa94e; --gold2:#e7cf86; --gold-glow:rgba(207,169,78,0.22);
+    --rose:#c85f86; --rose2:#e08aa8;
+    --teal:#5aa39b;
+    --line:rgba(207,169,78,0.20); --line2:rgba(207,169,78,0.08);
+    --text:#ece4d6; --text2:#b3a692; --text3:#6e6358;
+    --display:'Playfair Display', Georgia, serif;
+    --body:'Spectral', Georgia, serif;
+    --maxw:1000px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(60% 50% at 50% -8%, rgba(200,95,134,0.10), transparent 60%),
+      radial-gradient(50% 45% at 85% 30%, rgba(207,169,78,0.07), transparent 60%),
+      radial-gradient(45% 40% at 10% 70%, rgba(90,163,155,0.06), transparent 60%),
+      var(--bg);
+    color:var(--text); font-family:var(--body); font-size:18px; line-height:1.75;
+    min-height:100vh; overflow-x:hidden;
+  }
+  a{color:var(--gold); text-decoration:none;}
+  #paint{position:fixed; inset:0; z-index:0; pointer-events:none;}
+  .page{position:relative; z-index:1;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 1.6rem;}
+
+  /* gilded film grain / vignette */
+  body::after{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:radial-gradient(120% 100% at 50% 50%, transparent 55%, rgba(0,0,0,0.55));
+  }
+
+  /* topbar */
+  .topbar{position:sticky; top:0; z-index:50;
+    background:linear-gradient(180deg, rgba(11,10,13,0.96), rgba(11,10,13,0.78));
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line2);}
+  .topbar-inner{max-width:var(--maxw); margin:0 auto; padding:0.85rem 1.6rem;
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;}
+  .brand{font-family:var(--display); font-weight:700; letter-spacing:0.06em; color:var(--gold2); font-size:1.05rem;}
+  .brand b{color:var(--rose2); font-weight:700;}
+  .topbar a.back{font-family:var(--display); font-size:0.82rem; letter-spacing:0.05em; color:var(--text2);
+    border:1px solid var(--line); padding:0.35rem 0.8rem; border-radius:3px; transition:0.2s;}
+  .topbar a.back:hover{color:var(--gold2); border-color:var(--gold);}
+
+  /* hero */
+  .hero{text-align:center; padding:4.5rem 1.6rem 2rem; position:relative;}
+  .hero .mark{font-family:var(--display); font-weight:900; font-size:8rem; line-height:0.8;
+    color:transparent; -webkit-text-stroke:1px rgba(207,169,78,0.30); opacity:0.5; user-select:none;
+    animation:floaty 9s ease-in-out infinite;}
+  .hero .eyebrow{display:block; font-family:var(--display); font-style:italic; letter-spacing:0.28em;
+    text-transform:uppercase; font-size:0.72rem; color:var(--rose2); margin:1.4rem 0 0.5rem;}
+  .hero h1{font-family:var(--display); font-weight:900; font-size:clamp(2.1rem,5.5vw,3.6rem); line-height:1.05;
+    background:linear-gradient(100deg, var(--gold2) 20%, #fff 50%, var(--rose2) 90%);
+    background-size:200% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; animation:sheen 10s ease-in-out infinite;}
+  .hero .lede{max-width:680px; margin:1.1rem auto 0; color:var(--text2); font-size:1.08rem;}
+  .hero .capline{margin-top:1rem; font-family:var(--display); font-style:italic; color:var(--gold); font-size:1.05rem;}
+  @keyframes floaty{0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)}}
+  @keyframes sheen{0%,100%{background-position:0% 50%} 50%{background-position:100% 50%}}
+
+  /* jump nav */
+  .jump{position:sticky; top:53px; z-index:40; background:rgba(11,10,13,0.92); backdrop-filter:blur(8px);
+    border-top:1px solid var(--line2); border-bottom:1px solid var(--line2);}
+  .jump-inner{max-width:var(--maxw); margin:0 auto; padding:0.5rem 1.6rem; display:flex; gap:0.3rem;
+    overflow-x:auto; scrollbar-width:none;}
+  .jump-inner::-webkit-scrollbar{display:none;}
+  .jump a{flex:0 0 auto; font-family:var(--display); font-size:0.78rem; letter-spacing:0.04em; color:var(--text2);
+    padding:0.35rem 0.7rem; border-radius:3px; white-space:nowrap; transition:0.2s;}
+  .jump a:hover, .jump a.active{color:var(--gold2); background:rgba(207,169,78,0.08);}
+
+  /* sections */
+  main{padding:3rem 0 5rem;}
+  section{margin-bottom:3.6rem; scroll-margin-top:110px;}
+  .s-tag{font-family:var(--display); font-style:italic; letter-spacing:0.18em; text-transform:uppercase;
+    font-size:0.66rem; color:var(--rose2); display:block; margin-bottom:0.35rem;}
+  .s-title{font-family:var(--display); font-weight:700; font-size:clamp(1.5rem,3vw,2.2rem); color:#fff;
+    letter-spacing:0.01em;}
+  .s-rule{height:1px; width:90px; margin:0.9rem 0 1.8rem;
+    background:linear-gradient(90deg, var(--gold), var(--rose), transparent);}
+  p{margin-bottom:1rem; color:var(--text2);}
+  p strong, li strong{color:var(--gold2);}
+  em{color:var(--rose2); font-style:italic;}
+
+  ul.list{list-style:none; margin:1rem 0;}
+  ul.list li{position:relative; padding-left:1.3rem; margin-bottom:0.55rem; color:var(--text2);}
+  ul.list li::before{content:"\273B"; position:absolute; left:0; top:0.15rem; color:var(--gold); font-size:0.8rem;}
+
+  h3.sub{font-family:var(--display); font-weight:700; color:#fff; font-size:1.15rem; margin:1.6rem 0 0.4rem;}
+  h3.sub .role{font-family:var(--body); font-style:italic; font-weight:400; color:var(--rose2); font-size:0.9rem;}
+
+  /* gilded panels & tables */
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:1.2rem 1.4rem; margin:1.2rem 0;}
+  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:6px; margin:1.3rem 0;}
+  table{width:100%; border-collapse:collapse; font-size:0.92rem;}
+  th{font-family:var(--display); font-style:italic; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--gold2); text-align:left; padding:0.7rem 1rem; background:rgba(207,169,78,0.05);
+    border-bottom:1px solid var(--line);}
+  td{padding:0.7rem 1rem; border-bottom:1px solid var(--line2); color:var(--text2); vertical-align:top;}
+  td:first-child{color:var(--text); font-weight:600;}
+  tr:hover td{background:rgba(207,169,78,0.03);}
+
+  .callout{background:rgba(207,169,78,0.05); border:1px solid var(--line); border-left:3px solid var(--gold);
+    border-radius:4px; padding:1.1rem 1.4rem; margin:1.4rem 0; color:var(--text2); font-size:0.96rem;}
+  .callout strong{color:var(--gold2);}
+  .hottake{background:rgba(200,95,134,0.06); border:1px solid rgba(200,95,134,0.25); border-left:3px solid var(--rose);
+    border-radius:4px; padding:1.1rem 1.4rem; margin:1.4rem 0; color:var(--text2); font-style:italic;}
+  .hottake strong{color:var(--rose2);}
+
+  ol.steps{margin:1.2rem 0 1.2rem 0; padding-left:0; list-style:none; counter-reset:step;}
+  ol.steps li{position:relative; padding:0 0 0 2.6rem; margin-bottom:0.9rem; counter-increment:step; color:var(--text2);}
+  ol.steps li::before{content:counter(step); position:absolute; left:0; top:0; width:1.8rem; height:1.8rem;
+    display:grid; place-items:center; font-family:var(--display); font-weight:700; color:var(--gold2);
+    border:1px solid var(--line); border-radius:50%; font-size:0.85rem;}
+
+  footer{border-top:1px solid var(--line2); padding:2.2rem 1.6rem; text-align:center;}
+  footer p{font-family:var(--display); font-style:italic; font-size:0.8rem; letter-spacing:0.06em; color:var(--text3); margin:0.3rem 0;}
+  footer a{color:var(--text2);} footer a:hover{color:var(--gold2);}
+
+  .totop{position:fixed; right:18px; bottom:18px; z-index:60; background:var(--gold); color:#1a130a; border:none;
+    font-family:var(--display); font-weight:700; font-size:0.8rem; padding:0.5rem 0.8rem; border-radius:3px;
+    cursor:pointer; opacity:0; pointer-events:none; transition:opacity 0.2s;}
+  .totop.show{opacity:0.9; pointer-events:auto;}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity 0.55s ease, transform 0.55s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+    .reveal{opacity:1; transform:none;}
+  }
+  @media (max-width:640px){ .hero .mark{font-size:5rem;} }
+</style>
+</head>
+<body>
+
+<canvas id="paint" aria-hidden="true"></canvas>
+
+<div class="page">
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="brand">Expedition <b>33</b></span>
+      <a class="back" href="../../index.html">&#10022; The Arcanum</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="mark" aria-hidden="true">33</div>
+    <span class="eyebrow">The Arcanum &middot; Complete Field Guide</span>
+    <h1>Clair Obscur: Expedition 33</h1>
+    <p class="lede">A turn-based RPG with real-time defense: every enemy attack can be dodged or parried on timing, and every turn is a chance to build a status engine &mdash; <em>Burn, Mark, Stains, Perfection</em> &mdash; that turns a boss health bar into a delete button. There are no classes. Your build is weapon scaling + active Skills + Pictos and their Luminas.</p>
+    <p class="capline">Level cap is 99. Parry well, and no health bar is too big.</p>
+  </section>
+
+  <nav class="jump" aria-label="Sections">
+    <div class="jump-inner">
+      <a href="#loop">Combat Loop</a>
+      <a href="#pictos">Pictos &amp; Luminas</a>
+      <a href="#attributes">Attributes</a>
+      <a href="#party">Expeditioners</a>
+      <a href="#engines">Status Engines</a>
+      <a href="#comps">Party Comps</a>
+      <a href="#archetypes">Build Archetypes</a>
+      <a href="#phases">Progression</a>
+      <a href="#bosses">Boss Tips</a>
+      <a href="#secrets">Secrets</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <section id="loop" class="reveal">
+      <span class="s-tag">01 &middot; The Loop</span>
+      <h2 class="s-title">Core combat loop</h2>
+      <div class="s-rule"></div>
+      <p>Combat is turn-based on the offense and <strong>real-time on the defense</strong>. On your turn you spend AP on Skills and basic attacks. On the enemy's turn you must <strong>Dodge</strong> (easier, repositions) or <strong>Parry</strong> (tighter timing, opens huge counters and builds resources). Mastering parry is the single biggest skill jump in the game &mdash; it both keeps you alive and fuels your offense.</p>
+      <p>The winning pattern: stack a status mechanic (Burn / Mark / Stains / Perfection) across turns, then trigger a payoff Skill that consumes or multiplies that stack for enormous burst. Optimized parties erase bosses in a single cycle.</p>
+      <ul class="list">
+        <li>Learn to <strong>parry</strong>, not just dodge. Parries open counterattacks and feed resources.</li>
+        <li><strong>AP generation is king.</strong> Most top builds are really about getting more turns and more AP per turn.</li>
+        <li>Rotate Pictos to master them &mdash; it's how you spread power across the whole team.</li>
+      </ul>
+    </section>
+
+    <section id="pictos" class="reveal">
+      <span class="s-tag">02 &middot; The Build System</span>
+      <h2 class="s-title">Pictos &amp; Luminas</h2>
+      <div class="s-rule"></div>
+      <p>This <em>is</em> the class system. Two linked concepts:</p>
+      <ul class="list">
+        <li><strong>Pictos</strong> &mdash; equippable items. Each gives stat bonuses + one passive effect. You can equip <strong>only 3 Pictos per character</strong>.</li>
+        <li><strong>Luminas</strong> &mdash; use a Picto for <strong>4 battles to master it</strong>, permanently unlocking its passive as a Lumina any character can activate by spending <strong>Lumina Points</strong> (a shared pool).</li>
+      </ul>
+      <div class="callout"><strong>Hoarding and mastering Pictos early is the single best habit in the game.</strong> Three Pictos each, four fights each, and suddenly you have nine passives to mix across the roster.</div>
+      <h3 class="sub">High-value Luminas</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Lumina</th><th>Effect</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Cheater</td><td>Extra turn / turn manipulation</td><td>Best early-mid damage enabler</td></tr>
+          <tr><td>Energy Master</td><td>Improved AP flow</td><td>Core to rotation consistency</td></tr>
+          <tr><td>Painted Power</td><td>Scales damage off Lumina investment</td><td>Arguably best <em>endgame</em> damage Lumina</td></tr>
+          <tr><td>At Death's Door</td><td>Massive damage while at low HP</td><td>Pairs with low-HP burst builds</td></tr>
+          <tr><td>Critical Burn</td><td>+25% crit chance vs burning enemies</td><td>Fuels all Burn builds</td></tr>
+          <tr><td>Double Burn / Burn Affinity</td><td>Multiply Burn stacks / damage</td><td>Core of the Fire archetype</td></tr>
+        </tbody>
+      </table></div>
+      <div class="hottake"><strong>Community hot take:</strong> Painted Power matters more than Cheater for actual endgame output, but Cheater wins early and mid. Farm both.</div>
+    </section>
+
+    <section id="attributes" class="reveal">
+      <span class="s-tag">03 &middot; Level-Up</span>
+      <h2 class="s-title">Attributes</h2>
+      <div class="s-rule"></div>
+      <p>On level-up you assign points. Priorities depend on the character's role:</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Attribute</th><th>Does</th><th>Prioritize on</th></tr></thead>
+        <tbody>
+          <tr><td>Might</td><td>Raw damage</td><td>Most damage dealers</td></tr>
+          <tr><td>Agility</td><td>Turn speed / acting more often</td><td>Parry-reliant carries (Verso)</td></tr>
+          <tr><td>Vitality</td><td>HP</td><td>Sustain / healer (Lune)</td></tr>
+          <tr><td>Defense</td><td>Damage mitigation</td><td>Tanks, survival builds</td></tr>
+          <tr><td>Luck</td><td>Crit rate</td><td>Crit / Burn builds (with Critical Burn)</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="party" class="reveal">
+      <span class="s-tag">04 &middot; The Roster</span>
+      <h2 class="s-title">The six Expeditioners</h2>
+      <div class="s-rule"></div>
+      <p>All six join by mid-Act 2. Active party is <strong>3</strong>; reserves swap in if a member is KO'd.</p>
+
+      <h3 class="sub">Maelle <span class="role">— Burn carry / one-shot potential</span></h3>
+      <p><strong>Stances</strong>, especially <strong>Virtuose Stance</strong>, skyrocket her damage &mdash; triggered by mechanics like dropping to low HP (with At Death's Door) or her stance flow. Best-in-slot weapon: <strong>Medalum</strong>, which pushes massive <strong>Burn</strong> via Pyrolyse (up to ~60 Burn in one action upgraded). The premier delete button; with Burn-crit Pictos stacked, she one-shots much of the game.</p>
+
+      <h3 class="sub">Verso <span class="role">— Perfection rank carry / Mark</span></h3>
+      <p><strong>Perfection</strong> rank (D &rarr; S): landing hits, dodges, and parries raises rank; getting hit drops it. Higher rank = more damage and stronger Skills, and applies <strong>Mark</strong> to amplify team damage. <strong>Simoso</strong> (late, from Simon in The Abyss) accelerates rank and amplifies follow-ups on Marked targets; <strong>Dualiso</strong> grants extra turns. Attributes: Agility &gt; Luck. Maintains S-rank Mark uptime so Maelle and Lune delete.</p>
+
+      <h3 class="sub">Lune <span class="role">— Elemental mage / top healer</span></h3>
+      <p>Generates and consumes <strong>Elemental Stains</strong> (Fire/Ice/Lightning/Earth) for boosted Skills and to exploit Weakness/Resistance. Key Skills: Thunderfall (early DPS), Tree of Life (cleanse + party heal), Mayhem (consume all Stains for a nuke), Elemental Trick &rarr; Elemental Genesis (crit generates 4 Stains, then huge AoE), Wildfire (3 Burn stacks). Pictos: Critical Burn, Might. Flexible elemental damage + the best healing in the game.</p>
+
+      <h3 class="sub">Sciel <span class="role">— Dark damage / AP acceleration / support</span></h3>
+      <p>Card-based; applies <strong>Mark</strong> ("Marking Card") and boosts allies ("Fortune's Fury" doubles a partner's damage). Fast rotations, Dark element. Support/enabler that sets up the carry's delete turn.</p>
+
+      <h3 class="sub">Monoco <span class="role">— flexible / anti-Break specialist</span></h3>
+      <p>Adapts to learned enemy abilities; strong against enemies with large <strong>Break</strong> bars or high resistances. Swap him in for fights where Break or resistance is the wall.</p>
+
+      <h3 class="sub">Gustave <span class="role">— early protector / Overcharge</span></h3>
+      <p>Builds <strong>Overcharge</strong> for big payoff hits; pairs with Defenceless-style setups for Overcharge crits (story-gated availability). A dependable early-game frontliner and burst.</p>
+    </section>
+
+    <section id="engines" class="reveal">
+      <span class="s-tag">05 &middot; The Machines</span>
+      <h2 class="s-title">Status engines</h2>
+      <div class="s-rule"></div>
+      <p>Most top builds are really <em>one of these four engines</em> dressed up with different characters:</p>
+      <ul class="list">
+        <li><strong>Burn</strong> &mdash; stack Burn (Maelle/Lune), then convert it to guaranteed crit damage via Critical Burn / Double Burn / Burn Affinity. Turns DoT into burst.</li>
+        <li><strong>Mark</strong> &mdash; Verso/Sciel apply Mark; the carry's hit on a Marked target is amplified. The team's damage multiplier.</li>
+        <li><strong>Stains</strong> &mdash; Lune generates elemental Stains, then spends them on Mayhem / Elemental Genesis for element-matched nukes.</li>
+        <li><strong>Perfection</strong> &mdash; Verso's rank ladder; play clean (hit/dodge/parry, don't get hit) to reach S and unlock his biggest Skills.</li>
+      </ul>
+      <div class="callout">The art of the game is <strong>layering</strong> these: e.g. Verso holds S-rank Mark &rarr; Maelle stacks Burn &rarr; fires a Burn-crit payoff into a Marked target for tens of millions.</div>
+    </section>
+
+    <section id="comps" class="reveal">
+      <span class="s-tag">06 &middot; Composition</span>
+      <h2 class="s-title">Party compositions</h2>
+      <div class="s-rule"></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Party</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Maelle + Verso + Lune</td><td>The meta carry core. Verso Marks + holds rank, Maelle deletes via Burn, Lune heals and adds elemental burst. Needs confident parrying (no dedicated tank).</td></tr>
+          <tr><td>Maelle + Verso + Sciel</td><td>Faster AP / rotation; Sciel's Fortune's Fury doubles the carry's payoff turn.</td></tr>
+          <tr><td>Swap Lune &harr; Sciel</td><td>Lune for healing / elemental flexibility; Sciel for speed and Dark.</td></tr>
+          <tr><td>Bring Monoco</td><td>When a boss has a huge Break bar or stacked resistances.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="archetypes" class="reveal">
+      <span class="s-tag">07 &middot; Delete Buttons</span>
+      <h2 class="s-title">Build archetypes</h2>
+      <div class="s-rule"></div>
+      <p>Three proven "delete the boss" patterns:</p>
+      <h3 class="sub">1 &middot; Gage Master / Last Chance burst (Maelle)</h3>
+      <p>Sciel Marks (Marking Card) and doubles damage (Fortune's Fury) &rarr; on Maelle's turn use <strong>Last Chance</strong> to drop her to 1 HP &rarr; triggers <strong>Virtuose Stance</strong> + <strong>At Death's Door</strong> &rarr; with <strong>Eskim</strong> (consumes extra AP for damage) + the <strong>Roulette</strong> Picto (risky multiplier), her hit becomes a literal delete button. Even with sub-optimal gear it does tens of millions.</p>
+      <h3 class="sub">2 &middot; Fire Paints (Burn)</h3>
+      <p>Stack Burn hard with Maelle/Lune, then convert it to instant burst with Burn-crit Pictos. DoT-as-burst.</p>
+      <h3 class="sub">3 &middot; Dark Lightning (multi-hit chaos)</h3>
+      <p>Sciel Dark + Lune lightning multi-hits for chaotic chip that snowballs through crit generation.</p>
+      <div class="hottake"><strong>All three prove the same point:</strong> with the right Lumina + Pictos + weapon perk, no health bar is too big.</div>
+    </section>
+
+    <section id="phases" class="reveal">
+      <span class="s-tag">08 &middot; Progression</span>
+      <h2 class="s-title">Game-phase progression</h2>
+      <div class="s-rule"></div>
+      <ul class="list">
+        <li><strong>Early:</strong> prioritize learning parry timing and <strong>mastering Pictos</strong> for Luminas. Grab Critical Burn early (available early, fuels Burn builds). Lune's Thunderfall + Tree of Life carry survivability.</li>
+        <li><strong>Mid:</strong> commit the carry (usually Maelle), build the Burn or Mark engine, spread Cheater / Energy Master Luminas across damage dealers. Sciel/Verso as enablers.</li>
+        <li><strong>Late:</strong> chase best-in-slot weapons (Medalum, Simoso, Eskim), pivot toward Painted Power for endgame scaling, and refine the one-cycle burst rotation.</li>
+      </ul>
+    </section>
+
+    <section id="bosses" class="reveal">
+      <span class="s-tag">09 &middot; The Walls</span>
+      <h2 class="s-title">Boss &amp; combat tips</h2>
+      <div class="s-rule"></div>
+      <ul class="list">
+        <li><strong>Parry the heavy hits.</strong> Bosses telegraph big attacks; a parry both survives them and feeds your counter economy. Defensive Pictos cover missed timings.</li>
+        <li><strong>Don't ignore defense.</strong> Active defense doesn't make survivability stats useless &mdash; one clean boss hit can delete a character. Keep enough Vitality/Defense (or At Death's Door discipline) to absorb a missed parry.</li>
+        <li><strong>Exploit Weakness / Resistance</strong> with Lune's Stains and element-matched Skills.</li>
+        <li><strong>Save the payoff turn.</strong> Build the stack (Burn/Mark/rank), <em>then</em> spend it. Firing the delete Skill before the setup is the most common mistake.</li>
+      </ul>
+    </section>
+
+    <section id="secrets" class="reveal">
+      <span class="s-tag">10 &middot; Field Notes</span>
+      <h2 class="s-title">Secrets &amp; priorities</h2>
+      <div class="s-rule"></div>
+      <ul class="list">
+        <li><strong>The 4-battle master rule is the whole game.</strong> Equip 3 Pictos, win 4 fights, master them, repeat. Front-load this and your Lumina pool explodes.</li>
+        <li><strong>Give damage Luminas to every damage dealer</strong> the moment you master them.</li>
+        <li><strong>Last Chance + At Death's Door</strong> is the highest-ceiling combo in the game, but it's all-in: one missed parry can end the character. Highest risk, highest reward.</li>
+        <li><strong>Reserves matter</strong> &mdash; a KO'd active member is replaced by a reserve, so don't field three glass cannons with no backup.</li>
+        <li><strong>Experiment.</strong> There are no classes; the same character supports wildly different engines depending on Pictos. The "best" build is the one whose rotation you execute cleanly.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Clair Obscur: Expedition 33 &mdash; Complete Field Guide</p>
+    <p>A fan-made guide under <a href="../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Clair Obscur: Expedition 33 is &copy; Sandfall Interactive / Kepler Interactive; this guide is unaffiliated. Verify exact weapon/Picto names and unlock points in-game, as details shift by patch.</p>
+  </footer>
+
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+
+<script>
+/* ambient: drifting gold dust + rose petals, reduced-motion aware */
+(function(){
+  var c=document.getElementById("paint"); if(!c||!c.getContext) return;
+  var ctx=c.getContext("2d");
+  var reduce=window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var DPR=Math.min(window.devicePixelRatio||1,2), W=0,H=0,raf=null,last=0,P=[];
+  function rnd(a,b){return a+Math.random()*(b-a);}
+  function resize(){W=innerWidth;H=innerHeight;c.width=W*DPR;c.height=H*DPR;c.style.width=W+"px";c.style.height=H+"px";ctx.setTransform(DPR,0,0,DPR,0,0);}
+  function spr(rgb){var s=document.createElement("canvas");s.width=s.height=40;var x=s.getContext("2d");var g=x.createRadialGradient(20,20,0,20,20,20);g.addColorStop(0,"rgba("+rgb+",1)");g.addColorStop(.4,"rgba("+rgb+",.5)");g.addColorStop(1,"rgba("+rgb+",0)");x.fillStyle=g;x.beginPath();x.arc(20,20,20,0,7);x.fill();return s;}
+  var gold=spr("224,200,120"), rose=spr("224,138,168");
+  function mk(init){return{x:rnd(0,W),y:init?rnd(0,H):-20,r:rnd(1,3),vy:rnd(8,22),sway:rnd(.3,1),amp:rnd(8,26),ph:rnd(0,6.28),rose:Math.random()<0.28};}
+  function init(){resize();var n=Math.round(Math.min(60,(W*H)/30000));P=[];for(var i=0;i<n;i++)P.push(mk(true));}
+  function frame(t){var dt=last?Math.min((t-last)/1000,.05):.016;last=t;ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation="lighter";
+    for(var i=0;i<P.length;i++){var p=P[i];p.y+=p.vy*dt;p.ph+=p.sway*dt;var x=p.x+Math.sin(p.ph)*p.amp;
+      if(p.y>H+20){P[i]=mk(false);continue;}var a=.22*Math.sin(Math.min(p.y/H,1)*Math.PI)+.06;var sz=p.r*7;
+      ctx.globalAlpha=a;ctx.drawImage(p.rose?rose:gold,x-sz/2,p.y-sz/2,sz,sz);}
+    ctx.globalAlpha=1;ctx.globalCompositeOperation="source-over";raf=requestAnimationFrame(frame);}
+  function start(){if(!raf){last=0;raf=requestAnimationFrame(frame);}}
+  function stop(){if(raf){cancelAnimationFrame(raf);raf=null;}}
+  if(reduce){resize();ctx.globalCompositeOperation="lighter";for(var i=0;i<30;i++){var sz=rnd(5,14);ctx.globalAlpha=rnd(.05,.16);ctx.drawImage(gold,rnd(0,W),rnd(0,H),sz,sz);}ctx.globalAlpha=1;}
+  else{init();start();}
+  var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(function(){if(!reduce)init();},200);});
+  document.addEventListener("visibilitychange",function(){if(document.hidden)stop();else if(!reduce)start();});
+})();
+
+/* reveal on scroll */
+(function(){
+  var els=document.querySelectorAll(".reveal");
+  if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("visible");});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target);}});},{threshold:.12});
+  els.forEach(function(e){io.observe(e);});
+})();
+
+/* jump-nav active highlight + back to top */
+(function(){
+  var links=Array.prototype.slice.call(document.querySelectorAll(".jump a"));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute("href"));});
+  var top=document.querySelector(".totop");
+  function onScroll(){
+    var y=window.scrollY+140, cur=0;
+    for(var i=0;i<secs.length;i++){if(secs[i]&&secs[i].offsetTop<=y)cur=i;}
+    links.forEach(function(l,i){l.classList.toggle("active",i===cur);});
+    if(top)top.classList.toggle("show",window.scrollY>500);
+  }
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+  if(top)top.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+})();
+</script>
+</body>
+</html>

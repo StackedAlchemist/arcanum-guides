@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Complete Field Guide | FF7 Rebirth Guide</title>
+<meta name="description" content="The complete FF7 Rebirth combat field guide: the pressure-stagger loop, Synergy Skills & Abilities, character roles, party comps, game-phase progression, boss method, and Hard Mode survival." />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/lifestream.css" />
+<style>
+  .fg-toc { columns: 2; column-gap: 2rem; list-style: none; margin: 0; padding: 0; }
+  .fg-toc li { break-inside: avoid; margin-bottom: 0.4rem; }
+  .fg-toc a { color: var(--text2); text-decoration: none; font-size: 0.95rem; border-left: 2px solid var(--border2); padding-left: 0.7rem; transition: color 0.2s, border-color 0.2s; display: block; }
+  .fg-toc a:hover { color: var(--ls); border-left-color: var(--ls); }
+  @media (max-width: 640px) { .fg-toc { columns: 1; } }
+
+  .section-block { margin-bottom: 3.5rem; }
+  .fg-list { list-style: none; padding: 0; margin: 1rem 0; }
+  .fg-list li { padding-left: 1.2rem; position: relative; margin-bottom: 0.5rem; color: var(--text2); }
+  .fg-list li::before { content: "\25C8"; position: absolute; left: 0; color: var(--ls2); font-size: 0.7rem; top: 0.35rem; }
+  .fg-list strong, .content p strong { color: var(--ls); }
+  .table-wrap { overflow-x: auto; margin: 1.25rem 0; border: 1px solid var(--border2); border-radius: 6px; }
+  .xref { color: var(--gold) !important; text-decoration: none; border-bottom: 1px dotted var(--gold); }
+  .xref:hover { color: #e8d68a !important; }
+  .content p { margin-bottom: 1rem; }
+  h3.sub { font-family: 'Cinzel', serif; color: #fff; font-size: 1.05rem; letter-spacing: 0.06em; margin: 1.5rem 0 0.5rem; }
+</style>
+</head>
+<body>
+<canvas id="ls-deep"></canvas>
+<canvas id="ls-mid"></canvas>
+<canvas id="ls-surface"></canvas>
+<div class="ls-vignette"></div>
+<div class="ls-fog"></div>
+<div class="ls-pulse"></div>
+<div class="page-wrap">
+
+  <nav>
+    <a class="nav-logo" href="../index.html">FF7 REBIRTH GUIDE</a>
+    <ul class="nav-links">
+      <li><a href="field-guide.html" class="active">Field Guide</a></li>
+      <li><a href="characters.html">Characters</a></li>
+      <li><a href="materia.html">Materia</a></li>
+      <li><a href="builds.html">Builds</a></li>
+      <li><a href="parties.html">Party Setup</a></li>
+      <li><a href="bosses.html">Bosses</a></li>
+      <li><a href="queensblood.html">Queen's Blood</a></li>
+      <li><a href="affinity.html">Affinity</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <span class="page-eyebrow">The Arcanum &middot; Complete Field Guide</span>
+    <h1 class="page-title ls-glow-white">Combat &amp; Field Guide</h1>
+    <div class="page-rule"></div>
+  </div>
+
+  <div class="content">
+
+    <div class="callout reveal">
+      Combat in Rebirth is about <strong>momentum</strong>: pressure an enemy, stagger it, then dump everything into the stagger window. Materia is the backbone, Synergy is the multiplier, and the party that exploits weaknesses fastest wins. <strong>Level cap is 70.</strong> This page is the strategic through-line &mdash; for the deep tables, jump to <a class="xref" href="materia.html">Materia</a>, <a class="xref" href="builds.html">Builds</a>, <a class="xref" href="parties.html">Party Setup</a>, or <a class="xref" href="bosses.html">Bosses</a>.
+    </div>
+
+    <ul class="fg-toc reveal">
+      <li><a href="#loop">1 &middot; Core combat loop</a></li>
+      <li><a href="#materia">2 &middot; The Materia system</a></li>
+      <li><a href="#synergy">3 &middot; Synergy Skills &amp; Abilities</a></li>
+      <li><a href="#roles">4 &middot; Character roles &amp; builds</a></li>
+      <li><a href="#parties">5 &middot; Party compositions</a></li>
+      <li><a href="#phases">6 &middot; Game-phase progression</a></li>
+      <li><a href="#bosses">7 &middot; Boss strategy</a></li>
+      <li><a href="#hard">8 &middot; Endgame &amp; Hard Mode</a></li>
+      <li><a href="#secrets">9 &middot; Secrets &amp; priorities</a></li>
+    </ul>
+
+    <!-- 1. CORE LOOP -->
+    <div class="section-block reveal" id="loop">
+      <span class="section-tag">01 &middot; The Loop</span>
+      <h2 class="section-title">Core combat loop</h2>
+      <div class="section-rule"></div>
+      <p>Rebirth runs on the ATB (Active Time Battle) system. You attack in real time to build ATB segments, then spend them on abilities, spells, and items. The whole game pivots on two enemy states:</p>
+      <ul class="fg-list">
+        <li><strong>Pressured</strong> &mdash; a vulnerable window created by hitting weaknesses, blocking specific attacks, or interrupting actions. Pressuring builds the stagger gauge faster.</li>
+        <li><strong>Staggered</strong> &mdash; when the stagger gauge fills, the enemy takes massively increased damage for a short window. This is when you unload Limit Breaks, big abilities, and stagger-extending Synergy Abilities.</li>
+      </ul>
+      <p>The entire skill ceiling of Rebirth is: <strong>pressure efficiently, fill the stagger gauge, then maximize damage inside the stagger window.</strong> Everything else serves that loop.</p>
+      <h3 class="sub">Universal habits</h3>
+      <ul class="fg-list">
+        <li>Always equip <strong>Assess</strong> and assess new enemies. It reveals weaknesses so you slot the right elements.</li>
+        <li>Keep materia on <strong>reserve</strong> characters too &mdash; they gain AP during battle and level your orbs passively. Never leave slots empty.</li>
+        <li>You can <strong>respec the Folio for free</strong> anytime, so experiment with Synergy unlocks freely.</li>
+      </ul>
+    </div>
+
+    <!-- 2. MATERIA -->
+    <div class="section-block reveal" id="materia">
+      <span class="section-tag">02 &middot; The Backbone</span>
+      <h2 class="section-title">The Materia system</h2>
+      <div class="section-rule"></div>
+      <p>Materia are Mako orbs slotted into weapons and armor. <strong>Linked slots</strong> (two connected slots) let a Support materia modify the materia it's paired with. Five types:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Type</th><th>Color</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>Magic</td><td><span class="tag tag-green">Green</span></td><td>Spells (Fire, Ice, Healing, etc.)</td></tr>
+            <tr><td>Support</td><td><span class="tag tag-blue">Blue</span></td><td>Modifies a linked materia (Elemental, Magnify, Magic Efficiency)</td></tr>
+            <tr><td>Command</td><td><span class="tag tag-yellow">Yellow</span></td><td>Adds commands (Assess, Steal, ATB Boost)</td></tr>
+            <tr><td>Complete</td><td><span class="tag tag-purple">Purple</span></td><td>Stat boosts (HP Up, MP Up, Level Boost)</td></tr>
+            <tr><td>Summon</td><td><span class="tag tag-red">Red</span></td><td>Summons (Titan, Phoenix, Bahamut, etc.)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="sub">Best materia combinations</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Combo</th><th>Effect</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td>Elemental + (Fire/Ice/Lightning/Wind) on weapon</td><td>Adds that element to your attacks</td><td>All game. Match to enemy weakness.</td></tr>
+            <tr><td>Elemental + element on armor</td><td>Resists / nullifies / absorbs that element</td><td>Boss fights with a known element</td></tr>
+            <tr><td>Magic Efficiency + Healing</td><td>Cuts MP cost of heals</td><td>All game, essential for sustain</td></tr>
+            <tr><td>HP Absorption + (damage spell / Enemy Skill)</td><td>Heal off your damage</td><td>Hard Mode (no items)</td></tr>
+            <tr><td>Magnify + Healing</td><td>Heals / buffs hit the whole party</td><td>Mid-to-late, party sustain</td></tr>
+            <tr><td>ATB Boost (Command)</td><td>Instantly grants ATB</td><td>Burst windows, opening a stagger</td></tr>
+            <tr><td>First Strike</td><td>Start the fight with ATB</td><td>Aggressive openers</td></tr>
+            <tr><td>Poison + Bio</td><td>Stacks Toxic Spores for attrition</td><td>Tough high-HP enemies</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <strong>Element coverage rule:</strong> spread Fire, Ice, Lightning, Wind across the team so you always have an answer to any weakness, and keep at least one Healing on the party at all times. <strong>Chadley's Intel</strong> (Battle &amp; World) gates your best toys &mdash; it unlocks Enemy Skill and dual-element orbs. Don't skip regions. Full breakdown on the <a class="xref" href="materia.html">Materia page</a>.
+      </div>
+    </div>
+
+    <!-- 3. SYNERGY -->
+    <div class="section-block reveal" id="synergy">
+      <span class="section-tag">03 &middot; The Multiplier</span>
+      <h2 class="section-title">Synergy Skills &amp; Abilities</h2>
+      <div class="section-rule"></div>
+      <p>Rebirth's signature system and the biggest upgrade over Remake.</p>
+      <ul class="fg-list">
+        <li><strong>Synergy Skills</strong> &mdash; free, no ATB cost. Two characters perform a quick combined action to build ATB, pressure, and set up. Spam these constantly; most also have a hidden perk (extending a buff, granting a free block).</li>
+        <li><strong>Synergy Abilities</strong> &mdash; cost ATB from both characters, unlocked in the <strong>Folio</strong>. These are the heavy hitters, and many grant powerful team buffs.</li>
+      </ul>
+      <h3 class="sub">Synergy Abilities worth unlocking first</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Ability</th><th>Pair</th><th>Effect</th></tr></thead>
+          <tbody>
+            <tr><td>United Refocus</td><td>Most pairs</td><td>Temporary 3-charge ATB gauge. Universally strong.</td></tr>
+            <tr><td>Relentless Rush</td><td>Cloud + Tifa</td><td>Prolongs Stagger. Save for when stagger breaks.</td></tr>
+            <tr><td>Sweet-and-Sour Salvo</td><td>Aerith + Barret</td><td>Prolongs Stagger, ranged.</td></tr>
+            <tr><td>Synchro Cyclone</td><td>Cloud + Tifa</td><td>Temporary unlimited MP.</td></tr>
+            <tr><td>Firework Blade</td><td>Cloud + Aerith</td><td>Raises Limit Break level.</td></tr>
+            <tr><td>Mystic Multiplication</td><td>Aerith + Yuffie</td><td>Aerith clones + unlimited MP for a spell dump.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <strong>The pattern that wins fights:</strong> build Synergy with free Synergy Skills &rarr; break the stagger &rarr; fire a stagger-extending Synergy Ability (Relentless Rush / Sweet-and-Sour Salvo) &rarr; unload Limit Breaks and abilities into the extended window.
+      </div>
+    </div>
+
+    <!-- 4. ROLES -->
+    <div class="section-block reveal" id="roles">
+      <span class="section-tag">04 &middot; The Roster</span>
+      <h2 class="section-title">Character roles &amp; builds</h2>
+      <div class="section-rule"></div>
+      <p>Seven playable members (plus story guests). Each has early (Ch 1&ndash;6), mid (Ch 7&ndash;10), and late/Hard (Ch 11+) build phases; weapons gain materia slots as you level them. Deep builds live on the <a class="xref" href="builds.html">Builds page</a> &mdash; here are the roles.</p>
+
+      <h3 class="sub">Cloud &mdash; Balanced DPS / Frontline</h3>
+      <p>Swaps between Operator (balanced) and Punisher (high damage, slow); Counterstance punishes attacks. Physical weapon + Elemental-linked element, ATB Boost for burst. Combo: <em>Disorder &rarr; Prime Mode &rarr; Focused Thrust</em>. The <strong>Rune Blade</strong> (high Magic ATK) turns him into a caster.</p>
+      <h3 class="sub">Tifa &mdash; Melee DPS / Stagger machine</h3>
+      <p><strong>Unbridled Strength</strong> upgrades her abilities (Whirling Uppercut &rarr; Omnistrike) and stacks raise her stagger-damage multiplier hard. Kaiser Knuckles (pure ATK), Lightning + Wind for aerial chains. The premier stagger-damage amplifier &mdash; build stagger with Cloud/Yuffie, then Tifa multiplies it.</p>
+      <h3 class="sub">Aerith &mdash; Caster / Healer / Control</h3>
+      <p><strong>Arcane Ward</strong> double-casts spells cast inside it. High Magic ATK staff, Magnify + Healing, Magic Efficiency, Prayer for MP-free heals. Drop Arcane Ward, stand in it, double-cast nukes. The backbone of sustain and burst magic.</p>
+      <h3 class="sub">Barret &mdash; Ranged DPS / Tank</h3>
+      <p>Overcharge for burst, can hold aggro, Iron Defense is a top defensive Synergy. Gatling Gun + Fire/Earth for long-range chip and stagger maintenance. Good against flyers.</p>
+      <h3 class="sub">Red XIII &mdash; Vengeance Tank / DPS</h3>
+      <p>Builds the <strong>Vengeance</strong> gauge by guarding, then enters an aggressive high-damage state; Wild Charge is his go-to Synergy. Guard to charge, then unleash.</p>
+      <h3 class="sub">Yuffie &mdash; Ranged/Melee Hybrid / Stagger</h3>
+      <p><strong>Elemental Ninjutsu</strong> &mdash; match her thrown element to the enemy weakness to pressure fast; Doppelganger clone. Fire + Ice linked with Elemental, ATB Assist, First Strike. One of the fastest stagger-builders in the game.</p>
+      <h3 class="sub">Cait Sith &mdash; Summoner / Support (situational)</h3>
+      <p>Summons Moogle, then spams Roll o' the Dice / Fortune Telling to trigger ATB Assist for the team. First Strike, ATB Boost, ATB Stagger to deploy fast. A team enabler more than a carry.</p>
+    </div>
+
+    <!-- 5. PARTIES -->
+    <div class="section-block reveal" id="parties">
+      <span class="section-tag">05 &middot; Composition</span>
+      <h2 class="section-title">Party compositions</h2>
+      <div class="section-rule"></div>
+      <p>Active party is three; swap freely in menus, and KO'd members can be subbed. Build around <strong>shared mechanics</strong>, not isolated damage. More on the <a class="xref" href="parties.html">Party Setup page</a>.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Party</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td>Cloud + Tifa + Aerith</td><td>The default. Stagger (Cloud) &rarr; amplify (Tifa) &rarr; burst magic + heals (Aerith). Strong all game.</td></tr>
+            <tr><td>Cloud + Barret + Red XIII</td><td>Fire-heavy and tankier. Good for sustained, defensive fights.</td></tr>
+            <tr><td>Cloud + Tifa + Yuffie</td><td>Maximum stagger speed for tough single bosses.</td></tr>
+            <tr><td>Anyone + Aerith</td><td>Whenever you need a hard caster/healer and Arcane Ward double-casts.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 6. PHASES -->
+    <div class="section-block reveal" id="phases">
+      <span class="section-tag">06 &middot; Progression</span>
+      <h2 class="section-title">Game-phase progression</h2>
+      <div class="section-rule"></div>
+      <ul class="fg-list">
+        <li><strong>Early (Ch 1&ndash;6):</strong> equip a focused materia set &mdash; Fire/Ice/Lightning/Wind for coverage, one Healing, Assess, an HP Up. Support materia (Elemental, ATB-gain, stagger boosters) quietly carry these chapters.</li>
+        <li><strong>Mid (Ch 7&ndash;10):</strong> weapons have more slots; commit to roles. Build Tifa's Unbridled Strength loop, Aerith's Arcane Ward kit, Yuffie's elemental stagger. Start farming Chadley's Intel for Enemy Skill and dual-element materia.</li>
+        <li><strong>Late (Ch 11+):</strong> elemental Magnify, maxed Elemental, and HP Absorption come online. Optimize each lead for their stagger role and prep the Hard Mode loadouts below.</li>
+      </ul>
+    </div>
+
+    <!-- 7. BOSSES -->
+    <div class="section-block reveal" id="bosses">
+      <span class="section-tag">07 &middot; Enemy Intel</span>
+      <h2 class="section-title">Boss strategy</h2>
+      <div class="section-rule"></div>
+      <p>The universal method: <strong>assess for weakness &rarr; pressure with that element/mechanic &rarr; break stagger &rarr; extend it with a Synergy Ability &rarr; unload Limit Breaks at peak stagger.</strong> Avoid over-aggression; many bosses punish greed. Per-boss intel on the <a class="xref" href="bosses.html">Bosses page</a>.</p>
+      <h3 class="sub">Shielded / multi-phase bosses (e.g. Sephiroth fights)</h3>
+      <ul class="fg-list">
+        <li><strong>Phase 1:</strong> precise-block to pressure, then hit with pressure abilities. Reach the health gate.</li>
+        <li><strong>Barrier / Aegis phase:</strong> hit with Synergy Abilities (especially limit-level boosters like Firework Blade). Keep Prayer/heals up to stay above big-attack thresholds.</li>
+        <li><strong>Drop the shield, re-stagger,</strong> unleash Level 2 Limit Breaks. Double-cast Aerith spells from Arcane Ward to accelerate.</li>
+      </ul>
+      <div class="callout"><strong>Midgar Zolom (early):</strong> Water-weak. Stagger the tail; dodge sweeps by jumping.</div>
+    </div>
+
+    <!-- 8. HARD MODE -->
+    <div class="section-block reveal" id="hard">
+      <span class="section-tag">08 &middot; The Summit</span>
+      <h2 class="section-title">Endgame &amp; Hard Mode</h2>
+      <div class="section-rule"></div>
+      <p>Hard Mode disables items and MP recovery from rest, so sustain must come from your build:</p>
+      <ul class="fg-list">
+        <li><strong>Magic Efficiency + Healing</strong> to stretch MP.</li>
+        <li><strong>HP Absorption + Enemy Skill</strong> (or a damage spell) to heal off damage.</li>
+        <li>Maxed <strong>Magnify</strong> and <strong>Elemental</strong> shine here.</li>
+      </ul>
+      <h3 class="sub">Key endgame gear</h3>
+      <ul class="fg-list">
+        <li><strong>Gotterdammerung</strong> and similar top accessories require the Brutal Challenge <em>Rulers of the Outer World</em> in Chadley's Combat Simulator (after beating Gilgamesh). Use Gi Warrior's Charm or Chocoking's Cape as stand-ins until then.</li>
+        <li>Cloud's Hard Mode setup centers the <strong>Igneous Saber at Weapon Level 7</strong> + <strong>Cetran Bracer</strong> for 8 materia slots.</li>
+      </ul>
+      <h3 class="sub">Gilgamesh &mdash; the hardest optional boss</h3>
+      <ul class="fg-list">
+        <li>Collect all <strong>Protorelics</strong> from all six regions (Grasslands, Junon, Corel, Gongaga, Cosmo Canyon, Nibel) &mdash; triggers the Phenomenon Intel to Gilgamesh Island.</li>
+        <li>Obtain all <strong>Summon Materia</strong> from the Combat Simulator (Titan, Phoenix, Alexander, Kujata, Bahamut Arisen, Odin).</li>
+      </ul>
+    </div>
+
+    <!-- 9. SECRETS -->
+    <div class="section-block reveal" id="secrets">
+      <span class="section-tag">09 &middot; Field Notes</span>
+      <h2 class="section-title">Secrets &amp; priorities</h2>
+      <div class="section-rule"></div>
+      <ul class="fg-list">
+        <li><strong>Reserve-slot AP farming:</strong> materia on benched characters still levels. Keep every slot filled across the whole roster.</li>
+        <li><strong>Free Folio respec:</strong> never feel locked into Synergy unlocks; rebuild for each boss.</li>
+        <li><strong>Queen's Blood</strong> is worth real time &mdash; strong rewards and genuinely deep. Build a deck early (see the <a class="xref" href="queensblood.html">Queen's Blood page</a>).</li>
+        <li><strong>Chadley gates your power.</strong> World/Battle Intel unlocks the best materia and summons. Don't skip regions.</li>
+        <li><strong>Save stagger-extenders.</strong> Relentless Rush / Sweet-and-Sour Salvo / United Refocus are wasted outside the stagger window. Hold them.</li>
+        <li><strong>Match weapon stat split to playstyle.</strong> ATK vs M.ATK on a weapon (Kaiser Knuckles vs Rune Blade) defines physical vs caster before you slot a single materia.</li>
+      </ul>
+    </div>
+
+  </div><!-- /content -->
+
+  <footer><p class="footer-text">FF7 REBIRTH — COMPLETE FIELD GUIDE</p></footer>
+</div>
+
+<script src="../js/shared.js"></script>
+<script src="../js/lifestream.js"></script>
+</body>
+</html>
