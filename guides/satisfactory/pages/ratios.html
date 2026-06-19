@@ -57,6 +57,31 @@
   <input type="text" class="searchbar" data-search data-target=".ratio-row" placeholder="Search recipes &mdash; iron plate, rotor, cable, steel beam...">
   <p class="search-note"><span data-search-count></span></p>
 
+  <style>
+    #recipe-cost-control{border-color:var(--ficsit);}
+    #recipe-cost-control .rc-buttons{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.2rem;}
+    #recipe-cost-control .rc-buttons button{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.92rem;cursor:pointer;padding:0.34rem 0.72rem;border-radius:5px;border:1px solid var(--ficsit);background:transparent;color:var(--text,#dfe6ee);transition:background 0.15s,color 0.15s;}
+    #recipe-cost-control .rc-buttons button:hover{background:rgba(226,163,58,0.14);}
+    #recipe-cost-control .rc-buttons button.active{background:var(--ficsit);color:#1a1205;}
+    .ratio-row .flow.is-scaled{color:var(--ficsit);}
+  </style>
+
+  <div class="callout" id="recipe-cost-control">
+    <span class="label">Recipe Cost Multiplier &mdash; match your Game Mode</span>
+    <p style="margin-bottom:0.55em;">Picked a non-default <a href="game-modes.html#cost">Recipe Parts Cost Multiplier</a> when you created your save? Set it here and every <strong>input</strong> amount below rescales to match. Outputs stay the same &mdash; you're just feeding more or fewer raws into the same machines.</p>
+    <div class="rc-buttons" role="group" aria-label="Recipe cost multiplier">
+      <button type="button" data-mult="0.25">0.25&times;</button>
+      <button type="button" data-mult="0.5">0.5&times;</button>
+      <button type="button" data-mult="0.75">0.75&times;</button>
+      <button type="button" data-mult="1" class="active">1&times; default</button>
+      <button type="button" data-mult="1.25">1.25&times;</button>
+      <button type="button" data-mult="1.5">1.5&times;</button>
+      <button type="button" data-mult="1.75">1.75&times;</button>
+      <button type="button" data-mult="2">2&times;</button>
+    </div>
+    <p class="rc-note" style="margin:0.55em 0 0;font-size:0.85rem;color:var(--text2,#9aa6b2);">Showing recipe inputs at <strong data-rc-current>1&times;</strong>. The "clean group" machine-count notes in the right column assume default 1&times;.</p>
+  </div>
+
   <h2 id="smelting">Smelting &amp; refining ore</h2>
   <table>
     <thead>
@@ -192,5 +217,51 @@
 
 <button class="totop" aria-label="Back to top">&uarr; Top</button>
 <script src="../js/site.js"></script>
+<script>
+/* Recipe Cost Multiplier selector ---------------------------------------
+   Rescales the INPUT side of every recipe flow to match the player's
+   Game Mode "Recipe Parts Cost Multiplier". Outputs are left untouched. */
+(function () {
+  var control = document.getElementById("recipe-cost-control");
+  if (!control) return;
+  var flows = Array.prototype.slice.call(document.querySelectorAll(".ratio-row .flow"));
+  flows.forEach(function (f) { f.setAttribute("data-orig", f.innerHTML); });
+
+  function fmt(n) {
+    var r = Math.round(n * 1000) / 1000;          // kill float dust
+    return (r % 1 === 0) ? String(r) : String(parseFloat(r.toFixed(3)));
+  }
+
+  function scaleInputs(html, mult) {
+    var arrow = html.indexOf("→") !== -1 ? "→" : "&rarr;"; // → or entity
+    var idx = html.indexOf(arrow);
+    if (idx === -1) return html;                  // no arrow: leave as-is
+    var left = html.slice(0, idx);
+    var right = html.slice(idx);
+    left = left.replace(/\d+(\.\d+)?/g, function (m) {
+      return fmt(parseFloat(m) * mult);
+    });
+    return left + right;
+  }
+
+  function apply(mult) {
+    flows.forEach(function (f) {
+      f.innerHTML = scaleInputs(f.getAttribute("data-orig"), mult);
+      f.classList.toggle("is-scaled", mult !== 1);
+    });
+    var cur = control.querySelector("[data-rc-current]");
+    if (cur) cur.textContent = fmt(mult) + "×";
+  }
+
+  var btns = Array.prototype.slice.call(control.querySelectorAll(".rc-buttons button"));
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      btns.forEach(function (x) { x.classList.remove("active"); });
+      b.classList.add("active");
+      apply(parseFloat(b.getAttribute("data-mult")));
+    });
+  });
+})();
+</script>
 </body>
 </html>

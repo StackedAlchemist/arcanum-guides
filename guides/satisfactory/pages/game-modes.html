@@ -110,6 +110,16 @@
     </tbody>
   </table>
 
+  <div class="callout">
+    <span class="label">Exact selectable steps</span>
+    <p style="margin-bottom:0.4em;">These aren't free sliders &mdash; you pick from fixed steps, and the high end jumps in big gaps:</p>
+    <ul class="belt" style="margin-bottom:0;">
+      <li><strong>Space Elevator Deliverable:</strong> <span class="mono">0.25 &middot; 0.5 &middot; 0.75 &middot; 1 &middot; 2 &middot; 5 &middot; 10 &middot; 25 &middot; 50 &middot; 100</span> &mdash; note there's no 1.5&times; or 3&times;; it leaps 1&rarr;2&rarr;5&rarr;10.</li>
+      <li><strong>Recipe Parts Cost:</strong> <span class="mono">0.25 &middot; 0.5 &middot; 0.75 &middot; 1 &middot; 1.25 &middot; 1.5 &middot; 1.75 &middot; 2</span> &mdash; fine 0.25 steps the whole way. (The <a href="ratios.html#recipe-cost-control">Ratios page</a> rescales every recipe to whichever of these you pick.)</li>
+      <li><strong>Power Consumption:</strong> <span class="mono">0.25 &middot; 0.5 &middot; 0.75 &middot; 1 &middot; 2 &middot; 5</span> &mdash; nothing between 1&times; and 2&times;, then a big leap to 5&times;.</li>
+    </ul>
+  </div>
+
   <div class="callout tip">
     <span class="label">Slider interaction</span>
     <p style="margin-bottom:0;">These stack with overclocking and Somersloop production-doubling. At <span class="mono">5&times;</span> power, an overclocked-to-250% machine becomes brutally expensive, because overclock power cost scales exponentially (^1.321). If you crank Power Consumption, plan to run machines at or below 100% and just build <em>wider</em>.</p>
@@ -147,7 +157,7 @@
 
   <div class="callout">
     <span class="label">World seed</span>
-    <p style="margin-bottom:0;">You can enter a specific <strong>world seed</strong> to share a randomized layout with friends or replay a known map. Two saves with the same seed and the same randomization settings generate the same node placement &mdash; handy for community challenges and races.</p>
+    <p style="margin-bottom:0;">You can enter a specific <strong>world seed</strong> to share a randomized layout with friends or replay a known map. The <strong>default vanilla seed is 0</strong>. Two saves with the same seed and the same randomization settings generate the same node placement &mdash; handy for community challenges and races. One catch: sharing the seed alone isn't enough, your friends still have to match the other randomization settings manually.</p>
   </div>
 
   <h2 id="creative">Creative Mode</h2>
