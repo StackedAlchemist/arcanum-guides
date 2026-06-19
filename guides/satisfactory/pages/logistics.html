@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logistics &amp; Transport | FICSIT Field Manual</title>
+<meta name="description" content="Satisfactory logistics guide: belt and pipe throughput tiers, manifolds, trains, drones, vehicles, and the new Update 1.2 Fluid Trucks and rebuilt vehicle pathing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">FICSIT <span>Field Manual</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+    <nav class="nav">
+      <a href="../../../index.html" style="color:var(--ficsit);">&#9879; The Arcanum</a>
+      <a href="../index.html">Home</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="ratios.html">Ratios</a>
+      <a href="power.html">Power</a>
+      <a href="logistics.html">Logistics</a>
+      <a href="game-modes.html">Game Modes 1.2</a>
+      <a href="tips.html">Tips &amp; Secrets</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">The Veins</span>
+    <h1>Logistics &amp; Transport</h1>
+    <p class="lede">Production is only half the game; getting parts from A to B at the right rate is the other half. Belts and pipes for short hauls, trains and drones for long ones, and &mdash; new in Update 1.2 &mdash; Fluid Trucks for moving liquids by road.</p>
+  </div>
+</section>
+
+<main class="wrap section">
+
+  <div class="phasebar">
+    <a href="#belts">Belts</a>
+    <a href="#pipes">Pipes</a>
+    <a href="#trains">Trains</a>
+    <a href="#drones">Drones</a>
+    <a href="#vehicles">Vehicles &amp; 1.2 Trucks</a>
+    <a href="#pick">What to use when</a>
+  </div>
+
+  <h2 id="belts">Conveyor belts</h2>
+  <p>The default mover for solids. Each tier doubles-ish the throughput; <strong>a belt is a hard cap</strong> &mdash; output beyond its rate simply backs up.</p>
+  <table>
+    <thead>
+      <tr><th>Belt</th><th>Throughput</th><th>Unlocks around</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Mk.1</strong></td><td><span class="mono">60 /min</span></td><td>Start</td></tr>
+      <tr><td><strong>Mk.2</strong></td><td><span class="mono">120 /min</span></td><td>Tier 2</td></tr>
+      <tr><td><strong>Mk.3</strong></td><td><span class="mono">270 /min</span></td><td>Tier 4</td></tr>
+      <tr><td><strong>Mk.4</strong></td><td><span class="mono">480 /min</span></td><td>Tier 6</td></tr>
+      <tr><td><strong>Mk.5</strong></td><td><span class="mono">780 /min</span></td><td>Tier 7</td></tr>
+      <tr><td><strong>Mk.6</strong></td><td><span class="mono">1200 /min</span></td><td>Late / AWESOME Shop</td></tr>
+    </tbody>
+  </table>
+  <div class="callout tip">
+    <span class="label">Belt discipline</span>
+    <p style="margin-bottom:0;">Plan lines so a full block's output equals one belt tier exactly (see <a href="ratios.html">Ratios</a>). When a single belt can't carry the load, split onto two <em>before</em> the bottleneck, not after. Mergers obey belt caps too &mdash; three full Mk.3 belts merging onto one Mk.3 belt loses two-thirds of the flow.</p>
+  </div>
+
+  <h2 id="pipes">Pipelines</h2>
+  <p>For fluids &mdash; water, oil, fuel, acids, and aluminum-line liquids. Pipes add a second variable belts don't have: <strong>headlift</strong>.</p>
+  <table>
+    <thead>
+      <tr><th>Pipe</th><th>Throughput</th><th>Note</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Pipeline Mk.1</strong></td><td><span class="mono">300 m&sup3;/min</span></td><td>Fine for most early fluid lines.</td></tr>
+      <tr><td><strong>Pipeline Mk.2</strong></td><td><span class="mono">600 m&sup3;/min</span></td><td>For high-volume fuel and water mains.</td></tr>
+    </tbody>
+  </table>
+  <ul class="belt">
+    <li><strong>Headlift:</strong> fluids only rise so far on their own. To pump <em>up</em>, add <strong>Pipeline Pumps</strong>, each adding a fixed lift &mdash; stack them on tall vertical runs.</li>
+    <li><strong>Keep mains horizontal.</strong> Run pipes flat where possible; reserve vertical climbs for pumped sections to avoid air pockets.</li>
+    <li><strong>Buffer with tanks.</strong> A Fluid Buffer near the consumer smooths surges and prevents the last machine in a row from starving.</li>
+    <li><strong>1.2 added the Pipeline T-Junction (Tier 3)</strong> &mdash; cleaner three-way splits without awkward junction geometry.</li>
+  </ul>
+
+  <h2 id="trains">Trains</h2>
+  <p>The long-haul backbone. High throughput, fully automatable, and they cross the map tirelessly.</p>
+  <ul class="belt">
+    <li><strong>Each Freight Car</strong> docks at a Freight Platform that loads/unloads one item type. Chain platforms for multi-cargo stations.</li>
+    <li><strong>Throughput is set by the platform's belt</strong>, not the train &mdash; feed stations with your best belt tier.</li>
+    <li><strong>Signals matter:</strong> use Path Signals at intersections and Block Signals on open track to run multiple trains without deadlock.</li>
+    <li><strong>Trains also haul fluids</strong> via Fluid Freight Platforms &mdash; an alternative to a cross-map pipeline.</li>
+    <li><strong>Best for:</strong> moving large volumes of refined ore or parts between distant production sites.</li>
+  </ul>
+
+  <h2 id="drones">Drones</h2>
+  <ul class="belt">
+    <li><strong>Point-to-point air freight.</strong> A Drone flies between two Drone Ports carrying a fixed cargo load each trip.</li>
+    <li><strong>Powered by Batteries</strong> &mdash; the route consumes batteries per trip, so budget a battery supply at the home port.</li>
+    <li><strong>Low throughput, zero infrastructure.</strong> No track to lay, terrain doesn't matter. Ideal for small quantities of high-value parts (computers, frames, fuel rods) across long distances.</li>
+    <li><strong>Best for:</strong> trickle-feeding a remote outpost something it can't make locally.</li>
+  </ul>
+
+  <h2 id="vehicles">Vehicles &amp; the new Fluid Trucks (1.2)</h2>
+  <p>Road vehicles &mdash; Tractor, Truck, Explorer &mdash; follow recorded paths. <strong>Update 1.2 rebuilt vehicle pathing entirely</strong>: you can now place paths with the Build Gun instead of only driving them manually, the self-driving is smoother, and path colors are customizable in UI settings.</p>
+
+  <div class="callout update">
+    <span class="label">New in Update 1.2 &mdash; Fluid Trucks</span>
+    <p>Liquids can now move by road. <strong>Fluid Truck Stations</strong> and <strong>Fluid Trucks</strong> (<span class="mono">3200 m&sup3; capacity each</span>) are unlocked at <strong>Tier 5</strong> as part of the <strong>Logistics Mk.4</strong> milestone. A truck fills at one Fluid Station, drives its path, and empties at another &mdash; no pipeline required across the terrain in between.</p>
+    <p style="margin-bottom:0;"><strong>When to use them:</strong> moving crude oil or fuel from a remote field back to base when laying a long pumped pipeline (with headlift over hills) would be a nightmare. The truck doesn't care about elevation.</p>
+  </div>
+
+  <ul class="belt">
+    <li><strong>Truck:</strong> large inventory, good for bulk solids on a fixed loop near base.</li>
+    <li><strong>Tractor:</strong> cheaper, smaller, unlocked earlier &mdash; a fine first automated hauler.</li>
+    <li><strong>Explorer:</strong> fast scout vehicle for finding nodes, Hard Drives, and slugs (see <a href="tips.html">Tips</a>), not really for freight.</li>
+    <li><strong>Truck Stations</strong> auto-load/unload and can refuel the vehicle; keep a fuel supply at the station or vehicles strand mid-route.</li>
+  </ul>
+
+  <h2 id="pick">What to use when</h2>
+  <table>
+    <thead>
+      <tr><th>Situation</th><th>Best mover</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Within one factory</td><td><strong>Belts / Pipes</strong></td><td>Cheapest, instant, no fuel.</td></tr>
+      <tr><td>Bulk cargo across the map</td><td><strong>Train</strong></td><td>Highest sustained throughput over distance.</td></tr>
+      <tr><td>Small high-value parts, far away</td><td><strong>Drone</strong></td><td>No infrastructure, ignores terrain.</td></tr>
+      <tr><td>Liquids over rough terrain (1.2)</td><td><strong>Fluid Truck</strong></td><td>No pipeline/headlift to manage.</td></tr>
+      <tr><td>Early-game medium haul</td><td><strong>Tractor / Truck</strong></td><td>Available before trains, cheap to set up.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+  <p><a href="../index.html">&larr; Back to the Field Manual</a></p>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="colophon">
+      <h4>The FICSIT Field Manual</h4>
+      <p>A fan-made engineering guide for <strong>Satisfactory</strong> by Coffee Stain Studios. Accurate to Update 1.2 (June 2026). Unaffiliated with the developer or publisher.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" aria-label="Back to top">&uarr; Top</button>
+<script src="../js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Materia | FF7 Rebirth Guide</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/lifestream.css" />
+<style>
+.materia-hero {
+  padding: 100px 2rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 3D Orb Showcase */
+.orb-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 3rem 0 5rem;
+}
+
+.orb-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.orb-canvas-wrap {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  cursor: pointer;
+}
+
+/* Outer ambient glow ring behind each canvas */
+.orb-canvas-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -24px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+  animation: glow-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50%       { opacity: 0.85; transform: scale(1.1); }
+}
+
+.orb-canvas-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50%;
+}
+
+.orb-label {
+  text-align: center;
+}
+
+.orb-type-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  text-shadow: 0 0 12px var(--glow-color);
+}
+
+.orb-type-desc {
+  font-size: 0.85rem;
+  color: var(--text2);
+  font-style: italic;
+}
+
+/* Per-type glow colors */
+.orb-magic    { --glow-color: rgba(0,255,100,0.55); }
+.orb-magic    .orb-type-name { color: #44ff99; }
+
+.orb-support  { --glow-color: rgba(60,150,255,0.55); }
+.orb-support  .orb-type-name { color: #66bbff; }
+
+.orb-command  { --glow-color: rgba(230,190,20,0.55); }
+.orb-command  .orb-type-name { color: #ffdd55; }
+
+.orb-complete { --glow-color: rgba(190,60,255,0.55); }
+.orb-complete .orb-type-name { color: #cc77ff; }
+
+.orb-summon   { --glow-color: rgba(255,50,70,0.55); }
+.orb-summon   .orb-type-name { color: #ff6677; }
+
+/* Materia info section */
+.materia-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.mat-card {
+  background: var(--panel);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 1.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.mat-card:hover {
+  border-color: var(--border);
+  box-shadow: 0 4px 24px var(--card-glow, rgba(0,255,170,0.06));
+}
+
+.mat-card-header {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.mat-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--dot-glow);
+}
+
+.mat-card-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.mat-card-body {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.mat-examples {
+  display: flex; flex-wrap: wrap; gap: 0.35rem;
+}
+
+/* limited materia table */
+.limited-wrap { overflow-x: auto; margin-bottom: 3rem; }
+
+.copies-badge {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+}
+.copies-1 { background:rgba(255,68,102,0.12); color:var(--mat-red); border:1px solid rgba(255,68,102,0.3); }
+.copies-3 { background:rgba(0,255,100,0.08); color:var(--mat-green); border:1px solid rgba(0,255,100,0.25); }
+.copies-buy { background:rgba(68,170,255,0.08); color:var(--mat-blue); border:1px solid rgba(68,170,255,0.25); }
+</style>
+</head>
+<body>
+<!-- LIFESTREAM LAYERS — do not move or reorder -->
+<canvas id="ls-deep"></canvas>
+<canvas id="ls-mid"></canvas>
+<canvas id="ls-surface"></canvas>
+<div class="ls-vignette"></div>
+<div class="ls-fog"></div>
+<div class="ls-pulse"></div>
+
+<div class="page-wrap">
+
+<nav>
+  <a class="nav-logo" href="../index.html">FF7 REBIRTH GUIDE</a>
+  <ul class="nav-links">
+    <li><a href="characters.html">Characters</a></li>
+    <li><a href="materia.html">Materia</a></li>
+    <li><a href="builds.html">Builds</a></li>
+    <li><a href="parties.html">Party Setup</a></li>
+    <li><a href="bosses.html">Bosses</a></li>
+    <li><a href="queensblood.html">Queen's Blood</a></li>
+    <li><a href="affinity.html">Affinity</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="materia-hero">
+  <span class="page-eyebrow">The Lifestream Crystallized</span>
+  <h1 class="page-title ls-glow-white">Materia</h1>
+  <div class="page-rule" style="margin:1.5rem auto 1rem;"></div>
+  <p style="color:var(--text2);font-style:italic;max-width:580px;margin:0 auto;">
+    Mako condensed into crystalline form. Each orb carries the wisdom of the Planet. Equip them. Master them. Understand their limits.
+  </p>
+</div>
+
+<!-- 3D ORB SHOWCASE -->
+<div class="content">
+  <span class="section-tag reveal">All Five Types</span>
+  <h2 class="section-title reveal">The Five Materia</h2>
+  <div class="section-rule reveal"></div>
+
+  <div class="callout reveal">
+    <strong>Drag any orb to rotate it.</strong> These are genuine Three.js 3D renders - glass sphere geometry, internal particle clouds per type, real-time lighting. Hover to intensify the glow.
+  </div>
+
+  <div class="orb-showcase" id="orb-showcase">
+    <div class="orb-slot orb-magic">
+      <div class="orb-canvas-wrap" id="wrap-magic"><canvas id="c-magic"></canvas></div>
+      <div class="orb-label">
+        <span class="orb-type-name">Magic</span>
+        <span class="orb-type-desc">Green · Spells &amp; Elements</span>
+      </div>
+    </div>
+    <div class="orb-slot orb-support">
+      <div class="orb-canvas-wrap" id="wrap-support"><canvas id="c-support"></canvas></div>
+      <div class="orb-label">
+        <span class="orb-type-name">Support</span>
+        <span class="orb-type-desc">Blue · Pair Slots</span>
+      </div>
+    </div>
+    <div class="orb-slot orb-command">
+      <div class="orb-canvas-wrap" id="wrap-command"><canvas id="c-command"></canvas></div>
+      <div class="orb-label">
+        <span class="orb-type-name">Command</span>
+        <span class="orb-type-desc">Yellow · Abilities</span>
+      </div>
+    </div>
+    <div class="orb-slot orb-complete">
+      <div class="orb-canvas-wrap" id="wrap-complete"><canvas id="c-complete"></canvas></div>
+      <div class="orb-label">
+        <span class="orb-type-name">Complete</span>
+        <span class="orb-type-desc">Purple · Passive Stats</span>
+      </div>
+    </div>
+    <div class="orb-slot orb-summon">
+      <div class="orb-canvas-wrap" id="wrap-summon"><canvas id="c-summon"></canvas></div>
+      <div class="orb-label">
+        <span class="orb-type-name">Summon</span>
+        <span class="orb-type-desc">Red · Weapon Slot Only</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPE DESCRIPTIONS -->
+  <span class="section-tag reveal" style="margin-top:2rem">What Each Type Does</span>
+  <div class="materia-type-grid" style="margin-top:1.5rem">
+
+    <div class="mat-card reveal" style="--card-glow:rgba(0,255,100,0.08)">
+      <div class="mat-card-header">
+        <div class="mat-dot" style="background:radial-gradient(circle at 35% 35%, #66ffcc, #00aa55);--dot-glow:rgba(0,255,100,0.6)"></div>
+        <span class="mat-card-name">Magic (Green)</span>
+      </div>
+      <p class="mat-card-body">Unlocks offensive and defensive spells. Levels up as you use it in combat, unlocking stronger tiers: Fire becomes Fira then Firaga. Your elemental damage engine.</p>
+      <div class="mat-examples">
+        <span class="tag tag-green">Fire / Fira / Firaga</span>
+        <span class="tag tag-green">Blizzard line</span>
+        <span class="tag tag-green">Thunder line</span>
+        <span class="tag tag-green">Healing</span>
+        <span class="tag tag-green">Comet</span>
+      </div>
+    </div>
+
+    <div class="mat-card reveal" style="--card-glow:rgba(60,150,255,0.08)">
+      <div class="mat-card-header">
+        <div class="mat-dot" style="background:radial-gradient(circle at 35% 35%, #88ccff, #2266cc);--dot-glow:rgba(60,150,255,0.6)"></div>
+        <span class="mat-card-name">Support (Blue)</span>
+      </div>
+      <p class="mat-card-body">Must be placed in a paired slot alongside another materia. Powers up or modifies the linked materia. Your most precious and limited resource - choose pairings carefully.</p>
+      <div class="mat-examples">
+        <span class="tag tag-blue">Elemental</span>
+        <span class="tag tag-blue">Magnify</span>
+        <span class="tag tag-blue">HP Absorption</span>
+        <span class="tag tag-blue">MP Absorption</span>
+      </div>
+    </div>
+
+    <div class="mat-card reveal" style="--card-glow:rgba(230,190,20,0.08)">
+      <div class="mat-card-header">
+        <div class="mat-dot" style="background:radial-gradient(circle at 35% 35%, #ffe077, #cc9900);--dot-glow:rgba(230,190,20,0.6)"></div>
+        <span class="mat-card-name">Command (Yellow)</span>
+      </div>
+      <p class="mat-card-body">Unlocks new non-magic battle actions and special abilities. These don't chain to other materia. Each unlocks a discrete skill or group of skills.</p>
+      <div class="mat-examples">
+        <span class="tag tag-yellow">Assess</span>
+        <span class="tag tag-yellow">Steal</span>
+        <span class="tag tag-yellow">Enemy Skill</span>
+        <span class="tag tag-yellow">Refocus</span>
+      </div>
+    </div>
+
+    <div class="mat-card reveal" style="--card-glow:rgba(190,60,255,0.08)">
+      <div class="mat-card-header">
+        <div class="mat-dot" style="background:radial-gradient(circle at 35% 35%, #dd88ff, #8800cc);--dot-glow:rgba(190,60,255,0.6)"></div>
+        <span class="mat-card-name">Complete / Independent (Purple)</span>
+      </div>
+      <p class="mat-card-body">Passive stat boosters. Equip and forget - they're always working. No activation needed. Stack multiples for compounding bonuses where copies allow.</p>
+      <div class="mat-examples">
+        <span class="tag tag-purple">HP Up</span>
+        <span class="tag tag-purple">MP Up</span>
+        <span class="tag tag-purple">Magic Up</span>
+        <span class="tag tag-purple">First Strike</span>
+        <span class="tag tag-purple">ATB Stagger</span>
+      </div>
+    </div>
+
+    <div class="mat-card reveal" style="--card-glow:rgba(255,50,70,0.08)">
+      <div class="mat-card-header">
+        <div class="mat-dot" style="background:radial-gradient(circle at 35% 35%, #ff8899, #cc0022);--dot-glow:rgba(255,50,70,0.6)"></div>
+        <span class="mat-card-name">Summon (Red)</span>
+      </div>
+      <p class="mat-card-body">Weapon slots only - one per character. Summons powerful entities to fight alongside you. Earn them by completing Chadley's shrine challenges in each region.</p>
+      <div class="mat-examples">
+        <span class="tag tag-red">Ifrit</span>
+        <span class="tag tag-red">Shiva</span>
+        <span class="tag tag-red">Ramuh</span>
+        <span class="tag tag-red">Bahamut</span>
+        <span class="tag tag-red">Odin</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LIMITED COPIES TABLE -->
+  <span class="section-tag reveal">Scarcity Reference</span>
+  <h3 class="section-title reveal" style="font-size:1.3rem;">Limited Materia - Copy Counts</h3>
+  <div class="section-rule reveal"></div>
+
+  <div class="callout reveal">
+    <strong>This is the most important page in the guide.</strong> Most materia can be purchased or won multiple times. These cannot. Plan your party loadouts around these limits - you cannot give everyone the same build.
+  </div>
+
+  <div class="limited-wrap reveal">
+    <table>
+      <thead>
+        <tr>
+          <th>Materia</th>
+          <th>Type</th>
+          <th>Copies</th>
+          <th>How To Get All</th>
+          <th>Best On</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Elemental</td>
+          <td><span class="tag tag-blue">Support</span></td>
+          <td><span class="copies-badge copies-3">3 total</span></td>
+          <td>Mt. Nibel world area · Brutal Challenge: Requiem for the Second (post-Gilgamesh) · 3rd source via world exploration</td>
+          <td>Cloud weapon (damage) · Armor (absorption) · flex</td>
+        </tr>
+        <tr>
+          <td>Magnify</td>
+          <td><span class="tag tag-blue">Support</span></td>
+          <td><span class="copies-badge copies-3">3 total</span></td>
+          <td>Mt. Nibel area · Cait Sith joins with one · "Victim of Circumstance" sidequest Ch.12 · Brutal Challenge: Hellions' Intonement</td>
+          <td>Red XIII (Magnify+Healing = party AoE cure) · AoE mage · flex</td>
+        </tr>
+        <tr>
+          <td>Fire and Ice (combo)</td>
+          <td><span class="tag tag-green">Magic</span></td>
+          <td><span class="copies-badge copies-1">1 ONLY</span></td>
+          <td>Chadley: Grasslands Data Points reward. One and done.</td>
+          <td>Any caster - frees a whole slot by combining two elements</td>
+        </tr>
+        <tr>
+          <td>Lightning and Wind (combo)</td>
+          <td><span class="tag tag-green">Magic</span></td>
+          <td><span class="copies-badge copies-1">1 ONLY</span></td>
+          <td>Chadley: Junon Region Data Points reward. One and done.</td>
+          <td>Non-Yuffie mages - Yuffie has all elements naturally via Ninjutsu</td>
+        </tr>
+        <tr>
+          <td>Comet</td>
+          <td><span class="tag tag-green">Magic</span></td>
+          <td><span class="copies-badge copies-1">1-2 total</span></td>
+          <td>Chadley: Nibel Data Points. Non-elemental nuke. Very rare.</td>
+          <td>Yuffie. Period. Her magic stat + Comet = enormous damage</td>
+        </tr>
+        <tr>
+          <td>Refocus</td>
+          <td><span class="tag tag-yellow">Command</span></td>
+          <td><span class="copies-badge copies-1">1 ONLY</span></td>
+          <td>Chadley reward. Grants 3 full ATB bars temporarily.</td>
+          <td>Cloud or Tifa - whoever leads your burst window</td>
+        </tr>
+        <tr>
+          <td>Gotterdammerung</td>
+          <td><span class="tag tag-gold">Accessory</span></td>
+          <td><span class="copies-badge copies-1">1 ONLY</span></td>
+          <td>Beat Brutal Challenge: Rulers of the Outer World after defeating Gilgamesh. Hardest unlock in the game.</td>
+          <td>Cloud. Near-permanent Limit Break state. Completely broken.</td>
+        </tr>
+        <tr>
+          <td>HP Absorption</td>
+          <td><span class="tag tag-blue">Support</span></td>
+          <td><span class="copies-badge copies-buy">Purchasable</span></td>
+          <td>Chadley stores after completing Combat Assignments per region. Multiple copies available through grinding.</td>
+          <td>Physical attackers - heals % of damage dealt per hit</td>
+        </tr>
+        <tr>
+          <td>MP Absorption</td>
+          <td><span class="tag tag-blue">Support</span></td>
+          <td><span class="copies-badge copies-buy">Purchasable</span></td>
+          <td>Chadley stores. Critical for Hard Mode where MP never recharges at save points.</td>
+          <td>Aerith primary · Yuffie secondary - your MP-hungry casters</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!-- end content -->
+
+<footer><p class="footer-text">FF7 REBIRTH — COMPLETE FIELD GUIDE — STACKED ALCHEMIST</p></footer>
+
+</div><!-- end page-wrap -->
+
+<!-- THREE.JS CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="../js/shared.js"></script>
+<script src="../js/lifestream.js"></script>
+<script>
+// =====================================================
+// THREE.JS MATERIA ORBS
+// Genuine 3D: glass geometry + internal particle system
+// =====================================================
+
+const ORBS = [
+  {
+    id: 'magic',
+    // Glass shell color
+    color: 0x00ff88,
+    emissive: 0x003322,
+    // Internal particle cloud
+    particleColor: 0x00ffaa,
+    particleColor2: 0x44ff66,
+    particleCount: 280,
+    particleSpeed: 0.008,
+    // Point light inside
+    lightColor: 0x00ff88,
+    lightIntensity: 2.2,
+    // Ambient swirl color
+    fogColor: 0x001a0a,
+  },
+  {
+    id: 'support',
+    color: 0x4488ff,
+    emissive: 0x001133,
+    particleColor: 0x44aaff,
+    particleColor2: 0x88ccff,
+    particleCount: 260,
+    particleSpeed: 0.006,
+    lightColor: 0x4488ff,
+    lightIntensity: 2.0,
+    fogColor: 0x000d1a,
+  },
+  {
+    id: 'command',
+    color: 0xffcc22,
+    emissive: 0x221100,
+    particleColor: 0xffdd44,
+    particleColor2: 0xffaa00,
+    particleCount: 250,
+    particleSpeed: 0.009,
+    lightColor: 0xffcc22,
+    lightIntensity: 2.0,
+    fogColor: 0x1a0e00,
+  },
+  {
+    id: 'complete',
+    color: 0xcc44ff,
+    emissive: 0x110022,
+    particleColor: 0xcc66ff,
+    particleColor2: 0xff88ff,
+    particleCount: 270,
+    particleSpeed: 0.007,
+    lightColor: 0xcc44ff,
+    lightIntensity: 2.2,
+    fogColor: 0x0d0014,
+  },
+  {
+    id: 'summon',
+    color: 0xff3344,
+    emissive: 0x220000,
+    particleColor: 0xff4455,
+    particleColor2: 0xff8866,
+    particleCount: 290,
+    particleSpeed: 0.01,
+    lightColor: 0xff3344,
+    lightIntensity: 2.4,
+    fogColor: 0x1a0000,
+  },
+];
+
+// Store per-orb data for animation loop
+const orbScenes = [];
+
+function buildOrb(cfg) {
+  const canvas = document.getElementById(`c-${cfg.id}`);
+  const wrap   = document.getElementById(`wrap-${cfg.id}`);
+  const W = 160, H = 160;
+
+  // Renderer
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(W, H);
+  renderer.setClearColor(0x000000, 0);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.4;
+
+  // Scene + camera
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.z = 3.2;
+
+  // ---- LIGHTING ----
+  // Ambient - low
+  scene.add(new THREE.AmbientLight(0xffffff, 0.08));
+
+  // Key light - top left
+  const keyLight = new THREE.DirectionalLight(0xffffff, 0.9);
+  keyLight.position.set(2, 3, 4);
+  scene.add(keyLight);
+
+  // Rim light - bottom right
+  const rimLight = new THREE.DirectionalLight(cfg.lightColor, 0.5);
+  rimLight.position.set(-2, -1, -2);
+  scene.add(rimLight);
+
+  // Inner point light (makes it glow from within)
+  const innerLight = new THREE.PointLight(cfg.lightColor, cfg.lightIntensity, 3.5);
+  innerLight.position.set(0, 0, 0);
+  scene.add(innerLight);
+
+  // ---- GLASS SHELL ----
+  const shellGeo = new THREE.SphereGeometry(1, 64, 64);
+  const shellMat = new THREE.MeshPhysicalMaterial({
+    color: cfg.color,
+    emissive: cfg.emissive,
+    emissiveIntensity: 0.15,
+    metalness: 0.0,
+    roughness: 0.0,
+    transmission: 0.88,      // glass transparency
+    thickness: 1.2,           // refraction depth
+    envMapIntensity: 1.0,
+    transparent: true,
+    opacity: 0.82,
+    side: THREE.FrontSide,
+    depthWrite: false,
+  });
+  const shell = new THREE.Mesh(shellGeo, shellMat);
+  scene.add(shell);
+
+  // ---- INNER CORE (glowing center) ----
+  const coreGeo = new THREE.SphereGeometry(0.32, 32, 32);
+  const coreMat = new THREE.MeshBasicMaterial({
+    color: cfg.particleColor,
+    transparent: true,
+    opacity: 0.55,
+  });
+  const core = new THREE.Mesh(coreGeo, coreMat);
+  scene.add(core);
+
+  // ---- PARTICLE CLOUD (inside the orb) ----
+  const pCount = cfg.particleCount;
+  const pPositions = new Float32Array(pCount * 3);
+  const pColors = new Float32Array(pCount * 3);
+  const pSpeeds = new Float32Array(pCount * 3);  // random velocity per particle
+  const pPhases = new Float32Array(pCount);       // animation phase offset
+
+  const col1 = new THREE.Color(cfg.particleColor);
+  const col2 = new THREE.Color(cfg.particleColor2);
+
+  for (let i = 0; i < pCount; i++) {
+    // Distribute particles inside sphere using rejection sampling
+    let x, y, z, r;
+    do {
+      x = (Math.random() - 0.5) * 2;
+      y = (Math.random() - 0.5) * 2;
+      z = (Math.random() - 0.5) * 2;
+      r = Math.sqrt(x*x + y*y + z*z);
+    } while (r > 0.88); // keep inside shell
+
+    pPositions[i*3]   = x;
+    pPositions[i*3+1] = y;
+    pPositions[i*3+2] = z;
+
+    // Random velocity (small, orbital-ish)
+    pSpeeds[i*3]   = (Math.random() - 0.5) * cfg.particleSpeed;
+    pSpeeds[i*3+1] = (Math.random() - 0.5) * cfg.particleSpeed;
+    pSpeeds[i*3+2] = (Math.random() - 0.5) * cfg.particleSpeed;
+
+    pPhases[i] = Math.random() * Math.PI * 2;
+
+    // Mix between two particle colors based on position from center
+    const t = r / 0.88;
+    const c = col1.clone().lerp(col2, t);
+    pColors[i*3]   = c.r;
+    pColors[i*3+1] = c.g;
+    pColors[i*3+2] = c.b;
+  }
+
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+  pGeo.setAttribute('color',    new THREE.BufferAttribute(pColors, 3));
+
+  const pMat = new THREE.PointsMaterial({
+    size: 0.028,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.85,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+    sizeAttenuation: true,
+  });
+
+  const particles = new THREE.Points(pGeo, pMat);
+  scene.add(particles);
+
+  // ---- MOUSE DRAG ----
+  let isDragging = false;
+  let prevMouse = { x: 0, y: 0 };
+  let rotVelX = 0, rotVelY = 0;
+  let autoRotate = true;
+
+  wrap.addEventListener('mousedown', e => {
+    isDragging = true;
+    autoRotate = false;
+    prevMouse = { x: e.clientX, y: e.clientY };
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    const dx = e.clientX - prevMouse.x;
+    const dy = e.clientY - prevMouse.y;
+    rotVelX += dy * 0.008;
+    rotVelY += dx * 0.008;
+    prevMouse = { x: e.clientX, y: e.clientY };
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isDragging) {
+      isDragging = false;
+      // Resume auto-rotate after 2s of no interaction
+      setTimeout(() => { autoRotate = true; }, 2000);
+    }
+  });
+
+  // Touch support
+  wrap.addEventListener('touchstart', e => {
+    isDragging = true;
+    autoRotate = false;
+    prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, { passive: true });
+
+  window.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    const dx = e.touches[0].clientX - prevMouse.x;
+    const dy = e.touches[0].clientY - prevMouse.y;
+    rotVelX += dy * 0.008;
+    rotVelY += dx * 0.008;
+    prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, { passive: true });
+
+  window.addEventListener('touchend', () => {
+    isDragging = false;
+    setTimeout(() => { autoRotate = true; }, 2000);
+  });
+
+  // Hover glow boost
+  let hovered = false;
+  wrap.addEventListener('mouseenter', () => { hovered = true; });
+  wrap.addEventListener('mouseleave', () => { hovered = false; });
+
+  // Store everything for the animation loop
+  orbScenes.push({
+    renderer, scene, camera,
+    shell, particles, core, innerLight,
+    pGeo, pPositions, pSpeeds, pPhases, pCount,
+    rotVelX, rotVelY,
+    autoRotate, hovered,
+    isDragging: () => isDragging,
+    time: 0,
+    baseIntensity: cfg.lightIntensity,
+    getRotVel: () => ({ x: rotVelX, y: rotVelY }),
+    setRotVel: (x, y) => { rotVelX = x; rotVelY = y; },
+    getAutoRotate: () => autoRotate,
+    getHovered: () => hovered,
+  });
+}
+
+// Build all orbs
+ORBS.forEach(cfg => buildOrb(cfg));
+
+// ---- UNIFIED ANIMATION LOOP ----
+function animateAll() {
+  requestAnimationFrame(animateAll);
+
+  orbScenes.forEach(o => {
+    o.time += 0.016;
+    const t = o.time;
+
+    // Apply rotation velocity with damping
+    let { x: rvx, y: rvy } = o.getRotVel();
+
+    if (o.getAutoRotate()) {
+      // Gentle auto-rotation
+      o.shell.rotation.y += 0.004;
+      o.particles.rotation.y += 0.003;
+      o.particles.rotation.x += 0.001;
+    } else {
+      o.shell.rotation.x += rvx;
+      o.shell.rotation.y += rvy;
+      o.particles.rotation.x += rvx * 0.6;
+      o.particles.rotation.y += rvy * 0.6;
+      // Dampen
+      rvx *= 0.9;
+      rvy *= 0.9;
+      o.setRotVel(rvx, rvy);
+    }
+
+    // Core subtle pulse
+    const pulse = 0.9 + 0.1 * Math.sin(t * 1.8 + 0.5);
+    o.core.scale.setScalar(pulse);
+
+    // Inner light pulse (breathes)
+    o.innerLight.intensity = o.baseIntensity * (0.85 + 0.15 * Math.sin(t * 1.4));
+
+    // Hover boost
+    if (o.getHovered()) {
+      o.innerLight.intensity *= 1.5;
+    }
+
+    // Particle drift - each particle moves along its velocity
+    // and softly bounces off the inner sphere wall
+    const positions = o.pGeo.attributes.position.array;
+    for (let i = 0; i < o.pCount; i++) {
+      const ix = i * 3, iy = ix + 1, iz = ix + 2;
+
+      // Add phase-based oscillation for organic feel
+      const phase = o.pPhases[i];
+      positions[ix]   += o.pSpeeds[ix]   + Math.sin(t * 0.7 + phase) * 0.0008;
+      positions[iy]   += o.pSpeeds[iy]   + Math.cos(t * 0.9 + phase) * 0.0008;
+      positions[iz]   += o.pSpeeds[iz]   + Math.sin(t * 0.5 + phase) * 0.0008;
+
+      // Soft boundary: if particle exits the inner sphere, reverse velocity
+      const px = positions[ix], py = positions[iy], pz = positions[iz];
+      const dist = Math.sqrt(px*px + py*py + pz*pz);
+      if (dist > 0.85) {
+        // Reflect and nudge back in
+        const nx = px/dist, ny = py/dist, nz = pz/dist;
+        o.pSpeeds[ix] -= nx * 0.004;
+        o.pSpeeds[iy] -= ny * 0.004;
+        o.pSpeeds[iz] -= nz * 0.004;
+        positions[ix] = nx * 0.84;
+        positions[iy] = ny * 0.84;
+        positions[iz] = nz * 0.84;
+      }
+
+      // Speed dampen to prevent runaway
+      const spd = Math.sqrt(
+        o.pSpeeds[ix]*o.pSpeeds[ix] +
+        o.pSpeeds[iy]*o.pSpeeds[iy] +
+        o.pSpeeds[iz]*o.pSpeeds[iz]
+      );
+      const maxSpd = 0.018;
+      if (spd > maxSpd) {
+        const factor = maxSpd / spd;
+        o.pSpeeds[ix] *= factor;
+        o.pSpeeds[iy] *= factor;
+        o.pSpeeds[iz] *= factor;
+      }
+    }
+    o.pGeo.attributes.position.needsUpdate = true;
+
+    o.renderer.render(o.scene, o.camera);
+  });
+}
+
+animateAll();
+</script>
+</body>
+</html>

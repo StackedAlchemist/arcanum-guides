@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Characters | FF7 Rebirth Guide</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/lifestream.css" />
+<style>
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.char-card {
+  background: var(--panel);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  position: relative;
+}
+
+.char-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--char-color), transparent);
+}
+
+.char-card:hover {
+  border-color: var(--char-color);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  transform: translateY(-3px);
+}
+
+.char-header {
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--border2);
+}
+
+.char-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--char-color);
+  text-shadow: 0 0 20px var(--char-glow);
+  margin-bottom: 0.2rem;
+}
+
+.char-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--text3);
+  text-transform: uppercase;
+}
+
+.char-body { padding: 1.25rem 1.5rem 1.5rem; }
+
+.char-role-row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.char-desc {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.char-mechanic-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.char-mechanic {
+  font-size: 0.88rem;
+  color: var(--text);
+  background: rgba(0,0,0,0.3);
+  border-left: 2px solid var(--char-color);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0 3px 3px 0;
+  margin-bottom: 0.6rem;
+}
+
+.char-mechanic strong {
+  color: var(--char-color);
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.15rem;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.stat-box {
+  background: rgba(0,0,0,0.35);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  padding: 0.5rem 0.4rem;
+  text-align: center;
+}
+
+.stat-val {
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  color: var(--char-color);
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.62rem;
+  color: var(--text3);
+  font-style: italic;
+  display: block;
+  margin-top: 0.15rem;
+}
+
+/* Per-character accent colors */
+.char-cloud   { --char-color: #88ccff; --char-glow: rgba(100,180,255,0.4); }
+.char-barret  { --char-color: #ffcc44; --char-glow: rgba(255,200,50,0.4); }
+.char-tifa    { --char-color: #ff9966; --char-glow: rgba(255,140,80,0.4); }
+.char-aerith  { --char-color: #ff88aa; --char-glow: rgba(255,100,150,0.4); }
+.char-red     { --char-color: #ff7744; --char-glow: rgba(255,100,60,0.4); }
+.char-yuffie  { --char-color: #44ff99; --char-glow: rgba(0,255,130,0.4); }
+.char-cait    { --char-color: #c8a84b; --char-glow: rgba(200,168,75,0.4); }
+
+.tip-box {
+  background: rgba(0,255,170,0.04);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--ls);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 3rem;
+  color: var(--text2);
+  font-size: 0.92rem;
+}
+.tip-box strong { color: var(--ls); }
+</style>
+</head>
+<body>
+<!-- LIFESTREAM LAYERS — do not move or reorder -->
+<canvas id="ls-deep"></canvas>
+<canvas id="ls-mid"></canvas>
+<canvas id="ls-surface"></canvas>
+<div class="ls-vignette"></div>
+<div class="ls-fog"></div>
+<div class="ls-pulse"></div>
+<div class="page-wrap">
+
+  <nav>
+    <a class="nav-logo" href="../index.html">FF7 REBIRTH GUIDE</a>
+    <ul class="nav-links">
+      <li><a href="characters.html">Characters</a></li>
+      <li><a href="materia.html">Materia</a></li>
+      <li><a href="builds.html">Builds</a></li>
+      <li><a href="parties.html">Party Setup</a></li>
+      <li><a href="bosses.html">Bosses</a></li>
+      <li><a href="queensblood.html">Queen's Blood</a></li>
+      <li><a href="affinity.html">Affinity</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <span class="page-eyebrow">Playable Cast</span>
+    <h1 class="page-title ls-glow-white">Characters</h1>
+    <div class="page-rule"></div>
+  </div>
+
+  <div class="content">
+
+    <div class="tip-box reveal">
+      <strong>Switching Roles:</strong> You control Cloud by default but can switch to any active party member mid-combat with L2 + directional. Mastering each character's unique mechanic dramatically increases damage output and survivability.
+    </div>
+
+    <div class="char-grid">
+
+      <!-- CLOUD -->
+      <div class="char-card glass-card char-cloud reveal">
+        <div class="char-header">
+          <div class="char-name">Cloud Strife</div>
+          <div class="char-title">Ex-SOLDIER Mercenary</div>
+        </div>
+        <div class="char-body">
+          <div class="char-role-row">
+            <span class="tag tag-blue">Attacker</span>
+            <span class="tag tag-green">Flexible</span>
+          </div>
+          <p class="char-desc">The primary protagonist and default controlled character. Versatile fighter who excels in both physical and magic-enhanced builds. Two stance modes give him exceptional adaptability in any encounter.</p>
+          <div class="char-mechanic-label">Unique Mechanics</div>
+          <div class="char-mechanic">
+            <strong>Operator Mode</strong>
+            Default stance. Faster ATB charge, wider slash arcs, good for aggressive pressure.
+          </div>
+          <div class="char-mechanic">
+            <strong>Punisher Mode</strong>
+            Hold Triangle. Auto-counters melee attacks with massive damage. Slower movement — read enemy patterns first.
+          </div>
+          <div class="char-mechanic">
+            <strong>Limit: Omnislash / Finishing Touch</strong>
+            Omnislash ver. 5 hits multiple times. Use after stagger for peak damage windows.
+          </div>
+          <div class="stat-row">
+            <div class="stat-box"><span class="stat-val">S</span><span class="stat-label">Physical</span></div>
+            <div class="stat-box"><span class="stat-val">B</span><span class="stat-label">Magic</span></div>
+            <div class="stat-box"><span class="stat-val">A</span><span class="stat-label">Utility</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BARRET -->
+      <div class="char-card glass-card char-barret reveal">
+        <div class="char-header">
+          <div class="char-name">Barret Wallace</div>
+          <div class="char-title">AVALANCHE Leader, Gunner</div>
+        </div>
+        <div class="char-body">
+          <div class="char-role-row">
+            <span class="tag tag-yellow">Ranged</span>
+            <span class="tag tag-green">Tank</span>
+          </div>
+          <p class="char-desc">Long-range powerhouse with a gun-arm that deals consistent damage from safety. Best character for building ATB on airborne or hard-to-reach enemies. His massive HP pool makes him the default tank.</p>
+          <div class="char-mechanic-label">Unique Mechanics</div>
+          <div class="char-mechanic">
+            <strong>Overcharge</strong>
+            Charged shot that deals heavy stagger-bar damage. Hold Square to charge, release for a punishing blast.
+          </div>
+          <div class="char-mechanic">
+            <strong>Lifeline</strong>
+            Passive — generates ATB when any ally takes damage. Keep Barret on field during dangerous phases.
+          </div>
+          <div class="char-mechanic">
+            <strong>Limit: Catastrophe</strong>
+            Unloads a massive barrage on a single target. Best used mid-stagger on bosses.
+          </div>
+          <div class="stat-row">
+            <div class="stat-box"><span class="stat-val">A</span><span class="stat-label">Physical</span></div>
+            <div class="stat-box"><span class="stat-val">C</span><span class="stat-label">Magic</span></div>
+            <div class="stat-box"><span class="stat-val">S</span><span class="stat-label">Survivability</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIFA -->
+      <div class="char-card glass-card char-tifa reveal">
+        <div class="char-header">
+          <div class="char-name">Tifa Lockhart</div>
+          <div class="char-title">Martial Artist, Seventh Heaven</div>
+        </div>
+        <div class="char-body">
+          <div class="char-role-row">
+            <span class="tag tag-red">Melee</span>
+            <span class="tag tag-red">Combo</span>
+          </div>
+          <p class="char-desc">Highest physical damage potential in the game when her glove mechanic is fully exploited. Requires timing and combo discipline — the skill ceiling is the highest of any character, but the payoff is unmatched burst.</p>
+          <div class="char-mechanic-label">Unique Mechanics</div>
+          <div class="char-mechanic">
+            <strong>Unbridled Strength</strong>
+            Each use powers up her gloves (1→2→3 charges). At max charge, Square attacks deal devastating damage with unique animations.
+          </div>
+          <div class="char-mechanic">
+            <strong>Rise and Fall / Whirlwind Kick</strong>
+            ATB abilities extend combos. Always spend ATB to extend before the combo window closes.
+          </div>
+          <div class="char-mechanic">
+            <strong>Limit: Final Heaven</strong>
+            Massive single-target physical hit. Deals the most raw damage of any physical Limit Break.
+          </div>
+          <div class="stat-row">
+            <div class="stat-box"><span class="stat-val">S+</span><span class="stat-label">Physical</span></div>
+            <div class="stat-box"><span class="stat-val">D</span><span class="stat-label">Magic</span></div>
+            <div class="stat-box"><span class="stat-val">B</span><span class="stat-label">Mobility</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AERITH -->
+      <div class="char-card glass-card char-aerith reveal">
+        <div class="char-header">
+          <div class="char-name">Aerith Gainsborough</div>
+          <div class="char-title">Ancient, Cetra</div>
+        </div>
+        <div class="char-body">
+          <div class="char-role-row">
+            <span class="tag tag-purple">Magic</span>
+            <span class="tag tag-green">Support</span>
+            <span class="tag tag-purple">Healer</span>
+          </div>
+          <p class="char-desc">The most MP-efficient healer and highest-ceiling magic caster. Her Wards transform the battlefield — placing one before a boss encounter fundamentally changes the difficulty. Never play without her on Hard Mode.</p>
+          <div class="char-mechanic-label">Unique Mechanics</div>
+          <div class="char-mechanic">
+            <strong>Temperate Ward</strong>
+            ATB ability: places a glowing circle. Spells cast inside it are powered up or gain AoE. Critical for MP efficiency.
+          </div>
+          <div class="char-mechanic">
+            <strong>Ray of Judgment</strong>
+            Charged magic beam — hold L1 + Square to charge. Enormous damage with no MP cost once charged.
+          </div>
+          <div class="char-mechanic">
+            <strong>Limit: Planet's Protection / Healing Wind</strong>
+            Planet's Protection: party-wide damage immunity for ~10s. Essential for Hard Mode phase transitions.
+          </div>
+          <div class="stat-row">
+            <div class="stat-box"><span class="stat-val">S</span><span class="stat-label">Magic</span></div>
+            <div class="stat-box"><span class="stat-val">S</span><span class="stat-label">Support</span></div>
+            <div class="stat-box"><span class="stat-val">D</span><span class="stat-label">Physical</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RED XIII -->
+      <div class="char-card glass-card char-red reveal">
+        <div class="char-header">
+          <div class="char-name">Red XIII</div>
+          <div class="char-title">Nanaki, Guardian of Cosmo Canyon</div>
+        </div>
+        <div class="char-body">
+          <div class="char-role-row">
+            <span class="tag tag-red">Balanced</span>
+            <span class="tag tag-yellow">Counter</span>
+          </div>
+          <p class="char-desc">Unique counter-play character who gets dramatically stronger by taking damage. His Vengeance gauge rewards aggressive positioning and punishes passive play. Scales unusually well into Hard Mode.</p>
+          <div class="char-mechanic-label">Unique Mechanics</div>
+          <div class="char-mechanic">
+            <strong>Vengeance Gauge</strong>
+            Fills when Red XIII takes hits. At full, he enters Vengeance Mode — massively boosted damage and speed.
+          </div>
+          <div class="char-mechanic">
+            <strong>Stardust Ray</strong>
+            His best ATB skill. High stagger damage, especially useful on armored enemies resistant to physical hits.
+          </div>
+          <div class="char-mechanic">
+            <strong>Limit: Bloodfang / Cosmo Memory</strong>
+            Cosmo Memory: hits the entire enemy party. One of the best multi-target Limit Breaks in the game.
+          </div>
+          <div class="stat-row">
+            <div class="stat-box"><span class="stat-val">A</span><span class="stat-label">Physical</span></div>
+            <div class="stat-box"><span class="stat-val">A</span><span class="stat-label">Magic</span></div>
+            <div class="stat-box"><span class="stat-val">S</span><span class="stat-label">Counter</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- YUFFIE -->
+      <div class="char-card glass-card char-yuffie reveal">
+        <div class="char-header">
+          <div class="char-name">Yuffie Kisaragi</div>
+          <div class="char-title">Wutai Ninja, Materia Hunter</div>
+        </div>
+        <div class="char-body">
+          <div class="char-role-row">
+            <span class="tag tag-green">Ninja</span>
+            <span class="tag tag-purple">Ninjutsu</span>
+            <span class="tag tag-blue">Ranged/Melee</span>
+          </div>
+          <p class="char-desc">The most technical character and arguably the highest DPS in the game when mastered. Her dual-stance system (thrown shuriken = ranged, retrieved = melee) combined with elemental Ninjutsu makes her a matchup specialist.</p>
+          <div class="char-mechanic-label">Unique Mechanics</div>
+          <div class="char-mechanic">
+            <strong>Ninjutsu (Triangle)</strong>
+            Charges and throws her weapon as a projectile. Allows melee stance while the weapon is thrown. Hold Triangle to set elemental type via Doppelganger.
+          </div>
+          <div class="char-mechanic">
+            <strong>Art of War</strong>
+            ATB ability. Multiplies her next Ninjutsu hit. Always pair with enemy elemental weakness.
+          </div>
+          <div class="char-mechanic">
+            <strong>Limit: Bloodbath / All Creation</strong>
+            All Creation hits all enemies and deals elemental damage — one of the most visually striking and powerful Limits.
+          </div>
+          <div class="stat-row">
+            <div class="stat-box"><span class="stat-val">S</span><span class="stat-label">DPS</span></div>
+            <div class="stat-box"><span class="stat-val">A</span><span class="stat-label">Elemental</span></div>
+            <div class="stat-box"><span class="stat-val">B</span><span class="stat-label">Survivability</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAIT SITH -->
+      <div class="char-card glass-card char-cait reveal">
+        <div class="char-header">
+          <div class="char-name">Cait Sith</div>
+          <div class="char-title">Reeve's Operative, Toy Maker</div>
+        </div>
+        <div class="char-body">
+          <div class="char-role-row">
+            <span class="tag tag-gold">Support</span>
+            <span class="tag tag-gold">Wildcard</span>
+          </div>
+          <p class="char-desc">The wild card. His slot machine mechanic introduces controlled chaos — good rolls can be game-changing. His Moogle companion enables unique crowd control and his Fortune Telling sets up party buffs. Underrated in Hard Mode due to ATB generation.</p>
+          <div class="char-mechanic-label">Unique Mechanics</div>
+          <div class="char-mechanic">
+            <strong>Moogle</strong>
+            Ride his giant stuffed mog for tanky, powerful attacks. Separate HP bar — when it breaks, dismounts automatically.
+          </div>
+          <div class="char-mechanic">
+            <strong>Dice / Toy Soldiers</strong>
+            Command abilities. Toy Soldiers summons a squad that auto-attacks — free damage while you play other characters.
+          </div>
+          <div class="char-mechanic">
+            <strong>Limit: Slots</strong>
+            Spin reels for effects ranging from Instant KO to full heal to giant summon. Stop manually or let it auto-resolve.
+          </div>
+          <div class="stat-row">
+            <div class="stat-box"><span class="stat-val">B</span><span class="stat-label">Damage</span></div>
+            <div class="stat-box"><span class="stat-val">A</span><span class="stat-label">Support</span></div>
+            <div class="stat-box"><span class="stat-val">S</span><span class="stat-label">ATB Gen</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /char-grid -->
+
+    <div class="reveal">
+      <span class="section-tag">Key Concepts</span>
+      <h2 class="section-title">Combat Fundamentals</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <table class="reveal">
+      <thead>
+        <tr>
+          <th>Mechanic</th>
+          <th>How It Works</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Stagger</td>
+          <td>Fill enemy's stagger bar by hitting with attacks. Once staggered, enemy takes 160%+ damage for ~10 seconds. Spend ATB and Limit Breaks here.</td>
+          <td><span class="tag tag-red">Critical</span></td>
+        </tr>
+        <tr>
+          <td>ATB Gauge</td>
+          <td>Fills by attacking. Spend it on abilities, spells, or items. Two segments max — spend before they overflow. Switch to characters with full ATB.</td>
+          <td><span class="tag tag-red">Critical</span></td>
+        </tr>
+        <tr>
+          <td>Pressure</td>
+          <td>Hit enemy's specific weakness (elemental or physical type). Enemy enters "Pressured" state — stagger bar fills faster.</td>
+          <td><span class="tag tag-yellow">High</span></td>
+        </tr>
+        <tr>
+          <td>Synergy Skills</td>
+          <td>Pairs of characters can activate Synergy attacks together. These deal massive damage and are free (no ATB cost). Learn which pairs have synergy.</td>
+          <td><span class="tag tag-yellow">High</span></td>
+        </tr>
+        <tr>
+          <td>Folio (Skill Trees)</td>
+          <td>Each character has a Folio unlocked with Skill Points. Prioritize active abilities over passive nodes early on.</td>
+          <td><span class="tag tag-blue">Medium</span></td>
+        </tr>
+        <tr>
+          <td>Assess</td>
+          <td>Always Assess new enemies. Reveals weaknesses, immunities, and the specific pressure condition. Required for efficient play.</td>
+          <td><span class="tag tag-green">Always</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <footer><p class="footer-text">FF7 REBIRTH — COMPLETE FIELD GUIDE</p></footer>
+</div>
+
+<script src="../js/shared.js"></script>
+<script src="../js/lifestream.js"></script>
+</body>
+</html>

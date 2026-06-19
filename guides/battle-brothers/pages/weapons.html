@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weapons &amp; Skills - The Mercenary Codex</title>
+<meta name="description" content="Every Battle Brothers weapon family and skill: daggers, swords, axes, maces, spears, flails, cleavers, hammers, polearms, bows, crossbows, throwing. Updated for v1.5.2.2 with Pollaxe, Executioner's Sword and Estoc.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">The Mercenary <span>Codex</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+    <nav class="nav">
+      <a href="../../../index.html" style="color:var(--rust);">⚗ The Arcanum</a>
+      <a href="../index.html">Home</a>
+      <a href="builds.html">Builds</a>
+      <a href="weapons.html">Weapons</a>
+      <a href="perks.html">Perks</a>
+      <a href="phases.html">Game Phases</a>
+      <a href="enemies.html">Enemies</a>
+      <a href="secrets.html">Secrets</a>
+      <a href="patch.html">Patch v1.5.2.2</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">The Armory</span>
+    <h1>Weapons &amp; Skills</h1>
+    <p class="lede">There is no single best weapon, only the right tool for the enemy in front of you. A hammer opens a knight. A cleaver bleeds a giant. A dagger ignores armor entirely. Know what each family does before you spend a perk on its Mastery.</p>
+  </div>
+</section>
+
+<main class="wrap section">
+
+  <div class="callout secret">
+    <span class="label">New in v1.5.2.2</span>
+    <p>Three new weapons joined the armory: the <strong>Pollaxe</strong> (versatile anti-armor, range 1), the <strong>Executioner's Sword</strong> (heavy two-hander, missing-HP finisher) and the <strong>Estoc</strong> / Panzerstecher (two-handed thrusting weapon built to pierce heavy armor joints). Full notes below in their families and on the <a href="patch.html">patch page</a>.</p>
+  </div>
+
+  <input class="searchbar" type="text" data-search data-target=".wrow" placeholder="Search weapons and skills... (try 'armor', 'bleed', 'stun', 'reach')">
+  <p class="search-note"><span data-search-count></span> &mdash; type to filter the armory.</p>
+
+  <h2>Melee weapon families</h2>
+  <table>
+    <caption>What each melee family does best</caption>
+    <thead>
+      <tr><th>Family</th><th>Damage type / niche</th><th>Signature skills</th><th>Best against</th><th>Tier</th></tr>
+    </thead>
+    <tbody>
+      <tr class="wrow"><td><strong>Dagger</strong></td><td>Armor-ignoring stabs. Low base damage, huge against flesh.</td><td>Puncture (ignores armor, -15% hit), Stab</td><td>Elite single targets, looting armor intact</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="wrow"><td><strong>Sword (1H)</strong></td><td>Balanced. +10% hit on the basic Slash. Enables Riposte.</td><td>Slash (+10% hit), Swing (AoE), Riposte</td><td>Elusive foes (Geists), all-rounder</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="wrow"><td><strong>Sword (2H) / Greatsword</strong></td><td>Fatigue-efficient crowd control. Swing hits 3 tiles.</td><td>Swing (3-tile AoE), Split, Overhead Strike</td><td>Unarmored crowds, Geists, flanks</td><td><span class="tier tier-S">S</span></td></tr>
+      <tr class="wrow"><td><strong>Axe (1H &amp; 2H)</strong></td><td>Good vs armor and shields. Split Shield destroys shields.</td><td>Split Shield, Split Man (heavy single hit)</td><td>Shield walls, armored bandits</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="wrow"><td><strong>Mace (1H)</strong></td><td>Armor crush plus stun. Builds Fatigue on the enemy.</td><td>Knock Out (stun, 100% with Mastery)</td><td>Setting up a Duelist, control</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="wrow"><td><strong>Mace (2H)</strong></td><td>Top-tier single-target plus crowd control. Applies Daze.</td><td>Cudgel (Daze), Strike Down (2-turn stun)</td><td>Champions, armored elites, control</td><td><span class="tier tier-S">S</span></td></tr>
+      <tr class="wrow"><td><strong>Spear (1H)</strong></td><td>Highest hit chance, lowest damage. Spearwall stops charges.</td><td>Thrust (+to hit), Spearwall, Shieldbash</td><td>Early game, beasts, charge defense</td><td><span class="tier tier-B">B</span></td></tr>
+      <tr class="wrow"><td><strong>Flail (1H &amp; 2H)</strong></td><td>Ignores shield defense bonus. Can target the head directly.</td><td>Lash (Daze chance), Flurry (head hits)</td><td>Shielded raiders, poor-helmet targets</td><td><span class="tier tier-B">B</span></td></tr>
+      <tr class="wrow"><td><strong>Cleaver (1H &amp; 2H)</strong></td><td>Bleed damage over time. Mastery doubles bleed (~20/turn).</td><td>Cleave (bleed), Decapitate (finisher)</td><td>High-HP low-armor: Orcs, beasts, giants</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="wrow"><td><strong>Hammer (1H &amp; 2H)</strong></td><td>Best raw armor penetration in the game.</td><td>Hammer Smash, Pound (vs head)</td><td>Heavily armored single targets, knights</td><td><span class="tier tier-S">S</span></td></tr>
+      <tr class="wrow"><td><strong>Polearm</strong></td><td>Range 1-2. Attacks from the second row. Piercing or cutting.</td><td>Impale/Rupture (pierce), Strike/Reap (cut, decapitate)</td><td>Safe backline damage, decapitating undead</td><td><span class="tier tier-S">S</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2>The three new weapons (v1.5.2.2)</h2>
+  <table>
+    <caption>Added in the June 2026 content update</caption>
+    <thead>
+      <tr><th>Weapon</th><th>Class</th><th>Skills</th><th>Use it for</th></tr>
+    </thead>
+    <tbody>
+      <tr class="wrow"><td><strong>Pollaxe</strong></td><td>Versatile anti-armor, <em>range 1</em> (shorter haft than other polearms)</td><td>Smite (hammer side, staggers), axe-side finisher on incapacitated foes</td><td>A front-line answer to armor that can stagger then finish. Bridges hammer and polearm roles.</td></tr>
+      <tr class="wrow"><td><strong>Executioner's Sword</strong></td><td>Two-handed sword, heavy, high Fatigue cost</td><td>Overhead Strike (+hit), Split Shield, Decapitate (bonus damage scaling with target's missing HP)</td><td>Finishing high-HP enemies you've already wounded. A Reaper's closer.</td></tr>
+      <tr class="wrow"><td><strong>Estoc / Panzerstecher</strong></td><td>Two-handed thrusting sword, dull blade</td><td>Thrusting attacks designed to pierce gaps and joints in heavy armor</td><td>An armor-piercing two-hander alternative to the hammer. Good on a high Melee Skill brother.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Ranged weapons</h2>
+  <table>
+    <caption>Pick the projectile to the target's armor</caption>
+    <thead>
+      <tr><th>Type</th><th>Niche</th><th>Notes</th><th>Tier</th></tr>
+    </thead>
+    <tbody>
+      <tr class="wrow"><td><strong>Bows</strong></td><td>High damage vs flesh, poor vs armor. Long range, headshots.</td><td>Bullseye perk ignores cover. Devastates Goblins and Thralls.</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="wrow"><td><strong>Crossbows</strong></td><td>Armor-piercing. Slower, but pre-loaded at battle start.</td><td>Kills knights and armored elites before they reach you.</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="wrow"><td><strong>Firearms (Handgonne)</strong></td><td>Huge burst, very slow reload, loud.</td><td>Niche. Pre-loaded first shot can delete a priority target.</td><td><span class="tier tier-C">C</span></td></tr>
+      <tr class="wrow"><td><strong>Throwing (Javelin, Throwing Axe, Throwing Spear)</strong></td><td>Short-range consumable burst. Throwing Spear strips shields from afar.</td><td>Good on versatile ranged brothers; strong vs Ancient Undead with Throwing Mastery.</td><td><span class="tier tier-B">B</span></td></tr>
+      <tr class="wrow"><td><strong>Throwable items (Net, Throwing Net, firebombs)</strong></td><td>Utility, not damage. Net roots a dangerous target for a turn.</td><td>Net a champion or an Unhold, then dogpile it. Quick Hands carries spares.</td><td><span class="tier tier-A">A</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="label">Damage rules to remember</span>
+    <p>A head hit deals <strong>50% bonus damage to HP</strong> but not to armor. <strong>Orc weapons cost 5 extra Fatigue per skill</strong> for human wielders, so put them on high-Fatigue brothers like Wildmen or Barbarians. Each tier of a weapon is a straight upgrade, so there is no reason to keep a lower-tier version once you find a better one.</p>
+  </div>
+
+  <h2>Quick "what do I bring" cheat sheet</h2>
+  <table>
+    <thead><tr><th>The problem</th><th>The answer</th></tr></thead>
+    <tbody>
+      <tr class="wrow"><td>Heavily armored single target (knight, Orc Warrior, Fallen Hero)</td><td>Two-Handed Hammer, Estoc, or Pollaxe. Crossbow to soften first.</td></tr>
+      <tr class="wrow"><td>Crowd of weak unarmored bodies (Thralls, Goblins)</td><td>Greatsword Swing, bows, AoE polearms (Swordlance).</td></tr>
+      <tr class="wrow"><td>High HP, low armor giant (Unhold, Lindwurm, Schrat)</td><td>Cleaver bleed, then Decapitate / Executioner's Sword to finish.</td></tr>
+      <tr class="wrow"><td>Shield walls</td><td>Axes (Split Shield), flails (ignore shield bonus), throwing spears.</td></tr>
+      <tr class="wrow"><td>Elusive, hard-to-hit (Geists, Goblins)</td><td>Swords (+10% hit), 2H swords to clear them fast.</td></tr>
+      <tr class="wrow"><td>Need to lock down a dangerous foe</td><td>Mace stun, Net, then a Dagger Duelist to delete it.</td></tr>
+    </tbody>
+  </table>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="colophon">
+      <h4>The Mercenary Codex</h4>
+      <p>Fan-made strategy compendium for <strong>Battle Brothers</strong>. Accurate to v1.5.2.2. Not affiliated with Overhype Studios or Hooded Horse.</p>
+    </div>
+    <div>
+      <h4>Sections</h4>
+      <p>
+        <a href="builds.html">Builds</a> &middot;
+        <a href="weapons.html">Weapons</a> &middot;
+        <a href="perks.html">Perks</a><br>
+        <a href="phases.html">Phases</a> &middot;
+        <a href="enemies.html">Enemies</a> &middot;
+        <a href="secrets.html">Secrets</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" aria-label="Back to top">&uarr; Top</button>
+<script src="../js/site.js"></script>
+</body>
+</html>

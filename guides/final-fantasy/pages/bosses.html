@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Boss Guide | FF7 Rebirth Guide</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/lifestream.css" />
+<style>
+/* ACCORDION */
+.accordion {
+  background: var(--panel);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition: border-color 0.25s;
+}
+
+.accordion.open {
+  border-color: var(--acc-color, var(--ls));
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.accordion-header:hover {
+  background: rgba(0,255,170,0.03);
+}
+
+.accordion-arrow {
+  margin-left: auto;
+  color: var(--text3);
+  font-size: 0.75rem;
+  transition: transform 0.3s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.accordion.open .accordion-arrow {
+  transform: rotate(180deg);
+  color: var(--acc-color, var(--ls));
+}
+
+.boss-num {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  color: var(--text3);
+  min-width: 28px;
+}
+
+.boss-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--acc-color, var(--ls));
+  flex: 1;
+}
+
+.boss-location {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  text-transform: uppercase;
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion.open .accordion-body {
+  max-height: 900px;
+}
+
+.accordion-inner {
+  padding: 0 1.5rem 1.5rem;
+  border-top: 1px solid var(--border2);
+}
+
+.boss-meta-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 1rem 0 0.75rem;
+}
+
+.boss-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .boss-grid { grid-template-columns: 1fr; }
+}
+
+.boss-info-block {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 0.9rem 1rem;
+}
+
+.boss-info-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.boss-info-val {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.boss-strategy {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
+.boss-danger {
+  background: rgba(255,50,70,0.05);
+  border: 1px solid rgba(255,50,70,0.2);
+  border-left: 3px solid #ff5566;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text2);
+}
+.boss-danger strong { color: #ff7788; }
+
+.phase-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: var(--ls2);
+  text-transform: uppercase;
+  margin: 0.75rem 0 0.3rem;
+  display: block;
+}
+
+/* Chapter separators */
+.chapter-break {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 2.5rem 0 1rem;
+}
+
+.chapter-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--text3);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.chapter-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+/* Difficulty badge colors */
+.acc-normal { --acc-color: #44ff99; }
+.acc-hard   { --acc-color: #ffcc44; }
+.acc-brutal { --acc-color: #ff5566; }
+.acc-final  { --acc-color: #cc77ff; }
+</style>
+</head>
+<body>
+<!-- LIFESTREAM LAYERS — do not move or reorder -->
+<canvas id="ls-deep"></canvas>
+<canvas id="ls-mid"></canvas>
+<canvas id="ls-surface"></canvas>
+<div class="ls-vignette"></div>
+<div class="ls-fog"></div>
+<div class="ls-pulse"></div>
+<div class="page-wrap">
+
+  <nav>
+    <a class="nav-logo" href="../index.html">FF7 REBIRTH GUIDE</a>
+    <ul class="nav-links">
+      <li><a href="characters.html">Characters</a></li>
+      <li><a href="materia.html">Materia</a></li>
+      <li><a href="builds.html">Builds</a></li>
+      <li><a href="parties.html">Party Setup</a></li>
+      <li><a href="bosses.html">Bosses</a></li>
+      <li><a href="queensblood.html">Queen's Blood</a></li>
+      <li><a href="affinity.html">Affinity</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <span class="page-eyebrow">Enemy Intel</span>
+    <h1 class="page-title ls-glow-white">Boss Guide</h1>
+    <div class="page-rule"></div>
+  </div>
+
+  <div class="content">
+
+    <div class="callout reveal">
+      <strong>Universal Rule:</strong> Always use <strong>Assess</strong> on new bosses in their first phase. It reveals pressure conditions, weaknesses, and immunities. Stagger window is your highest damage period — save ATB Boost, Limit Breaks, and charged abilities for it.
+    </div>
+
+    <!-- CHAPTER 1–2 -->
+    <div class="chapter-break reveal">
+      <span class="chapter-label">Chapters 1 – 2 / Grasslands & Mythril Mines</span>
+      <div class="chapter-line"></div>
+    </div>
+
+    <div class="accordion acc-normal reveal">
+      <div class="accordion-header">
+        <span class="boss-num">01</span>
+        <span class="boss-name">Midgarsormr</span>
+        <span class="boss-location">Grasslands — Chapter 1</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="boss-meta-row">
+            <span class="tag tag-blue">Lightning Weak</span>
+            <span class="tag tag-green">Wind Weak</span>
+          </div>
+          <div class="boss-grid">
+            <div class="boss-info-block">
+              <div class="boss-info-label">Pressure Condition</div>
+              <div class="boss-info-val">Hit with Lightning or Wind materia. Melee while it's grounded also builds stagger.</div>
+            </div>
+            <div class="boss-info-block">
+              <div class="boss-info-label">Recommended Party</div>
+              <div class="boss-info-val">Cloud + Aerith + Barret (story-locked early)</div>
+            </div>
+          </div>
+          <p class="boss-strategy">The game's first real boss. Uses wide sweeping tail attacks and breath attacks. Stand to the side, not directly behind — tail sweep has massive range. Barret is invaluable here for ranged damage when Midgarsormr goes airborne. Cast Thunder to apply pressure, then attack the body once grounded.</p>
+          <div class="boss-danger"><strong>Watch For:</strong> Gust attack — multi-hit wind damage. Move perpendicular to it. During aerial phase, only Barret and magic attacks can hit — switch to Barret and use Thunder.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion acc-normal reveal">
+      <div class="accordion-header">
+        <span class="boss-num">02</span>
+        <span class="boss-name">Mythril Golem</span>
+        <span class="boss-location">Mythril Mines — Chapter 2</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="boss-meta-row">
+            <span class="tag tag-yellow">Lightning Weak</span>
+            <span class="tag tag-green">Stagger: Arms First</span>
+          </div>
+          <div class="boss-grid">
+            <div class="boss-info-block">
+              <div class="boss-info-label">Pressure Condition</div>
+              <div class="boss-info-val">Destroy both arms separately to expose the core. Lightning causes pressure on arms.</div>
+            </div>
+            <div class="boss-info-block">
+              <div class="boss-info-label">Key Ability to Dodge</div>
+              <div class="boss-info-val">Fist Slam — telegraphed by raised fist. Roll away, not toward.</div>
+            </div>
+          </div>
+          <p class="boss-strategy">Two-phase fight. Phase 1: destroy both arms using focused attacks and Lightning. Once both arms are destroyed, the core is exposed and vulnerable. Phase 2: the Golem fights with its core directly exposed — stagger it for massive damage during this window.</p>
+          <div class="boss-danger"><strong>Watch For:</strong> Stone Fling — throws arena debris for high damage. Can stagger your party. Keep HP above 50% before the boss enters Phase 2.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion acc-normal reveal">
+      <div class="accordion-header">
+        <span class="boss-num">03</span>
+        <span class="boss-name">Failed Experiment</span>
+        <span class="boss-location">Mythril Mines — Chapter 2</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="boss-meta-row">
+            <span class="tag tag-blue">Ice Weak</span>
+            <span class="tag tag-red">Fire Immune</span>
+          </div>
+          <div class="boss-grid">
+            <div class="boss-info-block">
+              <div class="boss-info-label">Pressure Condition</div>
+              <div class="boss-info-val">Hit with Ice repeatedly. Sustained cold damage causes it to slow, then pressure.</div>
+            </div>
+            <div class="boss-info-block">
+              <div class="boss-info-label">Recommended Party</div>
+              <div class="boss-info-val">Cloud + Aerith (Blizzard spam) + Barret</div>
+            </div>
+          </div>
+          <p class="boss-strategy">A grotesque Shinra experiment with multiple limbs. Focus Ice attacks on the central body mass. Its tentacle attacks have long reach — keep some distance and dash in to attack, then pull back. Aerith casting Blizzara inside a Ward makes short work of this fight.</p>
+          <div class="boss-danger"><strong>Watch For:</strong> Chemical Spray — inflicts Poison on the whole party. Have Antidotes ready or keep Aerith's Esuna available. Poisoned characters lose HP rapidly.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 3–4 -->
+    <div class="chapter-break reveal">
+      <span class="chapter-label">Chapters 3 – 4 / Junon Region</span>
+      <div class="chapter-line"></div>
+    </div>
+
+    <div class="accordion acc-normal reveal">
+      <div class="accordion-header">
+        <span class="boss-num">04</span>
+        <span class="boss-name">Gi Nattak</span>
+        <span class="boss-location">Junon Outskirts — Chapter 3</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="boss-meta-row">
+            <span class="tag tag-green">Fire Weak</span>
+            <span class="tag tag-purple">Undead Mechanic</span>
+          </div>
+          <div class="boss-grid">
+            <div class="boss-info-block">
+              <div class="boss-info-label">Pressure Condition</div>
+              <div class="boss-info-val">Hit with Fire. Also: Phoenix Downs deal massive damage due to undead typing.</div>
+            </div>
+            <div class="boss-info-block">
+              <div class="boss-info-label">Key Trick</div>
+              <div class="boss-info-val">Phoenix Down = instant death on all enemies in its undead form. Use items!</div>
+            </div>
+          </div>
+          <p class="boss-strategy">Gi Nattak is undead — this completely flips item usage. Heal items damage it, damage items heal it. Most importantly: Phoenix Downs deal enormous damage. Throw a Phoenix Down to skip its HP bar. Fire spells cause pressure. Standard healing items will restore its HP — use only the undead-exploit method.</p>
+          <div class="boss-danger"><strong>Watch For:</strong> Soul Fire — spawns spirit enemies that harass your party. Kill them with Fire first or they overwhelm you. Don't ignore adds during this fight.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion acc-hard reveal">
+      <div class="accordion-header">
+        <span class="boss-num">05</span>
+        <span class="boss-name">Jenova Emergent</span>
+        <span class="boss-location">Junon — Chapter 4</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="boss-meta-row">
+            <span class="tag tag-yellow">Lightning Weak</span>
+            <span class="tag tag-blue">Water Weak</span>
+            <span class="tag tag-red">Multiple Phases</span>
+          </div>
+          <div class="boss-grid">
+            <div class="boss-info-block">
+              <div class="boss-info-label">Pressure Condition</div>
+              <div class="boss-info-val">Phase 1: Lightning. Phase 2: focus Arm appendages to expose core. Phase 3: sustained damage.</div>
+            </div>
+            <div class="boss-info-block">
+              <div class="boss-info-label">Recommended Party</div>
+              <div class="boss-info-val">Cloud + Aerith + Barret. Barret for airborne phase.</div>
+            </div>
+          </div>
+          <span class="phase-label">Phase 1 — Emergent Form</span>
+          <p class="boss-strategy">Jenova emerges from a tank of Mako. Use Thunder/Thundara to pressure. It will use Regen on itself — dispel it immediately with Aerith or the regen will outpace your damage.</p>
+          <span class="phase-label">Phase 2 — Aerial Form</span>
+          <p class="boss-strategy">Jenova becomes airborne. Barret is essential here — switch to him immediately. Attack the tentacle appendages to expose the main body. Once appendages are destroyed, it descends for a major stagger window.</p>
+          <div class="boss-danger"><strong>Watch For:</strong> Abyssal Maelstrom — massive AoE dark damage. Use Aerith's Planet's Protection if you have it. Otherwise maintain high HP and have Cure ready. This attack is the primary party wipe source.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 5–6 -->
+    <div class="chapter-break reveal">
+      <span class="chapter-label">Chapters 5 – 6 / Corel & Gongaga</span>
+      <div class="chapter-line"></div>
+    </div>
+
+    <div class="accordion acc-hard reveal">
+      <div class="accordion-header">
+        <span class="boss-num">06</span>
+        <span class="boss-name">Grasptropod</span>
+        <span class="boss-location">Corel Region — Chapter 5</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="boss-meta-row">
+            <span class="tag tag-yellow">Lightning Weak</span>
+            <span class="tag tag-green">Wind Weak</span>
+          </div>
+          <div class="boss-grid">
+            <div class="boss-info-block">
+              <div class="boss-info-label">Pressure Condition</div>
+              <div class="boss-info-val">Hit belly while it rears up on hind legs. Lightning causes instant pressure.</div>
+            </div>
+            <div class="boss-info-block">
+              <div class="boss-info-label">Stagger Target</div>
+              <div class="boss-info-val">Focus stagger attacks on the underbelly during pressure windows.</div>
+            </div>
+          </div>
+          <p class="boss-strategy">A large crustacean-type enemy. Wait for it to rear up on its hind legs — hit the exposed belly with Thunder for instant pressure. Keep range during its spinning claw attack. Yuffie is excellent here if she's in your party — Ninjutsu with Lightning element wrecks it.</p>
+          <div class="boss-danger"><strong>Watch For:</strong> Spinning Claw — wide horizontal sweep that hits the entire front arc. Back away immediately when it begins spinning. If caught, it deals very high damage and likely stuns.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion acc-hard reveal">
+      <div class="accordion-header">
+        <span class="boss-num">07</span>
+        <span class="boss-name">Abzu</span>
+        <span class="boss-location">Gongaga Region — Chapter 6</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="boss-meta-row">
+            <span class="tag tag-blue">Ice Weak</span>
+            <span class="tag tag-yellow">Lightning Weak</span>
+            <span class="tag tag-red">Multi-Phase</span>
+          </div>
+          <div class="boss-grid">
+            <div class="boss-info-block">
+              <div class="boss-info-label">Pressure Condition</div>
+              <div class="boss-info-val">Phase 1: Ice or Lightning sustained. Phase 2: hit exposed head when rearing up.</div>
+            </div>
+            <div class="boss-info-block">
+              <div class="boss-info-label">Recommended Party</div>
+              <div class="boss-info-val">Cloud + Aerith + Yuffie (best elemental coverage)</div>
+            </div>
+          </div>
+          <p class="boss-strategy">Abzu is a serpentine boss with two distinct phases. Phase 1 it stays on the ground — hit with Ice and Lightning to pressure, attack the head. Phase 2 it rears up high — only its head is targetable and it gains new powerful attacks. Switch to Barret for sustained ranged hits when the head is elevated.</p>
+          <div class="boss-danger"><strong>Watch For:</strong> Crush — grabs a character and deals massive damage. Cannot be dodged once telegraphed but can be interrupted with stagger. Also watch for Poison Spit — inflicts Poison on multiple party members simultaneously.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 7–8 -->
+    <div class="chapter-break reveal">
+      <span class="chapter-label">Chapters 7 – 8 / Cosmo Canyon & Nibel</span>
+      <div class="chapter-line"></div>
+    </div>
+
+    <div class="accordion acc-hard reveal">
+      <div class="accordion-header">
+        <span class="boss-num">08</span>
+        <span class="boss-name">Titan</span>
+        <span class="boss-location">Cosmo Canyon — Chapter 7</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="boss-meta-row">
+            <span class="tag tag-yellow">Lightning Weak</span>
+            <span class="tag tag-blue">Wind Weak</span>
+            <span class="tag tag-red">Summon Battle</span>
+          </div>
+          <div class="boss-grid">
+            <div class="boss-info-block">
+              <div class="boss-info-label">Pressure Condition</div>
+              <div class="boss-info-val">Hit fists/arms with Lightning when Titan plants them in the ground to brace. Both arms pressured = stagger.</div>
+            </div>
+            <div class="boss-info-block">
+              <div class="boss-info-label">Recommended Party</div>
+              <div class="boss-info-val">Cloud + Aerith + Barret. Barret for reach on elevated attacks.</div>
+            </div>
+          </div>
+          <p class="boss-strategy">The first Summon battle of the game. Titan is enormous — most attacks target limbs. When he plants both fists into the earth, focus Lightning on both fists simultaneously to pressure both. This is your primary stagger route. His Landslide attack has very high range — dodge roll away from his body during windup.</p>
+          <span class="phase-label">Second Form</span>
+          <p class="boss-strategy">After losing ~40% HP, Titan shifts stance. His attacks become faster and he gains an air slam. The stagger mechanic is the same — hit both fists with Lightning when planted. Use Aerith's Ward to amplify Thundara casts for the biggest stagger buildup.</p>
+          <div class="boss-danger"><strong>Watch For:</strong> Gaia's Wrath — his most powerful attack. High damage to all characters. Heal to full HP before this triggers (watch for the big wind-up animation). Planet's Protection from Aerith completely nullifies it if timed correctly.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion acc-hard reveal">
+      <div class="accordion-header">
+        <span class="boss-num">09</span>
+        <span class="boss-name">Lost Number</span>
+        <span class="boss-location">Mt. Nibel — Chapter 8</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="boss-meta-row">
+            <span class="tag tag-blue">Ice Weak (Phase 1)</span>
+            <span class="tag tag-yellow">Lightning Weak (Phase 2)</span>
+            <span class="tag tag-red">Split Phase</span>
+          </div>
+          <div class="boss-grid">
+            <div class="boss-info-block">
+              <div class="boss-info-label">Pressure Condition</div>
+              <div class="boss-info-val">Phase 1: Ice breaks its outer shell. Phase 2: Lightning to exposed core.</div>
+            </div>
+            <div class="boss-info-block">
+              <div class="boss-info-label">Key Note</div>
+              <div class="boss-info-val">Split into two smaller forms at ~50% HP. Focus one at a time.</div>
+            </div>
+          </div>
+          <p class="boss-strategy">Massive Shinra experiment. Covered in a tough outer layer weak to Ice — blast it with Blizzara until it cracks. Once cracked, the exposed core takes massive bonus damage from Lightning. At ~50% HP, it splits into two smaller versions — focus one down immediately before they combine their attacks.</p>
+          <div class="boss-danger"><strong>Watch For:</strong> Heavy Strike — high damage physical that ignores some defenses. Stay at mid-range during melee phases. The split phase is the most dangerous — maintain distance and pick off one form with Lightning before engaging the second.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 11–14 -->
+    <div class="chapter-break reveal">
+      <span class="chapter-label">Chapters 11 – 14 / Ancient Forest & Endgame</span>
+      <div class="chapter-line"></div>
+    </div>
+
+    <div class="accordion acc-brutal reveal">
+      <div class="accordion-header">
+        <span class="boss-num">10</span>
+        <span class="boss-name">Materia Guardian</span>
+        <span class="boss-location">Ancient Forest — Chapter 11</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="boss-meta-row">
+            <span class="tag tag-blue">Ice Weak</span>
+            <span class="tag tag-green">Wind Weak</span>
+            <span class="tag tag-red">High HP Pool</span>
+          </div>
+          <div class="boss-grid">
+            <div class="boss-info-block">
+              <div class="boss-info-label">Pressure Condition</div>
+              <div class="boss-info-val">Hit elemental nodes on its body with the matching opposite element. Ice weakens the fire nodes, etc.</div>
+            </div>
+            <div class="boss-info-block">
+              <div class="boss-info-label">Recommended Party</div>
+              <div class="boss-info-val">Cloud + Aerith + Yuffie — maximum elemental flexibility</div>
+            </div>
+          </div>
+          <p class="boss-strategy">A guardian spirit with elemental nodes across its body. Each node has a specific weakness — Assess reveals them. Yuffie's ability to switch elements on the fly is uniquely powerful here. Destroy all active nodes to pressure the core, then stagger and burst. Aerith's Ward dramatically increases the speed at which you can rotate elements.</p>
+          <div class="boss-danger"><strong>Watch For:</strong> Elemental Burst — massive AoE blast from the dominant active node. If you haven't destroyed the fire nodes and it charges fire burst, your whole party can go down. Prioritize destroying the dominant node first, even before attempting stagger.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion acc-brutal reveal">
+      <div class="accordion-header">
+        <span class="boss-num">11</span>
+        <span class="boss-name">Bahamut Arisen</span>
+        <span class="boss-location">Combat Simulator / Chapter 11+</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="boss-meta-row">
+            <span class="tag tag-yellow">Wind Weak</span>
+            <span class="tag tag-red">Countdown Mechanic</span>
+          </div>
+          <div class="boss-grid">
+            <div class="boss-info-block">
+              <div class="boss-info-label">Pressure Condition</div>
+              <div class="boss-info-val">Deal enough damage during ground phase to pressure. Sustained wind attacks speed up stagger.</div>
+            </div>
+            <div class="boss-info-block">
+              <div class="boss-info-label">Megaflare Counter</div>
+              <div class="boss-info-val">Inflict Interrupt conditions to reset the countdown. Stagger BEFORE counter reaches 0.</div>
+            </div>
+          </div>
+          <p class="boss-strategy">Bahamut uses a Megaflare countdown — when it reaches zero, the attack will likely kill your party. You must stagger or interrupt him before the counter ends. Focus maximum damage from the start, don't pace yourself. Yuffie with Wind element Ninjutsu deals exceptional damage here.</p>
+          <span class="phase-label">Bahamut Arisen Phase</span>
+          <p class="boss-strategy">Second form is faster and the countdown speeds up. Planet's Protection should be saved for Megaflare if you can't stagger in time. ATB Boost + Limit Break combo in the stagger window should deal over half his HP. This fight rewards offensive aggression over cautious play.</p>
+          <div class="boss-danger"><strong>Watch For:</strong> Megaflare — party wipe unless you have Planet's Protection active. Watch the counter at all times. If the counter hits 1 and you can't stagger: activate Planet's Protection immediately, take the hit, then respond.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion acc-final reveal">
+      <div class="accordion-header">
+        <span class="boss-num">12</span>
+        <span class="boss-name">Sephiroth — Final Encounter</span>
+        <span class="boss-location">Chapter 14 — Endgame</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="boss-meta-row">
+            <span class="tag tag-purple">All Elements</span>
+            <span class="tag tag-red">4 Phases</span>
+            <span class="tag tag-gold">Best Gear Required</span>
+          </div>
+          <div class="boss-grid">
+            <div class="boss-info-block">
+              <div class="boss-info-label">Pressure Condition</div>
+              <div class="boss-info-val">Each phase has a different pressure trigger — Assess each form. Generally: exploit the elemental opposite of whatever he's currently using.</div>
+            </div>
+            <div class="boss-info-block">
+              <div class="boss-info-label">Recommended Party</div>
+              <div class="boss-info-val">Cloud + Aerith + Tifa or Yuffie. Best gear. Full Limits stocked.</div>
+            </div>
+          </div>
+          <span class="phase-label">Phase 1 — Sephiroth (Human Form)</span>
+          <p class="boss-strategy">Sephiroth attacks fast with Masamune combos. Block in Punisher Mode — Cloud counters automatically. Synergy Skills trigger frequently in this phase. Bait his basic combo, counter, deal damage. His parrying AI is sophisticated — don't spam the same ability repeatedly.</p>
+          <span class="phase-label">Phase 2 — One-Winged Angel</span>
+          <p class="boss-strategy">He gains his iconic wing and power dramatically increases. Shadow Flare will target characters — move away from the target indicator immediately. Aerith should be kept alive at all costs — she's your only reliable healer for this phase.</p>
+          <span class="phase-label">Phase 3 — Shattered Form</span>
+          <p class="boss-strategy">The arena changes. His movement speed increases. This is the phase where most parties get wiped by running out of MP on Hard Mode — conserve every spell. Only cast inside Wards. Use physical attacks primarily.</p>
+          <span class="phase-label">Phase 4 — Supernova Warning</span>
+          <p class="boss-strategy">Final phase. Has a Supernova countdown like Bahamut's Megaflare. Max damage burst is your only option — there is no safe way through this phase. ATB Boost, all Limit Breaks, full Yuffie Ninjutsu combo. Kill him before the counter ends.</p>
+          <div class="boss-danger"><strong>Watch For:</strong> Octaslash — 8-hit combo. Dodge back completely — don't try to block or counter. Also: Heartless Angel reduces all party members to 1 HP. Immediately use Cura (Magnify) before any follow-up attack lands.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <footer><p class="footer-text">FF7 REBIRTH — COMPLETE FIELD GUIDE</p></footer>
+</div>
+
+<script src="../js/shared.js"></script>
+<script src="../js/lifestream.js"></script>
+</body>
+</html>

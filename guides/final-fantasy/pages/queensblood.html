@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Queen's Blood | FF7 Rebirth Guide</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/lifestream.css" />
+<style>
+/* ---- CARD COMPONENT ---- */
+.qb-card {
+  background: var(--panel);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+}
+
+.qb-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--card-c, var(--gold)), transparent);
+}
+
+.qb-card:hover {
+  border-color: var(--card-c, var(--gold));
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.qb-card-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--card-c, var(--gold));
+  margin-bottom: 0.2rem;
+  text-shadow: 0 0 12px var(--card-glow, rgba(200,168,75,0.3));
+}
+
+.qb-card-stats {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.qb-stat {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.qb-stat span { color: var(--text2); }
+
+.qb-ability {
+  font-size: 0.85rem;
+  color: var(--text2);
+  line-height: 1.55;
+}
+
+.qb-ability strong { color: var(--card-c, var(--gold)); }
+
+/* Card tier colors */
+.tier-s { --card-c: #ff9966; --card-glow: rgba(255,140,80,0.3); }
+.tier-a { --card-c: #ffcc44; --card-glow: rgba(255,200,50,0.3); }
+.tier-b { --card-c: #44ff99; --card-glow: rgba(0,255,130,0.3); }
+.tier-c { --card-c: #88aacc; --card-glow: rgba(100,150,200,0.3); }
+
+/* Card grids */
+.cards-4col {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.cards-3col {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ---- DECK DISPLAY ---- */
+.deck-visual {
+  background: rgba(0,0,0,0.35);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.deck-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(200,168,75,0.4);
+  margin-bottom: 0.25rem;
+}
+
+.deck-subtitle {
+  font-size: 0.88rem;
+  color: var(--text2);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.deck-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.deck-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+}
+
+.deck-pips {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  color: var(--gold);
+  min-width: 20px;
+  text-align: center;
+}
+
+.deck-name { font-size: 0.85rem; color: var(--text); flex: 1; }
+.deck-copies {
+  font-size: 0.7rem;
+  color: var(--text3);
+  font-style: italic;
+}
+
+.deck-note {
+  font-size: 0.88rem;
+  color: var(--text2);
+  line-height: 1.65;
+  border-top: 1px solid var(--border2);
+  padding-top: 1rem;
+}
+
+/* Rule explanation box */
+.rule-box {
+  background: rgba(200,168,75,0.04);
+  border: 1px solid rgba(200,168,75,0.2);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.rule-box-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.rule-box p {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.65;
+}
+
+.rule-box strong { color: var(--gold); }
+
+/* Opponent guide */
+.opponent-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border2);
+}
+
+.opp-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  min-width: 120px;
+  padding-top: 0.1rem;
+}
+
+.opp-strategy {
+  font-size: 0.88rem;
+  color: var(--text2);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.opp-strategy strong { color: var(--ls); }
+
+.tier-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--text3);
+  text-transform: uppercase;
+  padding: 2rem 0 0.5rem;
+  border-bottom: 1px solid var(--border2);
+  margin-bottom: 0;
+  display: block;
+}
+</style>
+</head>
+<body>
+<!-- LIFESTREAM LAYERS — do not move or reorder -->
+<canvas id="ls-deep"></canvas>
+<canvas id="ls-mid"></canvas>
+<canvas id="ls-surface"></canvas>
+<div class="ls-vignette"></div>
+<div class="ls-fog"></div>
+<div class="ls-pulse"></div>
+<div class="page-wrap">
+
+  <nav>
+    <a class="nav-logo" href="../index.html">FF7 REBIRTH GUIDE</a>
+    <ul class="nav-links">
+      <li><a href="characters.html">Characters</a></li>
+      <li><a href="materia.html">Materia</a></li>
+      <li><a href="builds.html">Builds</a></li>
+      <li><a href="parties.html">Party Setup</a></li>
+      <li><a href="bosses.html">Bosses</a></li>
+      <li><a href="queensblood.html">Queen's Blood</a></li>
+      <li><a href="affinity.html">Affinity</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <span class="page-eyebrow">Card Game Guide</span>
+    <h1 class="page-title ls-glow-white">Queen's Blood</h1>
+    <div class="page-rule"></div>
+  </div>
+
+  <div class="content">
+
+    <!-- HOW IT WORKS -->
+    <div class="reveal">
+      <span class="section-tag">Rules Overview</span>
+      <h2 class="section-title">How Queen's Blood Works</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="rule-box reveal">
+      <div class="rule-box-title">Core Objective</div>
+      <p>Control more of the 3×3 grid than your opponent at the end of all rounds. Each <strong>lane</strong> (column) is won by whoever has the higher total power on their side. Win 2 of the 3 lanes to win the match.</p>
+    </div>
+
+    <div class="cards-3col reveal">
+      <div class="rule-box" style="margin-bottom:0;">
+        <div class="rule-box-title">Pips</div>
+        <p>Each card has <strong>1, 2, or 3 pips</strong> — the number of squares it claims when played. 1-pip cards claim 1 square, 3-pip cards can claim large areas. High-pip cards are powerful but limited.</p>
+      </div>
+      <div class="rule-box" style="margin-bottom:0;">
+        <div class="rule-box-title">Power</div>
+        <p>Each card has a <strong>power value</strong> (the number in the corner). The total power in each lane at game end determines winner. Abilities can boost or reduce power values during the match.</p>
+      </div>
+      <div class="rule-box" style="margin-bottom:0;">
+        <div class="rule-box-title">Abilities</div>
+        <p>Most cards have abilities: <strong>Enhance</strong> (boost allied cards), <strong>Deplete</strong> (reduce enemy power), <strong>Open</strong> (claim new squares), or <strong>Convert</strong> (flip enemy squares to yours).</p>
+      </div>
+    </div>
+
+    <table class="reveal">
+      <thead>
+        <tr>
+          <th>Ability Type</th>
+          <th>What It Does</th>
+          <th>Best Used For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Enhance</td>
+          <td>Adds power to adjacent allied cards. Stacking multiple Enhance effects on one card creates enormous power values.</td>
+          <td>Building a dominant single lane</td>
+        </tr>
+        <tr>
+          <td>Deplete</td>
+          <td>Reduces power of enemy cards. Can swing a contested lane without playing new cards.</td>
+          <td>Contesting lanes your opponent is winning</td>
+        </tr>
+        <tr>
+          <td>Open</td>
+          <td>Claims additional squares beyond the card's pip count. Expands your board control rapidly.</td>
+          <td>Aggressive early board control</td>
+        </tr>
+        <tr>
+          <td>Convert</td>
+          <td>Flips enemy-controlled squares to your side. The most powerful lane-swing mechanic in the game.</td>
+          <td>Late-game lane steals, countering dominant setups</td>
+        </tr>
+        <tr>
+          <td>Chain</td>
+          <td>Triggers additional effects when played next to specific card types. Combo-based power generation.</td>
+          <td>High-ceiling combo decks</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- BEST DECK -->
+    <div class="reveal">
+      <span class="section-tag">Optimal Setup</span>
+      <h2 class="section-title">Best Deck — Mid to Late Game</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="deck-visual reveal">
+      <div class="deck-title">The Seraph Sweep</div>
+      <div class="deck-subtitle">Aggressive board control + power inflation. Wins by establishing mid-lane dominance early then Convert-sweeping side lanes late.</div>
+
+      <div class="deck-list">
+        <div class="deck-entry">
+          <span class="deck-pips">3</span>
+          <span class="deck-name">Sephiroth</span>
+          <span class="deck-copies">×1</span>
+        </div>
+        <div class="deck-entry">
+          <span class="deck-pips">3</span>
+          <span class="deck-name">Cloud</span>
+          <span class="deck-copies">×1</span>
+        </div>
+        <div class="deck-entry">
+          <span class="deck-pips">2</span>
+          <span class="deck-name">Aerith</span>
+          <span class="deck-copies">×1</span>
+        </div>
+        <div class="deck-entry">
+          <span class="deck-pips">2</span>
+          <span class="deck-name">Tifa</span>
+          <span class="deck-copies">×1</span>
+        </div>
+        <div class="deck-entry">
+          <span class="deck-pips">2</span>
+          <span class="deck-name">Bahamut</span>
+          <span class="deck-copies">×1</span>
+        </div>
+        <div class="deck-entry">
+          <span class="deck-pips">2</span>
+          <span class="deck-name">Titan</span>
+          <span class="deck-copies">×1</span>
+        </div>
+        <div class="deck-entry">
+          <span class="deck-pips">1</span>
+          <span class="deck-name">Chocobo & Mog</span>
+          <span class="deck-copies">×3</span>
+        </div>
+        <div class="deck-entry">
+          <span class="deck-pips">1</span>
+          <span class="deck-name">Cactuar</span>
+          <span class="deck-copies">×3</span>
+        </div>
+        <div class="deck-entry">
+          <span class="deck-pips">1</span>
+          <span class="deck-name">Tonberry</span>
+          <span class="deck-copies">×2</span>
+        </div>
+        <div class="deck-entry">
+          <span class="deck-pips">2</span>
+          <span class="deck-name">Ifrit</span>
+          <span class="deck-copies">×1</span>
+        </div>
+        <div class="deck-entry">
+          <span class="deck-pips">1</span>
+          <span class="deck-name">Goblin</span>
+          <span class="deck-copies">×3</span>
+        </div>
+        <div class="deck-entry">
+          <span class="deck-pips">1</span>
+          <span class="deck-name">Mandragora</span>
+          <span class="deck-copies">×2</span>
+        </div>
+      </div>
+
+      <div class="deck-note">
+        <strong>Strategy:</strong> Open with Chocobo & Mog and Cactuar to claim the center column fast. Then play Aerith (Enhance effect boosts adjacent cards). Follow with Titan or Ifrit to contest the second lane. Save Sephiroth as your trump card — his Convert ability flips the opponent's dominant lane in round 3. Cloud is your finisher in the third lane. Never play your high-pip cards before establishing board squares to place them on.
+      </div>
+    </div>
+
+    <!-- CARD TIER LIST -->
+    <div class="reveal">
+      <span class="section-tag">Card Rankings</span>
+      <h2 class="section-title">Card Tier List</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>Note on Tiers:</strong> Queen's Blood is a context-sensitive game — a C-tier card in one matchup can be game-winning in another. These ratings reflect general-purpose value across most matchups and deck archetypes.
+    </div>
+
+    <div class="cards-4col">
+
+      <div class="qb-card glass-cardtier-s reveal">
+        <div class="qb-card-name">Sephiroth</div>
+        <div class="qb-card-stats">
+          <span class="qb-stat">PIPS <span>3</span></span>
+          <span class="qb-stat">POWER <span>15</span></span>
+          <span class="tag tag-red">S Tier</span>
+        </div>
+        <div class="qb-ability"><strong>Convert:</strong> Flips all cards in one lane to your side. The most powerful ability in the game. Win condition on its own — forces opponents to play around it every match.</div>
+      </div>
+
+      <div class="qb-card glass-cardtier-s reveal">
+        <div class="qb-card-name">Bahamut</div>
+        <div class="qb-card-stats">
+          <span class="qb-stat">PIPS <span>3</span></span>
+          <span class="qb-stat">POWER <span>13</span></span>
+          <span class="tag tag-red">S Tier</span>
+        </div>
+        <div class="qb-ability"><strong>Enhance All:</strong> Boosts all allied cards in the same lane by +4 power each. Playing Bahamut on a lane with 2 other cards in it can add 8+ total power instantly. Wins lanes outright.</div>
+      </div>
+
+      <div class="qb-card glass-cardtier-s reveal">
+        <div class="qb-card-name">Cactuar</div>
+        <div class="qb-card-stats">
+          <span class="qb-stat">PIPS <span>1</span></span>
+          <span class="qb-stat">POWER <span>2</span></span>
+          <span class="tag tag-red">S Tier</span>
+        </div>
+        <div class="qb-ability"><strong>Open (3):</strong> Claims 3 additional squares when placed. Exceptional board control for a 1-pip card. The best early-game play in the game — locks down center squares before your opponent can respond.</div>
+      </div>
+
+      <div class="qb-card glass-cardtier-a reveal">
+        <div class="qb-card-name">Aerith</div>
+        <div class="qb-card-stats">
+          <span class="qb-stat">PIPS <span>2</span></span>
+          <span class="qb-stat">POWER <span>7</span></span>
+          <span class="tag tag-yellow">A Tier</span>
+        </div>
+        <div class="qb-ability"><strong>Enhance Adjacent (×2):</strong> Doubles the power of all adjacent allied cards. Placed correctly between two other cards, the power swing can be 10–20. Essential in power-stacking decks.</div>
+      </div>
+
+      <div class="qb-card glass-cardtier-a reveal">
+        <div class="qb-card-name">Tifa</div>
+        <div class="qb-card-stats">
+          <span class="qb-stat">PIPS <span>2</span></span>
+          <span class="qb-stat">POWER <span>9</span></span>
+          <span class="tag tag-yellow">A Tier</span>
+        </div>
+        <div class="qb-ability"><strong>Enhance Column:</strong> Adds +3 to every allied card in her column. High base power and a column-wide buff makes her excellent in any lane-dominant deck. One of the best 2-pip cards available.</div>
+      </div>
+
+      <div class="qb-card glass-cardtier-a reveal">
+        <div class="qb-card-name">Titan</div>
+        <div class="qb-card-stats">
+          <span class="qb-stat">PIPS <span>2</span></span>
+          <span class="qb-stat">POWER <span>11</span></span>
+          <span class="tag tag-yellow">A Tier</span>
+        </div>
+        <div class="qb-ability"><strong>Stomp:</strong> Depletes all enemy cards in adjacent squares by −5. Exceptional lane-clearing tool. Play Titan next to an opponent's stacked lane to completely neutralize their power advantage.</div>
+      </div>
+
+      <div class="qb-card glass-cardtier-a reveal">
+        <div class="qb-card-name">Chocobo & Mog</div>
+        <div class="qb-card-stats">
+          <span class="qb-stat">PIPS <span>1</span></span>
+          <span class="qb-stat">POWER <span>3</span></span>
+          <span class="tag tag-yellow">A Tier</span>
+        </div>
+        <div class="qb-ability"><strong>Chain (Summon):</strong> When played next to a Summon card, both cards gain +3 power. Pairs perfectly with Ifrit or Bahamut. A cheap card that can punch well above its cost in Summon-heavy decks.</div>
+      </div>
+
+      <div class="qb-card glass-cardtier-b reveal">
+        <div class="qb-card-name">Tonberry</div>
+        <div class="qb-card-stats">
+          <span class="qb-stat">PIPS <span>1</span></span>
+          <span class="qb-stat">POWER <span>4</span></span>
+          <span class="tag tag-green">B Tier</span>
+        </div>
+        <div class="qb-ability"><strong>Chef's Knife:</strong> Depletes the single highest-power enemy card on the board by −8. Niche but devastating against power-inflation decks. Keep 1–2 copies to counter Bahamut/Aerith stacks.</div>
+      </div>
+
+      <div class="qb-card glass-cardtier-b reveal">
+        <div class="qb-card-name">Mandragora</div>
+        <div class="qb-card-stats">
+          <span class="qb-stat">PIPS <span>1</span></span>
+          <span class="qb-stat">POWER <span>3</span></span>
+          <span class="tag tag-green">B Tier</span>
+        </div>
+        <div class="qb-ability"><strong>Screech:</strong> Enhances all allied 1-pip cards on the board by +2. Cheap filler that rewards running a 1-pip heavy deck. Gets better the more 1-pip cards you've already placed.</div>
+      </div>
+
+      <div class="qb-card glass-cardtier-b reveal">
+        <div class="qb-card-name">Ifrit</div>
+        <div class="qb-card-stats">
+          <span class="qb-stat">PIPS <span>2</span></span>
+          <span class="qb-stat">POWER <span>8</span></span>
+          <span class="tag tag-green">B Tier</span>
+        </div>
+        <div class="qb-ability"><strong>Hellfire:</strong> Depletes all enemy cards in a column by −3. Area Deplete is powerful for contesting wide lanes. Solid power base for a 2-pip. Good synergy with Chocobo & Mog.</div>
+      </div>
+
+      <div class="qb-card glass-cardtier-c reveal">
+        <div class="qb-card-name">Goblin</div>
+        <div class="qb-card-stats">
+          <span class="qb-stat">PIPS <span>1</span></span>
+          <span class="qb-stat">POWER <span>1</span></span>
+          <span class="tag tag-blue">C Tier</span>
+        </div>
+        <div class="qb-ability"><strong>Punch:</strong> Deals −1 to an adjacent enemy card. Extremely cheap — useful only for filling board squares and triggering Chain effects from other cards. Don't build around this; use it as filler.</div>
+      </div>
+
+      <div class="qb-card glass-cardtier-c reveal">
+        <div class="qb-card-name">Leviathan</div>
+        <div class="qb-card-stats">
+          <span class="qb-stat">PIPS <span>3</span></span>
+          <span class="qb-stat">POWER <span>10</span></span>
+          <span class="tag tag-blue">C Tier</span>
+        </div>
+        <div class="qb-ability"><strong>Tidal Wave:</strong> Depletes all enemy cards by −2. Sounds good but the effect is too spread out to swing lanes efficiently. Bahamut or Sephiroth are better 3-pip investments. Leviathan is a budget substitute only.</div>
+      </div>
+
+    </div>
+
+    <!-- OPPONENT GUIDE -->
+    <div class="reveal">
+      <span class="section-tag">NPC Opponents</span>
+      <h2 class="section-title">How to Beat Key Opponents</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>Sidequest:</strong> Playing Queen's Blood against NPCs throughout the world earns new cards, Gil, and story beats. The final Queen's Blood tournament is a required story sequence. Defeat every opponent you find — many give unique cards unavailable elsewhere.
+    </div>
+
+    <span class="tier-label reveal">Early Game Opponents</span>
+
+    <div class="reveal">
+      <div class="opponent-row">
+        <span class="opp-name">Kalm Villager</span>
+        <span class="opp-strategy">Tutorial-level opponent. Plays random 1-pip cards with no strategy. <strong>Win by:</strong> establishing center lane with Cactuar on turn 1, then filling the other two lanes with anything. Should be a clean sweep.</span>
+      </div>
+      <div class="opponent-row">
+        <span class="opp-name">Junon Soldier</span>
+        <span class="opp-strategy">Runs a basic power deck. Tends to pile cards into the center lane early. <strong>Win by:</strong> conceding center, building dominant power in both side lanes with Aerith + Tifa. Win 2-1 is fine.</span>
+      </div>
+      <div class="opponent-row">
+        <span class="opp-name">Cargo Ship Crew</span>
+        <span class="opp-strategy">First opponent who tries to use Deplete effects. <strong>Win by:</strong> spreading your high-power cards across all three lanes rather than concentrating. His Deplete cards only hit one target — don't give him a single high-value target to nuke.</span>
+      </div>
+    </div>
+
+    <span class="tier-label reveal">Mid Game Opponents</span>
+
+    <div class="reveal">
+      <div class="opponent-row">
+        <span class="opp-name">Gold Saucer Champion</span>
+        <span class="opp-strategy">Uses a Convert-heavy deck. Will try to flip your lanes in round 3. <strong>Win by:</strong> building such an overwhelming power lead in two lanes that even after converts you stay ahead. Do NOT spread thin — dominate 2 lanes hard and abandon the third entirely.</span>
+      </div>
+      <div class="opponent-row">
+        <span class="opp-name">Cosmo Canyon Scholar</span>
+        <span class="opp-strategy">Runs a Chain combo deck with Summon synergies. Dangerous in round 2 onward. <strong>Win by:</strong> attacking early before his chains activate. Rush center lane turns 1–2 with Open cards. If he can't place early summons, his chain deck falls apart.</span>
+      </div>
+      <div class="opponent-row">
+        <span class="opp-name">Gongaga Merchant</span>
+        <span class="opp-strategy">Balanced deck, nothing special. <strong>Win by:</strong> standard play. Center control turn 1, side lanes turns 2–3. This is a card reward fight — just beat him to get the rare card he drops.</span>
+      </div>
+    </div>
+
+    <span class="tier-label reveal">Late Game / Tournament</span>
+
+    <div class="reveal">
+      <div class="opponent-row">
+        <span class="opp-name">Queen's Blood Tournament — Round 1</span>
+        <span class="opp-strategy">Opponent uses a high-pip power deck. <strong>Win by:</strong> Cactuar center control round 1, Sephiroth ready as the lane-flip trump. Don't telegraph Sephiroth early — wait for them to commit power to a lane, then Convert it.</span>
+      </div>
+      <div class="opponent-row">
+        <span class="opp-name">Queen's Blood Tournament — Final</span>
+        <span class="opp-strategy">The toughest NPC in the game. Runs a near-optimal deck with Bahamut, Convert, and Chain synergies. <strong>Win by:</strong> forcing them to react to you. Play Cactuar and Chocobo & Mog aggressively turn 1 to claim maximum board squares. Bait their Bahamut into a lane you're willing to lose, then win the other two with Aerith-enhanced power stacks + Sephiroth Convert on the final round.</span>
+      </div>
+    </div>
+
+    <!-- CARD LOCATIONS -->
+    <div class="reveal" style="margin-top: 3rem;">
+      <span class="section-tag">Collection</span>
+      <h2 class="section-title">How to Get Every Key Card</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <table class="reveal">
+      <thead>
+        <tr>
+          <th>Card</th>
+          <th>How to Obtain</th>
+          <th>Chapter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sephiroth</td>
+          <td>Complete the Queen's Blood tournament in the Gold Saucer. Cannot be missed during the story sequence.</td>
+          <td>Ch. 8+</td>
+        </tr>
+        <tr>
+          <td>Bahamut</td>
+          <td>Defeat the Gold Saucer Queen's Blood Champion (second visit). Also obtainable as a rare drop from the Corel colosseum challenge.</td>
+          <td>Ch. 8+</td>
+        </tr>
+        <tr>
+          <td>Titan</td>
+          <td>Defeat the Queen's Blood player near Cosmo Canyon's entrance gate. Available immediately upon reaching Cosmo Canyon.</td>
+          <td>Ch. 7</td>
+        </tr>
+        <tr>
+          <td>Aerith</td>
+          <td>Found in a treasure chest inside the Ancient Forest area. Missable if you skip the forest exploration side content.</td>
+          <td>Ch. 11</td>
+        </tr>
+        <tr>
+          <td>Tifa</td>
+          <td>Purchase from the card shop in Junon (second visit). 1,500 Gil. Don't miss this — the Junon shop resets later.</td>
+          <td>Ch. 4</td>
+        </tr>
+        <tr>
+          <td>Cactuar</td>
+          <td>Defeat the Queen's Blood player in Kalm (the innkeeper plays if you ask). Very early acquisition — get this as soon as possible.</td>
+          <td>Ch. 2</td>
+        </tr>
+        <tr>
+          <td>Chocobo & Mog</td>
+          <td>Starter deck included when you first unlock Queen's Blood. You have this from the first match.</td>
+          <td>Ch. 1</td>
+        </tr>
+        <tr>
+          <td>Tonberry</td>
+          <td>Purchase from a wandering merchant in the Gongaga jungle region. Easy to miss — explore the outer paths of Gongaga thoroughly.</td>
+          <td>Ch. 6</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <footer><p class="footer-text">FF7 REBIRTH — COMPLETE FIELD GUIDE</p></footer>
+</div>
+
+<script src="../js/shared.js"></script>
+<script src="../js/lifestream.js"></script>
+</body>
+</html>

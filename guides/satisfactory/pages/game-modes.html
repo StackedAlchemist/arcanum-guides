@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Modes (Update 1.2) | FICSIT Field Manual</title>
+<meta name="description" content="Satisfactory Update 1.2 Game Modes explained: cost multipliers, world randomization, resource node and purity settings, Creative Mode, and preset configurations for relaxed, challenge, and speedrun runs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">FICSIT <span>Field Manual</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+    <nav class="nav">
+      <a href="../../../index.html" style="color:var(--ficsit);">&#9879; The Arcanum</a>
+      <a href="../index.html">Home</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="ratios.html">Ratios</a>
+      <a href="power.html">Power</a>
+      <a href="logistics.html">Logistics</a>
+      <a href="game-modes.html">Game Modes 1.2</a>
+      <a href="tips.html">Tips &amp; Secrets</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Update 1.2 &middot; June 2, 2026</span>
+    <h1>Game Modes</h1>
+    <p class="lede">Update 1.2 splits world customization into two systems: <strong>Game Modes</strong>, which let you bend cost and resource rules <em>without losing achievements</em>, and <strong>Creative Mode</strong>, the full sandbox that does. Here is exactly what every slider does and which combinations make the run you actually want.</p>
+  </div>
+</section>
+
+<main class="wrap section">
+
+  <div class="phasebar">
+    <a href="#two-systems">Two Systems</a>
+    <a href="#cost">Cost Multipliers</a>
+    <a href="#world">World Randomization</a>
+    <a href="#creative">Creative Mode</a>
+    <a href="#presets">Preset Builds</a>
+    <a href="#rules">Rules &amp; Gotchas</a>
+  </div>
+
+  <div class="callout danger">
+    <span class="label">Read this first</span>
+    <p style="margin-bottom:0;">Game Mode settings are chosen <strong>only when you create a New Game</strong>, and once a save has Game Mode settings active <strong>they cannot be turned off for that save</strong>. They also apply to everyone in a multiplayer session. Decide before you commit &mdash; there is no in-game toggle to revert later.</p>
+  </div>
+
+  <h2 id="two-systems">Two systems, one menu</h2>
+  <p>Before 1.2, all of this lived under "Advanced Game Settings," which permanently disabled achievements the moment you touched it. Update 1.2 rebuilt that:</p>
+
+  <table>
+    <thead>
+      <tr><th>System</th><th>What it does</th><th>Achievements</th><th>Set when</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Game Modes</strong></td>
+        <td>Cost multipliers and world randomization. Tunes the <em>economy and map</em>, not the rules of physics.</td>
+        <td><span class="tier tier-A">Enabled</span> &mdash; you keep earning them</td>
+        <td>New Game creation only</td>
+      </tr>
+      <tr>
+        <td><strong>Creative Mode</strong> <span class="mono">(was Advanced Game Settings)</span></td>
+        <td>Full sandbox: free building, no power drain, flight, unlimited items, time control.</td>
+        <td><span class="tier tier-D">Disabled</span> permanently</td>
+        <td>Toggleable in an existing save</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The practical takeaway: if you want a <em>legit</em> run that's just easier or harder than default, use <strong>Game Modes</strong>. If you want a god-mode sandbox to test layouts or build art, use <strong>Creative Mode</strong> and accept the lost achievements.</p>
+
+  <h2 id="cost">Cost multipliers</h2>
+  <p>Three independent sliders. Each scales a different part of the economy. Defaults are all <span class="mono">1.0&times;</span>.</p>
+
+  <table>
+    <thead>
+      <tr><th>Multiplier</th><th>Range</th><th>What it changes</th><th>Lower it to&hellip;</th><th>Raise it to&hellip;</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Space Elevator Deliverable Cost</strong></td>
+        <td><span class="mono">0.25&times; &ndash; 100&times;</span></td>
+        <td>How many parts each Space Elevator phase / Project Assembly delivery demands.</td>
+        <td>Blast through phases and reach end-tier buildings fast.</td>
+        <td>Turn the whole game into a megabase marathon (up to 100&times; is a true endurance run).</td>
+      </tr>
+      <tr>
+        <td><strong>Recipe Parts Cost</strong></td>
+        <td><span class="mono">0.25&times; &ndash; 2&times;</span></td>
+        <td>Ingredient cost of <em>crafting recipes</em> &mdash; how much input each machine consumes per product.</td>
+        <td>Stretch raw nodes much further; smaller factories hit the same output.</td>
+        <td>Force tighter logistics and bigger mines (2&times; is a real squeeze).</td>
+      </tr>
+      <tr>
+        <td><strong>Power Consumption</strong></td>
+        <td><span class="mono">0.25&times; &ndash; 5&times;</span></td>
+        <td>How much power every building draws.</td>
+        <td>Make power a non-issue and focus purely on production.</td>
+        <td>Make the power grid the central puzzle (5&times; punishes overclocking hard).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout tip">
+    <span class="label">Slider interaction</span>
+    <p style="margin-bottom:0;">These stack with overclocking and Somersloop production-doubling. At <span class="mono">5&times;</span> power, an overclocked-to-250% machine becomes brutally expensive, because overclock power cost scales exponentially (^1.321). If you crank Power Consumption, plan to run machines at or below 100% and just build <em>wider</em>.</p>
+  </div>
+
+  <h2 id="world">World randomization</h2>
+  <p>Two settings reshape the map itself, plus a world seed. This is the part that makes a fresh playthrough feel genuinely new instead of "the same Grass Fields start again."</p>
+
+  <h3>Resource node distribution</h3>
+  <p>Controls <em>which resource</em> sits in each node slot across the map:</p>
+  <ul class="belt">
+    <li><strong>Default</strong> &mdash; the hand-authored map you already know.</li>
+    <li><strong>Random</strong> &mdash; node resources shuffled. The classic randomizer experience; you may have to go hunting for your first coal.</li>
+    <li><strong>Basic Resource Rich</strong> &mdash; weighted toward iron, copper, limestone, caterium. Friendly early game, great for new players.</li>
+    <li><strong>Advanced Resource Rich</strong> &mdash; weighted toward late-game ores (bauxite, uranium, SAM, quartz). A "skip-the-grind" endgame sandbox.</li>
+    <li><strong>Fossil Fuel Rich</strong> &mdash; weighted toward coal and crude oil. Power and plastics/rubber are trivial; ideal for a fuel-power-focused build.</li>
+  </ul>
+
+  <h3>Resource node purity</h3>
+  <p>Controls how <em>rich</em> the nodes are (Impure / Normal / Pure tiers, which set base extraction rate):</p>
+  <table>
+    <thead>
+      <tr><th>Setting</th><th>Effect</th><th>Best for</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Default</strong></td><td>Vanilla purity map.</td><td>A normal run.</td></tr>
+      <tr><td><strong>All Pure</strong></td><td>Every node is Pure (max yield).</td><td>Relaxed megabase building &mdash; fewer miners for the same output.</td></tr>
+      <tr><td><strong>Mostly Pure</strong></td><td>Heavily weighted to Pure.</td><td>Comfortable but not trivial.</td></tr>
+      <tr><td><strong>Average</strong></td><td>Pushed toward Normal across the board.</td><td>A flatter, more uniform planning puzzle.</td></tr>
+      <tr><td><strong>Mostly Impure</strong></td><td>Heavily weighted to Impure.</td><td>A logistics challenge &mdash; you'll spread out and run more belts.</td></tr>
+      <tr><td><strong>All Impure</strong></td><td>Every node is Impure (min yield).</td><td>Hard mode. Expect to tap many more nodes for the same throughput.</td></tr>
+      <tr><td><strong>Random</strong></td><td>Purity rolled per node.</td><td>Pairing with Random resources for a full randomizer.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="label">World seed</span>
+    <p style="margin-bottom:0;">You can enter a specific <strong>world seed</strong> to share a randomized layout with friends or replay a known map. Two saves with the same seed and the same randomization settings generate the same node placement &mdash; handy for community challenges and races.</p>
+  </div>
+
+  <h2 id="creative">Creative Mode</h2>
+  <p>This is the old Advanced Game Settings, renamed and kept fully featured. Toggling it on <strong>disables achievements for that save, permanently</strong>. What it unlocks:</p>
+  <ul class="belt">
+    <li><strong>No build cost</strong> &mdash; place anything for free.</li>
+    <li><strong>No power requirement</strong> &mdash; machines run with no grid.</li>
+    <li><strong>Unlimited / give items</strong> &mdash; spawn parts directly.</li>
+    <li><strong>Flight mode &amp; god mode</strong> &mdash; fly the map, take no damage.</li>
+    <li><strong>Unlock all research / tiers / schematics</strong> &mdash; skip the MAM and milestone grind.</li>
+    <li><strong>Time of day control</strong> &amp; the new weather presets.</li>
+  </ul>
+  <p>Use it as a blueprint lab: prototype a factory layout at full scale for free, snapshot it as a Blueprint, then rebuild it legitimately in your real save.</p>
+
+  <h2 id="presets">Preset builds</h2>
+  <p>Starting points worth copying. All keep achievements on except the Sandbox row.</p>
+
+  <table>
+    <thead>
+      <tr><th>The run</th><th>Space Elev.</th><th>Recipe</th><th>Power</th><th>World</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>First-Timer / Relaxed</strong><br><span class="mono">learn without friction</span></td>
+        <td><span class="mono">0.5&times;</span></td>
+        <td><span class="mono">0.75&times;</span></td>
+        <td><span class="mono">0.5&times;</span></td>
+        <td>Basic Resource Rich, Mostly Pure</td>
+      </tr>
+      <tr>
+        <td><strong>Default+</strong><br><span class="mono">vanilla feel, less power stress</span></td>
+        <td><span class="mono">1&times;</span></td>
+        <td><span class="mono">1&times;</span></td>
+        <td><span class="mono">0.75&times;</span></td>
+        <td>Default / Default</td>
+      </tr>
+      <tr>
+        <td><strong>Logistics Challenge</strong><br><span class="mono">for veterans</span></td>
+        <td><span class="mono">2&times;</span></td>
+        <td><span class="mono">1.5&times;</span></td>
+        <td><span class="mono">2&times;</span></td>
+        <td>Default, Mostly Impure</td>
+      </tr>
+      <tr>
+        <td><strong>Randomizer</strong><br><span class="mono">fresh exploration</span></td>
+        <td><span class="mono">1&times;</span></td>
+        <td><span class="mono">1&times;</span></td>
+        <td><span class="mono">1&times;</span></td>
+        <td>Random resources, Random purity, fixed seed</td>
+      </tr>
+      <tr>
+        <td><strong>Phase Speedrun</strong><br><span class="mono">race to Phase 5</span></td>
+        <td><span class="mono">0.25&times;</span></td>
+        <td><span class="mono">0.25&times;</span></td>
+        <td><span class="mono">0.25&times;</span></td>
+        <td>Advanced Resource Rich, All Pure</td>
+      </tr>
+      <tr>
+        <td><strong>Sandbox / Build Art</strong><br><span class="mono">no achievements</span></td>
+        <td colspan="3">Creative Mode &mdash; free build, no power, flight, all unlocks</td>
+        <td>Any</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="rules">Rules &amp; gotchas</h2>
+  <ul class="belt">
+    <li><strong>Game Modes keep achievements; Creative Mode kills them.</strong> If a Steam/Epic completion matters to you, never enable Creative on that save.</li>
+    <li><strong>Permanent once active.</strong> Game Mode multipliers and randomization are locked in at world creation. Plan the run you want before clicking Create.</li>
+    <li><strong>Multiplayer-wide.</strong> The host's Game Mode settings apply to every player in the session.</li>
+    <li><strong>Randomization changes starting logistics.</strong> With Random resources you may not have coal near spawn &mdash; keep biomass burners going longer and scout before committing a base location. See <a href="getting-started.html">Getting Started</a>.</li>
+    <li><strong>Cost multipliers don't change recipes, only quantities.</strong> Every ratio on the <a href="ratios.html">Ratios</a> page still holds; you're just feeding more or fewer raws into the same machine counts.</li>
+  </ul>
+
+  <div class="divider"></div>
+  <p><a href="../index.html">&larr; Back to the Field Manual</a></p>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="colophon">
+      <h4>The FICSIT Field Manual</h4>
+      <p>A fan-made engineering guide for <strong>Satisfactory</strong> by Coffee Stain Studios. Accurate to Update 1.2 (June 2026). Unaffiliated with the developer or publisher.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" aria-label="Back to top">&uarr; Top</button>
+<script src="../js/site.js"></script>
+</body>
+</html>

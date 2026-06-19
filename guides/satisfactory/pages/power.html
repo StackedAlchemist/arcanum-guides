@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Progression | FICSIT Field Manual</title>
+<meta name="description" content="Satisfactory power progression: biomass, coal generators (3:8 water ratio), fuel generators, geothermal, and nuclear. Exact MW, fuel, and water rates accurate to Update 1.2.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">FICSIT <span>Field Manual</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+    <nav class="nav">
+      <a href="../../../index.html" style="color:var(--ficsit);">&#9879; The Arcanum</a>
+      <a href="../index.html">Home</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="ratios.html">Ratios</a>
+      <a href="power.html">Power</a>
+      <a href="logistics.html">Logistics</a>
+      <a href="game-modes.html">Game Modes 1.2</a>
+      <a href="tips.html">Tips &amp; Secrets</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">The Grid</span>
+    <h1>Power Progression</h1>
+    <p class="lede">Power is the heartbeat. Every generator below is listed with its exact output and fuel draw at 100% clock. Build to the clean ratios and your grid never browns out &mdash; the fastest way to lose an hour is a power trip that halts a factory you forgot was on the same line.</p>
+  </div>
+</section>
+
+<main class="wrap section">
+
+  <div class="phasebar">
+    <a href="#biomass">Biomass</a>
+    <a href="#coal">Coal</a>
+    <a href="#fuel">Fuel</a>
+    <a href="#geo">Geothermal</a>
+    <a href="#nuclear">Nuclear</a>
+    <a href="#rules">Grid Rules</a>
+  </div>
+
+  <div class="statblock">
+    <div><span class="k">Biomass Burner</span><span class="v">~30 MW</span></div>
+    <div><span class="k">Coal Generator</span><span class="v">75 MW</span></div>
+    <div><span class="k">Fuel Generator</span><span class="v">250 MW</span></div>
+    <div><span class="k">Geothermal</span><span class="v">~100&ndash;400 MW</span></div>
+    <div><span class="k">Nuclear Plant</span><span class="v">2500 MW</span></div>
+  </div>
+
+  <h2 id="biomass">Biomass &mdash; the bootstrap</h2>
+  <p>Biomass Burners are hand-fed and only a stopgap, but you live on them until coal is automated. Burn the highest-density fuel you can craft:</p>
+  <ul class="belt">
+    <li><strong>Leaves &rarr; Biomass &rarr; Solid Biofuel.</strong> Each refinement step packs far more energy per slot. Always upgrade your fuel before stuffing burners.</li>
+    <li><strong>Automate the misery away early.</strong> The moment you can, build a Constructor making Solid Biofuel and feed burners off a belt instead of by hand.</li>
+    <li><strong>Get off biomass as the #1 priority.</strong> Coal generators are the first "set it and forget it" power. Rush the Coal Power milestone.</li>
+  </ul>
+
+  <h2 id="coal">Coal &mdash; your first real grid</h2>
+  <p>Coal Generators are fully automatable and the backbone of the early-mid game.</p>
+  <div class="statblock">
+    <div><span class="k">Output</span><span class="v">75 MW</span></div>
+    <div><span class="k">Coal / min</span><span class="v">15</span></div>
+    <div><span class="k">Water / min</span><span class="v">45 m&sup3;</span></div>
+  </div>
+
+  <div class="callout tip">
+    <span class="label">The 3:8 ratio &mdash; memorize this</span>
+    <p style="margin-bottom:0;">A Water Extractor pumps <span class="mono">120 m&sup3;/min</span>. A Coal Generator drinks <span class="mono">45 m&sup3;/min</span>. So <strong>3 Water Extractors feed exactly 8 Coal Generators</strong> (360 = 360 water). That block produces <strong>600 MW</strong> and eats <strong>120 coal/min</strong> &mdash; precisely one Mk.2 belt of coal. Stamp this block as many times as you need.</p>
+  </div>
+
+  <p><strong>Plumbing note:</strong> keep generators on a level loop and use a small buffer tank. Pipes that snake up and down create headlift problems and air pockets that starve the last generator in the row.</p>
+
+  <h2 id="fuel">Fuel &mdash; the workhorse of the mid-late game</h2>
+  <p>Once oil is flowing, Fuel Generators carry your grid into the hundreds of megawatts with far fewer buildings than coal.</p>
+  <table>
+    <thead>
+      <tr><th>Fuel type</th><th>Output</th><th>Burn rate</th><th>Note</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Fuel</strong></td><td>250 MW</td><td><span class="mono">20 m&sup3;/min</span></td><td>The baseline. One Refinery of Fuel feeds a couple of generators.</td></tr>
+      <tr><td><strong>Turbofuel</strong></td><td>250 MW</td><td><span class="mono">7.5 m&sup3;/min</span></td><td><span class="tier tier-S">S</span> Same power for a fraction of the liquid &mdash; one generator runs on a trickle. The endgame fuel-power choice.</td></tr>
+      <tr><td><strong>Liquid Biofuel</strong></td><td>250 MW</td><td><span class="mono">20 m&sup3;/min</span></td><td>A renewable alternative if you'd rather not pump oil.</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <span class="label">Free power from waste</span>
+    <p style="margin-bottom:0;">Route the Heavy Oil Residue byproduct from your plastic/rubber lines (see <a href="ratios.html#oil">Ratios</a>) into <em>Residual Fuel</em>, then burn it. It's power you'd otherwise have to sink. Turbofuel takes this further &mdash; convert Fuel + Compacted Coal into Turbofuel and your fuel-per-MW plummets.</p>
+  </div>
+
+  <h2 id="geo">Geothermal &mdash; free but fixed</h2>
+  <ul class="belt">
+    <li>Geothermal Generators sit on fixed <strong>geyser nodes</strong> and need no fuel &mdash; pure free power.</li>
+    <li>Output <strong>fluctuates</strong> with the geyser (roughly 100&ndash;400 MW depending on purity), so never make geothermal your <em>base load</em>.</li>
+    <li>Treat it as a free bonus layered on top of a stable coal/fuel/nuclear grid. Build it on every geyser you find; ignore the variability by over-provisioning your fueled generators.</li>
+  </ul>
+
+  <h2 id="nuclear">Nuclear &mdash; the endgame</h2>
+  <p>One building, a staggering output, and a waste problem you must solve before you flip it on.</p>
+  <div class="statblock">
+    <div><span class="k">Output</span><span class="v">2500 MW</span></div>
+    <div><span class="k">Fuel Rods / min</span><span class="v">0.2</span></div>
+    <div><span class="k">Water / min</span><span class="v">240 m&sup3;</span></div>
+    <div><span class="k">Uranium Waste / min</span><span class="v">10</span></div>
+  </div>
+  <div class="callout danger">
+    <span class="label">Solve waste first</span>
+    <p style="margin-bottom:0;">Each plant spits out <strong>10 Uranium Waste/min</strong> that never stops accumulating. Before building nuclear, have a plan: store it in an ever-growing container farm, or (better) process it through the <em>Plutonium</em> chain into Plutonium Fuel Rods. Nuclear Waste is radioactive &mdash; wear a Hazmat Suit and keep it away from walkways.</p>
+  </div>
+  <p>Nuclear is enormous power density: a single plant replaces dozens of coal generators. But it demands serious uranium logistics (mining, Encased Cells, fuel rod manufacturing, sulfuric acid) and water. Build it when you're ready to commit a region to it.</p>
+
+  <h2 id="rules">Grid rules that save your save</h2>
+  <ul class="belt">
+    <li><strong>Always run a buffer above demand.</strong> Keep 10&ndash;20% headroom so spinning up a new factory block doesn't trip the grid.</li>
+    <li><strong>Use Power Switches to segment.</strong> Put new/experimental factories behind a switch so a runaway draw can't black out your whole base. The 1.2 Priority Power Switch lets you shed non-critical load automatically when supply dips.</li>
+    <li><strong>Storage = uptime insurance.</strong> Power Storage banks charge during surplus and discharge during spikes &mdash; a wall of them turns a brief deficit into a non-event.</li>
+    <li><strong>Watch the Power Consumption multiplier.</strong> If you started a 1.2 save with raised <a href="game-modes.html">Power Consumption</a>, underclock machines (see <a href="ratios.html#concepts">clock math</a>) instead of overclocking &mdash; the exponential cost curve will wreck you otherwise.</li>
+  </ul>
+
+  <div class="divider"></div>
+  <p><a href="../index.html">&larr; Back to the Field Manual</a></p>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="colophon">
+      <h4>The FICSIT Field Manual</h4>
+      <p>A fan-made engineering guide for <strong>Satisfactory</strong> by Coffee Stain Studios. Generator stats are 100%-clock base values, accurate to Update 1.2 (June 2026). Unaffiliated with the developer or publisher.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" aria-label="Back to top">&uarr; Top</button>
+<script src="../js/site.js"></script>
+</body>
+</html>

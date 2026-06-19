@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Affinity | FF7 Rebirth Guide</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/lifestream.css" />
+<style>
+/* ---- AFFINITY SYSTEM OVERVIEW ---- */
+.affinity-char-tabs {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.char-tab {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  border: 1px solid var(--border2);
+  color: var(--text3);
+  background: transparent;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+.char-tab:hover,
+.char-tab.active {
+  border-color: var(--tab-color, var(--ls));
+  color: var(--tab-color, var(--ls));
+  background: rgba(0,255,170,0.04);
+}
+
+.tab-aerith  { --tab-color: #ff88aa; }
+.tab-tifa    { --tab-color: #ff9966; }
+.tab-barret  { --tab-color: #ffcc44; }
+.tab-red     { --tab-color: #ff7744; }
+.tab-yuffie  { --tab-color: #44ff99; }
+.tab-cait    { --tab-color: #c8a84b; }
+
+/* ---- CHAPTER BLOCK ---- */
+.chapter-block {
+  margin-bottom: 3.5rem;
+}
+
+.chapter-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.chapter-num {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--text3);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.chapter-title-text {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.9rem;
+  color: var(--text);
+  flex: 1;
+}
+
+.chapter-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+/* ---- CHOICE ROW ---- */
+.choice-block {
+  background: var(--panel);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.choice-header {
+  padding: 1rem 1.25rem 0.75rem;
+  border-bottom: 1px solid var(--border2);
+  background: rgba(0,0,0,0.2);
+}
+
+.choice-context {
+  font-size: 0.82rem;
+  color: var(--text3);
+  font-style: italic;
+  margin-bottom: 0.25rem;
+}
+
+.choice-prompt {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.choice-options {
+  padding: 0.75rem 0;
+}
+
+.choice-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.6rem 1.25rem;
+  border-bottom: 1px solid var(--border2);
+  transition: background 0.15s;
+}
+
+.choice-option:last-child { border-bottom: none; }
+
+.choice-option:hover { background: rgba(0,255,170,0.02); }
+
+.option-stars {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.star {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.star-filled { background: var(--aff-color, var(--gold)); box-shadow: 0 0 4px var(--aff-color, var(--gold)); }
+.star-empty  { background: transparent; border: 1px solid var(--border); }
+
+.option-text {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.option-text em {
+  font-style: normal;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.option-note {
+  font-size: 0.78rem;
+  color: var(--text3);
+  font-style: italic;
+  margin-top: 0.2rem;
+}
+
+.best-choice {
+  background: rgba(0,0,0,0.15);
+  border-left: 2px solid var(--aff-color, var(--gold));
+}
+
+.best-choice .option-text { color: var(--text); }
+
+/* Affinity colors per character */
+.aff-aerith { --aff-color: #ff88aa; }
+.aff-tifa   { --aff-color: #ff9966; }
+.aff-barret { --aff-color: #ffcc44; }
+.aff-red    { --aff-color: #ff7744; }
+.aff-yuffie { --aff-color: #44ff99; }
+.aff-cait   { --aff-color: #c8a84b; }
+
+/* Star display utilities */
+.stars-3 .star:nth-child(-n+3) { background: var(--aff-color, var(--gold)); box-shadow: 0 0 4px var(--aff-color, var(--gold)); }
+.stars-2 .star:nth-child(-n+2) { background: var(--aff-color, var(--gold)); box-shadow: 0 0 4px var(--aff-color, var(--gold)); }
+.stars-1 .star:nth-child(-n+1) { background: var(--aff-color, var(--gold)); box-shadow: 0 0 4px var(--aff-color, var(--gold)); }
+.stars-0 .star { background: transparent; border: 1px solid var(--border); box-shadow: none; }
+
+/* Legend */
+.legend-row {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--text2);
+}
+
+.legend-stars {
+  display: flex;
+  gap: 2px;
+}
+
+/* Affinity meter */
+.affinity-summary {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.aff-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.aff-char-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.aff-char-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.aff-char-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  flex: 1;
+}
+
+.aff-bar-wrap {
+  width: 80px;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.aff-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--aff-color);
+  box-shadow: 0 0 6px var(--aff-color);
+}
+</style>
+</head>
+<body>
+<!-- LIFESTREAM LAYERS — do not move or reorder -->
+<canvas id="ls-deep"></canvas>
+<canvas id="ls-mid"></canvas>
+<canvas id="ls-surface"></canvas>
+<div class="ls-vignette"></div>
+<div class="ls-fog"></div>
+<div class="ls-pulse"></div>
+<div class="page-wrap">
+
+  <nav>
+    <a class="nav-logo" href="../index.html">FF7 REBIRTH GUIDE</a>
+    <ul class="nav-links">
+      <li><a href="characters.html">Characters</a></li>
+      <li><a href="materia.html">Materia</a></li>
+      <li><a href="builds.html">Builds</a></li>
+      <li><a href="parties.html">Party Setup</a></li>
+      <li><a href="bosses.html">Bosses</a></li>
+      <li><a href="queensblood.html">Queen's Blood</a></li>
+      <li><a href="affinity.html">Affinity</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <span class="page-eyebrow">Relationship Choices</span>
+    <h1 class="page-title ls-glow-white">Affinity Guide</h1>
+    <div class="page-rule"></div>
+  </div>
+
+  <div class="content">
+
+    <div class="callout reveal">
+      <strong>What Affinity Does:</strong> Affinity determines which character appears with Cloud in the Gold Saucer date sequence (Chapter 8) and the final scene of Chapter 14. The character with the highest accumulated affinity score wins the date. Ties are broken by the game's internal priority order: Aerith → Tifa → Barret → Red XIII → Yuffie → Cait Sith.
+    </div>
+
+    <!-- LEGEND -->
+    <div class="legend-row reveal">
+      <div class="legend-item">
+        <div class="legend-stars aff-aerith">
+          <div class="star star-filled"></div>
+          <div class="star star-filled"></div>
+          <div class="star star-filled"></div>
+        </div>
+        +3 pts (Best response)
+      </div>
+      <div class="legend-item">
+        <div class="legend-stars aff-aerith">
+          <div class="star star-filled"></div>
+          <div class="star star-filled"></div>
+          <div class="star star-empty"></div>
+        </div>
+        +2 pts (Good response)
+      </div>
+      <div class="legend-item">
+        <div class="legend-stars aff-aerith">
+          <div class="star star-filled"></div>
+          <div class="star star-empty"></div>
+          <div class="star star-empty"></div>
+        </div>
+        +1 pt (Neutral)
+      </div>
+      <div class="legend-item">
+        <div class="legend-stars aff-aerith">
+          <div class="star star-empty"></div>
+          <div class="star star-empty"></div>
+          <div class="star star-empty"></div>
+        </div>
+        +0 pts (No effect or negative)
+      </div>
+      <div class="legend-item" style="border-left:2px solid #ff88aa; padding-left:0.75rem; color:var(--text3); font-style:italic; font-size:0.82rem;">
+        Highlighted option = best choice for that character
+      </div>
+    </div>
+
+    <!-- CHAPTER 1 -->
+    <div class="chapter-block aff-aerith reveal">
+      <div class="chapter-header">
+        <span class="chapter-num">Chapter 1</span>
+        <span class="chapter-title-text">Kalm — Beginnings</span>
+        <div class="chapter-divider"></div>
+      </div>
+
+      <div class="choice-block glass-card">
+        <div class="choice-header">
+          <div class="choice-context">Aerith asks Cloud about their mission together</div>
+          <div class="choice-prompt">"You really came all this way to escort me. Is this just a job to you?"</div>
+        </div>
+        <div class="choice-options">
+          <div class="choice-option best-choice">
+            <div class="option-stars aff-aerith stars-3">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"It's more than that."</em></div>
+              <div class="option-note">+3 Aerith affinity — most sincere response</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-aerith stars-1">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"You hired me. That makes it a job."</em></div>
+              <div class="option-note">+1 Aerith affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-aerith stars-0">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"I don't need a reason. Let's just go."</em></div>
+              <div class="option-note">+0 Aerith affinity</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="choice-block glass-card">
+        <div class="choice-header">
+          <div class="choice-context">After the first battle, the party regroups. Tifa checks on Cloud.</div>
+          <div class="choice-prompt">Tifa: "You okay? You seemed distracted back there."</div>
+        </div>
+        <div class="choice-options">
+          <div class="choice-option best-choice">
+            <div class="option-stars aff-tifa stars-3">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"I'm always watching your back."</em></div>
+              <div class="option-note">+3 Tifa affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-tifa stars-1">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Just thinking through the mission."</em></div>
+              <div class="option-note">+1 Tifa affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-tifa stars-0">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"I don't get distracted."</em></div>
+              <div class="option-note">+0 Tifa affinity</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 2 -->
+    <div class="chapter-block aff-aerith reveal">
+      <div class="chapter-header">
+        <span class="chapter-num">Chapter 2</span>
+        <span class="chapter-title-text">Mythril Mines — Into the Dark</span>
+        <div class="chapter-divider"></div>
+      </div>
+
+      <div class="choice-block glass-card">
+        <div class="choice-header">
+          <div class="choice-context">Aerith and Cloud explore the mines alone briefly. She mentions the Planet speaking to her.</div>
+          <div class="choice-prompt">Aerith: "You think I'm strange, don't you? For hearing things no one else can."</div>
+        </div>
+        <div class="choice-options">
+          <div class="choice-option best-choice">
+            <div class="option-stars aff-aerith stars-3">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Not at all. I think it's part of who you are."</em></div>
+              <div class="option-note">+3 Aerith affinity — validating response</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-aerith stars-2">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Strange? No. Different? Maybe."</em></div>
+              <div class="option-note">+2 Aerith affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-aerith stars-0">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"What does it say?"</em></div>
+              <div class="option-note">+0 Aerith affinity — deflects the emotional question</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="choice-block glass-card">
+        <div class="choice-header">
+          <div class="choice-context">Barret talks about Marlene while setting up camp inside the mines.</div>
+          <div class="choice-prompt">Barret: "You got anyone waitin' for you? Back in Midgar?"</div>
+        </div>
+        <div class="choice-options">
+          <div class="choice-option best-choice">
+            <div class="option-stars aff-barret stars-3">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Marlene's lucky to have you."</em></div>
+              <div class="option-note">+3 Barret affinity — focuses on him, not Cloud</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-barret stars-1">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Not really."</em></div>
+              <div class="option-note">+1 Barret affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-barret stars-0">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Why do you ask?"</em></div>
+              <div class="option-note">+0 Barret affinity</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 3 -->
+    <div class="chapter-block aff-tifa reveal">
+      <div class="chapter-header">
+        <span class="chapter-num">Chapter 3</span>
+        <span class="chapter-title-text">Junon Outskirts — Old Wounds</span>
+        <div class="chapter-divider"></div>
+      </div>
+
+      <div class="choice-block glass-card">
+        <div class="choice-header">
+          <div class="choice-context">Tifa and Cloud walk alone for a moment. She brings up Nibelheim.</div>
+          <div class="choice-prompt">Tifa: "Do you ever think about home? Nibelheim, I mean. Not what happened. Before."</div>
+        </div>
+        <div class="choice-options">
+          <div class="choice-option best-choice">
+            <div class="option-stars aff-tifa stars-3">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Yeah. Especially about you."</em></div>
+              <div class="option-note">+3 Tifa affinity — the most personal, direct answer</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-tifa stars-2">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Sometimes. The good parts."</em></div>
+              <div class="option-note">+2 Tifa affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-tifa stars-0">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"I try not to think about it."</em></div>
+              <div class="option-note">+0 Tifa affinity — shuts down the moment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="choice-block glass-card">
+        <div class="choice-header">
+          <div class="choice-context">Red XIII joins the party. He observes Cloud in silence for a while before speaking.</div>
+          <div class="choice-prompt">Red XIII: "You fight like someone who has accepted death. Is there nothing you are protecting?"</div>
+        </div>
+        <div class="choice-options">
+          <div class="choice-option best-choice">
+            <div class="option-stars aff-red stars-3">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"There's plenty I'm protecting. I just don't say it out loud."</em></div>
+              <div class="option-note">+3 Red XIII affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-red stars-1">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"I protect the people I'm with."</em></div>
+              <div class="option-note">+1 Red XIII affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-red stars-0">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Mind your own business."</em></div>
+              <div class="option-note">+0 Red XIII affinity</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 4 -->
+    <div class="chapter-block aff-aerith reveal">
+      <div class="chapter-header">
+        <span class="chapter-num">Chapter 4</span>
+        <span class="chapter-title-text">Junon — The Parade</span>
+        <div class="chapter-divider"></div>
+      </div>
+
+      <div class="choice-block glass-card">
+        <div class="choice-header">
+          <div class="choice-context">During the Junon parade, Cloud is forced to participate. Aerith watches and calls out to him.</div>
+          <div class="choice-prompt">Aerith: "You actually looked like you were enjoying yourself up there. Even a little?"</div>
+        </div>
+        <div class="choice-options">
+          <div class="choice-option best-choice">
+            <div class="option-stars aff-aerith stars-3">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Maybe. Just a little."</em></div>
+              <div class="option-note">+3 Aerith affinity — rare moment of Cloud being open</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-aerith stars-1">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"I was focused on the mission."</em></div>
+              <div class="option-note">+1 Aerith affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-tifa stars-2">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Don't tell Tifa."</em></div>
+              <div class="option-note">+2 Tifa affinity (shared joke) — no Aerith gain</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="choice-block glass-card">
+        <div class="choice-header">
+          <div class="choice-context">Yuffie joins the party here. She immediately tries to steal Cloud's materia and gets caught.</div>
+          <div class="choice-prompt">"Hey! I was just looking at it. You should take that as a compliment — means you have good taste."</div>
+        </div>
+        <div class="choice-options">
+          <div class="choice-option best-choice">
+            <div class="option-stars aff-yuffie stars-3">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"You've got nerve. I like that."</em></div>
+              <div class="option-note">+3 Yuffie affinity — she respects boldness</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-yuffie stars-1">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Touch my materia again and there will be consequences."</em></div>
+              <div class="option-note">+1 Yuffie affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-yuffie stars-0">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Stay away from my gear."</em></div>
+              <div class="option-note">+0 Yuffie affinity — no humor, no connection</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 6 -->
+    <div class="chapter-block aff-aerith reveal">
+      <div class="chapter-header">
+        <span class="chapter-num">Chapter 6</span>
+        <span class="chapter-title-text">Gongaga — Forests and Memories</span>
+        <div class="chapter-divider"></div>
+      </div>
+
+      <div class="choice-block glass-card">
+        <div class="choice-header">
+          <div class="choice-context">Aerith finds a quiet moment near a river in the Gongaga forest. She looks at the water.</div>
+          <div class="choice-prompt">Aerith: "Sometimes I feel like I'm running out of time. Is that strange? To feel that way?"</div>
+        </div>
+        <div class="choice-options">
+          <div class="choice-option best-choice">
+            <div class="option-stars aff-aerith stars-3">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"You're not going anywhere. I won't let you."</em></div>
+              <div class="option-note">+3 Aerith affinity — highest possible response for this moment</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-aerith stars-2">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"It's not strange. I feel it too sometimes."</em></div>
+              <div class="option-note">+2 Aerith affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-aerith stars-0">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"What do you mean?"</em></div>
+              <div class="option-note">+0 Aerith affinity — deflects the emotional weight</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="choice-block glass-card">
+        <div class="choice-header">
+          <div class="choice-context">Cait Sith has been acting strange. He asks Cloud if he trusts him.</div>
+          <div class="choice-prompt">Cait Sith: "Be honest — do you actually trust me? Or am I just along for the ride?"</div>
+        </div>
+        <div class="choice-options">
+          <div class="choice-option best-choice">
+            <div class="option-stars aff-cait stars-3">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"You've had my back when it mattered. That's enough."</em></div>
+              <div class="option-note">+3 Cait Sith affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-cait stars-1">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"I trust anyone who fights with me."</em></div>
+              <div class="option-note">+1 Cait Sith affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-cait stars-0">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"The jury's still out on that."</em></div>
+              <div class="option-note">+0 Cait Sith affinity</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 7 -->
+    <div class="chapter-block aff-tifa reveal">
+      <div class="chapter-header">
+        <span class="chapter-num">Chapter 7</span>
+        <span class="chapter-title-text">Cosmo Canyon — Under the Stars</span>
+        <div class="chapter-divider"></div>
+      </div>
+
+      <div class="choice-block glass-card">
+        <div class="choice-header">
+          <div class="choice-context">The party watches the Cosmo Canyon stars from the observation platform. Tifa stands next to Cloud.</div>
+          <div class="choice-prompt">Tifa: "Remember the water tower? When we made that promise under the stars?"</div>
+        </div>
+        <div class="choice-options">
+          <div class="choice-option best-choice">
+            <div class="option-stars aff-tifa stars-3">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"I remember everything."</em></div>
+              <div class="option-note">+3 Tifa affinity — the most meaningful confirmation possible</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-tifa stars-2">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"I kept that promise, didn't I?"</em></div>
+              <div class="option-note">+2 Tifa affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-tifa stars-0">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"That was a long time ago."</em></div>
+              <div class="option-note">+0 Tifa affinity</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="choice-block glass-card">
+        <div class="choice-header">
+          <div class="choice-context">Red XIII reveals the truth about his father, Seto. He's visibly shaken.</div>
+          <div class="choice-prompt">After the scene with Seto, Red XIII stands alone. Cloud approaches.</div>
+        </div>
+        <div class="choice-options">
+          <div class="choice-option best-choice">
+            <div class="option-stars aff-red stars-3">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"He died protecting the people he loved. That's who he was."</em></div>
+              <div class="option-note">+3 Red XIII affinity — honors his father's sacrifice</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-red stars-2">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Your father was a warrior. You should be proud."</em></div>
+              <div class="option-note">+2 Red XIII affinity</div>
+            </div>
+          </div>
+          <div class="choice-option">
+            <div class="option-stars aff-red stars-0">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div>
+              <div class="option-text"><em>"Are you going to be okay?"</em></div>
+              <div class="option-note">+0 Red XIII affinity — too generic</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 8 GOLD SAUCER -->
+    <div class="chapter-block aff-aerith reveal">
+      <div class="chapter-header">
+        <span class="chapter-num">Chapter 8</span>
+        <span class="chapter-title-text">Gold Saucer — The Date</span>
+        <div class="chapter-divider"></div>
+      </div>
+
+      <div class="callout" style="border-left-color: var(--gold);">
+        <strong>The Date:</strong> Chapter 8 includes the Gold Saucer date sequence — the character with the highest cumulative affinity goes on the date with Cloud. Choices made during the date itself are mostly cosmetic and don't shift future affinity. The outcome of the date affects dialogue and the final scene of the game.
+      </div>
+
+      <div class="affinity-summary">
+        <div class="choice-context" style="font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--text3); text-transform: uppercase; margin-bottom: 0.75rem;">Affinity Snapshot — Reaching This Point</div>
+        <p style="font-size: 0.88rem; color: var(--text2); margin-bottom: 1rem;">If you've followed all the best choices above, your approximate standings entering Chapter 8 should be:</p>
+        <div class="aff-summary-grid">
+          <div class="aff-char-row aff-aerith">
+            <div class="aff-char-dot" style="background: #ff88aa; box-shadow: 0 0 6px #ff88aa;"></div>
+            <span class="aff-char-name">Aerith</span>
+            <div class="aff-bar-wrap"><div class="aff-bar-fill" style="width: 85%; background: #ff88aa; box-shadow: 0 0 6px #ff88aa;"></div></div>
+            <span class="tag tag-red" style="font-size:0.52rem; margin-left:0.5rem;">Leader</span>
+          </div>
+          <div class="aff-char-row aff-tifa">
+            <div class="aff-char-dot" style="background: #ff9966; box-shadow: 0 0 6px #ff9966;"></div>
+            <span class="aff-char-name">Tifa</span>
+            <div class="aff-bar-wrap"><div class="aff-bar-fill" style="width: 70%; background: #ff9966; box-shadow: 0 0 6px #ff9966;"></div></div>
+          </div>
+          <div class="aff-char-row aff-red">
+            <div class="aff-char-dot" style="background: #ff7744; box-shadow: 0 0 6px #ff7744;"></div>
+            <span class="aff-char-name">Red XIII</span>
+            <div class="aff-bar-wrap"><div class="aff-bar-fill" style="width: 55%; background: #ff7744; box-shadow: 0 0 6px #ff7744;"></div></div>
+          </div>
+          <div class="aff-char-row aff-barret">
+            <div class="aff-char-dot" style="background: #ffcc44; box-shadow: 0 0 6px #ffcc44;"></div>
+            <span class="aff-char-name">Barret</span>
+            <div class="aff-bar-wrap"><div class="aff-bar-fill" style="width: 45%; background: #ffcc44; box-shadow: 0 0 6px #ffcc44;"></div></div>
+          </div>
+          <div class="aff-char-row aff-yuffie">
+            <div class="aff-char-dot" style="background: #44ff99; box-shadow: 0 0 6px #44ff99;"></div>
+            <span class="aff-char-name">Yuffie</span>
+            <div class="aff-bar-wrap"><div class="aff-bar-fill" style="width: 40%; background: #44ff99; box-shadow: 0 0 6px #44ff99;"></div></div>
+          </div>
+          <div class="aff-char-row aff-cait">
+            <div class="aff-char-dot" style="background: #c8a84b; box-shadow: 0 0 6px #c8a84b;"></div>
+            <span class="aff-char-name">Cait Sith</span>
+            <div class="aff-bar-wrap"><div class="aff-bar-fill" style="width: 30%; background: #c8a84b; box-shadow: 0 0 6px #c8a84b;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TARGETING GUIDE -->
+    <div class="reveal">
+      <span class="section-tag">Quick Reference</span>
+      <h2 class="section-title">Who to Pick for Each Ending</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <table class="reveal">
+      <thead>
+        <tr>
+          <th>Target Character</th>
+          <th>Key Chapters for Affinity</th>
+          <th>Critical Choices</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Aerith</td>
+          <td>1, 2, 4, 6</td>
+          <td>Always choose sincere, emotionally open responses. Validate her Cetra nature. Never deflect her personal questions.</td>
+          <td>Default front-runner. Tiebreaker priority 1. Easiest to achieve high affinity naturally.</td>
+        </tr>
+        <tr>
+          <td>Tifa</td>
+          <td>1, 3, 7</td>
+          <td>Reference Nibelheim and the water tower promise. Responses about protecting her specifically score highest.</td>
+          <td>Requires consciously directing Cloud's emotional openness toward Tifa across all chapters.</td>
+        </tr>
+        <tr>
+          <td>Barret</td>
+          <td>2, 5, 9</td>
+          <td>Acknowledge his dedication to Marlene. Respect his sacrifice and mission without being dismissive.</td>
+          <td>Difficult to make him date leader — requires actively ignoring Aerith/Tifa moments throughout.</td>
+        </tr>
+        <tr>
+          <td>Red XIII</td>
+          <td>3, 7, 10</td>
+          <td>Engage philosophically with his questions. Honor Seto. Never shut down his introspective observations.</td>
+          <td>Very hard to make date leader. Requires treating every Red XIII conversation as a primary priority.</td>
+        </tr>
+        <tr>
+          <td>Yuffie</td>
+          <td>4, 8, 11</td>
+          <td>Match her energy. Respond to her boldness with humor or respect rather than reprimand.</td>
+          <td>Limited Yuffie-specific choice windows. Hard date target but fun character arc payoff.</td>
+        </tr>
+        <tr>
+          <td>Cait Sith</td>
+          <td>6, 9, 12</td>
+          <td>Express trust. Don't dismiss him as untrustworthy even when he's evasive.</td>
+          <td>Lowest starting affinity. Essentially impossible to make date leader on a first playthrough focused on other characters.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <footer><p class="footer-text">FF7 REBIRTH — COMPLETE FIELD GUIDE</p></footer>
+</div>
+
+<script src="../js/shared.js"></script>
+<script src="../js/lifestream.js"></script>
+</body>
+</html>

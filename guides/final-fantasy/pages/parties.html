@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Party Setup | FF7 Rebirth Guide</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/lifestream.css" />
+<style>
+.party-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.party-card {
+  background: var(--panel);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.party-card:hover {
+  border-color: var(--party-color, var(--ls));
+  box-shadow: 0 6px 30px rgba(0,0,0,0.4);
+}
+
+.party-card-header {
+  padding: 1.25rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--border2);
+  background: rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.party-card-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--party-color, var(--ls)), transparent);
+}
+
+.party-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--party-color, var(--ls));
+  margin-bottom: 0.2rem;
+  text-shadow: 0 0 20px var(--party-glow, var(--ls-glow));
+}
+
+.party-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: var(--text3);
+  text-transform: uppercase;
+}
+
+.party-body { padding: 1.25rem 1.5rem 1.5rem; }
+
+.member-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border2);
+}
+.member-row:last-of-type { border-bottom: none; margin-bottom: 0.75rem; }
+
+.member-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--member-color, var(--ls));
+  box-shadow: 0 0 8px var(--member-color, var(--ls));
+  flex-shrink: 0;
+}
+.dot-cloud   { --member-color: #88ccff; }
+.dot-barret  { --member-color: #ffcc44; }
+.dot-tifa    { --member-color: #ff9966; }
+.dot-aerith  { --member-color: #ff88aa; }
+.dot-red     { --member-color: #ff7744; }
+.dot-yuffie  { --member-color: #44ff99; }
+.dot-cait    { --member-color: #c8a84b; }
+
+.member-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  color: var(--text);
+  min-width: 80px;
+}
+
+.member-role {
+  font-size: 0.8rem;
+  color: var(--text2);
+  font-style: italic;
+  flex: 1;
+}
+
+.party-why {
+  font-size: 0.88rem;
+  color: var(--text2);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.party-con {
+  font-size: 0.82rem;
+  color: var(--text3);
+  font-style: italic;
+  border-left: 2px solid var(--border);
+  padding-left: 0.75rem;
+}
+.party-con strong { color: var(--text2); }
+
+/* Party accent colors */
+.party-default    { --party-color: #88ccff; --party-glow: rgba(100,180,255,0.2); }
+.party-magic      { --party-color: #cc77ff; --party-glow: rgba(180,80,255,0.2); }
+.party-aggressive { --party-color: #ff9966; --party-glow: rgba(255,140,80,0.2); }
+.party-hard       { --party-color: #ff5566; --party-glow: rgba(255,60,80,0.2); }
+.party-aoe        { --party-color: #44ff99; --party-glow: rgba(0,255,130,0.2); }
+.party-tech       { --party-color: #ffcc44; --party-glow: rgba(255,200,50,0.2); }
+
+/* Limited gear table */
+.gear-section { margin-bottom: 4rem; }
+
+.gear-note {
+  font-size: 0.78rem;
+  color: var(--text3);
+  font-style: italic;
+  margin-top: 0.3rem;
+}
+
+.priority-s { color: #ff5566; font-family: 'Cinzel', serif; font-size: 0.8rem; }
+.priority-a { color: #ffcc44; font-family: 'Cinzel', serif; font-size: 0.8rem; }
+.priority-b { color: #44ff99; font-family: 'Cinzel', serif; font-size: 0.8rem; }
+.priority-c { color: #88aaaa; font-family: 'Cinzel', serif; font-size: 0.8rem; }
+
+.synergy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.synergy-card {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+}
+
+.synergy-pair {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  color: var(--ls);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+
+.synergy-desc {
+  font-size: 0.85rem;
+  color: var(--text2);
+  line-height: 1.55;
+}
+</style>
+</head>
+<body>
+<!-- LIFESTREAM LAYERS — do not move or reorder -->
+<canvas id="ls-deep"></canvas>
+<canvas id="ls-mid"></canvas>
+<canvas id="ls-surface"></canvas>
+<div class="ls-vignette"></div>
+<div class="ls-fog"></div>
+<div class="ls-pulse"></div>
+<div class="page-wrap">
+
+  <nav>
+    <a class="nav-logo" href="../index.html">FF7 REBIRTH GUIDE</a>
+    <ul class="nav-links">
+      <li><a href="characters.html">Characters</a></li>
+      <li><a href="materia.html">Materia</a></li>
+      <li><a href="builds.html">Builds</a></li>
+      <li><a href="parties.html">Party Setup</a></li>
+      <li><a href="bosses.html">Bosses</a></li>
+      <li><a href="queensblood.html">Queen's Blood</a></li>
+      <li><a href="affinity.html">Affinity</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <span class="page-eyebrow">Team Composition</span>
+    <h1 class="page-title ls-glow-white">Party Setup</h1>
+    <div class="page-rule"></div>
+  </div>
+
+  <div class="content">
+
+    <div class="callout reveal">
+      <strong>Party Rules:</strong> Cloud is always in your active party (story lock). You pick the other two. The bench character is not completely inactive — they still receive XP and the inactive character passive ability still works. Always check synergy pairs before locking in your lineup.
+    </div>
+
+    <div class="reveal">
+      <span class="section-tag">Recommended Setups</span>
+      <h2 class="section-title">Party Compositions</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="party-grid">
+
+      <div class="party-card glass-card party-default reveal">
+        <div class="party-card-header">
+          <div class="party-name">Standard Meta</div>
+          <div class="party-subtitle">Best all-around team — works for 90% of content</div>
+        </div>
+        <div class="party-body">
+          <div class="member-row">
+            <div class="member-dot dot-cloud"></div>
+            <span class="member-name">Cloud</span>
+            <span class="member-role">Primary physical DPS, player-controlled</span>
+          </div>
+          <div class="member-row">
+            <div class="member-dot dot-aerith"></div>
+            <span class="member-name">Aerith</span>
+            <span class="member-role">Healer, magic damage, Ward support</span>
+          </div>
+          <div class="member-row">
+            <div class="member-dot dot-barret"></div>
+            <span class="member-name">Barret</span>
+            <span class="member-role">Ranged DPS, tank, Magnify heals</span>
+          </div>
+          <p class="party-why">The safest and most forgiving lineup. Aerith keeps everyone alive, Barret provides consistent ranged damage and can carry Magnify+Cure to free Aerith for offense. Cloud deals physical damage in Punisher Mode.</p>
+          <p class="party-con"><strong>Weakness:</strong> Not the highest ceiling. Doesn't specialize into any one damage type.</p>
+        </div>
+      </div>
+
+      <div class="party-card glass-card party-magic reveal">
+        <div class="party-card-header">
+          <div class="party-name">Magic Nuke</div>
+          <div class="party-subtitle">Peak burst damage for weak-to-magic bosses</div>
+        </div>
+        <div class="party-body">
+          <div class="member-row">
+            <div class="member-dot dot-cloud"></div>
+            <span class="member-name">Cloud</span>
+            <span class="member-role">Hybrid — Elemental weapon for magic-physical</span>
+          </div>
+          <div class="member-row">
+            <div class="member-dot dot-aerith"></div>
+            <span class="member-name">Aerith</span>
+            <span class="member-role">Primary magic DPS through Wards</span>
+          </div>
+          <div class="member-row">
+            <div class="member-dot dot-yuffie"></div>
+            <span class="member-name">Yuffie</span>
+            <span class="member-role">Elemental Ninjutsu, Art of War combo</span>
+          </div>
+          <p class="party-why">Aerith sets Wards, both she and Yuffie cast inside them for massive amplified magic hits. Yuffie's Ninjutsu costs no MP so she's the sustainable damage. Cloud fills with Elemental weapon. Best against bosses with clear elemental weaknesses.</p>
+          <p class="party-con"><strong>Weakness:</strong> Fragile. No dedicated healer. Requires aggression and good dodge timing.</p>
+        </div>
+      </div>
+
+      <div class="party-card glass-card party-aggressive reveal">
+        <div class="party-card-header">
+          <div class="party-name">Burst Physical</div>
+          <div class="party-subtitle">Fastest stagger-to-death window in the game</div>
+        </div>
+        <div class="party-body">
+          <div class="member-row">
+            <div class="member-dot dot-cloud"></div>
+            <span class="member-name">Cloud</span>
+            <span class="member-role">Punisher Mode, stagger anchor</span>
+          </div>
+          <div class="member-row">
+            <div class="member-dot dot-tifa"></div>
+            <span class="member-name">Tifa</span>
+            <span class="member-role">Max Unbridled Strength → unload on stagger</span>
+          </div>
+          <div class="member-row">
+            <div class="member-dot dot-barret"></div>
+            <span class="member-name">Barret</span>
+            <span class="member-role">ATB battery, ranged pressure, backup heals</span>
+          </div>
+          <p class="party-why">Cloud and Tifa together have devastating synergy attacks. Get Tifa's gloves to max charge while Cloud pressures, then both unload during stagger. Barret keeps ATB flowing with Lifeline. Synergy skills between Cloud and Tifa are some of the strongest in the game.</p>
+          <p class="party-con"><strong>Weakness:</strong> Needs Tifa setup time. Vulnerable if stagger is contested or interrupted.</p>
+        </div>
+      </div>
+
+      <div class="party-card glass-card party-hard reveal">
+        <div class="party-card-header">
+          <div class="party-name">Hard Mode Standard</div>
+          <div class="party-subtitle">MP-efficient, survivable, complete toolkit</div>
+        </div>
+        <div class="party-body">
+          <div class="member-row">
+            <div class="member-dot dot-cloud"></div>
+            <span class="member-name">Cloud</span>
+            <span class="member-role">Punisher Mode, self-sustain via block</span>
+          </div>
+          <div class="member-row">
+            <div class="member-dot dot-aerith"></div>
+            <span class="member-name">Aerith</span>
+            <span class="member-role">Planet's Protection, Raise, Ward damage</span>
+          </div>
+          <div class="member-row">
+            <div class="member-dot dot-barret"></div>
+            <span class="member-name">Barret</span>
+            <span class="member-role">Magnify+Cure, HP pool, ranged safety</span>
+          </div>
+          <p class="party-why">On Hard Mode, no items can be used. Aerith's Planet's Protection and Raise are mandatory survival tools. Barret's Magnify+Cure handles party-wide healing. Cloud generates ATB by blocking in Punisher Mode — free ATB to feed the team.</p>
+          <p class="party-con"><strong>Weakness:</strong> Slightly lower DPS ceiling than offensive parties. Takes longer to kill some bosses.</p>
+        </div>
+      </div>
+
+      <div class="party-card glass-card party-aoe reveal">
+        <div class="party-card-header">
+          <div class="party-name">AoE Clear</div>
+          <div class="party-subtitle">Best for trash mobs and multi-enemy encounters</div>
+        </div>
+        <div class="party-body">
+          <div class="member-row">
+            <div class="member-dot dot-cloud"></div>
+            <span class="member-name">Cloud</span>
+            <span class="member-role">Whirling Slash to hit all enemies</span>
+          </div>
+          <div class="member-row">
+            <div class="member-dot dot-aerith"></div>
+            <span class="member-name">Aerith</span>
+            <span class="member-role">Magnify + elemental for group wipes</span>
+          </div>
+          <div class="member-row">
+            <div class="member-dot dot-red"></div>
+            <span class="member-name">Red XIII</span>
+            <span class="member-role">Cosmo Memory Limit, Stardust Ray multi-hit</span>
+          </div>
+          <p class="party-why">Magnify+elemental on Aerith nukes every enemy on screen. Cloud's wide slashes hit multiple targets. Red XIII's Cosmo Memory Limit hits all enemies and is free. Best party for grinding mobs and multi-enemy boss phases.</p>
+          <p class="party-con"><strong>Weakness:</strong> Loses single-target efficiency against solo bosses.</p>
+        </div>
+      </div>
+
+      <div class="party-card glass-card party-tech reveal">
+        <div class="party-card-header">
+          <div class="party-name">ATB Engine</div>
+          <div class="party-subtitle">Maximum ATB generation for ability spam</div>
+        </div>
+        <div class="party-body">
+          <div class="member-row">
+            <div class="member-dot dot-cloud"></div>
+            <span class="member-name">Cloud</span>
+            <span class="member-role">Precision Defense Focus — ATB from blocks</span>
+          </div>
+          <div class="member-row">
+            <div class="member-dot dot-barret"></div>
+            <span class="member-name">Barret</span>
+            <span class="member-role">Lifeline — ATB when allies take damage</span>
+          </div>
+          <div class="member-row">
+            <div class="member-dot dot-cait"></div>
+            <span class="member-name">Cait Sith</span>
+            <span class="member-role">Fastest baseline ATB gen in the game</span>
+          </div>
+          <p class="party-why">This party generates ATB so fast you can spam abilities constantly. Cloud generates from blocks, Barret from taking hits, Cait from his passive. Toy Soldiers provides free passive DPS while you control other members.</p>
+          <p class="party-con"><strong>Weakness:</strong> Lower peak damage. Best as a support/defensive strategy, not a pure DPS race.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SYNERGY PAIRS -->
+    <div class="reveal">
+      <span class="section-tag">Combat Synergies</span>
+      <h2 class="section-title">Synergy Skills & Abilities</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>How Synergy Works:</strong> When two eligible characters are in the same party, they can activate Synergy Skills and Synergy Abilities. Synergy Skills trigger automatically during regular ATB command combos — no additional input needed. Synergy Abilities are ATB actions that require both characters to act simultaneously. Both deal <strong>no ATB cost</strong> from the triggering character.
+    </div>
+
+    <div class="synergy-grid reveal">
+      <div class="synergy-card">
+        <div class="synergy-pair">Cloud + Tifa</div>
+        <div class="synergy-desc">Dual Strike: combined physical attack that deals heavy damage and builds stagger. One of the strongest synergy combos — a primary reason to run Cloud/Tifa together.</div>
+      </div>
+      <div class="synergy-card">
+        <div class="synergy-pair">Cloud + Aerith</div>
+        <div class="synergy-desc">Arcane Ward: Aerith empowers Cloud's attacks with magical energy. Doubles ATB generation when Cloud attacks from inside a Ward. Essential for Ward-based builds.</div>
+      </div>
+      <div class="synergy-card">
+        <div class="synergy-pair">Cloud + Barret</div>
+        <div class="synergy-desc">Steelskin / Focused Shot combo: Barret boosts Cloud's defense while laying down ranged fire. Good for tanking dangerous phases while maintaining pressure.</div>
+      </div>
+      <div class="synergy-card">
+        <div class="synergy-pair">Tifa + Aerith</div>
+        <div class="synergy-desc">Fleeting Familiar: conjures a spectral companion that mirrors Tifa's attacks. Effectively doubles Tifa's hit count during combo windows — dramatic damage increase.</div>
+      </div>
+      <div class="synergy-card">
+        <div class="synergy-pair">Barret + Tifa</div>
+        <div class="synergy-desc">Overrun: Barret launches Tifa toward a target for a massive aerial slam. Good for aerial enemies and launching stagger combos. Generates pressure state on most enemies.</div>
+      </div>
+      <div class="synergy-card">
+        <div class="synergy-pair">Yuffie + Cloud</div>
+        <div class="synergy-desc">Windstorm follow-up: when Cloud knocks enemies airborne, Yuffie's aerial ninjutsu deals bonus damage. Excellent for airborne combat phases.</div>
+      </div>
+      <div class="synergy-card">
+        <div class="synergy-pair">Red XIII + Aerith</div>
+        <div class="synergy-desc">Cosmo Memory Ward: Aerith's Ward amplifies Red XIII's Vengeance Mode attacks. Best way to maximize Red XIII's burst — stack Vengeance inside an Aerith Ward.</div>
+      </div>
+      <div class="synergy-card">
+        <div class="synergy-pair">Cait Sith + Any</div>
+        <div class="synergy-desc">Cait's Toy Soldiers will automatically support any partner's attack patterns. Less specific synergy, but Cait's Fortune Telling provides party-wide stat buffs that benefit all pairs.</div>
+      </div>
+    </div>
+
+    <!-- LIMITED GEAR TABLE -->
+    <div class="gear-section reveal">
+      <span class="section-tag">Limited Copies</span>
+      <h2 class="section-title">Who Gets the Limited Gear</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>Limited Materia:</strong> Some materia only has 1 copy in the game and cannot be duplicated until very late. Assign these wisely. The list below reflects single-run priority — if you're doing a second playthrough, you can spread these more freely.
+    </div>
+
+    <table class="reveal">
+      <thead>
+        <tr>
+          <th>Materia / Item</th>
+          <th>Best Recipient</th>
+          <th>Priority</th>
+          <th>Reasoning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ATB Boost</td>
+          <td>Cloud or Aerith</td>
+          <td><span class="priority-s">S</span></td>
+          <td>Cloud for stagger windows. Aerith for emergency Planet's Protection on Hard Mode. Second copy goes to Tifa for burst extension.</td>
+        </tr>
+        <tr>
+          <td>Magnify</td>
+          <td>Barret</td>
+          <td><span class="priority-s">S</span></td>
+          <td>Barret + Magnify + Cure is the best passive healing setup in the game. Frees Aerith entirely for damage and utility.</td>
+        </tr>
+        <tr>
+          <td>Elemental (Weapon)</td>
+          <td>Cloud or Yuffie</td>
+          <td><span class="priority-s">S</span></td>
+          <td>On weapon, adds chosen element to all physical attacks. Cloud for consistent physical/magic hybrid. Yuffie if she's your DPS primary.</td>
+        </tr>
+        <tr>
+          <td>Elemental (Armor)</td>
+          <td>Aerith</td>
+          <td><span class="priority-a">A</span></td>
+          <td>On armor, halves/nullifies chosen element. Aerith is the most likely to be targeted by elemental attacks. Protects your healer.</td>
+        </tr>
+        <tr>
+          <td>Warding</td>
+          <td>Aerith</td>
+          <td><span class="priority-a">A</span></td>
+          <td>Paired with Subversion on armor, halves MP cost of status spells. Essential on Hard Mode where MP is the primary constraint.</td>
+        </tr>
+        <tr>
+          <td>MP Absorb</td>
+          <td>Aerith</td>
+          <td><span class="priority-b">B</span></td>
+          <td>Restore MP when dealing damage with paired materia. Pairs with Fire/Ice/Lightning for passive MP recovery. Hard Mode lifeline.</td>
+        </tr>
+        <tr>
+          <td>HP Absorb</td>
+          <td>Cloud or Tifa</td>
+          <td><span class="priority-b">B</span></td>
+          <td>Self-sustain for your main attacker. Cloud in Punisher Mode — generates ATB and heals simultaneously.</td>
+        </tr>
+        <tr>
+          <td>Synergy (rare)</td>
+          <td>Your primary pair</td>
+          <td><span class="priority-b">B</span></td>
+          <td>Give to the character you control most. Synergy activates from the controlled character's actions — more actions = more synergy.</td>
+        </tr>
+        <tr>
+          <td>Gotterdammerung (accessory)</td>
+          <td>Tifa</td>
+          <td><span class="priority-a">A</span></td>
+          <td>Starts battle with full Limit Gauge. Tifa's Final Heaven or Cloud's Omnislash are both excellent, but Tifa deals more raw physical damage per Limit during stagger.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <footer><p class="footer-text">FF7 REBIRTH — COMPLETE FIELD GUIDE</p></footer>
+</div>
+
+<script src="../js/shared.js"></script>
+<script src="../js/lifestream.js"></script>
+</body>
+</html>

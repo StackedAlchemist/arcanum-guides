@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Production Ratios | FICSIT Field Manual</title>
+<meta name="description" content="Clean Satisfactory production ratios for every core line: smelting, plates, rods, wire, cable, screws, steel, reinforced plates, rotors, stators, modular frames, and circuit boards. Plus manifold vs. balancer and clock-speed math.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">FICSIT <span>Field Manual</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+    <nav class="nav">
+      <a href="../../../index.html" style="color:var(--ficsit);">&#9879; The Arcanum</a>
+      <a href="../index.html">Home</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="ratios.html">Ratios</a>
+      <a href="power.html">Power</a>
+      <a href="logistics.html">Logistics</a>
+      <a href="game-modes.html">Game Modes 1.2</a>
+      <a href="tips.html">Tips &amp; Secrets</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">The Math</span>
+    <h1>Production Ratios</h1>
+    <p class="lede">Every rate below is items-per-minute at <strong>100% clock speed</strong>. Build machines in these whole-number groups and your belts saturate exactly &mdash; no starved assemblers, no backed-up smelters. Scale a whole block by multiplying every count by the same number.</p>
+  </div>
+</section>
+
+<main class="wrap section">
+
+  <div class="phasebar">
+    <a href="#smelting">Smelting</a>
+    <a href="#basics">Basic Parts</a>
+    <a href="#steel">Steel</a>
+    <a href="#assembled">Assembled Parts</a>
+    <a href="#project">Project Parts</a>
+    <a href="#oil">Oil Basics</a>
+    <a href="#concepts">Manifold &amp; Clocks</a>
+  </div>
+
+  <div class="callout tip">
+    <span class="label">How to use this page</span>
+    <p style="margin-bottom:0;">Find your target part, read the recipe, and read the <em>building count for a clean belt</em>. "Clean belt" means a whole number of machines whose total output lands on a real belt tier (60 / 120 / 270 / 480 / 780 / 1200&nbsp;per&nbsp;min). Type in the search box to jump to a recipe.</p>
+  </div>
+
+  <input type="text" class="searchbar" data-search data-target=".ratio-row" placeholder="Search recipes &mdash; iron plate, rotor, cable, steel beam...">
+  <p class="search-note"><span data-search-count></span></p>
+
+  <h2 id="smelting">Smelting &amp; refining ore</h2>
+  <table>
+    <thead>
+      <tr><th>Output</th><th>Building</th><th>Recipe (per min @ 100%)</th><th>Clean group</th><th>Tier</th></tr>
+    </thead>
+    <tbody>
+      <tr class="ratio-row"><td><strong>Iron Ingot</strong></td><td>Smelter</td><td><span class="flow">30 Iron Ore &rarr; 30 Ingot</span></td><td>2 Smelters = 60/min (1 full Mk.1 belt)</td><td><span class="tier tier-S">S</span></td></tr>
+      <tr class="ratio-row"><td><strong>Copper Ingot</strong></td><td>Smelter</td><td><span class="flow">30 Copper Ore &rarr; 30 Ingot</span></td><td>2 Smelters = 60/min</td><td><span class="tier tier-S">S</span></td></tr>
+      <tr class="ratio-row"><td><strong>Caterium Ingot</strong></td><td>Smelter</td><td><span class="flow">45 Caterium Ore &rarr; 15 Ingot</span></td><td>3:1 ore-to-ingot &mdash; feed 1.5 ore belts per smelter</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="ratio-row"><td><strong>Steel Ingot</strong></td><td>Foundry</td><td><span class="flow">45 Iron Ore + 45 Coal &rarr; 45 Steel</span></td><td>4 Foundries = 180 Steel (clean off a Mk.2 belt)</td><td><span class="tier tier-S">S</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="basics">Basic parts (Constructor)</h2>
+  <table>
+    <thead>
+      <tr><th>Output</th><th>Recipe (per min @ 100%)</th><th>Clean group</th><th>Tier</th></tr>
+    </thead>
+    <tbody>
+      <tr class="ratio-row"><td><strong>Iron Plate</strong></td><td><span class="flow">30 Iron Ingot &rarr; 20 Plate</span></td><td>3 Constructors = 60 Plate from 90 Ingot</td><td><span class="tier tier-S">S</span></td></tr>
+      <tr class="ratio-row"><td><strong>Iron Rod</strong></td><td><span class="flow">15 Iron Ingot &rarr; 15 Rod</span></td><td>4 Constructors = 60 Rod</td><td><span class="tier tier-S">S</span></td></tr>
+      <tr class="ratio-row"><td><strong>Screw</strong></td><td><span class="flow">10 Iron Rod &rarr; 40 Screw</span></td><td>Screws eat rods fast &mdash; 1 rod constructor feeds ~1.5 screw constructors</td><td><span class="tier tier-B">B</span></td></tr>
+      <tr class="ratio-row"><td><strong>Wire</strong></td><td><span class="flow">15 Copper Ingot &rarr; 30 Wire</span></td><td>2 Constructors = 60 Wire</td><td><span class="tier tier-S">S</span></td></tr>
+      <tr class="ratio-row"><td><strong>Cable</strong></td><td><span class="flow">60 Wire &rarr; 30 Cable</span></td><td>2:1 &mdash; 1 cable constructor per 2 wire constructors</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="ratio-row"><td><strong>Copper Sheet</strong></td><td><span class="flow">20 Copper Ingot &rarr; 10 Sheet</span></td><td>3 Constructors = 30 Sheet</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="ratio-row"><td><strong>Concrete</strong></td><td><span class="flow">45 Limestone &rarr; 15 Concrete</span></td><td>4 Constructors = 60 Concrete (3:1 from limestone)</td><td><span class="tier tier-S">S</span></td></tr>
+      <tr class="ratio-row"><td><strong>Quickwire</strong></td><td><span class="flow">15 Caterium Ingot &rarr; 60 Quickwire</span></td><td>1 Constructor already fills a Mk.1 belt</td><td><span class="tier tier-A">A</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="steel">Steel parts (Constructor)</h2>
+  <table>
+    <thead>
+      <tr><th>Output</th><th>Recipe (per min @ 100%)</th><th>Clean group</th><th>Tier</th></tr>
+    </thead>
+    <tbody>
+      <tr class="ratio-row"><td><strong>Steel Beam</strong></td><td><span class="flow">60 Steel Ingot &rarr; 15 Beam</span></td><td>4:1 &mdash; 4 Constructors = 60 Beam from 240 Ingot</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="ratio-row"><td><strong>Steel Pipe</strong></td><td><span class="flow">30 Steel Ingot &rarr; 20 Pipe</span></td><td>3 Constructors = 60 Pipe</td><td><span class="tier tier-A">A</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="assembled">Assembled parts (Assembler)</h2>
+  <table>
+    <thead>
+      <tr><th>Output</th><th>Recipe (per min @ 100%)</th><th>Feeder note</th><th>Tier</th></tr>
+    </thead>
+    <tbody>
+      <tr class="ratio-row"><td><strong>Reinforced Iron Plate</strong></td><td><span class="flow">30 Iron Plate + 60 Screw &rarr; 5 RIP</span></td><td>The classic bottleneck. 4 Assemblers = 20 RIP, fed by 6 plate + 8 screw constructors.</td><td><span class="tier tier-S">S</span></td></tr>
+      <tr class="ratio-row"><td><strong>Rotor</strong></td><td><span class="flow">20 Iron Rod + 100 Screw &rarr; 4 Rotor</span></td><td>Screw-hungry. Consider the <em>Cast Screw</em> / <em>Steel Rotor</em> alternates to cut the screw load.</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="ratio-row"><td><strong>Stator</strong></td><td><span class="flow">15 Steel Pipe + 40 Wire &rarr; 5 Stator</span></td><td>Pairs with pipes &mdash; build stators next to your steel block.</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="ratio-row"><td><strong>Modular Frame</strong></td><td><span class="flow">3 RIP + 12 Iron Rod &rarr; 2 Frame</span></td><td>Slow recipe; build a wide row. 2 Assemblers = 4 Frame/min.</td><td><span class="tier tier-S">S</span></td></tr>
+      <tr class="ratio-row"><td><strong>Circuit Board</strong></td><td><span class="flow">15 Copper Sheet + 30 Plastic &rarr; 7.5 Board</span></td><td>Gateway to computers. Feed from a dedicated sheet + plastic line.</td><td><span class="tier tier-S">S</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="project">Project Assembly / Space Elevator parts</h2>
+  <table>
+    <thead>
+      <tr><th>Output</th><th>Recipe (per min @ 100%)</th><th>Note</th><th>Tier</th></tr>
+    </thead>
+    <tbody>
+      <tr class="ratio-row"><td><strong>Smart Plating</strong></td><td><span class="flow">2 RIP + 2 Rotor &rarr; 2 Plating</span></td><td>Phase 1. Build a small dedicated RIP + Rotor feed; don't steal from your main line.</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="ratio-row"><td><strong>Versatile Framework</strong></td><td><span class="flow">2.5 Modular Frame + 30 Steel Beam &rarr; 5 Framework</span></td><td>Phase 2. The fractional frame count is why you build frames in even rows.</td><td><span class="tier tier-A">A</span></td></tr>
+      <tr class="ratio-row"><td><strong>Automated Wiring</strong></td><td><span class="flow">2.5 Stator + 50 Cable &rarr; 5 Wiring</span></td><td>Phase 2. Cable-heavy &mdash; back it with a 2:1 wire-to-cable block.</td><td><span class="tier tier-A">A</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="oil">Oil basics (Refinery)</h2>
+  <p>Oil is where byproduct management starts to matter. The base Plastic recipe leaves Heavy Oil Residue behind &mdash; if you don't consume or sink it, the refinery backs up and stops.</p>
+  <table>
+    <thead>
+      <tr><th>Output</th><th>Recipe (per min @ 100%)</th><th>Byproduct &amp; fix</th></tr>
+    </thead>
+    <tbody>
+      <tr class="ratio-row"><td><strong>Plastic</strong></td><td><span class="flow">30 Crude Oil &rarr; 20 Plastic + 10 Heavy Oil Residue</span></td><td>Pipe the 10 HOR into a <em>Residual Fuel</em> or <em>Residual Rubber</em> refinery, or sink it. Never leave it uncapped.</td></tr>
+      <tr class="ratio-row"><td><strong>Rubber</strong></td><td><span class="flow">30 Crude Oil &rarr; 20 Rubber + 20 Heavy Oil Residue</span></td><td>Even more HOR per unit &mdash; pair Rubber lines with a Residual Fuel burner.</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <span class="label">The clean oil loop</span>
+    <p style="margin-bottom:0;">A tidy pattern: run Plastic + Rubber, route all Heavy Oil Residue into <em>Residual Fuel</em>, then burn that Fuel in generators for free power. One crude node can supply plastics, rubber, <em>and</em> a power block if you balance the residue. See <a href="power.html">Power</a> for the fuel-generator math.</p>
+  </div>
+
+  <h2 id="concepts">Manifolds, balancers &amp; clock speed</h2>
+
+  <div class="grid grid-2">
+    <div class="panel">
+      <h3>Manifold (recommended)</h3>
+      <p>Run one belt <em>past</em> a row of machines, tapping each with a splitter in a line. Inputs auto-balance once buffers fill.</p>
+      <ul class="belt">
+        <li><strong>Pro:</strong> trivial to build and extend, no math on the belt itself.</li>
+        <li><strong>Con:</strong> machines fill left-to-right at first &mdash; give it a few minutes to reach steady state.</li>
+        <li><strong>Use for:</strong> almost everything. This is the default modern build style.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Load balancer</h3>
+      <p>Use splitters/mergers to split a belt into exactly equal shares so every machine gets identical input instantly.</p>
+      <ul class="belt">
+        <li><strong>Pro:</strong> instant even saturation, no warm-up.</li>
+        <li><strong>Con:</strong> fiddly; awkward counts (3, 7) need smart splitters or manifold anyway.</li>
+        <li><strong>Use for:</strong> the rare case where warm-up time genuinely matters.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Clock speed &amp; overclocking</h3>
+  <ul class="belt">
+    <li>Output scales <strong>linearly</strong> with clock speed: 150% clock = 150% output.</li>
+    <li>Power cost scales <strong>exponentially</strong> (exponent ~1.321). A machine at 250% draws far more than 2.5&times; the power.</li>
+    <li><strong>Underclocking</strong> is the hidden gem: running a machine at 50% costs much less than half the power. Underclock for power-tight builds (and especially under the 1.2 <a href="game-modes.html">Power Consumption multiplier</a>).</li>
+    <li>Overclock with <strong>Power Shards</strong> (max 250%). Reserve them for miners on Pure nodes and single-machine bottlenecks where you can't fit more buildings.</li>
+  </ul>
+
+  <div class="callout tip">
+    <span class="label">Belt tiers to memorize</span>
+    <p style="margin-bottom:0;"><span class="mono">Mk.1 = 60</span> &middot; <span class="mono">Mk.2 = 120</span> &middot; <span class="mono">Mk.3 = 270</span> &middot; <span class="mono">Mk.4 = 480</span> &middot; <span class="mono">Mk.5 = 780</span> &middot; <span class="mono">Mk.6 = 1200</span> items/min. Build machine groups whose total output lands <em>on</em> one of these and a single belt carries the whole block.</p>
+  </div>
+
+  <div class="divider"></div>
+  <p><a href="../index.html">&larr; Back to the Field Manual</a></p>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="colophon">
+      <h4>The FICSIT Field Manual</h4>
+      <p>A fan-made engineering guide for <strong>Satisfactory</strong> by Coffee Stain Studios. Recipe rates are base values at 100% clock speed, accurate to Update 1.2 (June 2026). Unaffiliated with the developer or publisher.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" aria-label="Back to top">&uarr; Top</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
