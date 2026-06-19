@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Final Fantasy Tactics: The Ivalice Chronicles — Field Guide | The Arcanum</title>
+<meta name="description" content="A complete Final Fantasy Tactics: The Ivalice Chronicles (Enhanced v1.5.0) field guide: combat fundamentals, the CT/Speed turn system, stats, Zodiac Compatibility, the Job system, ability slots, the job tree, standout jobs, build archetypes, and Enhanced-version features." />
+<meta property="og:title" content="Final Fantasy Tactics: The Ivalice Chronicles — The Arcanum" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070b16; --bg2:#0f1628;
+    --panel:rgba(16,22,40,0.85);
+    --gold:#d8b65a; --gold2:#f0d98a; --glow:rgba(216,182,90,0.20);
+    --crimson:#c05068; --crimson2:#e08698;
+    --steel:#7c9cd0;
+    --line:rgba(216,182,90,0.20); --line2:rgba(216,182,90,0.08);
+    --text:#e9e3d4; --text2:#a9a487; --text3:#6a6750;
+    --display:'Cinzel', Georgia, serif;
+    --body:'EB Garamond', Georgia, serif;
+    --maxw:1000px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      linear-gradient(rgba(7,11,22,0.97), rgba(7,11,22,0.97)),
+      repeating-linear-gradient(0deg, transparent, transparent 46px, rgba(124,156,208,0.05) 46px, rgba(124,156,208,0.05) 47px),
+      repeating-linear-gradient(90deg, transparent, transparent 46px, rgba(124,156,208,0.05) 46px, rgba(124,156,208,0.05) 47px),
+      radial-gradient(60% 50% at 50% -6%, rgba(192,80,104,0.10), transparent 60%),
+      var(--bg);
+    color:var(--text); font-family:var(--body); font-size:19px; line-height:1.7;
+    min-height:100vh; overflow-x:hidden;
+  }
+  a{color:var(--gold); text-decoration:none;}
+  #motes{position:fixed; inset:0; z-index:0; pointer-events:none;}
+  .page{position:relative; z-index:1;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 1.6rem;}
+  body::after{content:""; position:fixed; inset:0; z-index:0; pointer-events:none; background:radial-gradient(120% 100% at 50% 45%, transparent 55%, rgba(0,0,0,0.6));}
+
+  .topbar{position:sticky; top:0; z-index:50; background:linear-gradient(180deg, rgba(7,11,22,0.96), rgba(7,11,22,0.74)); backdrop-filter:blur(10px); border-bottom:1px solid var(--line2);}
+  .topbar-inner{max-width:var(--maxw); margin:0 auto; padding:0.8rem 1.6rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;}
+  .brand{font-family:var(--display); font-weight:700; letter-spacing:0.08em; color:var(--gold2); font-size:1rem;}
+  .topbar .links{display:flex; gap:0.6rem;}
+  .topbar a.back{font-family:var(--display); font-size:0.78rem; letter-spacing:0.05em; color:var(--text2); border:1px solid var(--line); padding:0.35rem 0.8rem; border-radius:3px; transition:0.2s;}
+  .topbar a.back:hover{color:var(--gold2); border-color:var(--gold);}
+
+  .hero{text-align:center; padding:4.2rem 1.6rem 2rem; position:relative;}
+  .hero .crest{font-size:2.4rem; color:var(--gold); text-shadow:0 0 26px var(--glow); display:block; margin-bottom:0.6rem;}
+  .hero .eyebrow{display:block; font-family:var(--display); letter-spacing:0.26em; text-transform:uppercase; font-size:0.68rem; color:var(--crimson2); margin-bottom:0.5rem;}
+  .hero h1{font-family:var(--display); font-weight:900; font-size:clamp(1.7rem,4.6vw,2.9rem); line-height:1.1;
+    background:linear-gradient(100deg, var(--gold2) 25%, #fff 50%, var(--gold) 80%); background-size:200% 100%;
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:sheen 11s ease-in-out infinite;}
+  .hero .sub{font-family:var(--display); font-size:0.9rem; letter-spacing:0.12em; color:var(--steel); margin-top:0.3rem;}
+  .hero .lede{max-width:700px; margin:1rem auto 0; color:var(--text2); font-size:1.08rem;}
+  @keyframes sheen{0%,100%{background-position:0% 50%} 50%{background-position:100% 50%}}
+
+  .jump{position:sticky; top:53px; z-index:40; background:rgba(7,11,22,0.93); backdrop-filter:blur(8px); border-top:1px solid var(--line2); border-bottom:1px solid var(--line2);}
+  .jump-inner{max-width:var(--maxw); margin:0 auto; padding:0.5rem 1.6rem; display:flex; gap:0.3rem; overflow-x:auto; scrollbar-width:none;}
+  .jump-inner::-webkit-scrollbar{display:none;}
+  .jump a{flex:0 0 auto; font-family:var(--display); font-size:0.74rem; letter-spacing:0.03em; color:var(--text2); padding:0.35rem 0.65rem; border-radius:3px; white-space:nowrap; transition:0.2s;}
+  .jump a:hover, .jump a.active{color:var(--gold2); background:rgba(216,182,90,0.08);}
+
+  main{padding:2.8rem 0 5rem;}
+  section{margin-bottom:3.4rem; scroll-margin-top:112px;}
+  .s-tag{font-family:var(--display); letter-spacing:0.16em; text-transform:uppercase; font-size:0.64rem; color:var(--crimson2); display:block; margin-bottom:0.35rem;}
+  .s-title{font-family:var(--display); font-weight:700; font-size:clamp(1.4rem,3vw,2.1rem); color:#fff; letter-spacing:0.01em;}
+  .s-rule{height:1px; width:90px; margin:0.9rem 0 1.6rem; background:linear-gradient(90deg, var(--gold), var(--crimson), transparent);}
+  p{margin-bottom:1rem; color:var(--text2);}
+  p strong, li strong{color:var(--gold2);}
+  em{color:var(--crimson2); font-style:italic;}
+
+  ul.list{list-style:none; margin:1rem 0;}
+  ul.list li{position:relative; padding-left:1.3rem; margin-bottom:0.5rem; color:var(--text2);}
+  ul.list li::before{content:"\2756"; position:absolute; left:0; top:0.1rem; color:var(--gold); font-size:0.7rem;}
+  h3.sub{font-family:var(--display); font-weight:600; color:#fff; font-size:1.05rem; margin:1.5rem 0 0.4rem;}
+
+  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:6px; margin:1.3rem 0;}
+  table{width:100%; border-collapse:collapse; font-size:0.94rem;}
+  th{font-family:var(--display); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold2); text-align:left; padding:0.7rem 1rem; background:rgba(216,182,90,0.05); border-bottom:1px solid var(--line);}
+  td{padding:0.7rem 1rem; border-bottom:1px solid var(--line2); color:var(--text2); vertical-align:top;}
+  td:first-child{color:var(--text); font-weight:600;}
+  tr:hover td{background:rgba(216,182,90,0.03);}
+
+  .callout{background:rgba(216,182,90,0.05); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:4px; padding:1.1rem 1.4rem; margin:1.4rem 0; color:var(--text2); font-size:0.97rem;}
+  .callout strong{color:var(--gold2);}
+  .newbox{background:rgba(124,156,208,0.07); border:1px solid rgba(124,156,208,0.28); border-left:3px solid var(--steel); border-radius:4px; padding:1.1rem 1.4rem; margin:1.4rem 0; color:var(--text2);}
+  .newbox .label{font-family:var(--display); font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--steel); display:block; margin-bottom:0.4rem;}
+
+  ol.steps{margin:1.2rem 0; padding-left:0; list-style:none; counter-reset:step;}
+  ol.steps li{position:relative; padding:0 0 0 2.6rem; margin-bottom:0.8rem; counter-increment:step; color:var(--text2);}
+  ol.steps li::before{content:counter(step); position:absolute; left:0; top:0; width:1.8rem; height:1.8rem; display:grid; place-items:center; font-family:var(--display); font-weight:700; color:var(--gold2); border:1px solid var(--line); border-radius:50%; font-size:0.82rem;}
+
+  footer{border-top:1px solid var(--line2); padding:2.2rem 1.6rem; text-align:center;}
+  footer p{font-family:var(--display); font-size:0.7rem; letter-spacing:0.06em; color:var(--text3); margin:0.3rem 0;}
+  footer a{color:var(--text2);} footer a:hover{color:var(--gold2);}
+
+  .totop{position:fixed; right:18px; bottom:18px; z-index:60; background:var(--gold); color:#1a1405; border:none; font-family:var(--display); font-weight:700; font-size:0.8rem; padding:0.5rem 0.8rem; border-radius:3px; cursor:pointer; opacity:0; pointer-events:none; transition:opacity 0.2s;}
+  .totop.show{opacity:0.9; pointer-events:auto;}
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity 0.55s ease, transform 0.55s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important;} .reveal{opacity:1; transform:none;}}
+</style>
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="brand">FF Tactics &middot; Ivalice Chronicles</span>
+      <div class="links">
+        <a class="back" href="../final-fantasy/index.html">&#10022; All FF</a>
+        <a class="back" href="../../index.html">&#9879; Arcanum</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <span class="crest" aria-hidden="true">&#9876;</span>
+    <span class="eyebrow">The Arcanum &middot; Complete Field Guide</span>
+    <h1>Final Fantasy Tactics</h1>
+    <div class="sub">The Ivalice Chronicles</div>
+    <p class="lede">A tactical RPG of grid-based, turn-order combat in war-torn Ivalice. Your power comes from the Job system: units earn JP, unlock jobs along a tree, and carry abilities across classes. The depth is in cross-class ability combos. Built for the Enhanced version (v1.5.0) with New Game+ and the Zodiac Compatibility viewer. Spoiler-light on story.</p>
+  </section>
+
+  <nav class="jump" aria-label="Sections">
+    <div class="jump-inner">
+      <a href="#combat">Combat</a>
+      <a href="#turns">Turn System</a>
+      <a href="#stats">Stats</a>
+      <a href="#zodiac">Zodiac</a>
+      <a href="#jobs">Job System</a>
+      <a href="#slots">Ability Slots</a>
+      <a href="#tree">Job Tree</a>
+      <a href="#standout">Standout Jobs</a>
+      <a href="#builds">Archetypes</a>
+      <a href="#special">Special Units</a>
+      <a href="#enhanced">Enhanced v1.5.0</a>
+      <a href="#strategy">Strategy</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <section id="combat" class="reveal">
+      <span class="s-tag">01 &middot; The Grid</span><h2 class="s-title">Combat fundamentals</h2><div class="s-rule"></div>
+      <p>Battles play out on a 3D grid with height. Units act in an order set by Speed; on a turn you typically <strong>Move</strong> and take one <strong>Action</strong> (attack, ability, or item), in either order.</p>
+      <ul class="list">
+        <li><strong>Height and facing.</strong> Higher ground boosts physical hit and damage and extends some ranges. Hitting from the <em>side or back</em> raises hit chance and crit; being hit from behind is dangerous. Position constantly.</li>
+        <li><strong>Charge times.</strong> Many spells and ranged abilities have a cast delay (see CT), so they land on a later tick. Lead the target.</li>
+        <li><strong>Turn order is a resource.</strong> Faster units act more often. Slowing the enemy or speeding yourself is as strong as raw damage.</li>
+        <li><strong>Permadeath rule.</strong> A downed unit becomes a Crystal/Treasure after a countdown; if it expires, the unit is gone for good (generics). Revive or retreat before the count runs out.</li>
+      </ul>
+    </section>
+
+    <section id="turns" class="reveal">
+      <span class="s-tag">02 &middot; The Clock</span><h2 class="s-title">The turn system (CT &amp; Speed)</h2><div class="s-rule"></div>
+      <ul class="list">
+        <li>Every tick, each unit's <strong>CT (Charge Time)</strong> rises by its Speed. At CT 100 the unit acts, then CT resets.</li>
+        <li>Higher <strong>Speed</strong> = more frequent turns. This is why Speed is the most valuable stat in the game.</li>
+        <li><strong>Spells and charged abilities</strong> have their own cast CT: select target, the ability charges, and it resolves on a future tick. Fast units can move, get hit, or die before a slow spell lands &mdash; account for the delay and for enemies leaving an AoE.</li>
+      </ul>
+      <div class="callout">Because turn frequency compounds, small Speed advantages snowball over a long battle. Builds that stack Speed (or haste themselves) act dramatically more often than the enemy.</div>
+    </section>
+
+    <section id="stats" class="reveal">
+      <span class="s-tag">03 &middot; The Numbers</span><h2 class="s-title">Stats explained</h2><div class="s-rule"></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Stat</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td>HP / MP</td><td>Health and magic pool.</td></tr>
+          <tr><td>Speed</td><td>How fast CT fills = turn frequency. The premium stat.</td></tr>
+          <tr><td>PA (Physical Attack)</td><td>Scales physical/weapon damage.</td></tr>
+          <tr><td>MA (Magick Attack)</td><td>Scales spell and magickal-ability damage.</td></tr>
+          <tr><td>Bravery</td><td>Affects some physical abilities/reaction triggers; very high/low Bravery has side effects.</td></tr>
+          <tr><td>Faith</td><td>Scales magick (yours and damage taken from magick). High Faith = stronger but more vulnerable; very low Faith resists magick but can't cast well.</td></tr>
+          <tr><td>Move / Jump</td><td>Tiles you can move and vertical height you can clear.</td></tr>
+        </tbody>
+      </table></div>
+      <p>Two big build levers: <strong>Faith</strong> governs the whole magick economy (a low-Faith unit is a poor caster but a magick-resistant tank), and <strong>Bravery</strong> interacts with physical reaction abilities and a few class mechanics.</p>
+    </section>
+
+    <section id="zodiac" class="reveal">
+      <span class="s-tag">04 &middot; The Stars</span><h2 class="s-title">Zodiac Compatibility</h2><div class="s-rule"></div>
+      <p>Each unit has a zodiac sign, and a hidden compatibility multiplier between attacker and target modifies damage, healing, and accuracy. In the Enhanced version you can now <strong>view a unit's sign and compatibility directly from the status screen</strong> (a v1.5.0 addition), so you no longer have to guess.</p>
+      <ul class="list">
+        <li><strong>Good compatibility</strong> boosts damage/recovery/accuracy (to ~125% in the favorable cases shown in-game).</li>
+        <li><strong>Bad compatibility</strong> reduces it (to ~75%).</li>
+        <li><strong>Special compatibility</strong> (e.g. certain opposite-sign pairings) can swing dramatically high (~150%) or low; non-human units shift the modifier too.</li>
+      </ul>
+      <div class="callout">Pair healers and buffers with allies they're compatible with, and aim your hardest hitters at enemies they match well against. It's a quiet multiplier that adds up across a battle.</div>
+    </section>
+
+    <section id="jobs" class="reveal">
+      <span class="s-tag">05 &middot; The Heart</span><h2 class="s-title">The Job system</h2><div class="s-rule"></div>
+      <p>Units belong to a <strong>Job (class)</strong>, earn <strong>JP (Job Points)</strong> by acting, and spend JP to learn that job's abilities. Mastering jobs and meeting prerequisites unlocks new jobs along a branching tree.</p>
+      <ul class="list">
+        <li>Each job has its own level (driven by JP) and its own ability list.</li>
+        <li>Advanced jobs require levels in prerequisite jobs (climb from Squire/Chemist into combat and mage lines, then into elite hybrids).</li>
+        <li>A unit's <strong>stat growth</strong> depends on the job it levels up in &mdash; so the class you grind matters for the final build, not just the abilities you learn.</li>
+      </ul>
+    </section>
+
+    <section id="slots" class="reveal">
+      <span class="s-tag">06 &middot; The Real Build</span><h2 class="s-title">Ability slots</h2><div class="s-rule"></div>
+      <p>This is the actual build system and where the depth lives. A unit equips:</p>
+      <ul class="list">
+        <li><strong>One Job (primary)</strong> &mdash; its full action set.</li>
+        <li><strong>One Secondary command</strong> &mdash; the <em>action</em> abilities of any other job you've learned. The cross-class engine: a Knight with Black Magick, a Monk with White Magick.</li>
+        <li><strong>One Reaction</strong> &mdash; auto-triggers on a condition (counterattack when hit, auto-heal on damage).</li>
+        <li><strong>One Support</strong> &mdash; a passive (equip heavier weapons, two-hand, boost a stat, dual-wield).</li>
+        <li><strong>One Movement</strong> &mdash; movement/positioning passive (+Move, +Jump, move through tiles, teleport).</li>
+      </ul>
+      <div class="callout">The game is won in these slots. A "Monk" isn't just a Monk; it's a Monk with Math Skill or Punch Art plus the right Reaction/Support/Movement glued on. Build identity comes from the <strong>combination</strong>, not the primary job alone.</div>
+      <div class="newbox"><span class="label">Enhanced</span>"Remove All Equipment" was added to the status screen, and locked job-unlock conditions are now shown clearly &mdash; planning these builds is much faster.</div>
+    </section>
+
+    <section id="tree" class="reveal">
+      <span class="s-tag">07 &middot; The Climb</span><h2 class="s-title">Job tree and progression</h2><div class="s-rule"></div>
+      <p>Broad shape of the tree (names follow the Ivalice Chronicles localization):</p>
+      <ul class="list">
+        <li><strong>Base</strong>: Squire and Chemist &mdash; everyone starts here; Squire's JP-up and Chemist's items are foundational.</li>
+        <li><strong>Physical line</strong>: Knight (armor, break equipment), Archer (ranged, charge shots), Monk (high HP/PA, healing punches), Thief (steal, speed), Geomancer (terrain attacks), Dragoon/Lancer (jump), Samurai (draw-out elemental hits), Ninja (dual-wield, throw, very high Speed).</li>
+        <li><strong>Magick line</strong>: Black Mage (elemental nukes), White Mage (heal/buff), Time Mage (haste/slow/quick, the turn-economy class), Summoner (big AoE MA), Oracle/Mystic (status ailments), Orator/Mediator (recruit, persuade), and the Mathematician/Calculator class.</li>
+        <li><strong>Elite/hybrid</strong>: Mystic Knight/specialty hybrids and the unique story jobs.</li>
+      </ul>
+      <p>Climbing the tree is the long-game project: grind prerequisite jobs not only to unlock the next class but to pick up cross-class abilities your final build wants.</p>
+    </section>
+
+    <section id="standout" class="reveal">
+      <span class="s-tag">08 &middot; The Best</span><h2 class="s-title">Standout jobs and why</h2><div class="s-rule"></div>
+      <ul class="list">
+        <li><strong>Time Mage</strong> &mdash; Haste, Slow, and Quick weaponize the turn economy. Some of the strongest action economy in the game.</li>
+        <li><strong>Ninja</strong> &mdash; innate dual-wield and top-tier Speed; a fast attacker and a premier stat-grind class. Throw adds ranged burst.</li>
+        <li><strong>Monk</strong> &mdash; huge HP and PA, weaponless, with healing and AoE punch arts; strong early and a great secondary on bruisers.</li>
+        <li><strong>Mathematician (Calculator)</strong> &mdash; the notorious build-breaker: cast certain spells free on every unit matching a numeric condition (Height/CT/Level/EXP). Slow to set up, devastating once online.</li>
+        <li><strong>Orator/Mediator</strong> &mdash; recruit enemy humans and some monsters; how you grow a roster of special units and rare classes.</li>
+        <li><strong>Samurai / Summoner</strong> &mdash; top MA and physical-magick burst for clearing groups.</li>
+        <li><strong>Knight</strong> &mdash; equipment/stat breaks neuter dangerous enemies; sturdy frontline.</li>
+      </ul>
+      <p>The "best" job is always relative to the <em>combination</em> you build around it.</p>
+    </section>
+
+    <section id="builds" class="reveal">
+      <span class="s-tag">09 &middot; The Loadouts</span><h2 class="s-title">Build archetypes</h2><div class="s-rule"></div>
+      <ol class="steps">
+        <li><strong>Speed-stacked Ninja carry</strong> &mdash; Ninja primary (dual-wield) + a strong secondary (Black Magick, Punch Art, Draw Out) + a damage Reaction + Two-Hands/Attack-Up + Move+. Acts constantly, hits twice, snowballs the turn order.</li>
+        <li><strong>Battle-mage Knight</strong> &mdash; Knight primary (breaks + armor) + Black/White Magick secondary, so one durable unit tanks <em>and</em> casts. Faith management makes it flexible.</li>
+        <li><strong>Time-mage enabler</strong> &mdash; Time Mage primary for Haste/Quick on your carry and Slow on the enemy; pair with Short Charge to land control fast. Wins by owning the clock.</li>
+        <li><strong>Monk bruiser</strong> &mdash; Monk primary (no weapon needed, high HP/PA) + Punch Art self-sustain + Counter/Hamedo Reaction + Move/Jump; a self-healing wrecking ball.</li>
+        <li><strong>Calculator nuke</strong> &mdash; Mathematician primary with Black/White/Holy secondary; set Height/CT/Level/EXP conditions to blanket the field with free spells. The endgame "delete everything" build &mdash; slow but absurd.</li>
+        <li><strong>Archer / positional sniper</strong> &mdash; high ground + charge shots + Concentrate accuracy; punishes from range and abuses height/facing.</li>
+      </ol>
+      <div class="callout">The throughline: <strong>lock the turn economy and the cross-class secondary first</strong>, then bolt on Reaction/Support/Movement to cover the build's weakness.</div>
+    </section>
+
+    <section id="special" class="reveal">
+      <span class="s-tag">10 &middot; The Named</span><h2 class="s-title">Special / story units</h2><div class="s-rule"></div>
+      <p>Story and recruited characters bring unique jobs and high ceilings: Ramza (a buffed Squire line with powerful self/party buffs), and a roster of named guests with exclusive classes you pick up across the campaign. These units are typically stronger than generics and can't be permanently lost the way generics can. Build them as your core, and use generics to grind prerequisite jobs and fill roles.</p>
+      <p><em>(Kept deliberately vague to avoid story spoilers; recruit and protect named units as you meet them.)</em></p>
+    </section>
+
+    <section id="enhanced" class="reveal">
+      <span class="s-tag">11 &middot; The New Edition</span><h2 class="s-title">Enhanced version features (v1.5.0)</h2><div class="s-rule"></div>
+      <p>The Ivalice Chronicles Enhanced version adds quality-of-life and new systems on top of the classic War of the Lions content:</p>
+      <ul class="list">
+        <li><strong>New Game+</strong>: start a fresh run carrying over unit levels, item data, and more from a completed playthrough.</li>
+        <li><strong>Zodiac Compatibility viewer</strong>: check any unit's sign and compatibility from the status screen.</li>
+        <li><strong>Status under the cursor</strong>: inspect the unit under the cursor while picking a move/target tile.</li>
+        <li><strong>"Remove All Equipment"</strong> button and clearer <strong>job-unlock condition</strong> display.</li>
+        <li><strong>Battle camera</strong> angle/zoom is retained for the whole battle.</li>
+        <li>New toggles: <strong>Maintain Auto-proceed</strong> (cutscenes), <strong>Ability Incantations Guaranteed</strong>, and <strong>Ability Cursor Memory</strong>.</li>
+        <li>Full English and Japanese voice acting, added text support (Simplified/Traditional Chinese, Korean), and stability improvements.</li>
+      </ul>
+      <div class="newbox"><span class="label">For purists</span>The package also includes a <strong>Classic</strong> version, which received its own smaller fixes (errand-report bug fix, sound tweaks).</div>
+    </section>
+
+    <section id="strategy" class="reveal">
+      <span class="s-tag">12 &middot; Field Notes</span><h2 class="s-title">General strategy</h2><div class="s-rule"></div>
+      <ul class="list">
+        <li><strong>Speed is king.</strong> When you can choose a stat to stack or a class to grind for growth, Speed compounds harder than anything else.</li>
+        <li><strong>Win the turn economy</strong> with Haste/Quick/Slow before trying to out-damage a tough fight.</li>
+        <li><strong>Abuse height and facing</strong> every turn: attack from behind/side, hold high ground, force the enemy to climb.</li>
+        <li><strong>Manage Faith deliberately.</strong> High Faith = strong casting but fragile to magick; low Faith = magick-resistant tanks who can't cast. Build each unit to one side.</li>
+        <li><strong>Grind prerequisite jobs on purpose</strong> &mdash; to unlock elite classes and to harvest cross-class abilities for the secondary/reaction/support/movement slots.</li>
+        <li><strong>Protect downed units.</strong> Revive or retreat before the Crystal countdown ends, especially for JP-invested generics.</li>
+        <li><strong>Use Zodiac Compatibility</strong> now that it's visible: a favorable matchup is a free ~25% swing on damage, healing, and accuracy.</li>
+        <li><strong>Use New Game+</strong> to push harder builds and rarer class setups on a second run with levels and items intact.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Final Fantasy Tactics: The Ivalice Chronicles &mdash; Field Guide &middot; Enhanced v1.5.0</p>
+    <p>A fan-made guide under <a href="../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy Tactics is &copy; Square Enix; this guide is unaffiliated. Job names follow the Ivalice Chronicles localization.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+
+<script>
+/* ambient: drifting gold motes (heraldic dust) */
+(function(){
+  var c=document.getElementById("motes"); if(!c||!c.getContext) return;
+  var ctx=c.getContext("2d");
+  var reduce=window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var DPR=Math.min(window.devicePixelRatio||1,2), W=0,H=0,raf=null,last=0,P=[];
+  function rnd(a,b){return a+Math.random()*(b-a);}
+  function resize(){W=innerWidth;H=innerHeight;c.width=W*DPR;c.height=H*DPR;c.style.width=W+"px";c.style.height=H+"px";ctx.setTransform(DPR,0,0,DPR,0,0);}
+  function spr(rgb){var s=document.createElement("canvas");s.width=s.height=40;var x=s.getContext("2d");var g=x.createRadialGradient(20,20,0,20,20,20);g.addColorStop(0,"rgba("+rgb+",1)");g.addColorStop(.4,"rgba("+rgb+",.5)");g.addColorStop(1,"rgba("+rgb+",0)");x.fillStyle=g;x.beginPath();x.arc(20,20,20,0,7);x.fill();return s;}
+  var gold=spr("216,182,90");
+  function mk(init){return{x:rnd(0,W),y:init?rnd(0,H):H+10,r:rnd(1,2.6),vy:rnd(6,16),sway:rnd(.3,.9),amp:rnd(8,22),ph:rnd(0,6.28)};}
+  function init(){resize();var n=Math.round(Math.min(45,(W*H)/38000));P=[];for(var i=0;i<n;i++)P.push(mk(true));}
+  function frame(t){var dt=last?Math.min((t-last)/1000,.05):.016;last=t;ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation="lighter";
+    for(var i=0;i<P.length;i++){var p=P[i];p.y-=p.vy*dt;p.ph+=p.sway*dt;var x=p.x+Math.sin(p.ph)*p.amp;
+      if(p.y<-12){P[i]=mk(false);continue;}var a=.2*Math.sin(Math.min((H-p.y)/H,1)*Math.PI)+.05;var sz=p.r*7;
+      ctx.globalAlpha=a<0?0:a;ctx.drawImage(gold,x-sz/2,p.y-sz/2,sz,sz);}
+    ctx.globalAlpha=1;ctx.globalCompositeOperation="source-over";raf=requestAnimationFrame(frame);}
+  function start(){if(!raf){last=0;raf=requestAnimationFrame(frame);}}
+  function stop(){if(raf){cancelAnimationFrame(raf);raf=null;}}
+  if(reduce){resize();ctx.globalCompositeOperation="lighter";for(var i=0;i<22;i++){var sz=rnd(5,12);ctx.globalAlpha=rnd(.05,.14);ctx.drawImage(gold,rnd(0,W),rnd(0,H),sz,sz);}ctx.globalAlpha=1;}
+  else{init();start();}
+  var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(function(){if(!reduce)init();},200);});
+  document.addEventListener("visibilitychange",function(){if(document.hidden)stop();else if(!reduce)start();});
+})();
+/* reveal */
+(function(){var els=document.querySelectorAll(".reveal");if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("visible");});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target);}});},{threshold:.1});
+  els.forEach(function(e){io.observe(e);});})();
+/* jump-nav + totop */
+(function(){var links=[].slice.call(document.querySelectorAll(".jump a"));var secs=links.map(function(a){return document.querySelector(a.getAttribute("href"));});var top=document.querySelector(".totop");
+  function onScroll(){var y=window.scrollY+150,cur=0;for(var i=0;i<secs.length;i++){if(secs[i]&&secs[i].offsetTop<=y)cur=i;}links.forEach(function(l,i){l.classList.toggle("active",i===cur);});if(top)top.classList.toggle("show",window.scrollY>500);}
+  window.addEventListener("scroll",onScroll,{passive:true});onScroll();if(top)top.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});})();
+</script>
+</body>
+</html>

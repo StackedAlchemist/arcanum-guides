@@ -75,13 +75,13 @@ const GAMES = [
   {
     slug: "stellaris",
     title: "Stellaris",
-    blurb: "Empire builds, origins, tech priorities, fleet compositions, and crisis prep for the long galactic game.",
+    blurb: "Complete field guide for 4.4 Pegasus + Nomads: empire creation, economy, research, ascension, fleet design, megastructures, the Nomads layer, and crises.",
     genres: ["Strategy", "Simulation"],
     href: "guides/stellaris/index.html",
-    status: "planned",
+    status: "live",
     featured: false,
     accent: "#5a3f8a",
-    updated: "Planned"
+    updated: "Jun 2026"
   },
   {
     slug: "xcom-2",
