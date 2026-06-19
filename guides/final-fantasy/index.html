@@ -1,209 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FF7 Rebirth — Complete Field Guide</title>
-<link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="css/lifestream.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Fantasy - The Arcanum Series Hub</title>
+<meta name="description" content="The Arcanum's Final Fantasy series hub. Every FF guide in one place - builds, party setups, boss strategies, and hidden content across the saga. FF7 Rebirth is fully built; the rest of the catalog is in the forge.">
+<meta property="og:title" content="Final Fantasy - The Arcanum">
+<meta property="og:description" content="Every Final Fantasy guide in one place. No bloat, just the answers.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-.hero {
-  min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center;
-  padding: 80px 2rem 4rem;
-  position: relative;
-}
+  :root{
+    --crystal:#6fd6ff;
+    --crystal2:#9b7bff;
+    --glow:rgba(111,214,255,0.18);
+    --dark:#05070f;
+    --panel:rgba(10,16,32,0.92);
+    --border:rgba(111,214,255,0.16);
+    --border2:rgba(111,214,255,0.07);
+    --text:#dbe6f5;
+    --text2:#8aa0c4;
+    --text3:#4a5a7a;
+    --gold:#e7c66a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(155,123,255,0.10), transparent 60%),
+      radial-gradient(900px 500px at 80% 20%, rgba(111,214,255,0.06), transparent 55%),
+      var(--dark);
+    color:var(--text);
+    font-family:'Spectral',Georgia,serif;
+    line-height:1.65;
+    min-height:100vh;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 1.4rem;}
 
-.hero-eyebrow {
-  font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
-  letter-spacing: 0.45em;
-  color: var(--ls2);
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  opacity: 0.8;
-}
+  /* topbar */
+  .topbar{border-bottom:1px solid var(--border);background:rgba(5,7,15,0.7);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;}
+  .topbar-inner{max-width:1080px;margin:0 auto;padding:0.9rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+  .brand{font-family:'Cinzel',serif;letter-spacing:0.12em;font-weight:600;font-size:1.05rem;color:var(--crystal);}
+  .brand span{color:var(--text2);font-weight:500;}
+  .topbar a.back{font-family:'Cinzel',serif;font-size:0.82rem;letter-spacing:0.08em;color:var(--text2);border:1px solid var(--border);padding:0.4rem 0.8rem;border-radius:4px;transition:0.2s;}
+  .topbar a.back:hover{color:var(--crystal);border-color:var(--crystal);}
 
-.hero-title {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(2rem, 5vw, 4.5rem);
-  font-weight: 900;
-  line-height: 1.1;
-  color: #fff;
-  text-shadow: 0 0 60px rgba(0,255,170,0.4), 0 0 120px rgba(0,255,170,0.15);
-  margin-bottom: 0.5rem;
-}
+  /* hero */
+  .hero{text-align:center;padding:4rem 1.4rem 2.4rem;}
+  .sigil{font-size:2.6rem;color:var(--crystal);text-shadow:0 0 30px var(--glow);display:block;margin-bottom:0.6rem;}
+  .eyebrow{font-family:'Cinzel',serif;letter-spacing:0.32em;text-transform:uppercase;font-size:0.72rem;color:var(--text3);}
+  .hero h1{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(2.1rem,5vw,3.4rem);margin:0.5rem 0;background:linear-gradient(120deg,var(--crystal),var(--crystal2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .hero .lede{max-width:640px;margin:0.6rem auto 0;color:var(--text2);font-size:1.05rem;}
 
-.hero-title span { color: var(--ls); text-shadow: 0 0 40px var(--ls); }
+  /* era blocks */
+  .era{padding:1.6rem 0;}
+  .era-head{display:flex;align-items:baseline;gap:0.9rem;border-bottom:1px solid var(--border2);padding-bottom:0.5rem;margin-bottom:1.2rem;}
+  .era-head h2{font-family:'Cinzel',serif;font-weight:600;font-size:1.2rem;color:var(--text);letter-spacing:0.04em;}
+  .era-head .count{font-size:0.78rem;color:var(--text3);font-family:'Cinzel',serif;letter-spacing:0.1em;}
 
-.hero-sub {
-  font-size: 1.1rem;
-  color: var(--text2);
-  max-width: 560px;
-  margin: 0 auto 3.5rem;
-  font-style: italic;
-}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem;}
+  .title-card{
+    position:relative;display:block;border:1px solid var(--border);border-top:2px solid var(--crystal);
+    border-radius:8px;background:var(--panel);padding:1.1rem 1.1rem 0.9rem;transition:0.22s;overflow:hidden;
+  }
+  .title-card::after{content:"";position:absolute;inset:0;background:radial-gradient(400px 120px at 50% -20%,var(--glow),transparent 70%);opacity:0;transition:0.22s;pointer-events:none;}
+  .title-card .name{font-family:'Cinzel',serif;font-weight:600;font-size:1.02rem;margin-bottom:0.25rem;color:var(--text);}
+  .title-card .sub{font-size:0.82rem;color:var(--text2);min-height:2.4em;}
+  .title-card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:0.7rem;}
+  .badge{font-family:'Cinzel',serif;font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.18rem 0.5rem;border-radius:3px;}
+  .badge.live{color:var(--dark);background:var(--crystal);font-weight:700;}
+  .badge.forge{color:var(--text3);border:1px solid var(--border);}
+  .go{font-size:0.78rem;color:var(--text3);}
 
-.nav-hub {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
-  max-width: 900px;
-  width: 100%;
-}
+  .title-card.available{cursor:pointer;}
+  .title-card.available:hover{transform:translateY(-3px);border-color:var(--crystal);box-shadow:0 10px 30px -12px var(--glow);}
+  .title-card.available:hover::after{opacity:1;}
+  .title-card.available .go{color:var(--crystal);}
+  .title-card.forge-card{opacity:0.62;}
+  .title-card.forge-card:hover{opacity:0.82;}
 
-.hub-card {
-  background: var(--panel);
-  border: 1px solid var(--border2);
-  border-radius: 6px;
-  padding: 2rem 1rem 1.5rem;
-  text-decoration: none;
-  display: flex; flex-direction: column;
-  align-items: center; gap: 1rem;
-  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-  position: relative;
-  overflow: hidden;
-}
-
-.hub-card::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--card-accent, var(--ls)), transparent);
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-
-.hub-card:hover {
-  border-color: var(--card-accent, var(--ls));
-  box-shadow: 0 8px 40px var(--card-glow, rgba(0,255,170,0.12));
-  transform: translateY(-4px);
-}
-
-.hub-card:hover::after { opacity: 1; }
-
-.hub-icon {
-  font-size: 1.6rem;
-  line-height: 1;
-  filter: drop-shadow(0 0 8px var(--card-accent, rgba(0,255,170,0.5)));
-}
-
-.hub-label {
-  font-family: 'Cinzel', serif;
-  font-size: 0.63rem;
-  letter-spacing: 0.15em;
-  color: var(--text2);
-  text-transform: uppercase;
-  transition: color 0.2s;
-}
-
-.hub-card:hover .hub-label { color: var(--card-accent, var(--ls)); }
-
-.hub-desc {
-  font-size: 0.78rem;
-  color: var(--text3);
-  text-align: center;
-  font-style: italic;
-  line-height: 1.4;
-}
-
-/* Card accent colors */
-.hub-materia   { --card-accent:#44ff99; --card-glow:rgba(0,255,100,0.1); }
-.hub-builds    { --card-accent:#ffcc44; --card-glow:rgba(255,200,50,0.1); }
-.hub-party     { --card-accent:#ff9966; --card-glow:rgba(255,140,80,0.1); }
-.hub-bosses    { --card-accent:#ff5566; --card-glow:rgba(255,60,80,0.1); }
-.hub-queens    { --card-accent:#c8a84b; --card-glow:rgba(200,168,75,0.1); }
-.hub-affinity  { --card-accent:#ff88aa; --card-glow:rgba(255,100,150,0.1); }
-.hub-chars     { --card-accent:#88ccff; --card-glow:rgba(100,180,255,0.1); }
-
-.scroll-hint {
-  position: absolute; bottom: 2.5rem; left: 50%;
-  transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
-  opacity: 0.3;
-  animation: bob 2s ease-in-out infinite;
-}
-.scroll-hint span { font-family:'Cinzel',serif; font-size:0.52rem; letter-spacing:0.2em; color:var(--text2); }
-@keyframes bob {
-  0%,100% { transform:translateX(-50%) translateY(0); }
-  50% { transform:translateX(-50%) translateY(5px); }
-}
+  footer{border-top:1px solid var(--border);margin-top:2.5rem;padding:1.8rem 1.4rem;text-align:center;color:var(--text3);font-size:0.82rem;}
+  footer a{color:var(--text2);}
+  footer a:hover{color:var(--crystal);}
 </style>
 </head>
 <body>
-<!-- LIFESTREAM LAYERS — do not move or reorder -->
-<canvas id="ls-deep"></canvas>
-<canvas id="ls-mid"></canvas>
-<canvas id="ls-surface"></canvas>
-<div class="ls-vignette"></div>
-<div class="ls-fog"></div>
-<div class="ls-pulse"></div>
-<div class="page-wrap">
 
-<nav>
-  <a class="nav-logo" href="index.html">FF7 REBIRTH GUIDE</a>
-  <ul class="nav-links">
-    <li><a href="pages/characters.html">Characters</a></li>
-    <li><a href="pages/materia.html">Materia</a></li>
-    <li><a href="pages/builds.html">Builds</a></li>
-    <li><a href="pages/parties.html">Party Setup</a></li>
-    <li><a href="pages/bosses.html">Bosses</a></li>
-    <li><a href="pages/queensblood.html">Queen's Blood</a></li>
-    <li><a href="pages/affinity.html">Affinity</a></li>
-  </ul>
-</nav>
-
-<div class="hero">
-  <p class="hero-eyebrow">The Unknown Journey Continues</p>
-  <h1 class="hero-title ls-glow-white">Final Fantasy VII<br><span>Rebirth</span></h1>
-  <p class="hero-sub">Complete field guide. Builds, boss strategies, Queen's Blood, affinity — everything needed for the restart.</p>
-
-  <div class="nav-hub">
-    <a href="pages/characters.html" class="hub-card hub-chars">
-      <div class="hub-icon">⚔️</div>
-      <span class="hub-label">Characters</span>
-      <span class="hub-desc">All 7 playable. Roles, mechanics, tips.</span>
-    </a>
-    <a href="pages/materia.html" class="hub-card hub-materia">
-      <div class="hub-icon">🔮</div>
-      <span class="hub-label">Materia</span>
-      <span class="hub-desc">3D orbs, all types, limited copy counts.</span>
-    </a>
-    <a href="pages/builds.html" class="hub-card hub-builds">
-      <div class="hub-icon">🛡️</div>
-      <span class="hub-label">Builds</span>
-      <span class="hub-desc">Optimal loadouts per character and mode.</span>
-    </a>
-    <a href="pages/parties.html" class="hub-card hub-party">
-      <div class="hub-icon">👥</div>
-      <span class="hub-label">Party Setup</span>
-      <span class="hub-desc">Who gets the limited gear and why.</span>
-    </a>
-    <a href="pages/bosses.html" class="hub-card hub-bosses">
-      <div class="hub-icon">💀</div>
-      <span class="hub-label">Boss Guide</span>
-      <span class="hub-desc">Weaknesses, phases, recommended loadouts.</span>
-    </a>
-    <a href="pages/queensblood.html" class="hub-card hub-queens">
-      <div class="hub-icon">♛</div>
-      <span class="hub-label">Queen's Blood</span>
-      <span class="hub-desc">Best deck, card locations, win strategies.</span>
-    </a>
-    <a href="pages/affinity.html" class="hub-card hub-affinity">
-      <div class="hub-icon">💛</div>
-      <span class="hub-label">Affinity</span>
-      <span class="hub-desc">Every dialogue choice, chapter by chapter.</span>
-    </a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">FINAL FANTASY <span>// Series Hub</span></a>
+    <a class="back" href="../../index.html">&#9879; The Arcanum</a>
   </div>
+</header>
 
-  <div class="scroll-hint"><span>SCROLL</span><span>▾</span></div>
-</div>
+<section class="hero">
+  <span class="sigil">&#10022;</span>
+  <span class="eyebrow">The Arcanum &middot; Series Collection</span>
+  <h1>Final Fantasy</h1>
+  <p class="lede">Every Final Fantasy guide in one place &mdash; builds, party setups, boss strategies, and the hidden content the games never explain. <strong>FF7 Rebirth is fully built.</strong> The rest of the saga is in the forge.</p>
+</section>
 
-<footer><p class="footer-text">FF7 REBIRTH — COMPLETE FIELD GUIDE — STACKED ALCHEMIST</p></footer>
-</div>
+<main class="wrap">
 
-<script src="js/shared.js"></script>
-<script src="js/lifestream.js"></script>
+  <section class="era">
+    <div class="era-head"><h2>Compilation of VII</h2><span class="count">The flagship</span></div>
+    <div class="grid">
+      <a class="title-card available" href="../final-fantasy-vii-rebirth/index.html">
+        <div class="name">FF VII Rebirth</div>
+        <div class="sub">Characters, materia, builds, party setup, bosses, Queen's Blood, and affinity. The full guide.</div>
+        <div class="foot"><span class="badge live">Live</span><span class="go">Open guide &rarr;</span></div>
+      </a>
+      <div class="title-card forge-card">
+        <div class="name">FF VII (1997 / 2013)</div>
+        <div class="sub">The original. Materia routing, secrets, and the classic endgame grind.</div>
+        <div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div>
+      </div>
+      <div class="title-card forge-card">
+        <div class="name">FF VII Ever Crisis</div>
+        <div class="sub">Banner planning, weapon builds, and event progression.</div>
+        <div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="era">
+    <div class="era-head"><h2>The Pixel Remasters</h2><span class="count">I &ndash; VI</span></div>
+    <div class="grid">
+      <div class="title-card forge-card"><div class="name">FF I</div><div class="sub">Party class picks, the early grind, and boss order.</div><div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div></div>
+      <div class="title-card forge-card"><div class="name">FF II</div><div class="sub">The stat-growth system explained, and how to train efficiently.</div><div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div></div>
+      <div class="title-card forge-card"><div class="name">FF III</div><div class="sub">Job unlock order and the best class setups per dungeon.</div><div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div></div>
+      <div class="title-card forge-card"><div class="name">FF IV</div><div class="sub">Fixed-party strategy, augments, and the optional superbosses.</div><div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div></div>
+      <div class="title-card forge-card"><div class="name">FF V</div><div class="sub">The job system, ability breeding, and broken build combos.</div><div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div></div>
+      <div class="title-card forge-card"><div class="name">FF VI</div><div class="sub">Esper bonuses, the best stat-maxing path, and missable characters.</div><div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div></div>
+    </div>
+  </section>
+
+  <section class="era">
+    <div class="era-head"><h2>The PlayStation Era</h2><span class="count">VIII &ndash; IX</span></div>
+    <div class="grid">
+      <div class="title-card forge-card"><div class="name">FF VIII Remastered</div><div class="sub">The junction system demystified, card grinding, and Guardian Forces.</div><div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div></div>
+      <div class="title-card forge-card"><div class="name">FF IX</div><div class="sub">Ability learning, Tetra Master, Chocobo Hot &amp; Cold, and the superbosses.</div><div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div></div>
+    </div>
+  </section>
+
+  <section class="era">
+    <div class="era-head"><h2>The Modern Saga</h2><span class="count">X &ndash; XIII</span></div>
+    <div class="grid">
+      <div class="title-card forge-card"><div class="name">FF X / X-2 HD</div><div class="sub">Sphere grid planning, Blitzball, celestial weapons, and the dark aeons.</div><div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div></div>
+      <div class="title-card forge-card"><div class="name">FF XIII</div><div class="sub">Paradigm decks, Crystarium routing, and weapon upgrade priorities.</div><div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div></div>
+      <div class="title-card forge-card"><div class="name">FF XIII-2</div><div class="sub">Monster crystals, paradigm packs, and the time-travel fragment hunt.</div><div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div></div>
+    </div>
+  </section>
+
+  <section class="era">
+    <div class="era-head"><h2>Ivalice</h2><span class="count">Tactics</span></div>
+    <div class="grid">
+      <div class="title-card forge-card"><div class="name">FF Tactics: The Ivalice Chronicles</div><div class="sub">Job trees, ability builds, the best party comps, and the optional content.</div><div class="foot"><span class="badge forge">In the forge</span><span class="go">Soon</span></div></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>A fan-made guide collection under <a href="../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy is &copy; Square Enix; this guide is unaffiliated.</p>
+</footer>
+
 </body>
 </html>

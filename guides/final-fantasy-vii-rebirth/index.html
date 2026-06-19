@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FF7 Rebirth — Complete Field Guide</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/lifestream.css" />
+<style>
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 80px 2rem 4rem;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.45em;
+  color: var(--ls2);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.hero-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 0 60px rgba(0,255,170,0.4), 0 0 120px rgba(0,255,170,0.15);
+  margin-bottom: 0.5rem;
+}
+
+.hero-title span { color: var(--ls); text-shadow: 0 0 40px var(--ls); }
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--text2);
+  max-width: 560px;
+  margin: 0 auto 3.5rem;
+  font-style: italic;
+}
+
+.nav-hub {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+.hub-card {
+  background: var(--panel);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 2rem 1rem 1.5rem;
+  text-decoration: none;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 1rem;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.hub-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--card-accent, var(--ls)), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.hub-card:hover {
+  border-color: var(--card-accent, var(--ls));
+  box-shadow: 0 8px 40px var(--card-glow, rgba(0,255,170,0.12));
+  transform: translateY(-4px);
+}
+
+.hub-card:hover::after { opacity: 1; }
+
+.hub-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px var(--card-accent, rgba(0,255,170,0.5)));
+}
+
+.hub-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.63rem;
+  letter-spacing: 0.15em;
+  color: var(--text2);
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.hub-card:hover .hub-label { color: var(--card-accent, var(--ls)); }
+
+.hub-desc {
+  font-size: 0.78rem;
+  color: var(--text3);
+  text-align: center;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Card accent colors */
+.hub-materia   { --card-accent:#44ff99; --card-glow:rgba(0,255,100,0.1); }
+.hub-builds    { --card-accent:#ffcc44; --card-glow:rgba(255,200,50,0.1); }
+.hub-party     { --card-accent:#ff9966; --card-glow:rgba(255,140,80,0.1); }
+.hub-bosses    { --card-accent:#ff5566; --card-glow:rgba(255,60,80,0.1); }
+.hub-queens    { --card-accent:#c8a84b; --card-glow:rgba(200,168,75,0.1); }
+.hub-affinity  { --card-accent:#ff88aa; --card-glow:rgba(255,100,150,0.1); }
+.hub-chars     { --card-accent:#88ccff; --card-glow:rgba(100,180,255,0.1); }
+
+.scroll-hint {
+  position: absolute; bottom: 2.5rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+  opacity: 0.3;
+  animation: bob 2s ease-in-out infinite;
+}
+.scroll-hint span { font-family:'Cinzel',serif; font-size:0.52rem; letter-spacing:0.2em; color:var(--text2); }
+@keyframes bob {
+  0%,100% { transform:translateX(-50%) translateY(0); }
+  50% { transform:translateX(-50%) translateY(5px); }
+}
+</style>
+</head>
+<body>
+<!-- LIFESTREAM LAYERS — do not move or reorder -->
+<canvas id="ls-deep"></canvas>
+<canvas id="ls-mid"></canvas>
+<canvas id="ls-surface"></canvas>
+<div class="ls-vignette"></div>
+<div class="ls-fog"></div>
+<div class="ls-pulse"></div>
+<div class="page-wrap">
+
+<nav>
+  <a class="nav-logo" href="index.html">FF7 REBIRTH GUIDE</a>
+  <ul class="nav-links">
+    <li><a href="../../index.html">&#9879; The Arcanum</a></li>
+    <li><a href="../final-fantasy/index.html">&#10022; All Final Fantasy</a></li>
+    <li><a href="pages/characters.html">Characters</a></li>
+    <li><a href="pages/materia.html">Materia</a></li>
+    <li><a href="pages/builds.html">Builds</a></li>
+    <li><a href="pages/parties.html">Party Setup</a></li>
+    <li><a href="pages/bosses.html">Bosses</a></li>
+    <li><a href="pages/queensblood.html">Queen's Blood</a></li>
+    <li><a href="pages/affinity.html">Affinity</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <p class="hero-eyebrow">The Unknown Journey Continues</p>
+  <h1 class="hero-title ls-glow-white">Final Fantasy VII<br><span>Rebirth</span></h1>
+  <p class="hero-sub">Complete field guide. Builds, boss strategies, Queen's Blood, affinity — everything needed for the restart.</p>
+
+  <div class="nav-hub">
+    <a href="pages/characters.html" class="hub-card hub-chars">
+      <div class="hub-icon">⚔️</div>
+      <span class="hub-label">Characters</span>
+      <span class="hub-desc">All 7 playable. Roles, mechanics, tips.</span>
+    </a>
+    <a href="pages/materia.html" class="hub-card hub-materia">
+      <div class="hub-icon">🔮</div>
+      <span class="hub-label">Materia</span>
+      <span class="hub-desc">3D orbs, all types, limited copy counts.</span>
+    </a>
+    <a href="pages/builds.html" class="hub-card hub-builds">
+      <div class="hub-icon">🛡️</div>
+      <span class="hub-label">Builds</span>
+      <span class="hub-desc">Optimal loadouts per character and mode.</span>
+    </a>
+    <a href="pages/parties.html" class="hub-card hub-party">
+      <div class="hub-icon">👥</div>
+      <span class="hub-label">Party Setup</span>
+      <span class="hub-desc">Who gets the limited gear and why.</span>
+    </a>
+    <a href="pages/bosses.html" class="hub-card hub-bosses">
+      <div class="hub-icon">💀</div>
+      <span class="hub-label">Boss Guide</span>
+      <span class="hub-desc">Weaknesses, phases, recommended loadouts.</span>
+    </a>
+    <a href="pages/queensblood.html" class="hub-card hub-queens">
+      <div class="hub-icon">♛</div>
+      <span class="hub-label">Queen's Blood</span>
+      <span class="hub-desc">Best deck, card locations, win strategies.</span>
+    </a>
+    <a href="pages/affinity.html" class="hub-card hub-affinity">
+      <div class="hub-icon">💛</div>
+      <span class="hub-label">Affinity</span>
+      <span class="hub-desc">Every dialogue choice, chapter by chapter.</span>
+    </a>
+  </div>
+
+  <div class="scroll-hint"><span>SCROLL</span><span>▾</span></div>
+</div>
+
+<footer><p class="footer-text">FF7 REBIRTH — COMPLETE FIELD GUIDE — STACKED ALCHEMIST</p></footer>
+</div>
+
+<script src="js/shared.js"></script>
+<script src="js/lifestream.js"></script>
+</body>
+</html>
