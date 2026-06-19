@@ -229,3 +229,124 @@ a:hover { color: var(--gold-bright); }
 }
 .totop.show { opacity: 0.92; pointer-events: auto; }
 .totop:hover { background: var(--gold-bright); }
+
+/* ============================================================
+   LIVING SANCTUM - the alchemist's touch
+   Ambient embers (canvas), breathing aura, a rotating sigil
+   crest, drifting glyphs, and cards that smolder.
+   ============================================================ */
+
+/* --- stacking: ambient layers sit behind the content --- */
+body { position: relative; }
+body::before {
+  content: ""; position: fixed; inset: -20%; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(38% 38% at 50% 10%, rgba(217,164,49,0.10), transparent 70%),
+    radial-gradient(42% 42% at 82% 88%, rgba(194,84,31,0.09), transparent 70%),
+    radial-gradient(40% 40% at 10% 62%, rgba(107,79,160,0.12), transparent 70%);
+  animation: auraDrift 20s ease-in-out infinite alternate;
+}
+@keyframes auraDrift {
+  from { transform: scale(1) translate3d(0,0,0); opacity: 0.7; }
+  to   { transform: scale(1.14) translate3d(0,-1.5%,0); opacity: 1; }
+}
+#ambient { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.hero, main, .footer { position: relative; z-index: 1; }
+.totop { z-index: 120; }
+
+/* the old static alembic is replaced by the rotating crest */
+.hero::before { display: none; }
+.hero { padding-top: 58px; }
+
+/* --- rotating sigil crest --- */
+.sigil-ring {
+  position: relative; width: 116px; height: 116px; margin: 0 auto 26px;
+  display: grid; place-items: center;
+}
+.sigil-ring::before, .sigil-ring::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+}
+.sigil-ring::before {
+  border: 1px solid rgba(217,164,49,0.20);
+  border-top-color: rgba(240,193,85,0.65);
+  border-right-color: rgba(194,84,31,0.45);
+  animation: spin 26s linear infinite;
+}
+.sigil-ring::after {
+  inset: 17px; border: 1px dashed rgba(107,79,160,0.38);
+  animation: spin 18s linear infinite reverse;
+}
+.sigil-core {
+  font-size: 2.5rem; color: var(--gold);
+  text-shadow: 0 0 18px rgba(240,193,85,0.55), 0 0 40px rgba(194,84,31,0.35);
+  animation: breathe 4.5s ease-in-out infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes breathe {
+  0%,100% { opacity: 0.82; transform: scale(1);
+            text-shadow: 0 0 16px rgba(240,193,85,0.45), 0 0 34px rgba(194,84,31,0.25); }
+  50%     { opacity: 1; transform: scale(1.06);
+            text-shadow: 0 0 26px rgba(240,193,85,0.78), 0 0 60px rgba(194,84,31,0.5); }
+}
+
+/* --- living sheen on the title --- */
+.hero h1 {
+  background: linear-gradient(100deg,
+    var(--text) 20%, var(--gold-bright) 45%, var(--gold) 55%, var(--text) 80%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sheen 9s ease-in-out infinite;
+}
+@keyframes sheen {
+  0%,100% { background-position: 0% 50%; }
+  50%     { background-position: 100% 50%; }
+}
+
+/* --- drifting hero glyphs --- */
+.hero-glyphs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.hero-glyphs span {
+  position: absolute; left: var(--x); top: var(--y);
+  font-family: var(--font-display); font-size: 1.5rem; color: var(--gold);
+  opacity: 0;
+  animation: glyphFloat var(--t, 22s) ease-in-out var(--d, 0s) infinite;
+}
+@keyframes glyphFloat {
+  0%   { opacity: 0; transform: translateY(12px) rotate(0deg); }
+  25%  { opacity: 0.18; }
+  50%  { opacity: 0.30; transform: translateY(-14px) rotate(8deg); }
+  75%  { opacity: 0.18; }
+  100% { opacity: 0; transform: translateY(12px) rotate(0deg); }
+}
+
+/* --- search bar arcane focus glow --- */
+#hub-search:focus {
+  box-shadow: 0 0 0 1px var(--violet), 0 0 22px rgba(107,79,160,0.28);
+}
+
+/* --- cards that smolder --- */
+.game-card { overflow: hidden; }
+.game-card::after {
+  content: "\2697"; position: absolute; right: 12px; bottom: 8px;
+  font-family: var(--font-display); font-size: 2.6rem; line-height: 1;
+  color: var(--gold); opacity: 0.05; pointer-events: none; transition: opacity 0.25s;
+}
+.game-card:hover::after { opacity: 0.13; }
+.game-card:hover {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6),
+              0 0 26px rgba(217,164,49,0.16),
+              0 0 0 1px rgba(240,193,85,0.25);
+}
+.game-card.status-live { animation: cardGlow 6.5s ease-in-out infinite; }
+@keyframes cardGlow {
+  0%,100% { box-shadow: 0 0 0 rgba(0,0,0,0); }
+  50%     { box-shadow: 0 0 20px rgba(217,164,49,0.10); }
+}
+.badge-live { animation: livePulse 3.5s ease-in-out infinite; }
+@keyframes livePulse {
+  0%,100% { box-shadow: 0 0 0 rgba(123,191,106,0); }
+  50%     { box-shadow: 0 0 11px rgba(123,191,106,0.45); }
+}
+
+/* the counts pill gets a soft glow so it reads as "alive" */
+.hub-counts { box-shadow: 0 0 18px rgba(217,164,49,0.08) inset; }

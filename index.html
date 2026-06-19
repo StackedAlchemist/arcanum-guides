@@ -15,6 +15,8 @@
 </head>
 <body>
 
+<canvas id="ambient" aria-hidden="true"></canvas>
+
 <header class="topbar">
   <div class="topbar-inner">
     <a class="brand" href="index.html">
@@ -30,7 +32,16 @@
 </header>
 
 <section class="hero">
+  <div class="hero-glyphs" aria-hidden="true">
+    <span style="--x:7%;--y:28%;--d:0s;--t:19s;">&#9879;</span>
+    <span style="--x:90%;--y:20%;--d:3s;--t:23s;">&#9791;</span>
+    <span style="--x:15%;--y:74%;--d:6s;--t:21s;">&#9881;</span>
+    <span style="--x:84%;--y:70%;--d:2s;--t:25s;">&#9788;</span>
+    <span style="--x:49%;--y:86%;--d:8s;--t:20s;">&#10038;</span>
+    <span style="--x:73%;--y:44%;--d:5s;--t:27s;">&#9790;</span>
+  </div>
   <div class="wrap">
+    <div class="sigil-ring" aria-hidden="true"><span class="sigil-core">&#9879;</span></div>
     <span class="eyebrow">Forged for the ones who play to master</span>
     <h1>The Arcanum</h1>
     <p class="lede">Deep, current game guides. Builds, strategies, enemy tactics, and the secrets the tutorials never tell you. One game at a time, done properly.</p>
@@ -82,5 +93,6 @@
 
 <script src="js/games.js"></script>
 <script src="js/hub.js"></script>
+<script src="js/ambient.js"></script>
 </body>
 </html>
