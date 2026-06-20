@@ -213,13 +213,13 @@ const GAMES = [
   {
     slug: "diablo-4",
     title: "Diablo IV",
-    blurb: "Class fundamentals, leveling routes, and current-season basics. Live-service: pairs with where to check live meta.",
+    blurb: "The evergreen layer: all 8 classes & mechanics, the gear/power systems (Aspects, Tempering, Masterworking, Paragon), the full endgame loop, and how to build & read the meta. Through Lord of Hatred.",
     genres: ["ARPG", "RPG"],
     href: "guides/diablo-4/index.html",
-    status: "planned",
+    status: "live",
     featured: false,
-    accent: "#7a1f1f",
-    updated: "Planned"
+    accent: "#bf352c",
+    updated: "Lord of Hatred"
   },
   {
     slug: "path-of-exile-2",

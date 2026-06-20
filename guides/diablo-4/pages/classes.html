@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Classes | Diablo IV Field Guide | The Arcanum</title>
+<meta name="description" content="Diablo IV's eight classes — Barbarian, Sorcerer, Druid, Rogue, Necromancer, Spiritborn, Paladin, Warlock — each one's resource, signature mechanic, playstyle, and build archetypes." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500;700;900&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">Diablo <span>IV</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a href="../index.html">Home</a>
+        <a href="classes.html" class="active">Classes</a>
+        <a href="systems.html">Systems</a>
+        <a href="endgame.html">Endgame</a>
+        <a href="builds.html">Builds</a>
+        <a href="tips.html">Tips</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The Eight</span>
+      <h1>Classes</h1>
+      <p class="lede">Eight classes, each defined by a resource and one signature mechanic that shapes everything it does. Pick by the <em>fantasy and feel</em> you want &mdash; every class can reach the top tiers of content with the right build.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">01 &middot; The Roster</span><h2 class="s-title">All eight at a glance</h2><div class="s-rule"></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Class</th><th>Resource</th><th>Signature mechanic</th><th>Identity</th></tr></thead>
+          <tbody>
+            <tr><td>Barbarian</td><td>Fury</td><td>Arsenal &mdash; four equipped weapons, each skill using a specific one</td><td>Tanky melee bruiser; shouts, whirlwind, big two-handers.</td></tr>
+            <tr><td>Sorcerer</td><td>Mana</td><td>Enchantment slots &mdash; equip a skill as a passive effect</td><td>Ranged elemental glass cannon (Fire / Cold / Lightning).</td></tr>
+            <tr><td>Druid</td><td>Spirit</td><td>Shapeshifting + Spirit Boons (animal blessings)</td><td>Werebear/werewolf bruiser or earth/storm caster with companions.</td></tr>
+            <tr><td>Rogue</td><td>Energy</td><td>Specialization (Combo Points / Inner Sight / Preparation) + Imbuements</td><td>Fast hybrid; bow or blades, poison/cold/shadow imbues.</td></tr>
+            <tr><td>Necromancer</td><td>Essence</td><td>Book of the Dead &mdash; customize or sacrifice your minions</td><td>Summoner, curser, and blood/bone/shadow caster.</td></tr>
+            <tr><td>Spiritborn <span class="mono">(VoH)</span></td><td>Vigor</td><td>Spirit Guardians &mdash; Jaguar, Eagle, Gorilla, Centipede</td><td>Agile jungle warrior; the guardian you favor sets the playstyle.</td></tr>
+            <tr><td>Paladin <span class="mono">(LoH)</span></td><td>Faith</td><td>Oaths &mdash; sworn allegiance that defines your archetype</td><td>Holy warrior: defensive juggernaut, radiant damage, or zeal.</td></tr>
+            <tr><td>Warlock <span class="mono">(LoH)</span></td><td>Wrath + Dominance</td><td>Soul Shards (archetype + summonable Greater Demon) &amp; Soul Fragments</td><td>Demonic summoner-caster on a create / control / combo loop.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="newbox"><span class="label">Where each came from</span>The five launch classes are <strong>Barbarian, Sorcerer, Druid, Rogue, Necromancer</strong>. <strong>Spiritborn</strong> arrived with <em>Vessel of Hatred</em> (2024); <strong>Paladin</strong> and <strong>Warlock</strong> with <em>Lord of Hatred</em> (April 2026). The expansion classes need that DLC to play.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">02 &middot; The Mechanics</span><h2 class="s-title">The signature systems, explained</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Barbarian &mdash; Arsenal.</strong> You carry four weapons (two one-handed, a two-handed bludgeon, a two-handed slashing) and skills are tied to weapon types, so you cycle gear constantly and benefit from <em>Weapon Expertise</em> bonuses on each.</li>
+          <li><strong>Sorcerer &mdash; Enchantments.</strong> Slot a skill into an Enchantment to gain its effect <em>passively</em> instead of casting it &mdash; e.g. Fireball that explodes corpses, or Teleport on Evade. Build-defining flexibility.</li>
+          <li><strong>Druid &mdash; Shapeshift &amp; Boons.</strong> Flow between human, Werebear (tanky/earth) and Werewolf (fast/storm) forms; at the Spirit Hall you pick <em>Spirit Boons</em> from four animal spirits for permanent buffs.</li>
+          <li><strong>Rogue &mdash; Specialization &amp; Imbuements.</strong> Choose Combo Points (spenders scale with built points), Inner Sight (free unlimited spenders on a meter), or Preparation (cooldown engine) &mdash; then layer Poison / Cold / Shadow <em>Imbuements</em> onto attacks.</li>
+          <li><strong>Necromancer &mdash; Book of the Dead.</strong> Customize each minion type (Skeletal Warriors, Mages, Golem) or <em>sacrifice</em> a type for a permanent personal buff &mdash; the choice between army and solo caster.</li>
+          <li><strong>Spiritborn &mdash; Spirit Guardians.</strong> Jaguar (ferocity/burn damage), Eagle (mobility/crit), Gorilla (defense/barrier), Centipede (poison/sustain). Your primary and secondary guardian choices drive the whole build.</li>
+          <li><strong>Paladin &mdash; Oaths.</strong> Swear an Oath to lock in an archetype (sturdy frontline, holy nuker, or relentless zeal); Faith is generated by basic skills and spent on powerful holy abilities.</li>
+          <li><strong>Warlock &mdash; Soul Shards.</strong> A dual economy: build <em>Wrath</em> for spells and <em>Dominance</em> to summon and command a Greater Demon. Your Soul Shard sets the archetype and which demon you call; Soul Fragments tune how it behaves.</li>
+        </ul>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">03 &middot; The Pick</span><h2 class="s-title">Which class is for you</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Want to be tanky and never die?</strong> Barbarian or Paladin &mdash; armor, shouts/oaths, and heavy hits.</li>
+          <li><strong>Want to nuke from range?</strong> Sorcerer or Warlock &mdash; elemental and demonic spellcasting.</li>
+          <li><strong>Want an army fighting for you?</strong> Necromancer (minions) or Warlock (Greater Demon) &mdash; let the summons do the work.</li>
+          <li><strong>Want speed and flow?</strong> Rogue or Spiritborn &mdash; fast, mobile, combo-driven clears.</li>
+          <li><strong>Want versatility in one body?</strong> Druid shifts between tank, caster and companion builds more than any other class.</li>
+        </ul>
+        <div class="callout"><strong>Don't overthink the first pick.</strong> Respeccing skills and Paragon is cheap and instant in town, and every class has multiple viable endgame builds. Choose the <em>fantasy</em> you'll enjoy for 60+ levels; the optimal build comes later (see <a href="builds.html">Builds</a>). Spiritborn, Paladin and Warlock require their expansions.</div>
+      </section>
+
+      <div class="pager">
+        <a href="../index.html">&larr; Home</a>
+        <a href="systems.html">Gear &amp; Power Systems &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Diablo IV &mdash; Field Guide &middot; current through Lord of Hatred (2026)</p>
+    <p>A fan-made guide under <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Diablo IV is &copy; Blizzard Entertainment.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>

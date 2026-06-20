@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Building a Character | Diablo IV Field Guide | The Arcanum</title>
+<meta name="description" content="Diablo IV builds: the anatomy of a build, leveling vs endgame builds, how to read and pick a meta build, what makes a build S-tier, and the planners to trust." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500;700;900&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">Diablo <span>IV</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a href="../index.html">Home</a>
+        <a href="classes.html">Classes</a>
+        <a href="systems.html">Systems</a>
+        <a href="endgame.html">Endgame</a>
+        <a href="builds.html" class="active">Builds</a>
+        <a href="tips.html">Tips</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The Craft</span>
+      <h1>Building a Character</h1>
+      <p class="lede">We don't pin "the best build" here &mdash; it changes every patch and we'd only mislead you. Instead, this is how a build is <em>assembled</em> and how to read a current meta build off a planner so it actually makes sense when you copy it.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">10 &middot; Anatomy</span><h2 class="s-title">The parts of a build</h2><div class="s-rule"></div>
+        <p>Every Diablo IV build, however fancy, is the same six layers stacked together. When you read a guide, you're really reading these:</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Layer</th><th>What it decides</th></tr></thead>
+          <tbody>
+            <tr><td>Skills &amp; the resource loop</td><td>Your generator(s), your core spender(s), and the buffs/defensives around them &mdash; and how you stay resource-positive while using them.</td></tr>
+            <tr><td>Key passives &amp; class mechanic</td><td>The Skill-tree passives and the <a href="classes.html">class mechanic</a> setup (Enchantments, Book of the Dead, Oath, Soul Shard, etc.) that the build is built around.</td></tr>
+            <tr><td>Aspects &amp; Uniques</td><td>The one or two powers that <em>make</em> the build &mdash; usually a damage multiplier or a loop enabler. The rest is support.</td></tr>
+            <tr><td>Affixes &amp; Tempering</td><td>The 3&ndash;4 stats every piece should chase, plus the tempered affixes that scale the build's core skill.</td></tr>
+            <tr><td>Paragon boards &amp; Glyphs</td><td>Which boards, the path through them, and which Glyphs to socket and level &mdash; a big chunk of total power.</td></tr>
+            <tr><td>Gems, Runewords &amp; consumables</td><td>The finishing layer: gem stats, a runeword effect, and elixirs/incense for the last few percent.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout"><strong>Find the multiplier.</strong> Most builds have one core interaction that multiplies damage (a key Aspect/Unique + a passive + a Tempering affix all feeding one skill). Understand that engine and the rest of the build &mdash; defenses, resource, mobility &mdash; exists only to keep that engine running.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">11 &middot; Two Builds</span><h2 class="s-title">Leveling vs. endgame</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Level with whatever clears fast.</strong> While leveling, gear changes constantly &mdash; don't over-invest. Use a strong, cheap leveling skill and respec freely; it's instant and cheap in town.</li>
+          <li><strong>Your endgame build comes online with gear,</strong> usually around level 60&ndash;70 once you reach Torment and start collecting Ancestral items and the build's key Uniques/Aspects. Many builds <em>can't</em> function until those pieces exist &mdash; that's normal.</li>
+          <li><strong>Respec is not precious.</strong> Skills, Paragon and the Enchantment/Oath/etc. slots can all be redone. Experiment; you can't brick a character.</li>
+          <li><strong>Don't fully finish gear you'll replace.</strong> Save heavy Masterworking and rare materials for the items you've confirmed are your endgame keepers.</li>
+        </ul>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">12 &middot; The Meta</span><h2 class="s-title">How to read &amp; pick a build</h2><div class="s-rule"></div>
+        <p>Tier lists are <em>perishable</em> &mdash; a single patch can promote or gut a build. So judge a build by what you need it for, not just its letter grade:</p>
+        <ul class="list">
+          <li><strong>Clear speed</strong> &mdash; for farming Helltides, Whispers and low Pit tiers fast.</li>
+          <li><strong>Boss / single-target damage</strong> &mdash; for pushing the Pit and killing tough uniques.</li>
+          <li><strong>Survivability</strong> &mdash; how forgiving it is at high Torment (do you melt, or face-tank?).</li>
+          <li><strong>Gear dependence</strong> &mdash; does it need a Mythic Unique to function, or come online cheaply? Great for a fresh season vs. a finished character.</li>
+        </ul>
+        <p>Pick a build whose strengths match your goal and whose gear requirements match where you are. A "B-tier" build you can actually assemble beats an "S-tier" one gated behind an item you don't have.</p>
+        <div class="newbox"><span class="label">Where to get the current meta</span>For up-to-date builds, tier lists and planners, these are the trusted, ad-supported (non-affiliate) community sites:
+          <ul class="list" style="margin-top:0.6rem;">
+            <li><a href="https://maxroll.gg/d4" target="_blank" rel="noopener">Maxroll</a> &mdash; deep build guides, planner, and endgame resources.</li>
+            <li><a href="https://www.icy-veins.com/d4/" target="_blank" rel="noopener">Icy Veins</a> &mdash; class guides and endgame tier lists.</li>
+            <li><a href="https://mobalytics.gg/diablo-4" target="_blank" rel="noopener">Mobalytics</a> &mdash; build guides and a build planner.</li>
+            <li><a href="https://d4builds.gg" target="_blank" rel="noopener">D4Builds</a> &mdash; community planner for making and sharing builds.</li>
+          </ul>
+          Read those <em>through the lens of this guide</em> &mdash; you'll understand <em>why</em> a build works, not just what to copy.</div>
+      </section>
+
+      <div class="pager">
+        <a href="endgame.html">&larr; The Endgame</a>
+        <a href="tips.html">Tips, Season Start &amp; Story &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Diablo IV &mdash; Field Guide &middot; current through Lord of Hatred (2026)</p>
+    <p>A fan-made guide under <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Diablo IV is &copy; Blizzard Entertainment. Linked sites are independent community resources.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
