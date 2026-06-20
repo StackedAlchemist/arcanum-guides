@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Final Fantasy VI (Pixel Remaster) — Field Guide | The Arcanum</title>
+<meta name="description" content="A complete Final Fantasy VI Pixel Remaster field guide: the Esper/Magicite magic system, stat min-maxing on level-up, all 14 characters and their commands, best characters, key relics and combos, World of Balance to World of Ruin, build archetypes, the Eight Dragons and bosses, and missables." />
+<meta property="og:title" content="Final Fantasy VI — The Arcanum" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0a12; --bg2:#16101f;
+    --panel:rgba(22,16,31,0.85);
+    --gold:#d8b65a; --gold2:#f0d98a; --glow:rgba(154,111,208,0.22);
+    --amethyst:#9a6fd0; --amethyst2:#c4a6f0;
+    --teal:#5ab0a0;
+    --line:rgba(154,111,208,0.20); --line2:rgba(154,111,208,0.08);
+    --text:#e9e2d9; --text2:#aaa0b6; --text3:#6a6076;
+    --display:'Cinzel', Georgia, serif;
+    --body:'EB Garamond', Georgia, serif;
+    --maxw:1000px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(60% 50% at 50% -6%, rgba(154,111,208,0.16), transparent 60%),
+      radial-gradient(50% 45% at 85% 25%, rgba(216,182,90,0.07), transparent 60%),
+      radial-gradient(50% 50% at 12% 75%, rgba(90,176,160,0.06), transparent 60%),
+      var(--bg);
+    color:var(--text); font-family:var(--body); font-size:19px; line-height:1.7;
+    min-height:100vh; overflow-x:hidden;
+  }
+  a{color:var(--gold); text-decoration:none;}
+  #motes{position:fixed; inset:0; z-index:0; pointer-events:none;}
+  .page{position:relative; z-index:1;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 1.6rem;}
+  body::after{content:""; position:fixed; inset:0; z-index:0; pointer-events:none; background:radial-gradient(120% 100% at 50% 45%, transparent 55%, rgba(0,0,0,0.6));}
+
+  .topbar{position:sticky; top:0; z-index:50; background:linear-gradient(180deg, rgba(12,10,18,0.96), rgba(12,10,18,0.74)); backdrop-filter:blur(10px); border-bottom:1px solid var(--line2);}
+  .topbar-inner{max-width:var(--maxw); margin:0 auto; padding:0.8rem 1.6rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;}
+  .brand{font-family:var(--display); font-weight:700; letter-spacing:0.08em; color:var(--gold2); font-size:1rem;}
+  .topbar .links{display:flex; gap:0.6rem;}
+  .topbar a.back{font-family:var(--display); font-size:0.78rem; letter-spacing:0.05em; color:var(--text2); border:1px solid var(--line); padding:0.35rem 0.8rem; border-radius:3px; transition:0.2s;}
+  .topbar a.back:hover{color:var(--gold2); border-color:var(--gold);}
+
+  .hero{text-align:center; padding:4.2rem 1.6rem 2rem; position:relative;}
+  .hero .crest{font-size:2.4rem; color:var(--amethyst2); text-shadow:0 0 26px var(--glow); display:block; margin-bottom:0.6rem;}
+  .hero .eyebrow{display:block; font-family:var(--display); letter-spacing:0.26em; text-transform:uppercase; font-size:0.68rem; color:var(--amethyst2); margin-bottom:0.5rem;}
+  .hero h1{font-family:var(--display); font-weight:900; font-size:clamp(1.8rem,5vw,3.1rem); line-height:1.1;
+    background:linear-gradient(100deg, var(--gold2) 25%, #fff 50%, var(--amethyst2) 82%); background-size:200% 100%;
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:sheen 11s ease-in-out infinite;}
+  .hero .sub{font-family:var(--display); font-size:0.9rem; letter-spacing:0.12em; color:var(--teal); margin-top:0.3rem;}
+  .hero .lede{max-width:700px; margin:1rem auto 0; color:var(--text2); font-size:1.08rem;}
+  @keyframes sheen{0%,100%{background-position:0% 50%} 50%{background-position:100% 50%}}
+
+  .jump{position:sticky; top:53px; z-index:40; background:rgba(12,10,18,0.93); backdrop-filter:blur(8px); border-top:1px solid var(--line2); border-bottom:1px solid var(--line2);}
+  .jump-inner{max-width:var(--maxw); margin:0 auto; padding:0.5rem 1.6rem; display:flex; gap:0.3rem; overflow-x:auto; scrollbar-width:none;}
+  .jump-inner::-webkit-scrollbar{display:none;}
+  .jump a{flex:0 0 auto; font-family:var(--display); font-size:0.74rem; letter-spacing:0.03em; color:var(--text2); padding:0.35rem 0.65rem; border-radius:3px; white-space:nowrap; transition:0.2s;}
+  .jump a:hover, .jump a.active{color:var(--gold2); background:rgba(216,182,90,0.08);}
+
+  main{padding:2.8rem 0 5rem;}
+  section{margin-bottom:3.4rem; scroll-margin-top:112px;}
+  .s-tag{font-family:var(--display); letter-spacing:0.16em; text-transform:uppercase; font-size:0.64rem; color:var(--amethyst2); display:block; margin-bottom:0.35rem;}
+  .s-title{font-family:var(--display); font-weight:700; font-size:clamp(1.4rem,3vw,2.1rem); color:#fff; letter-spacing:0.01em;}
+  .s-rule{height:1px; width:90px; margin:0.9rem 0 1.6rem; background:linear-gradient(90deg, var(--gold), var(--amethyst), transparent);}
+  p{margin-bottom:1rem; color:var(--text2);}
+  p strong, li strong{color:var(--gold2);}
+  em{color:var(--amethyst2); font-style:italic;}
+
+  ul.list{list-style:none; margin:1rem 0;}
+  ul.list li{position:relative; padding-left:1.3rem; margin-bottom:0.5rem; color:var(--text2);}
+  ul.list li::before{content:"\2756"; position:absolute; left:0; top:0.1rem; color:var(--amethyst); font-size:0.7rem;}
+  h3.sub{font-family:var(--display); font-weight:600; color:#fff; font-size:1.05rem; margin:1.5rem 0 0.4rem;}
+  h3.sub .role{font-family:var(--body); font-style:italic; font-weight:400; color:var(--amethyst2); font-size:0.9rem;}
+
+  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:6px; margin:1.3rem 0;}
+  table{width:100%; border-collapse:collapse; font-size:0.94rem;}
+  th{font-family:var(--display); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold2); text-align:left; padding:0.7rem 1rem; background:rgba(216,182,90,0.05); border-bottom:1px solid var(--line);}
+  td{padding:0.7rem 1rem; border-bottom:1px solid var(--line2); color:var(--text2); vertical-align:top;}
+  td:first-child{color:var(--text); font-weight:600;}
+  tr:hover td{background:rgba(154,111,208,0.04);}
+
+  .callout{background:rgba(216,182,90,0.05); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:4px; padding:1.1rem 1.4rem; margin:1.4rem 0; color:var(--text2); font-size:0.97rem;}
+  .callout strong{color:var(--gold2);}
+  .newbox{background:rgba(154,111,208,0.07); border:1px solid rgba(154,111,208,0.28); border-left:3px solid var(--amethyst); border-radius:4px; padding:1.1rem 1.4rem; margin:1.4rem 0; color:var(--text2);}
+  .newbox .label{font-family:var(--display); font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--amethyst2); display:block; margin-bottom:0.4rem;}
+
+  ol.steps{margin:1.2rem 0; padding-left:0; list-style:none; counter-reset:step;}
+  ol.steps li{position:relative; padding:0 0 0 2.6rem; margin-bottom:0.8rem; counter-increment:step; color:var(--text2);}
+  ol.steps li::before{content:counter(step); position:absolute; left:0; top:0; width:1.8rem; height:1.8rem; display:grid; place-items:center; font-family:var(--display); font-weight:700; color:var(--gold2); border:1px solid var(--line); border-radius:50%; font-size:0.82rem;}
+
+  footer{border-top:1px solid var(--line2); padding:2.2rem 1.6rem; text-align:center;}
+  footer p{font-family:var(--display); font-size:0.7rem; letter-spacing:0.06em; color:var(--text3); margin:0.3rem 0;}
+  footer a{color:var(--text2);} footer a:hover{color:var(--gold2);}
+
+  .totop{position:fixed; right:18px; bottom:18px; z-index:60; background:var(--amethyst); color:#160e22; border:none; font-family:var(--display); font-weight:700; font-size:0.8rem; padding:0.5rem 0.8rem; border-radius:3px; cursor:pointer; opacity:0; pointer-events:none; transition:opacity 0.2s;}
+  .totop.show{opacity:0.9; pointer-events:auto;}
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity 0.55s ease, transform 0.55s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important;} .reveal{opacity:1; transform:none;}}
+</style>
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="brand">Final Fantasy VI</span>
+      <div class="links">
+        <a class="back" href="../final-fantasy/index.html">&#10022; All FF</a>
+        <a class="back" href="../../index.html">&#9879; Arcanum</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <span class="crest" aria-hidden="true">&#10022;</span>
+    <span class="eyebrow">The Arcanum &middot; Complete Field Guide</span>
+    <h1>Final Fantasy VI</h1>
+    <div class="sub">Pixel Remaster</div>
+    <p class="lede">A 14-character ensemble RPG split across two worlds. There are no jobs &mdash; each hero has a unique Command, and everyone can become a magic god through the Esper system. The depth is in <em>stat min-maxing on level-up</em> and a handful of broken relic combos. This guide is spoiler-light on story beats.</p>
+  </section>
+
+  <nav class="jump" aria-label="Sections">
+    <div class="jump-inner">
+      <a href="#overview">Overview</a>
+      <a href="#espers">Espers &amp; Magicite</a>
+      <a href="#growth">Stat Min-Maxing</a>
+      <a href="#cast">The Cast</a>
+      <a href="#best">Best Characters</a>
+      <a href="#relics">Relics &amp; Combos</a>
+      <a href="#worlds">Balance &rarr; Ruin</a>
+      <a href="#builds">Build Archetypes</a>
+      <a href="#bosses">Bosses &amp; Dragons</a>
+      <a href="#missables">Missables</a>
+      <a href="#tips">Tips</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <section id="overview" class="reveal">
+      <span class="s-tag">01 &middot; The Shape</span><h2 class="s-title">Overview &amp; core systems</h2><div class="s-rule"></div>
+      <ul class="list">
+        <li><strong>No job system.</strong> Each of the 14 characters has a fixed, unique <em>Command</em> (Sabin's Blitz, Edgar's Tools, Cyan's Bushido, etc.) on top of Fight / Magic / Item.</li>
+        <li><strong>Magic is universal.</strong> Almost anyone can learn almost any spell by equipping <em>Espers</em> (Magicite) and earning Magic AP from battles. By the late game your whole roster can cast.</li>
+        <li><strong>Two worlds.</strong> The <em>World of Balance</em> is the linear first half; the <em>World of Ruin</em> is an open post-apocalypse where you re-recruit the cast in (mostly) any order and can grind freely.</li>
+        <li><strong>Relics</strong> are accessory slots (two each) that grant passive abilities, extra commands, or status immunity &mdash; the real build system sits here.</li>
+        <li><strong>The winning idea:</strong> level up <em>while the right Espers are equipped</em> to pump a stat (usually Magic), then stack relic combos. A min-maxed party trivializes the endgame.</li>
+      </ul>
+    </section>
+
+    <section id="espers" class="reveal">
+      <span class="s-tag">02 &middot; Magicite</span><h2 class="s-title">Espers &amp; Magicite</h2><div class="s-rule"></div>
+      <p>Equip one Esper per character. Three things happen:</p>
+      <ul class="list">
+        <li><strong>You learn its spells.</strong> Each Esper teaches a set list of spells at a learning rate (e.g. <em>x10</em> = 10% of Magic AP per battle toward that spell). Win battles with the Esper equipped until the spell hits 100%.</li>
+        <li><strong>You can Summon it once per battle</strong> for a powerful effect (and some summons also buff or revive).</li>
+        <li><strong>You gain its level-up stat bonus</strong> (see Min-Maxing) &mdash; the single most important long-term mechanic.</li>
+      </ul>
+      <h3 class="sub">Iconic spell sources</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Esper</th><th>Teaches (highlights)</th></tr></thead>
+        <tbody>
+          <tr><td>Ragnarok (Esper)</td><td><strong>Ultima</strong> &mdash; the best damage spell in the game</td></tr>
+          <tr><td>Bahamut</td><td>Flare</td></tr>
+          <tr><td>Alexander</td><td>Holy</td></tr>
+          <tr><td>Crusader</td><td>Merton (huge non-elemental AoE; hits your own party too)</td></tr>
+          <tr><td>Phoenix</td><td>Revival and high-tier restorative/fire magic</td></tr>
+          <tr><td>Carbuncle / Unicorn</td><td>Reflect, Haste, and cleansing/curative lines</td></tr>
+          <tr><td>Phantom</td><td>Vanish (pairs with the old Vanish-Doom trick, still present)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="newbox"><span class="label">Pixel Remaster note</span>The PR <strong>rebalanced several Esper level-up bonuses</strong> (e.g. Raiden now gives Speed +2, Alexander gives Strength +2) and <strong>adds Espers</strong> not in the SNES version. It also fixed Relm's Sketch (no more crash &mdash; it's now a free hit on anything, bosses included). Always read each Esper's in-game description for its exact bonus and learn list, since these shifted between versions.</div>
+    </section>
+
+    <section id="growth" class="reveal">
+      <span class="s-tag">03 &middot; The Real Power</span><h2 class="s-title">Stat min-maxing on level-up</h2><div class="s-rule"></div>
+      <p>This is the system that separates a casual run from a god party. While an Esper is equipped, <strong>every level-up grants that Esper's stat bonus</strong> (e.g. Magic +2, Strength +1, Speed +1, or HP/MP +X%).</p>
+      <ul class="list">
+        <li><strong>Commit to one stat per character.</strong> For casters, level up only while wearing <em>Magic +1/+2</em> Espers &mdash; a fully min-maxed Magic stat makes Ultima delete bosses.</li>
+        <li><strong>Equip the bonus Esper at the lowest possible level.</strong> The earlier you start stacking the bonus, the more level-ups it applies to.</li>
+        <li><strong>HP/MP +X% is a multiplier on that level's gain</strong>, not your max pool &mdash; so it also wants to be equipped early and consistently.</li>
+        <li><strong>Most players over-level in the World of Ruin anyway</strong>, so plan which Esper each character wears <em>before</em> you grind there.</li>
+      </ul>
+      <div class="callout">If you only remember one thing about FF VI optimization: <strong>level up with Magic-boosting Espers equipped.</strong> A maxed-Magic Terra, Celes, or Relm with dualcast Ultima is the endgame.</div>
+    </section>
+
+    <section id="cast" class="reveal">
+      <span class="s-tag">04 &middot; The Fourteen</span><h2 class="s-title">The cast &amp; their commands</h2><div class="s-rule"></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Character</th><th>Command</th><th>Role / notes</th></tr></thead>
+        <tbody>
+          <tr><td>Terra</td><td>Morph</td><td>Half-Esper; Morph doubles magic damage for a time. Elite balanced caster.</td></tr>
+          <tr><td>Celes</td><td>Runic</td><td>Runic absorbs the next single spell cast (any side) and refunds MP &mdash; hard-counters magic bosses. Top all-rounder.</td></tr>
+          <tr><td>Edgar</td><td>Tools</td><td>Reliable, MP-free damage: Auto Crossbow, Drill, Chainsaw, Noiseblaster, Debilitator. Always useful.</td></tr>
+          <tr><td>Sabin</td><td>Blitz</td><td>Input-command martial arts: AuraBolt, Suplex, Fire Dance, and <strong>Bum Rush</strong>. A physical powerhouse all game.</td></tr>
+          <tr><td>Locke</td><td>Steal</td><td>Treasure hunter; with the Thief's/Brigand's Glove relic, Steal becomes Capture (steal + hit). Fast.</td></tr>
+          <tr><td>Cyan</td><td>Bushido (SwdTech)</td><td>Charge a gauge for tiered sword arts. Slow input but heavy; Quadra Slam/Slice clears groups.</td></tr>
+          <tr><td>Gau</td><td>Rage</td><td>Leap on the Veldt to learn monster Rages (auto-attack + traits). Enormous toolbox; some Rages are broken.</td></tr>
+          <tr><td>Setzer</td><td>Slot / GP Rain</td><td>Gambler. With <strong>Fixed Dice</strong> + Master's Scroll he's a top physical carry.</td></tr>
+          <tr><td>Strago</td><td>Lore (Blue Magic)</td><td>Learns enemy skills: Grand Train, <strong>Mighty Guard</strong> (party-wide buffs), Sour Mouth (status), Aqua Breath.</td></tr>
+          <tr><td>Relm</td><td>Sketch / Control</td><td>Highest natural Magic stat in the game; with gear she's the strongest caster. Control puppets enemies.</td></tr>
+          <tr><td>Shadow</td><td>Throw</td><td>Throws weapons/shurikens; his dog Interceptor auto-counters. <em>Missable</em> &mdash; see below.</td></tr>
+          <tr><td>Mog</td><td>Dance</td><td>Terrain-based dances; carries the Moogle Charm (no random encounters) and Dragon-themed gear.</td></tr>
+          <tr><td>Gogo</td><td>Mimic</td><td>Mimics the last action for free, and can be assigned any three other commands. Ultimate flexibility.</td></tr>
+          <tr><td>Umaro</td><td>(uncontrollable)</td><td>Berserk yeti; you can't command him, but relics nudge his behavior. Raw stats, niche.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="best" class="reveal">
+      <span class="s-tag">05 &middot; Tier Talk</span><h2 class="s-title">Best characters</h2><div class="s-rule"></div>
+      <ul class="list">
+        <li><strong>Celes</strong> &mdash; the cleanest top pick: Runic shuts down magic bosses, and she's an excellent caster and fighter besides.</li>
+        <li><strong>Terra</strong> &mdash; Morph + maxed Magic + dualcast = the highest magic ceiling, plus solid physicals.</li>
+        <li><strong>Sabin</strong> &mdash; Blitz (Bum Rush) ignores defense formulas and never needs MP; carries the early/mid game single-handedly.</li>
+        <li><strong>Edgar</strong> &mdash; Tools give consistent, targetable, MP-free damage with zero setup. The reliability pick.</li>
+        <li><strong>Setzer</strong> &mdash; with Fixed Dice + Master's Scroll, a defense-ignoring physical machine.</li>
+        <li><strong>Relm / Strago</strong> &mdash; Relm has the best Magic stat (monstrous once geared); Strago's Mighty Guard and Grand Train are genuinely top-tier support/damage.</li>
+        <li><strong>Mog &amp; Gogo</strong> &mdash; utility kings: Mog's Moogle Charm trivializes navigation, Gogo can copy your best build.</li>
+      </ul>
+      <div class="callout">Honest truth: by the late game, <em>any</em> character with maxed Magic + dualcast + 1-MP spells is a god. Tiers matter most for the early/mid game, where Sabin and Edgar shine.</div>
+    </section>
+
+    <section id="relics" class="reveal">
+      <span class="s-tag">06 &middot; The Build System</span><h2 class="s-title">Key relics &amp; combos</h2><div class="s-rule"></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Relic</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td>Soul of Thamasa (Gem Box)</td><td><strong>Dualcast</strong> &mdash; cast two spells per turn. The single best magic relic.</td></tr>
+          <tr><td>Celestriad (Economizer)</td><td>All spells cost <strong>1 MP</strong>. With dualcast, spam Ultima forever.</td></tr>
+          <tr><td>Genji Glove</td><td>Equip and attack with <strong>two weapons</strong>.</td></tr>
+          <tr><td>Master's Scroll (Offering)</td><td>Attack <strong>four times</strong> (reduced per-hit). Genji Glove + Master's Scroll = up to 8 hits.</td></tr>
+          <tr><td>Hero Ring (Hero's Ring)</td><td>+25% physical <em>and</em> magic damage.</td></tr>
+          <tr><td>Moogle Charm</td><td>No random encounters. Worn by Mog; build around exploring freely.</td></tr>
+          <tr><td>Ribbon</td><td>Immunity to nearly all status effects. Near-mandatory for hard fights.</td></tr>
+          <tr><td>Gauntlet</td><td>Two-hand a single weapon for more damage (worse than Genji+Scroll, but simple).</td></tr>
+          <tr><td>Merit Award</td><td>Lets a character equip gear they normally can't &mdash; opens broken loadouts.</td></tr>
+          <tr><td>Exp. Egg</td><td>Doubles EXP &mdash; pair with your min-max grind.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout"><strong>The two build pillars:</strong> magic carries want <em>Soul of Thamasa + Celestriad</em> (double 1-MP Ultima every turn); physical carries want <em>Genji Glove + Master's Scroll</em> with two strong weapons (or Fixed Dice on Setzer/Locke).</div>
+    </section>
+
+    <section id="worlds" class="reveal">
+      <span class="s-tag">07 &middot; Two Worlds</span><h2 class="s-title">World of Balance &rarr; World of Ruin</h2><div class="s-rule"></div>
+      <p>The game pivots at the end of the World of Balance. In the <strong>World of Ruin</strong> you start alone as Celes and rebuild the party across an open map.</p>
+      <ol class="steps">
+        <li><strong>Solitary Island:</strong> the WoR opens with Celes; the path forward is gated behind a small, famous sequence &mdash; persevere to reach the mainland.</li>
+        <li><strong>Get the airship</strong> (the Falcon, via Setzer in Kohlingen) to open the world. From here, recruitment is largely your choice.</li>
+        <li><strong>Re-recruit everyone:</strong> Edgar &amp; Sabin, then optional hunts &mdash; Locke (Phoenix Cave, earns the Phoenix Esper), Terra (Mobliz), Cyan (Mt. Zozo), Strago &amp; Relm (Thamasa / Ebot's Rock), Gau (the Veldt), Mog &amp; Umaro (Narshe caves), Shadow (the Veldt, if you saved him), and Gogo (inside the Zone Eater).</li>
+        <li><strong>Grind with intent:</strong> before mass-leveling, equip each character's stat Esper. Then clear the Eight Dragons and Kefka's Tower.</li>
+      </ol>
+      <div class="newbox"><span class="label">Don't lose Shadow</span>At the climax of the World of Balance (the Floating Continent escape), <strong>wait for the full countdown</strong> before boarding the airship. Leave early and Shadow dies permanently &mdash; and you'll never get him (or his ultimate weapon) in the World of Ruin.</div>
+    </section>
+
+    <section id="builds" class="reveal">
+      <span class="s-tag">08 &middot; Loadouts</span><h2 class="s-title">Build archetypes</h2><div class="s-rule"></div>
+      <ol class="steps">
+        <li><strong>Dualcast Ultima nuker</strong> &mdash; maxed-Magic caster (Terra / Celes / Relm) + <em>Soul of Thamasa</em> + <em>Celestriad</em>. Two 1-MP Ultimas every turn. Pre-cast <em>Quick</em> for a burst of four.</li>
+        <li><strong>8-hit physical</strong> &mdash; <em>Genji Glove</em> + <em>Master's Scroll</em> + two top weapons. On Setzer/Locke, use <em>Fixed Dice</em> to ignore defense entirely.</li>
+        <li><strong>Sabin engine</strong> &mdash; Blitz <em>Bum Rush</em> needs no MP and ignores most defense; pair with Hero Ring and just win the early/mid game.</li>
+        <li><strong>Support fortress</strong> &mdash; Strago <em>Mighty Guard</em> (party Protect/Shell/Float/Haste-ish buffs), Golem/Phantom summons, Reflect rings to bounce magic.</li>
+        <li><strong>Runic wall</strong> &mdash; Celes holds Runic against magic-heavy bosses, eating their nukes and refueling MP while the rest of the party kills.</li>
+      </ol>
+    </section>
+
+    <section id="bosses" class="reveal">
+      <span class="s-tag">09 &middot; The Hunt</span><h2 class="s-title">Bosses, the Eight Dragons &amp; the finale</h2><div class="s-rule"></div>
+      <ul class="list">
+        <li><strong>The Eight Legendary Dragons</strong> (World of Ruin) are the optional superboss set &mdash; scattered across the map and Kefka's Tower, each with its own element/quirk. Defeating all eight unlocks the <strong>Crusader</strong> Esper.</li>
+        <li><strong>Atma Weapon</strong> (Floating Continent) and <strong>Ultima Weapon</strong> (Kefka's Tower) are the marquee mid/late bosses &mdash; Atma scales damage to your HP, so a Reflect/heal plan matters.</li>
+        <li><strong>Doom Gaze</strong> roams the WoR skies in the airship &mdash; chip it down across encounters; it's tied to the Bahamut Esper.</li>
+        <li><strong>Kefka's Tower</strong> is a three-party gauntlet: split your roster into three balanced teams (each wants healing + damage), then the multi-tier final battle. Reflect, Ribbon, and a dualcast nuker close it out.</li>
+      </ul>
+      <div class="callout"><strong>Colosseum</strong> (WoR): bet items to fight 1-on-1 for rare rewards (including Fixed Dice and other build pieces). Some of the best gear in the game is won here &mdash; look up exact wagers before betting anything irreplaceable.</div>
+    </section>
+
+    <section id="missables" class="reveal">
+      <span class="s-tag">10 &middot; Don't Miss</span><h2 class="s-title">Missables &amp; secrets</h2><div class="s-rule"></div>
+      <ul class="list">
+        <li><strong>Shadow</strong> &mdash; the #1 permanent miss (wait for the Floating Continent timer). If saved, find him sleeping at the Veldt inn area in the WoR &mdash; don't leave the Veldt before he appears.</li>
+        <li><strong>Cursed Shield &rarr; Paladin's Shield</strong> &mdash; equip the Cursed Shield and survive ~255 battles to lift the curse, turning it into one of the best shields in the game (huge elemental absorb/null).</li>
+        <li><strong>Ragnarok</strong> &mdash; in Narshe you choose between the <em>Ragnarok Esper</em> (teaches Ultima) and the <em>Ragnarok sword</em>. Most players take the Esper; the sword can also be won/obtained, so weigh it for your run.</li>
+        <li><strong>Gogo &amp; Umaro</strong> &mdash; both are easy to walk past: Gogo hides inside the Zone Eater on the Triangle Island; Umaro is in the Narshe cave (you need Mog along).</li>
+        <li><strong>Steal early and often</strong> &mdash; Locke with the Thief's/Brigand's Glove can Capture rare drops from bosses you can't get otherwise.</li>
+        <li><strong>The Veldt &amp; Rages</strong> &mdash; Gau learns from monsters there; a few Rages (and the Stray Cat trick) carry whole stretches of the game.</li>
+      </ul>
+    </section>
+
+    <section id="tips" class="reveal">
+      <span class="s-tag">11 &middot; Field Notes</span><h2 class="s-title">Durable tips</h2><div class="s-rule"></div>
+      <ul class="list">
+        <li><strong>Plan your Esper-per-character before you grind.</strong> Magic for casters; Speed/Strength for dedicated physicals. Consistency beats raw levels.</li>
+        <li><strong>Soul of Thamasa + Celestriad is the win button.</strong> Build at least one character around it.</li>
+        <li><strong>Genji Glove + Master's Scroll</strong> for your physicals; Fixed Dice if you have it.</li>
+        <li><strong>Keep a Runic Celes</strong> on standby for magic bosses, and a <em>Mighty Guard</em> Strago for party buffs.</li>
+        <li><strong>Ribbons and Reflect</strong> answer the late-game status/magic spikes &mdash; especially in Kefka's Tower.</li>
+        <li><strong>Use Mog's Moogle Charm</strong> when exploring long dungeons; it removes random encounters entirely.</li>
+        <li><strong>Spread your party for Kefka's Tower</strong> &mdash; three viable teams, not one stacked team and two weak ones.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Final Fantasy VI (Pixel Remaster) &mdash; Field Guide</p>
+    <p>A fan-made guide under <a href="../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy VI is &copy; Square Enix. Esper bonuses and learn rates differ between versions &mdash; verify against the Pixel Remaster's in-game text.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+
+<script>
+/* ambient: drifting magicite motes (violet) */
+(function(){
+  var c=document.getElementById("motes"); if(!c||!c.getContext) return;
+  var ctx=c.getContext("2d");
+  var reduce=window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var DPR=Math.min(window.devicePixelRatio||1,2), W=0,H=0,raf=null,last=0,P=[];
+  function rnd(a,b){return a+Math.random()*(b-a);}
+  function resize(){W=innerWidth;H=innerHeight;c.width=W*DPR;c.height=H*DPR;c.style.width=W+"px";c.style.height=H+"px";ctx.setTransform(DPR,0,0,DPR,0,0);}
+  function spr(rgb){var s=document.createElement("canvas");s.width=s.height=40;var x=s.getContext("2d");var g=x.createRadialGradient(20,20,0,20,20,20);g.addColorStop(0,"rgba("+rgb+",1)");g.addColorStop(.4,"rgba("+rgb+",.5)");g.addColorStop(1,"rgba("+rgb+",0)");x.fillStyle=g;x.beginPath();x.arc(20,20,20,0,7);x.fill();return s;}
+  var violet=spr("180,156,240"), gold=spr("216,182,90");
+  function mk(init){return{x:rnd(0,W),y:init?rnd(0,H):H+10,r:rnd(1,2.6),vy:rnd(6,16),sway:rnd(.3,.9),amp:rnd(8,22),ph:rnd(0,6.28),gold:Math.random()<0.25};}
+  function init(){resize();var n=Math.round(Math.min(48,(W*H)/34000));P=[];for(var i=0;i<n;i++)P.push(mk(true));}
+  function frame(t){var dt=last?Math.min((t-last)/1000,.05):.016;last=t;ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation="lighter";
+    for(var i=0;i<P.length;i++){var p=P[i];p.y-=p.vy*dt;p.ph+=p.sway*dt;var x=p.x+Math.sin(p.ph)*p.amp;
+      if(p.y<-12){P[i]=mk(false);continue;}var a=.22*Math.sin(Math.min((H-p.y)/H,1)*Math.PI)+.05;var sz=p.r*7;
+      ctx.globalAlpha=a<0?0:a;ctx.drawImage(p.gold?gold:violet,x-sz/2,p.y-sz/2,sz,sz);}
+    ctx.globalAlpha=1;ctx.globalCompositeOperation="source-over";raf=requestAnimationFrame(frame);}
+  function start(){if(!raf){last=0;raf=requestAnimationFrame(frame);}}
+  function stop(){if(raf){cancelAnimationFrame(raf);raf=null;}}
+  if(reduce){resize();ctx.globalCompositeOperation="lighter";for(var i=0;i<24;i++){var sz=rnd(5,12);ctx.globalAlpha=rnd(.05,.14);ctx.drawImage(violet,rnd(0,W),rnd(0,H),sz,sz);}ctx.globalAlpha=1;}
+  else{init();start();}
+  var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(function(){if(!reduce)init();},200);});
+  document.addEventListener("visibilitychange",function(){if(document.hidden)stop();else if(!reduce)start();});
+})();
+/* reveal */
+(function(){var els=document.querySelectorAll(".reveal");if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("visible");});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target);}});},{threshold:.1});
+  els.forEach(function(e){io.observe(e);});})();
+/* jump-nav + totop */
+(function(){var links=[].slice.call(document.querySelectorAll(".jump a"));var secs=links.map(function(a){return document.querySelector(a.getAttribute("href"));});var top=document.querySelector(".totop");
+  function onScroll(){var y=window.scrollY+150,cur=0;for(var i=0;i<secs.length;i++){if(secs[i]&&secs[i].offsetTop<=y)cur=i;}links.forEach(function(l,i){l.classList.toggle("active",i===cur);});if(top)top.classList.toggle("show",window.scrollY>500);}
+  window.addEventListener("scroll",onScroll,{passive:true});onScroll();if(top)top.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});})();
+</script>
+</body>
+</html>
