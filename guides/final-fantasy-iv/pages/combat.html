@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Combat &amp; the ATB | FF IV Field Guide | The Arcanum</title>
+<meta name="description" content="Final Fantasy IV Pixel Remaster: the Active Time Battle system, front/back rows, and the signature character commands (Jump, Cover, Twincast, Throw, Summon)." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">Final Fantasy <span>IV</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a class="home" href="../../final-fantasy/index.html">&#10022; All FF</a>
+        <a href="../index.html">Home</a>
+        <a href="combat.html" class="active">Combat</a>
+        <a href="characters.html">Characters</a>
+        <a href="progression.html">Progression</a>
+        <a href="secrets.html">Secrets</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The System</span>
+      <h1>Combat &amp; the ATB</h1>
+      <p class="lede">Final Fantasy IV introduced the Active Time Battle system &mdash; the real-time-on-a-clock combat that defined the series for a decade. You don't build jobs here; you win by positioning, healing uptime, and each character's signature command.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">01 &middot; The Clock</span><h2 class="s-title">The Active Time Battle system</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Gauges fill in real time.</strong> Each unit has an ATB gauge that fills based on Speed/Agility; when it's full, that unit can act. Faster characters act more often.</li>
+          <li><strong>Active vs Wait.</strong> In <em>Active</em> mode the clock keeps running while you choose; in <em>Wait</em> mode it pauses while menus/targeting are open. Use Wait (and a slower Battle Speed) for control on hard bosses.</li>
+          <li><strong>Charged actions resolve late.</strong> Spells and some abilities have a cast time before they land &mdash; the target can move, die, or change state first. Account for the delay.</li>
+          <li><strong>Status &amp; elements.</strong> Bosses have elemental weaknesses and resistances; status (Slow, Haste, Reflect, Berserk, Blink) swings fights hard. Haste your damage dealers, Slow the boss.</li>
+        </ul>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">02 &middot; Position</span><h2 class="s-title">Front row &amp; back row</h2><div class="s-rule"></div>
+        <p>Each character sits in the front or back row. The <strong>back row halves physical damage dealt and taken</strong> &mdash; but <strong>bows and magic are unaffected by row</strong>. So:</p>
+        <ul class="list">
+          <li>Put <strong>fragile casters and archers</strong> (Rosa, Rydia, Tellah) in the <strong>back</strong> &mdash; they lose nothing and take half physical damage.</li>
+          <li>Keep your <strong>melee anchors</strong> (Paladin Cecil, Yang, Kain) in the <strong>front</strong> where their attacks hit full.</li>
+          <li>Edge and other hybrids depend on whether you're throwing/casting (row-agnostic) or swinging (front).</li>
+        </ul>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">03 &middot; The Toolkit</span><h2 class="s-title">Signature commands</h2><div class="s-rule"></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Command</th><th>Owner</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td>Jump</td><td>Kain (Dragoon)</td><td>Leap off-screen (untargetable), then crash down next turn for big damage. Doubles as a way to dodge a dangerous attack.</td></tr>
+            <tr><td>Cover</td><td>Cecil (Paladin)</td><td>Physically intercept hits aimed at a low-HP ally. The Paladin's protective core.</td></tr>
+            <tr><td>Darkness</td><td>Cecil (Dark Knight)</td><td>A stronger attack that costs Cecil his own HP &mdash; only before the Paladin shift.</td></tr>
+            <tr><td>Summon</td><td>Rydia</td><td>Call eidolons (Ifrit, Shiva, Ramuh, Titan, Leviathan, Bahamut, Asura&hellip;). Scales hard with levels.</td></tr>
+            <tr><td>Twincast</td><td>Palom + Porom</td><td>The twins combine for a powerful joint spell (Pyroblast).</td></tr>
+            <tr><td>Throw / Ninjutsu</td><td>Edge (Ninja)</td><td>Throw weapons/shuriken for huge single-target burst; Ninjutsu hits elemental weaknesses.</td></tr>
+            <tr><td>Kick / Focus</td><td>Yang (Monk)</td><td>Kick hits all enemies; Focus charges then lands a heavy blow.</td></tr>
+            <tr><td>Aim / White Magic</td><td>Rosa</td><td>Reliable bow damage plus the party's healing and buffs (Cura, Protect, Haste, Pray).</td></tr>
+            <tr><td>Bardsong</td><td>Edward (Bard)</td><td>Status/utility songs; weak in a straight fight.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout">There's no job customization to optimize &mdash; mastery here is <strong>using the right command at the right moment</strong>: Jump to dodge a telegraphed nuke, Cover to save a dying ally, Reflect to bounce a boss's magic, and never letting Rosa's healing lapse.</div>
+      </section>
+
+      <div class="pager">
+        <a href="../index.html">&larr; Home</a>
+        <a href="characters.html">Characters &amp; Roles &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Final Fantasy IV (Pixel Remaster) &mdash; Field Guide</p>
+    <p>A fan-made guide under <a href="../../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy IV is &copy; Square Enix.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
