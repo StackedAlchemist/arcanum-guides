@@ -34,7 +34,7 @@ const WIKI_NAV = [
   {
     bucket: "Equipment",
     pages: [
-      { slug: "weapons",       title: "Weapons",       type: "list",    status: "stub", data: "weapons" },
+      { slug: "weapons",       title: "Weapons",       type: "list",    status: "live", data: "weapons" },
       { slug: "pictos",        title: "Pictos",        type: "list",    status: "live", data: "pictos" },
       { slug: "luminas",       title: "Luminas",       type: "list",    status: "live", data: "luminas" },
       { slug: "outfits",       title: "Outfits",       type: "list",    status: "stub" },

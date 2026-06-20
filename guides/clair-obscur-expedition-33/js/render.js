@@ -139,11 +139,41 @@
       + `<tbody id="picto-rows">${rows}</tbody></table>`;
   }
 
-  function wirePictosFilter() {
-    const input = document.getElementById("picto-search");
-    const count = document.getElementById("picto-count");
+  function wpnScaling(w) {
+    const parts = [];
+    if (w.v) parts.push("Vit " + w.v);
+    if (w.m) parts.push("Might " + w.m);
+    if (w.a) parts.push("Agi " + w.a);
+    if (w.d) parts.push("Def " + w.d);
+    if (w.l) parts.push("Luck " + w.l);
+    return parts.join(", ");
+  }
+
+  function buildWeapons() {
+    if (typeof WEAPONS === "undefined") return buildStub("weapons");
+    const rows = WEAPONS.map(w => {
+      const sc = wpnScaling(w);
+      return `<tr data-s="${esc((w.n + " " + w.c + " " + w.el + " " + sc).toLowerCase())}">
+        <td>${esc(w.n)}</td>
+        <td>${esc(w.c)}</td>
+        <td>${esc(w.el)}</td>
+        <td class="mono" style="font-size:.78rem;color:var(--ink-dim);">${esc(sc)}</td>
+      </tr>`;
+    }).join("");
+    return crumb("Equipment", "Weapons")
+      + `<h1 class="page-title">Weapons</h1>`
+      + `<p class="page-lede">${esc(WEAPONS_INTRO)}</p>`
+      + `<input id="wpn-search" class="wiki-search" type="text" autocomplete="off" placeholder="Search ${WEAPONS.length} weapons by name, character, or element...">`
+      + `<p id="wpn-count" class="search-count"></p>`
+      + `<table class="data"><thead><tr><th>Weapon</th><th>Character</th><th>Element</th><th>Scaling (max Lv)</th></tr></thead>`
+      + `<tbody id="wpn-rows">${rows}</tbody></table>`;
+  }
+
+  function wireSearch(inputId, rowsId, countId, label) {
+    const input = document.getElementById(inputId);
+    const count = document.getElementById(countId);
     if (!input) return;
-    const rows = Array.prototype.slice.call(document.querySelectorAll("#picto-rows tr"));
+    const rows = Array.prototype.slice.call(document.querySelectorAll("#" + rowsId + " tr"));
     function apply() {
       const q = input.value.trim().toLowerCase();
       let shown = 0;
@@ -152,7 +182,7 @@
         r.style.display = hit ? "" : "none";
         if (hit) shown++;
       });
-      if (count) count.textContent = q ? (shown + " of " + rows.length + " Pictos match") : (rows.length + " Pictos");
+      if (count) count.textContent = q ? (shown + " of " + rows.length + " " + label + " match") : (rows.length + " " + label);
     }
     input.addEventListener("input", apply);
     apply();
@@ -215,6 +245,7 @@
         if (slug === "luminas")        html = buildLuminas();
         else if (slug === "status-effects") html = buildStatusEffects();
         else if (slug === "pictos")    html = buildPictos();
+        else if (slug === "weapons")   html = buildWeapons();
         else if (slug === "bosses")    html = buildBosses();
         else html = buildStub(slug);
         break;
@@ -222,7 +253,8 @@
     }
     main.innerHTML = html;
     window.scrollTo(0, 0);
-    if (slug === "pictos") wirePictosFilter();
+    if (slug === "pictos")  wireSearch("picto-search", "picto-rows", "picto-count", "Pictos");
+    if (slug === "weapons") wireSearch("wpn-search", "wpn-rows", "wpn-count", "weapons");
   }
 
   window.addEventListener("hashchange", route);
