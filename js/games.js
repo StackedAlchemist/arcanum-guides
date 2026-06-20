@@ -191,7 +191,7 @@ const GAMES = [
   {
     slug: "clair-obscur-expedition-33",
     title: "Clair Obscur: Expedition 33",
-    blurb: "Complete field guide: parry-driven combat, the Pictos &amp; Luminas build system, status engines, the six Expeditioners, party comps, and delete-button builds.",
+    blurb: "Full data-driven wiki: all 8 Expeditioners, combat, attributes, status engines, Luminas, and new-player help &mdash; with weapons, Pictos, bosses, and walkthroughs rolling out in batches.",
     genres: ["RPG", "JRPG"],
     href: "guides/clair-obscur-expedition-33/index.html",
     status: "live",
