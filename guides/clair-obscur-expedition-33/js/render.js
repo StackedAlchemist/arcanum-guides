@@ -120,6 +120,69 @@
       + off + def + aff;
   }
 
+  function buildPictos() {
+    if (typeof PICTOS === "undefined") return buildStub("pictos");
+    const rows = PICTOS.map(p => `
+      <tr data-s="${esc((p.n + " " + p.t + " " + p.e).toLowerCase())}">
+        <td>${esc(p.n)}</td>
+        <td>${esc(p.lv)}</td>
+        <td>${esc(p.t || "—")}</td>
+        <td style="white-space:normal;">${esc(p.e)}</td>
+        <td class="mono" style="white-space:normal;color:var(--ink-mute);font-size:.76rem;">${esc(p.s)}</td>
+      </tr>`).join("");
+    return crumb("Equipment", "Pictos")
+      + `<h1 class="page-title">Pictos</h1>`
+      + `<p class="page-lede">${esc(PICTOS_INTRO)}</p>`
+      + `<input id="picto-search" class="wiki-search" type="text" autocomplete="off" placeholder="Search ${PICTOS.length} Pictos by name, effect, or type...">`
+      + `<p id="picto-count" class="search-count"></p>`
+      + `<table class="data"><thead><tr><th>Picto</th><th>Lv</th><th>Type</th><th>Effect</th><th>Stat Bonus</th></tr></thead>`
+      + `<tbody id="picto-rows">${rows}</tbody></table>`;
+  }
+
+  function wirePictosFilter() {
+    const input = document.getElementById("picto-search");
+    const count = document.getElementById("picto-count");
+    if (!input) return;
+    const rows = Array.prototype.slice.call(document.querySelectorAll("#picto-rows tr"));
+    function apply() {
+      const q = input.value.trim().toLowerCase();
+      let shown = 0;
+      rows.forEach(r => {
+        const hit = !q || r.getAttribute("data-s").indexOf(q) !== -1;
+        r.style.display = hit ? "" : "none";
+        if (hit) shown++;
+      });
+      if (count) count.textContent = q ? (shown + " of " + rows.length + " Pictos match") : (rows.length + " Pictos");
+    }
+    input.addEventListener("input", apply);
+    apply();
+  }
+
+  function weakCell(w) {
+    return (w && w !== "None")
+      ? `<span style="color:var(--ember-hi)">${esc(w)}</span>`
+      : `<span style="color:var(--ink-mute)">None</span>`;
+  }
+
+  function buildBosses() {
+    if (typeof MAIN_BOSSES === "undefined") return buildStub("bosses");
+    const row = (b, withAct) => `<tr>
+        <td>${esc(b.n)}</td>
+        ${withAct ? `<td>${esc(b.act)}</td>` : ""}
+        <td>${esc((b.loc || []).join(", "))}</td>
+        <td>${weakCell(b.weak)}</td>
+      </tr>`;
+    const main = `<table class="data"><thead><tr><th>Boss</th><th>Act</th><th>Location(s)</th><th>Weakness</th></tr></thead><tbody>`
+      + MAIN_BOSSES.map(b => row(b, true)).join("") + `</tbody></table>`;
+    const opt = `<table class="data"><thead><tr><th>Boss</th><th>Location(s)</th><th>Weakness</th></tr></thead><tbody>`
+      + OPTIONAL_BOSSES.map(b => row(b, false)).join("") + `</tbody></table>`;
+    return crumb("World", "Bosses")
+      + `<h1 class="page-title">Bosses</h1>`
+      + `<p class="page-lede">${esc(BOSSES_INTRO)}</p>`
+      + `<h2 class="sec">Main Story Bosses (${MAIN_BOSSES.length})</h2>${main}`
+      + `<h2 class="sec">Optional Bosses (${OPTIONAL_BOSSES.length})</h2>${opt}`;
+  }
+
   function buildStub(slug) {
     const page = findPage(slug);
     return crumb(page.bucket, page.title)
@@ -151,12 +214,15 @@
       case "list":
         if (slug === "luminas")        html = buildLuminas();
         else if (slug === "status-effects") html = buildStatusEffects();
+        else if (slug === "pictos")    html = buildPictos();
+        else if (slug === "bosses")    html = buildBosses();
         else html = buildStub(slug);
         break;
       default: html = buildStub(slug);
     }
     main.innerHTML = html;
     window.scrollTo(0, 0);
+    if (slug === "pictos") wirePictosFilter();
   }
 
   window.addEventListener("hashchange", route);

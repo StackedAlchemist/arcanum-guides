@@ -35,7 +35,7 @@ const WIKI_NAV = [
     bucket: "Equipment",
     pages: [
       { slug: "weapons",       title: "Weapons",       type: "list",    status: "stub", data: "weapons" },
-      { slug: "pictos",        title: "Pictos",        type: "list",    status: "stub", data: "pictos" },
+      { slug: "pictos",        title: "Pictos",        type: "list",    status: "live", data: "pictos" },
       { slug: "luminas",       title: "Luminas",       type: "list",    status: "live", data: "luminas" },
       { slug: "outfits",       title: "Outfits",       type: "list",    status: "stub" },
       { slug: "items",         title: "Items",         type: "list",    status: "stub" },
@@ -52,7 +52,7 @@ const WIKI_NAV = [
       { slug: "npcs",               title: "NPCs",               type: "list",    status: "stub" },
       { slug: "merchants",          title: "Merchants",          type: "list",    status: "stub" },
       { slug: "enemies",            title: "Enemies",            type: "list",    status: "stub" },
-      { slug: "bosses",             title: "Bosses",             type: "list",    status: "stub", data: "bosses" },
+      { slug: "bosses",             title: "Bosses",             type: "list",    status: "live", data: "bosses" },
       { slug: "lost-gestrals",      title: "Lost Gestrals",      type: "list",    status: "stub" },
       { slug: "expedition-journals",title: "Expedition Journals",type: "list",    status: "stub" },
       { slug: "story-lore",         title: "Story & Lore",       type: "article", status: "stub" }

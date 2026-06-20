@@ -113,6 +113,21 @@ h2.sec {
 .card .role { font-size: .76rem; color: var(--ember-hi); font-family: 'JetBrains Mono', monospace; letter-spacing: .5px; margin-bottom: .55rem; }
 .card .blurb { font-size: .85rem; color: var(--ink-dim); line-height: 1.5; }
 
+/* ---- search box (Pictos etc.) ---- */
+.wiki-search {
+  width: 100%; max-width: 540px; display: block;
+  background: var(--bg-raise); border: 1px solid var(--line);
+  border-left: 3px solid var(--gold); color: var(--ink);
+  font-family: 'Inter', sans-serif; font-size: .9rem; padding: .6rem .85rem;
+  border-radius: 2px; margin: .5rem 0 .25rem;
+}
+.wiki-search:focus { outline: none; border-color: var(--line-hi); border-left-color: var(--ember); }
+.wiki-search::placeholder { color: var(--ink-mute); }
+.search-count {
+  font-family: 'JetBrains Mono', monospace; font-size: .68rem; letter-spacing: .5px;
+  text-transform: uppercase; color: var(--ink-mute); margin-bottom: 1rem;
+}
+
 /* ---- data tables ---- */
 table.data { width: 100%; border-collapse: collapse; margin: 1.2rem 0 1.6rem; font-size: .88rem; }
 table.data th {
