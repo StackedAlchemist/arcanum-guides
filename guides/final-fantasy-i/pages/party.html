@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Classes &amp; Party Building | FF I Field Guide | The Arcanum</title>
+<meta name="description" content="FF I Pixel Remaster: all six classes (Warrior, Thief, Monk, Red/White/Black Mage), what they become after the Class Change, and the best party compositions." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">Final Fantasy <span>I</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a class="home" href="../../final-fantasy/index.html">&#10022; All FF</a>
+        <a href="../index.html">Home</a>
+        <a href="party.html" class="active">Party</a>
+        <a href="magic.html">Magic</a>
+        <a href="progression.html">Progression</a>
+        <a href="secrets.html">Secrets</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The Four</span>
+      <h1>Classes &amp; Party Building</h1>
+      <p class="lede">Your one big decision is made on the character-creation screen: which four of the six classes carry the entire game. There are no recruits to fix a weak pick &mdash; so understand what each class becomes before you lock it in.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">01 &middot; The Six</span><h2 class="s-title">The starting classes</h2><div class="s-rule"></div>
+        <p>Each class has a clear role and a clear weakness. The three "fighters" carry the early game; the three mages are fragile but define your late game once Intelligence and the spell fixes kick in.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Class</th><th>Role</th><th>Strengths</th><th>Watch out</th></tr></thead>
+          <tbody>
+            <tr><td>Warrior</td><td>Frontline tank / DPS</td><td>Best HP, armor and weapons; reliable damage all game.</td><td>No magic of its own (until Knight).</td></tr>
+            <tr><td>Thief</td><td>Speed / utility</td><td>High evasion &amp; luck, boosts the party's run-away chance; blossoms after class change.</td><td>Weakest hitter <em>before</em> becoming a Ninja.</td></tr>
+            <tr><td>Monk <span class="mono">(Black Belt)</span></td><td>Unarmed brawler</td><td>Damage scales with level &mdash; bare fists out-hit swords late; costs almost nothing in gear.</td><td>Low defense; weak/awkward early.</td></tr>
+            <tr><td>Red Mage</td><td>Hybrid jack-of-all</td><td>Decent weapons/armor <em>and</em> both white &amp; black magic; the easy-mode generalist.</td><td>Caps below pure casters; can't learn level-8 spells.</td></tr>
+            <tr><td>White Mage</td><td>Healer / support</td><td>The full white list to level 8 &mdash; heals, revives, buffs, resists, and Holy.</td><td>Frail; poor physical damage.</td></tr>
+            <tr><td>Black Mage</td><td>Nuker</td><td>The full black list to level 8; with fixed Intelligence it scales the hardest of anyone.</td><td>Lowest HP/defense in the game.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="newbox"><span class="label">PR change &mdash; why mages are good now</span>In the original NES game the Intelligence stat did <strong>nothing</strong>, so mages fell off and Red Mage out-scaled the dedicated casters. The Pixel Remaster <strong>fixed Intelligence</strong>, so Black Wizard and White Wizard now pull clearly ahead of Red Wizard in the late game.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">02 &middot; The Upgrade</span><h2 class="s-title">The Class Change</h2><div class="s-rule"></div>
+        <p>About two-thirds through the story you complete the <strong>Citadel of Trials</strong> to earn the <strong>Rat's Tail</strong>, then take it to <strong>Bahamut</strong>, King of Dragons, in the Cavern of Dragons. He promotes <em>all four</em> Light Warriors at once into their advanced forms. This is a permanent upgrade, not a switch &mdash; your class identity stays, it just gets stronger and gains new options.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Becomes</th><th>What it gains</th></tr></thead>
+          <tbody>
+            <tr><td>Warrior &rarr; <strong>Knight</strong></td><td>The best gear in the game and <em>low-level white magic</em> (levels 1&ndash;3). Can wield Excalibur.</td></tr>
+            <tr><td>Thief &rarr; <strong>Ninja</strong></td><td>Big jump in weapons/armor <em>and</em> low-level black magic (levels 1&ndash;4). The standout of class change &mdash; a fighter that also casts.</td></tr>
+            <tr><td>Monk &rarr; <strong>Master</strong></td><td>Even higher unarmed damage and multi-hits &mdash; arguably the top raw physical DPS late.</td></tr>
+            <tr><td>Red Mage &rarr; <strong>Red Wizard</strong></td><td>Magic up to level 7 in both schools, still solid weapons/armor. Versatile, never specialized.</td></tr>
+            <tr><td>White Mage &rarr; <strong>White Wizard</strong></td><td>The complete white list, including Holy and full-party heals/revives.</td></tr>
+            <tr><td>Black Mage &rarr; <strong>Black Wizard</strong></td><td>The complete black list &mdash; Flare, Quake, the -aga line, Warp, Stop, Death.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout"><strong>Do the Rat's Tail.</strong> Class Change is the single biggest power spike in the game. Don't skip the Citadel of Trials &mdash; an un-promoted party hits a wall against the back-half bosses.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">03 &middot; The Lineup</span><h2 class="s-title">Party compositions</h2><div class="s-rule"></div>
+        <p>Any four classes can finish the game in the PR, but some lineups are far smoother. A good party wants <em>a tank, a damage core, healing, and offensive magic.</em></p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Party</th><th>Why it works</th><th>For</th></tr></thead>
+          <tbody>
+            <tr><td>Warrior &middot; Thief &middot; White Mage &middot; Black Mage</td><td>The classic. Tank, speedy second fighter, full healing, full nuking. Thief becomes a fantastic Ninja.</td><td>First-timers wanting balance</td></tr>
+            <tr><td>Warrior &middot; Red Mage &middot; White Mage &middot; Black Mage</td><td>Magic-leaning powerhouse: two strong casters, a flexible Red, and a tank. Excellent in the PR now that Int works.</td><td>Players who like spells</td></tr>
+            <tr><td>Warrior &middot; Monk &middot; White Mage &middot; Black Mage</td><td>Two heavy hitters up front (Master is a wrecking ball late) with full magic support.</td><td>Strong, slightly squishier</td></tr>
+            <tr><td>Warrior &middot; Warrior &middot; Red Mage &middot; White Mage</td><td>Beginner-friendly wall &mdash; tanky and forgiving, with healing and a flex caster. Low magic ceiling.</td><td>Easiest, lowest risk</td></tr>
+            <tr><td>4&times; Monk / 4&times; Red Mage</td><td>Meme/challenge runs. Four Masters is brutally strong late but a slog early; four Red Wizards is a do-everything novelty.</td><td>Replays / challenge</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout"><strong>Rule of thumb:</strong> always bring <em>one White Mage line</em> for healing and <em>one damage frontliner</em> (Warrior or Monk). Everything else is preference. Avoid an all-mage party on a first run &mdash; the early game with no real frontline is rough.</div>
+      </section>
+
+      <div class="pager">
+        <a href="../index.html">&larr; Home</a>
+        <a href="magic.html">The Magic System &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Final Fantasy I (Pixel Remaster) &mdash; Field Guide</p>
+    <p>A fan-made guide under <a href="../../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy I is &copy; Square Enix.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>

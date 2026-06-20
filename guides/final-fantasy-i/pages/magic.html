@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Magic System | FF I Field Guide | The Arcanum</title>
+<meta name="description" content="FF I Pixel Remaster magic: how spell levels and charges work, the three-of-four choice at each level, and the must-buy white and black spells." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">Final Fantasy <span>I</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a class="home" href="../../final-fantasy/index.html">&#10022; All FF</a>
+        <a href="../index.html">Home</a>
+        <a href="party.html">Party</a>
+        <a href="magic.html" class="active">Magic</a>
+        <a href="progression.html">Progression</a>
+        <a href="secrets.html">Secrets</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The Spells</span>
+      <h1>The Magic System</h1>
+      <p class="lede">FF I's magic is the oldest, strangest version in the series &mdash; no shared MP pool, a limited number of casts per spell level, and a hard limit on which spells each caster can ever learn. The Pixel Remaster keeps the structure but fixes the bugs underneath it.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">04 &middot; Charges</span><h2 class="s-title">Spell levels &amp; charges, not MP</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Eight spell levels.</strong> Magic is organized into levels 1&ndash;8, each with four spells per school (white and black). Higher levels are stronger and unlock as you progress.</li>
+          <li><strong>Charges are pooled by level, not by spell.</strong> You don't have MP &mdash; you have a number of <em>charges</em> for each spell level. Casting <em>any</em> level-3 spell spends one level-3 charge, whatever the specific spell.</li>
+          <li><strong>Charges grow as you level up</strong> (and the count benefits from the caster's stats). Inns restore them; <strong>Ethers</strong> restore charges in the field.</li>
+          <li><strong>You learn spells from shops.</strong> White and black magic shops sell spell tomes by level. Buying teaches that spell to a compatible class &mdash; permanently.</li>
+        </ul>
+        <div class="newbox"><span class="label">The big restriction</span>Each caster can only ever learn <strong>three of the four</strong> spells at every spell level &mdash; once a character knows three at a given level, the fourth slot is closed. Plan the trio per level instead of buying blindly.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">05 &middot; White</span><h2 class="s-title">White magic &mdash; the must-buys</h2><div class="s-rule"></div>
+        <p>White magic is healing, revival, buffs, and protection. Your White Mage line should prioritize sustain and the resist/haste tools that win the long boss fights.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Spell (PR name)</th><th>Does</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td>Cure &rarr; Cura &rarr; Curaga &rarr; Curaja</td><td>The healing backbone &mdash; single and, at higher tiers, full-party heals.</td><td>Always</td></tr>
+            <tr><td>Life &rarr; Arise (Raise / full revive)</td><td>Revive a fallen ally &mdash; Arise also restores big HP.</td><td>High</td></tr>
+            <tr><td>Protect / Protera (Ruse line)</td><td>Raises defense / evasion &mdash; cuts boss physical damage hard.</td><td>High</td></tr>
+            <tr><td>NulBlaze / NulFrost / NulShock / NulDeath</td><td>Element/instant-death resist for the party &mdash; <em>actually works in the PR.</em></td><td>Situational, strong</td></tr>
+            <tr><td>Saber</td><td>Boosts a fighter's attack &amp; accuracy &mdash; fixed in the PR.</td><td>Good on physical parties</td></tr>
+            <tr><td>Heal (party HP) / Healaga</td><td>Heals the whole party at once &mdash; efficient sustain on charges.</td><td>High late</td></tr>
+            <tr><td>Holy (Fade)</td><td>Top-tier holy nuke; great into the undead/dark finale.</td><td>Endgame</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">06 &middot; Black</span><h2 class="s-title">Black magic &mdash; the must-buys</h2><div class="s-rule"></div>
+        <p>Black magic is raw damage plus a few priceless utilities. With Intelligence working in the PR, your Black Wizard's nukes scale into the late game instead of fizzling.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Spell (PR name)</th><th>Does</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td>Fire / Blizzard / Thunder &rarr; -ra &rarr; -aga</td><td>The elemental damage core &mdash; match the Fiend weaknesses (Fire&rarr;Lich, Blizzard&rarr;Marilith, Thunder&rarr;Kraken).</td><td>Always</td></tr>
+            <tr><td>Flare</td><td>Non-elemental nuke &mdash; the heaviest single-target damage for fights that resist elements.</td><td>Endgame</td></tr>
+            <tr><td>Haste (Fast)</td><td>Extra hits per turn on a fighter &mdash; massive on a Knight or Master.</td><td>Very high</td></tr>
+            <tr><td>Temper</td><td>Boosts a fighter's attack power &mdash; works in the PR.</td><td>Good on physical parties</td></tr>
+            <tr><td>Slow / Slowra</td><td>Cuts enemy attacks per round &mdash; defensive lifesaver vs heavy hitters.</td><td>Situational</td></tr>
+            <tr><td>Stop / Death (Kill)</td><td>Disable or instakill non-immune enemies &mdash; clears dangerous packs fast.</td><td>Utility</td></tr>
+            <tr><td>Warp / Teleport (Exit)</td><td>Warp leaves one floor; Exit/Teleport drops you out of a dungeon entirely.</td><td>Quality of life</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout"><strong>Buy Haste early.</strong> A Hasted Knight, Master or Ninja roughly doubles its physical output &mdash; it's the strongest single thing your Black Mage line does for the team in boss fights.</div>
+        <div class="newbox"><span class="label">PR change &mdash; bugs fixed</span>The NES original had a graveyard of broken spells: resist spells (NulX) gave no protection, Temper/Saber did nothing, and Intelligence didn't boost damage. The Pixel Remaster repairs all of this &mdash; buffs, resists and item-cast spells now behave as their descriptions say.</div>
+      </section>
+
+      <div class="pager">
+        <a href="party.html">&larr; Classes &amp; Party Building</a>
+        <a href="progression.html">The Journey, Fiends &amp; Chaos &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Final Fantasy I (Pixel Remaster) &mdash; Field Guide</p>
+    <p>A fan-made guide under <a href="../../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy I is &copy; Square Enix. Spell names follow the Pixel Remaster localization.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
