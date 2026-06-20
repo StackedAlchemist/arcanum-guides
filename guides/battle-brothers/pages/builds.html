@@ -4,11 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Character Builds - The Mercenary Codex</title>
-<meta name="description" content="Battle Brothers character build archetypes: perk orders, target stats, weapons and recruit backgrounds for tanks, two-handers, duelists, archers and more.">
+<meta name="description" content="Battle Brothers character builds with a level-by-level perk path for each one: tanks, two-handers, polearms, banner, archers, crossbow, hybrid archer, throwing skirmisher, duelists and the cleaver bleeder. Target stats, talent stars, backgrounds and weapons included.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
+<style>
+  /* level-by-level perk path */
+  .path { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
+  .path .step {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.82rem; padding: 3px 9px 3px 3px; border-radius: 3px;
+    background: rgba(201,168,76,0.06); border: 1px solid var(--line, rgba(201,168,76,0.18));
+  }
+  .path .step b {
+    display: inline-grid; place-items: center; width: 1.25rem; height: 1.25rem;
+    font-family: 'IM Fell English SC', serif; font-size: 0.72rem;
+    background: var(--rust, #7c2c1c); color: #f0e6d2; border-radius: 2px;
+  }
+  .path .step.gate { background: rgba(124,44,28,0.10); }
+  .talents { font-style: italic; }
+</style>
 </head>
 <body>
 
@@ -35,213 +51,276 @@
   <div class="wrap">
     <span class="eyebrow">The Roster</span>
     <h1>Character Builds</h1>
-    <p class="lede">A company is not twelve copies of one soldier. Each brother below is a role. Pick the ones that cover your weaknesses, recruit the right backgrounds, and follow the perk order line by line.</p>
+    <p class="lede">A company is not twelve copies of one soldier &mdash; each brother is a role. Every build below gives you the target stats, the talent stars to hunt for, the backgrounds to recruit, the weapons to carry, and a <strong>perk to take at every single level, 1 through 11.</strong></p>
   </div>
 </section>
 
 <main class="wrap section">
 
   <div class="callout">
-    <span class="label">Standing rule</span>
-    <p>Every level-up perk order assumes you take <strong>Colossus</strong> early unless a brother rolls very high starting HP. Perk tier-3 picks unlock at level 7, tier-7 picks at level 11. Build around getting your weapon Mastery and your survival perk online before you fight anything serious.</p>
+    <span class="label">How levelling actually works</span>
+    <p style="margin-bottom:0.5em;">A brother earns <strong>one perk point per level</strong>. Perks sit in <strong>seven tiers</strong>, and a tier only opens once you've bought enough perks in the tiers above it &mdash; so your early picks naturally climb the tree, and <strong>all seven tiers are reachable by about level 7</strong>. Your <strong>11th and final</strong> perk comes at level 11; levelling past that does nothing in vanilla, so level 11 is the finished brother.</p>
+    <p style="margin-bottom:0;">Because of this, a build's "perk order" <em>is</em> a level order. Each path below reads left to right: the number is the level, the name is the perk you buy at that level.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">How to read a build &mdash; talents &amp; stats</span>
+    <p style="margin-bottom:0;">When recruiting, chase <strong>talent stars</strong> in a build's primary attributes: each star adds about <strong>+0.5 per level</strong> to that stat, i.e. roughly <strong>+5 by level 11</strong> if you level it every time. A 1-star Poacher at 50 Ranged Skill ends up like a 0-star Hunter at 55. Starting values plus stars are what decide whether a recruit can reach the targets listed &mdash; not the background name alone. Always avoid the dealbreaker traits: <strong>Asthmatic, Dastard</strong>, and (on melee bros) <strong>Fainthearted/Irrational</strong>.</p>
   </div>
 
   <div class="phasebar">
+    <a href="#anvil">Anvil (Tank)</a>
+    <a href="#hammerfall">Hammerfall (2H Hammer)</a>
+    <a href="#reaper">Reaper (2H Sword)</a>
+    <a href="#wallpike">Wallpike (Polearm)</a>
     <a href="#sergeant">Banner Sergeant</a>
-    <a href="#tank">Anvil (Tank)</a>
-    <a href="#hammer">Hammerfall (2H Armor-Breaker)</a>
-    <a href="#reaper">Reaper (2H Sword AoE)</a>
-    <a href="#duelist">Duelist (Nimble Dagger)</a>
-    <a href="#cleaver">Bleeder (Cleaver)</a>
-    <a href="#polearm">Wallpike (Polearm Backline)</a>
-    <a href="#bow">Hawkeye (Bowman)</a>
-    <a href="#crossbow">Bolt (Crossbow)</a>
-    <a href="#lonewolf">Lone Wolf</a>
+    <a href="#hawkeye">Hawkeye (Bow)</a>
+    <a href="#bolt">Bolt (Crossbow)</a>
+    <a href="#hybrid">Hawk-and-Axe (Hybrid)</a>
+    <a href="#skirmisher">Skirmisher (Throwing)</a>
+    <a href="#duelist">Duelist (Nimble)</a>
+    <a href="#bleeder">Bleeder (Cleaver)</a>
+    <a href="#lonewolf">Lone Wolf (Greataxe)</a>
   </div>
 
   <input class="searchbar" type="text" data-search data-target=".build" placeholder="Search builds by name, weapon, or role...">
   <p class="search-note"><span data-search-count></span> &mdash; type to filter the roster.</p>
 
-  <!-- SERGEANT -->
-  <article class="build panel" id="sergeant">
-    <h3><span class="tier tier-A">A</span> The Banner Sergeant</h3>
-    <p><em>Role: company morale anchor. Keeps the line from breaking and rallies routing brothers.</em></p>
+  <!-- ANVIL -->
+  <article class="build panel" id="anvil">
+    <h3><span class="tier tier-S">S</span> The Anvil &mdash; Shield Tank</h3>
+    <p><em>Role: holds the corner, binds multiple enemies, body-blocks flanks so your damage dealers stay protected. Not a killer &mdash; a wall.</em></p>
     <div class="statblock">
-      <div><span class="k">Resolve</span><span class="v">Max it</span></div>
-      <div><span class="k">Melee Def</span><span class="v">High</span></div>
-      <div><span class="k">HP</span><span class="v">Medium</span></div>
-      <div><span class="k">Position</span><span class="v">Center, row 2</span></div>
-    </div>
-    <p><strong>Backgrounds:</strong> Sergeant, Adventurous Noble, Disowned Noble, Hedge Knight. Anyone with high base Resolve and a star in Resolve.</p>
-    <p><strong>Weapons:</strong> Sword and shield, or a one-handed spear and shield. He is not a damage dealer. He stands behind the front line, keeps Rally Command up, and survives.</p>
-    <p><strong>Perk order:</strong> Colossus &rarr; Fortified Mind &rarr; Rally the Troops &rarr; Shield Expert &rarr; Gifted (Resolve) &rarr; Nimble or Battle Forged (whichever your armor supports) &rarr; Hold Out &rarr; Recover &rarr; rest into defense.</p>
-    <p style="margin-bottom:0;"><strong>Why:</strong> Fearsome enemies and Greenskin numbers will try to rout your company. A sergeant in the middle with Rally Command turns a panic into a held line. One per company, no more.</p>
-  </article>
-
-  <!-- TANK -->
-  <article class="build panel" id="tank">
-    <h3><span class="tier tier-S">S</span> The Anvil &mdash; Battle Forged Tank</h3>
-    <p><em>Role: holds the corner, eats hits, body-blocks flanks so your damage dealers stay protected.</em></p>
-    <div class="statblock">
-      <div><span class="k">Melee Def</span><span class="v">55+</span></div>
-      <div><span class="k">HP</span><span class="v">70+</span></div>
-      <div><span class="k">Resolve</span><span class="v">~75</span></div>
-      <div><span class="k">Ranged Def</span><span class="v">10 (dump)</span></div>
-      <div><span class="k">Initiative</span><span class="v">Dump it</span></div>
+      <div><span class="k">Melee Def</span><span class="v">40+</span></div>
+      <div><span class="k">Fatigue</span><span class="v">130+</span></div>
+      <div><span class="k">Resolve</span><span class="v">60+</span></div>
+      <div><span class="k">HP</span><span class="v">80+</span></div>
+      <div><span class="k">Ranged Def</span><span class="v">10-15</span></div>
       <div><span class="k">Armor</span><span class="v">Heaviest</span></div>
     </div>
-    <p><strong>Backgrounds:</strong> Wildman, Sellsword, Hedge Knight, Brawler, Farmhand (cheap, high HP/Fatigue to grow into it).</p>
-    <p><strong>Weapons:</strong> Kite shield plus a one-handed weapon for utility. Swiss-army-knife approach with Quick Hands and Bags &amp; Belts so he can swap to a mace (stun), a hammer (armor), or a spear (reach) as needed.</p>
-    <p><strong>Perk order:</strong> Colossus &rarr; Shield Expert &rarr; Battle Forged &rarr; Steel Brow (early survival) &rarr; Nine Lives &rarr; Quick Hands &rarr; Underdog (so flanking can't shred his defense) &rarr; Rotation &rarr; Bags &amp; Belts &rarr; Hold Out / Recover.</p>
-    <p style="margin-bottom:0;"><strong>Why:</strong> Underdog is the key perk. Enemies that surround him lose their flanking bonus, so his huge Melee Defense holds even when mobbed. Put him on the corner and let the company form a wall behind him.</p>
+    <p class="talents"><strong>Talent stars:</strong> Melee Defense, Fatigue, Resolve. <strong>Backgrounds:</strong> Wildman, Sellsword, Hedge Knight, Brawler, Farmhand (cheap, high HP/Fatigue).</p>
+    <div class="path">
+      <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Shield Expert</span><span class="step"><b>3</b>Battle Forged</span><span class="step"><b>4</b>Recover</span><span class="step"><b>5</b>Underdog</span><span class="step"><b>6</b>Steel Brow</span><span class="step gate"><b>7</b>Indomitable</span><span class="step"><b>8</b>Rotation</span><span class="step"><b>9</b>Weapon Mastery</span><span class="step"><b>10</b>Nine Lives</span><span class="step"><b>11</b>Fortified Mind</span>
+    </div>
+    <p><strong>Weapons:</strong> Kite shield + a one-hander. Carry a spear (hit bonus, hold the line), a mace (stun), and a hammer (armor) via Quick Hands / Bags &amp; Belts and swap to the threat.</p>
+    <p style="margin-bottom:0;"><strong>Why &amp; variants:</strong> Underdog stops flankers shredding his defense; Indomitable + Recover negates armor-piercing alpha. For a pure wall, drop Weapon Mastery for <em>Taunt</em> or a second defensive perk. One or two per company.</p>
   </article>
 
-  <!-- HAMMER -->
-  <article class="build panel" id="hammer">
-    <h3><span class="tier tier-S">S</span> Hammerfall &mdash; Two-Handed Armor Breaker</h3>
-    <p><em>Role: deletes heavily armored single targets. Orc Warriors, armored Wiedergangers, Fallen Heroes, champions.</em></p>
+  <!-- HAMMERFALL -->
+  <article class="build panel" id="hammerfall">
+    <h3><span class="tier tier-S">S</span> Hammerfall &mdash; Two-Handed Hammer</h3>
+    <p><em>Role: the can-opener. Smashes through the heaviest armor (Orc Warriors, Chosen, Honor Guard) where everything else bounces.</em></p>
     <div class="statblock">
-      <div><span class="k">Melee Skill</span><span class="v">No cap, raise it</span></div>
-      <div><span class="k">Fatigue</span><span class="v">90+ after armor</span></div>
-      <div><span class="k">Melee Def</span><span class="v">~40</span></div>
-      <div><span class="k">HP</span><span class="v">High</span></div>
-      <div><span class="k">Position</span><span class="v">Front line</span></div>
+      <div><span class="k">Melee Skill</span><span class="v">90+</span></div>
+      <div><span class="k">Melee Def</span><span class="v">35+</span></div>
+      <div><span class="k">Fatigue</span><span class="v">130+</span></div>
+      <div><span class="k">HP</span><span class="v">75+</span></div>
+      <div><span class="k">Resolve</span><span class="v">50</span></div>
+      <div><span class="k">Ranged Def</span><span class="v">grow it</span></div>
     </div>
-    <p><strong>Backgrounds:</strong> Sellsword, Hedge Knight, Wildman, Retired Soldier. You want high Melee Skill and Fatigue.</p>
-    <p><strong>Weapons:</strong> Two-Handed Hammer (primary), Two-Handed Mace as alternate for the Daze and stun control. The new <strong>Estoc</strong> (v1.5.2.2) is a strong sidegrade here for piercing joints in heavy armor. Carry a one-handed backup with shield for emergencies.</p>
-    <p><strong>Perk order:</strong> Colossus &rarr; Brawny &rarr; Hammer/Mace Mastery &rarr; Battle Forged &rarr; Steel Brow &rarr; Recover &rarr; Killing Frenzy &rarr; Berserk &rarr; Fearsome (optional) &rarr; Nine Lives.</p>
-    <p style="margin-bottom:0;"><strong>Why:</strong> Two-handers leave the wielder exposed, so Battle Forged armor plus a tank corner is non-negotiable. Mastery cuts Fatigue 25% so he can keep swinging. Against a heavily armored bandit a hammer is the fastest way to open the can.</p>
+    <p class="talents"><strong>Talent stars:</strong> Melee Skill, Melee Defense, Fatigue. <strong>Backgrounds:</strong> Sellsword, Hedge Knight, Wildman, Adventurous Noble, Brawler. <strong>Traits:</strong> Iron Lungs, Strong.</p>
+    <div class="path">
+      <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Recover</span><span class="step"><b>3</b>Battle Forged</span><span class="step"><b>4</b>Brawny</span><span class="step"><b>5</b>Hammer Mastery</span><span class="step gate"><b>6</b>Berserk</span><span class="step"><b>7</b>Killing Frenzy</span><span class="step"><b>8</b>Underdog</span><span class="step"><b>9</b>Rotation</span><span class="step"><b>10</b>Indomitable</span><span class="step"><b>11</b>Quick Hands</span>
+    </div>
+    <p style="margin-bottom:0;"><strong>Notes:</strong> Starts weak &mdash; level him in the back rank or with a shield until Battle Forged + decent armor come online. Sidearm a Rondel Dagger (Quick Hands) to strip armor off downed foes. Pair with throwers/Executioner to exploit the injuries he causes.</p>
   </article>
 
   <!-- REAPER -->
   <article class="build panel" id="reaper">
-    <h3><span class="tier tier-S">S</span> The Reaper &mdash; Two-Handed Sword / Greatsword</h3>
-    <p><em>Role: multi-target sweeps against unarmored or lightly armored crowds. Thralls, Goblins, Direwolves.</em></p>
+    <h3><span class="tier tier-A">A</span> Reaper &mdash; Two-Handed Sword</h3>
+    <p><em>Role: crowd-clearing DPS. The greatsword's swing and line attacks chew through groups of lighter enemies while reach keeps him safer than a hammer.</em></p>
     <div class="statblock">
-      <div><span class="k">Melee Skill</span><span class="v">High</span></div>
-      <div><span class="k">Fatigue</span><span class="v">90+</span></div>
-      <div><span class="k">Melee Def</span><span class="v">~40</span></div>
-      <div><span class="k">Position</span><span class="v">Front line</span></div>
+      <div><span class="k">Melee Skill</span><span class="v">90+</span></div>
+      <div><span class="k">Melee Def</span><span class="v">35+</span></div>
+      <div><span class="k">Fatigue</span><span class="v">130+</span></div>
+      <div><span class="k">HP</span><span class="v">75+</span></div>
+      <div><span class="k">Resolve</span><span class="v">50</span></div>
     </div>
-    <p><strong>Backgrounds:</strong> Sellsword, Hedge Knight, Wildman. Same statline as Hammerfall, different weapon job.</p>
-    <p><strong>Weapons:</strong> Greatsword (Fatigue-efficient Swing for crowds) plus Two-Handed Hammer for armored single targets, giving the brother an answer to both. The new <strong>Executioner's Sword</strong> (v1.5.2.2) is a finisher variant: its Decapitate scales with the target's missing HP, perfect against high-HP enemies you've already wounded.</p>
-    <p><strong>Perk order:</strong> Colossus &rarr; Brawny &rarr; Sword Mastery &rarr; Battle Forged &rarr; Recover &rarr; Killing Frenzy &rarr; Berserk &rarr; Reach Advantage &rarr; Nine Lives &rarr; Fearsome.</p>
-    <p style="margin-bottom:0;"><strong>Why:</strong> Swing hits three tiles. Against a wall of weak enemies that is enormous value. Reach Advantage stacks defense the longer he stays adjacent to the same foe, so a Reaper can hold a flank and mow the line at once.</p>
+    <p class="talents"><strong>Talent stars:</strong> Melee Skill, Melee Defense, Fatigue. <strong>Backgrounds:</strong> as Hammerfall. The bardiche or warscythe are great substitutes for hitting the back line.</p>
+    <div class="path">
+      <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Recover</span><span class="step"><b>3</b>Battle Forged</span><span class="step"><b>4</b>Brawny</span><span class="step"><b>5</b>Sword Mastery</span><span class="step gate"><b>6</b>Berserk</span><span class="step"><b>7</b>Killing Frenzy</span><span class="step"><b>8</b>Reach Advantage</span><span class="step"><b>9</b>Underdog</span><span class="step"><b>10</b>Rotation</span><span class="step"><b>11</b>Quick Hands</span>
+    </div>
+    <p style="margin-bottom:0;"><strong>Why:</strong> Reach Advantage stacks melee defense as he swings, so he can hold a flank. Start each fight with a polearm equipped, then Quick Hands to the greatsword once the enemy closes. Use the greataxe instead only if you want the 6-tile reckless swing.</p>
+  </article>
+
+  <!-- WALLPIKE -->
+  <article class="build panel" id="wallpike">
+    <h3><span class="tier tier-A">A</span> Wallpike &mdash; Polearm Backline</h3>
+    <p><em>Role: dependable second-row damage. Stabs over your front line from safety and punishes anyone engaging your back rank. Your answer to the Ancient Dead, where bows fail.</em></p>
+    <div class="statblock">
+      <div><span class="k">Melee Skill</span><span class="v">85+</span></div>
+      <div><span class="k">Melee Def</span><span class="v">20+</span></div>
+      <div><span class="k">Ranged Def</span><span class="v">15+ (or Anticipation)</span></div>
+      <div><span class="k">Fatigue</span><span class="v">60-80</span></div>
+      <div><span class="k">HP</span><span class="v">70-80</span></div>
+    </div>
+    <p class="talents"><strong>Talent stars:</strong> Melee Skill, Melee Defense, Ranged Defense. <strong>Backgrounds:</strong> cheap is fine &mdash; Farmhand, Militia, Thief, Brawler. The Billhook is the best weapon; the Pike adds hit chance vs dodgy foes.</p>
+    <div class="path">
+      <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Pathfinder</span><span class="step"><b>3</b>Backstabber</span><span class="step"><b>4</b>Polearm Mastery</span><span class="step"><b>5</b>Battle Forged</span><span class="step gate"><b>6</b>Anticipation</span><span class="step"><b>7</b>Berserk</span><span class="step"><b>8</b>Killing Frenzy</span><span class="step"><b>9</b>Brawny</span><span class="step"><b>10</b>Rotation</span><span class="step"><b>11</b>Quick Hands</span>
+    </div>
+    <p style="margin-bottom:0;"><strong>Why &amp; variants:</strong> Backstabber fixes the polearm's mediocre melee skill since you always attack engaged enemies. Polearm Mastery's reduced AP lets him step-and-stab in one turn. Take <em>Quick Hands + Cleaver Mastery</em> to carry a whip for disarming and armor-stripping &mdash; the best utility upgrade in the company.</p>
+  </article>
+
+  <!-- SERGEANT -->
+  <article class="build panel" id="sergeant">
+    <h3><span class="tier tier-A">A</span> The Banner Sergeant &mdash; Morale Anchor</h3>
+    <p><em>Role: keeps the line from breaking and rallies routing brothers. Mandatory vs Geists, Alps, Hexen, Orc Warlords and Ancient Priests &mdash; anything that attacks Resolve.</em></p>
+    <div class="statblock">
+      <div><span class="k">Resolve</span><span class="v">Max it</span></div>
+      <div><span class="k">Fatigue</span><span class="v">80+</span></div>
+      <div><span class="k">Ranged Def</span><span class="v">15+</span></div>
+      <div><span class="k">HP</span><span class="v">70-80</span></div>
+      <div><span class="k">Melee/Ranged Skill</span><span class="v">decent</span></div>
+    </div>
+    <p class="talents"><strong>Talent stars:</strong> Resolve, Ranged Defense, Melee or Ranged Skill. <strong>Backgrounds:</strong> Sergeant, Adventurous/Disowned Noble, Cleric, Hedge Knight, Squire.</p>
+    <div class="path">
+      <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Fortified Mind</span><span class="step"><b>3</b>Quick Hands</span><span class="step"><b>4</b>Recover</span><span class="step"><b>5</b>Rally the Troops</span><span class="step gate"><b>6</b>Anticipation</span><span class="step"><b>7</b>Polearm Mastery</span><span class="step"><b>8</b>Relentless</span><span class="step"><b>9</b>Pathfinder</span><span class="step"><b>10</b>Nimble</span><span class="step"><b>11</b>Backstabber</span>
+    </div>
+    <p style="margin-bottom:0;"><strong>Why:</strong> Quick Hands swaps between the Battle Standard and a Billhook so he buffs <em>and</em> deals damage. Relentless keeps his initiative high so he can Rally before the line acts &mdash; the Relentless-Rally-Recover loop turns one sergeant into a panic-proof company. Build a backup; if he dies mid-fight you can cascade. One per company (two for Geist fights).</p>
+  </article>
+
+  <!-- HAWKEYE -->
+  <article class="build panel" id="hawkeye">
+    <h3><span class="tier tier-A">A</span> Hawkeye &mdash; Bowman</h3>
+    <p><em>Role: ranged scalpel. Snipes enemy archers, shamans, necromancers and weakly-armored threats (Berserkers, two-handers) before they reach the line. King against Goblins.</em></p>
+    <div class="statblock">
+      <div><span class="k">Ranged Skill</span><span class="v">90-95+</span></div>
+      <div><span class="k">Fatigue</span><span class="v">80+</span></div>
+      <div><span class="k">HP</span><span class="v">70-90</span></div>
+      <div><span class="k">Ranged Def</span><span class="v">grow it</span></div>
+      <div><span class="k">Armor</span><span class="v">Light (Nimble)</span></div>
+    </div>
+    <p class="talents"><strong>Talent stars:</strong> Ranged Skill, Fatigue, Ranged Defense. <strong>Backgrounds:</strong> Hunter (best by far), then Poacher, Bowyer, Squire with 45+ Ranged Skill.</p>
+    <div class="path">
+      <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Fast Adaptation</span><span class="step"><b>3</b>Bullseye</span><span class="step"><b>4</b>Bow Mastery</span><span class="step"><b>5</b>Nimble</span><span class="step gate"><b>6</b>Anticipation</span><span class="step"><b>7</b>Footwork</span><span class="step"><b>8</b>Berserk</span><span class="step"><b>9</b>Killing Frenzy</span><span class="step"><b>10</b>Recover</span><span class="step"><b>11</b>Overwhelm</span>
+    </div>
+    <p style="margin-bottom:0;"><strong>Why:</strong> Bow Mastery adds range and cuts fatigue; Bullseye hits foes in cover; Footwork (not Rotation) escapes melee. Berserk + Killing Frenzy means he last-shots wounded enemies and snowballs. Recommended armor: Noble Mail + Sallet (20 total fatigue) for ~53% Nimble reduction. Swap Overwhelm for <em>Head Hunter</em> if his resolve is low.</p>
+  </article>
+
+  <!-- BOLT -->
+  <article class="build panel" id="bolt">
+    <h3><span class="tier tier-B">B</span> Bolt &mdash; Crossbowman</h3>
+    <p><em>Role: early-game accuracy and armor-piercing punch that needs no skill investment to land. Falls off vs the bow late, but the handgonne variant shreds unarmored swarms.</em></p>
+    <div class="statblock">
+      <div><span class="k">Ranged Skill</span><span class="v">80+</span></div>
+      <div><span class="k">Fatigue</span><span class="v">80+</span></div>
+      <div><span class="k">HP</span><span class="v">70-90</span></div>
+      <div><span class="k">Ranged Def</span><span class="v">grow it</span></div>
+    </div>
+    <p class="talents"><strong>Talent stars:</strong> Ranged Skill, Fatigue, Ranged Defense. <strong>Backgrounds:</strong> any with a Ranged Skill star &mdash; the crossbow forgives lower skill.</p>
+    <div class="path">
+      <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Quick Hands</span><span class="step"><b>3</b>Bullseye</span><span class="step"><b>4</b>Crossbow Mastery</span><span class="step"><b>5</b>Nimble</span><span class="step gate"><b>6</b>Anticipation</span><span class="step"><b>7</b>Footwork</span><span class="step"><b>8</b>Berserk</span><span class="step"><b>9</b>Killing Frenzy</span><span class="step"><b>10</b>Recover</span><span class="step"><b>11</b>Executioner</span>
+    </div>
+    <p style="margin-bottom:0;"><strong>Why:</strong> Crossbow Mastery removes the reload turn &mdash; the build's whole point. Quick Hands swaps to a handgonne for big unarmored AoE (Wiedergangers, Webknechts) or to throwing weapons in a pinch. Keep at least one bow and one crossbow user so you can use any famed ranged weapon you find.</p>
+  </article>
+
+  <!-- HYBRID -->
+  <article class="build panel" id="hybrid">
+    <h3><span class="tier tier-A">A</span> Hawk-and-Axe &mdash; Hybrid Archer</h3>
+    <p><em>Role: an archer that switches to a Longaxe to break shields and stay useful against the Ancient Dead and shielded enemies where pure bows stall.</em></p>
+    <div class="statblock">
+      <div><span class="k">Ranged Skill</span><span class="v">85+</span></div>
+      <div><span class="k">Melee Skill</span><span class="v">80+</span></div>
+      <div><span class="k">Fatigue</span><span class="v">80+</span></div>
+      <div><span class="k">HP</span><span class="v">70</span></div>
+      <div><span class="k">Armor</span><span class="v">Light (Nimble)</span></div>
+    </div>
+    <p class="talents"><strong>Talent stars:</strong> Ranged Skill, Fatigue, Melee Skill. <strong>Backgrounds:</strong> Hunter (best), Bowyer, Sellsword, Witch Hunter, Squire, Beast Slayer, Poacher &mdash; needs to roll both ranged and melee.</p>
+    <div class="path">
+      <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Fast Adaptation</span><span class="step"><b>3</b>Bullseye</span><span class="step"><b>4</b>Bow Mastery</span><span class="step"><b>5</b>Nimble</span><span class="step gate"><b>6</b>Quick Hands</span><span class="step"><b>7</b>Anticipation</span><span class="step"><b>8</b>Footwork</span><span class="step"><b>9</b>Axe Mastery</span><span class="step"><b>10</b>Backstabber</span><span class="step"><b>11</b>Berserk</span>
+    </div>
+    <p style="margin-bottom:0;"><strong>Why:</strong> Quick Hands lets him bow at range and Longaxe shields the moment a wall closes. Backstabber props up his split melee skill. For a pure-damage variant, drop Backstabber/Anticipation for Berserk + Killing Frenzy and lean ranged. Same armor as Hawkeye.</p>
+  </article>
+
+  <!-- SKIRMISHER -->
+  <article class="build panel" id="skirmisher">
+    <h3><span class="tier tier-A">A</span> Skirmisher &mdash; Throwing Weapons</h3>
+    <p><em>Role: close-range armor-shredder. Heavy javelins and throwing axes from behind the front rank do huge armor and HP damage and cause crippling injuries &mdash; the answer to Barbarians and heavy infantry.</em></p>
+    <div class="statblock">
+      <div><span class="k">Ranged Skill</span><span class="v">90+</span></div>
+      <div><span class="k">Ranged Def</span><span class="v">30+ (or Anticipation)</span></div>
+      <div><span class="k">HP</span><span class="v">60-70</span></div>
+      <div><span class="k">Fatigue</span><span class="v">90+</span></div>
+      <div><span class="k">Armor</span><span class="v">Light (Nimble)</span></div>
+    </div>
+    <p class="talents"><strong>Talent stars:</strong> Ranged Skill, Fatigue, Ranged Defense. <strong>Backgrounds:</strong> Hunter, Squire, Witch Hunter, Beast Slayer. Carry 3 stacks of throwables via Bags &amp; Belts + a firelance sidearm.</p>
+    <div class="path">
+      <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Quick Hands</span><span class="step"><b>3</b>Bullseye</span><span class="step"><b>4</b>Bags and Belts</span><span class="step"><b>5</b>Nimble</span><span class="step gate"><b>6</b>Throwing Mastery</span><span class="step"><b>7</b>Anticipation</span><span class="step"><b>8</b>Executioner</span><span class="step"><b>9</b>Duelist</span><span class="step"><b>10</b>Berserk</span><span class="step"><b>11</b>Killing Frenzy</span>
+    </div>
+    <p style="margin-bottom:0;"><strong>Why:</strong> Throwing Mastery + Duelist makes javelins ignore armor; Executioner amplifies damage on the injuries the front line sets up. The firelance special scales off Ranged Skill, hits 2 tiles, and burns &mdash; a perfect emergency button when something engages him. Farm heavy throwables off Barbarian Reavers.</p>
   </article>
 
   <!-- DUELIST -->
   <article class="build panel" id="duelist">
-    <h3><span class="tier tier-A">A</span> The Duelist &mdash; Nimble Dagger / Qatal</h3>
-    <p><em>Role: armor-ignoring assassin. Strips elite single targets by stabbing through the gaps.</em></p>
+    <h3><span class="tier tier-S">S</span> The Duelist &mdash; Nimble Dodge (expert)</h3>
+    <p><em>Role: a single peerless brother who fights without a shield, surviving on Dodge, Nimble and raw skill while shredding elite targets (Hedge Knights, Chosen) or stripping armor with a dagger. The most demanding build &mdash; needs an exceptional recruit.</em></p>
     <div class="statblock">
-      <div><span class="k">Initiative</span><span class="v">115+</span></div>
-      <div><span class="k">Melee Skill</span><span class="v">Very high</span></div>
+      <div><span class="k">Melee Def</span><span class="v">35+</span></div>
+      <div><span class="k">Melee Skill</span><span class="v">90+</span></div>
+      <div><span class="k">Initiative</span><span class="v">140+</span></div>
+      <div><span class="k">HP</span><span class="v">90-100</span></div>
+      <div><span class="k">Fatigue</span><span class="v">high</span></div>
+      <div><span class="k">Resolve</span><span class="v">decent</span></div>
+    </div>
+    <p class="talents"><strong>Talent stars:</strong> Melee Defense, Melee Skill, Initiative. <strong>Traits:</strong> Iron Lungs, Quick, Lucky. <strong>Weapons:</strong> Sword (Riposte) for a counter-machine, or Rondel Dagger (Puncture) as a VIP armor-stripper/assassin.</p>
+    <div class="path">
+      <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Dodge</span><span class="step"><b>3</b>Pathfinder</span><span class="step"><b>4</b>Weapon Mastery</span><span class="step"><b>5</b>Nimble</span><span class="step gate"><b>6</b>Underdog</span><span class="step"><b>7</b>Duelist</span><span class="step"><b>8</b>Berserk</span><span class="step"><b>9</b>Killing Frenzy</span><span class="step"><b>10</b>Footwork</span><span class="step"><b>11</b>Lone Wolf</span>
+    </div>
+    <p style="margin-bottom:0;"><strong>Why:</strong> Dodge converts his huge Initiative into defense, so at low fatigue his total defense rivals a tank. Babysit him until level 10-11, then he solos camps. Swap Lone Wolf for <em>Indomitable</em> or <em>Resilient</em> (bleeds are death to Nimble) if he sticks near the group. Keep armor near 15 fatigue penalty to max Nimble.</p>
+  </article>
+
+  <!-- BLEEDER -->
+  <article class="build panel" id="bleeder">
+    <h3><span class="tier tier-A">A</span> Bleeder &mdash; Cleaver Duelist</h3>
+    <p><em>Role: stacks bleeds and decapitates. Excels vs the Undead &mdash; the whip disarms skeleton polearms, and Decapitate permanently kills Wiedergangers so Necromancers can't raise them.</em></p>
+    <div class="statblock">
+      <div><span class="k">Melee Skill</span><span class="v">85+</span></div>
+      <div><span class="k">Melee Def</span><span class="v">30+</span></div>
+      <div><span class="k">Fatigue</span><span class="v">130+ (80 after gear)</span></div>
       <div><span class="k">HP</span><span class="v">80+</span></div>
-      <div><span class="k">Melee Def</span><span class="v">High</span></div>
-      <div><span class="k">Armor</span><span class="v">Light (Nimble)</span></div>
+      <div><span class="k">Resolve</span><span class="v">40+</span></div>
     </div>
-    <p><strong>Backgrounds:</strong> Thief, Assassin, Oathtaker, high-roll Ratcatcher or Gambler with the Quick trait. High Initiative is the whole build.</p>
-    <p><strong>Weapons:</strong> Qatal (Southern) Dagger primary. Puncture ignores armor entirely. Carry a Cleaver alternate for bleed against high-HP foes.</p>
-    <p><strong>Perk order:</strong> Colossus &rarr; Dagger Mastery &rarr; Gifted &rarr; Nimble &rarr; Dodge &rarr; Anticipation &rarr; Duelist &rarr; Killing Frenzy &rarr; Berserk &rarr; Adrenaline.</p>
-    <p style="margin-bottom:0;"><strong>Why:</strong> Puncture spam ignores armor, and the Mace user's stun sets it up. With Duelist and Mastery a dagger brother chunks 3+ Puncture stabs a turn into a stunned champion. Nimble plus Dodge plus high Initiative keeps him alive in light armor.</p>
-  </article>
-
-  <!-- CLEAVER -->
-  <article class="build panel" id="cleaver">
-    <h3><span class="tier tier-A">A</span> The Bleeder &mdash; Cleaver</h3>
-    <p><em>Role: damage-over-time against high-HP, lightly armored foes. Orcs, beasts, Schrats.</em></p>
-    <div class="statblock">
-      <div><span class="k">Melee Skill</span><span class="v">High</span></div>
-      <div><span class="k">HP</span><span class="v">Medium-high</span></div>
-      <div><span class="k">Melee Def</span><span class="v">Medium</span></div>
-      <div><span class="k">Position</span><span class="v">Front line</span></div>
+    <p class="talents"><strong>Talent stars:</strong> Melee Skill, Melee Defense, Fatigue. <strong>Weapons:</strong> Cleaver (ideally Crypt Cleaver, 4 AP) + a Whip for disarm/armor-strip via Quick Hands.</p>
+    <div class="path">
+      <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Recover</span><span class="step"><b>3</b>Quick Hands</span><span class="step"><b>4</b>Cleaver Mastery</span><span class="step"><b>5</b>Battle Forged</span><span class="step gate"><b>6</b>Duelist</span><span class="step"><b>7</b>Underdog</span><span class="step"><b>8</b>Berserk</span><span class="step"><b>9</b>Killing Frenzy</span><span class="step"><b>10</b>Indomitable</span><span class="step"><b>11</b>Reach Advantage</span>
     </div>
-    <p><strong>Backgrounds:</strong> Butcher (synergizes), Sellsword, Wildman, anyone with the Bloodthirsty trait.</p>
-    <p><strong>Weapons:</strong> Orc Cleaver (Head Chopper) is the prize. One-handed cleaver plus shield for survivability, or two-handed cleaver with Decapitate for finishing.</p>
-    <p><strong>Perk order:</strong> Colossus &rarr; Cleaver Mastery &rarr; Brawny &rarr; Battle Forged &rarr; Duelist &rarr; Killing Frenzy &rarr; Berserk &rarr; Recover &rarr; Nine Lives.</p>
-    <p style="margin-bottom:0;"><strong>Why:</strong> Mastery doubles bleed (up to ~20/turn) and bleed bypasses armor entirely once it lands. Against an Unhold or a Lindwurm, stacking bleed melts a health pool no hammer can match. Decapitate on the two-hander finishes wounded giants.</p>
-  </article>
-
-  <!-- POLEARM -->
-  <article class="build panel" id="polearm">
-    <h3><span class="tier tier-S">S</span> The Wallpike &mdash; Polearm Backline</h3>
-    <p><em>Role: attacks from the second row over your front line. Safe, consistent, scales all game.</em></p>
-    <div class="statblock">
-      <div><span class="k">Melee Skill</span><span class="v">High</span></div>
-      <div><span class="k">Ranged Def</span><span class="v">Medium</span></div>
-      <div><span class="k">HP</span><span class="v">Medium</span></div>
-      <div><span class="k">Position</span><span class="v">Row 2</span></div>
-    </div>
-    <p><strong>Backgrounds:</strong> Militia, Caravan Hand, Farmhand, anyone cheap. They never get hit much, so survival stats matter less.</p>
-    <p><strong>Weapons:</strong> Pike (single-target reach), Billhook (single-target, can pull enemies), Swordlance (AoE Swing at range), Spetum (better Spearwall). The new <strong>Pollaxe</strong> (v1.5.2.2) is range 1 not 2, so it sits between polearm and two-hander: its hammer side staggers, its axe side finishes the incapacitated.</p>
-    <p><strong>Perk order:</strong> Colossus &rarr; Polearm Mastery &rarr; Backstabber &rarr; Reach Advantage &rarr; Footwork &rarr; Killing Frenzy &rarr; Berserk &rarr; Quick Hands &rarr; Recover.</p>
-    <p style="margin-bottom:0;"><strong>Why:</strong> As of recent patches polearm skills cost 5 AP not 6, lost the adjacent-target hit penalty, and cost 25% less Fatigue. Backline polearms get hit rarely and deal damage every single turn. Two or three of these is the backbone of a stable mid-game company.</p>
-  </article>
-
-  <!-- BOW -->
-  <article class="build panel" id="bow">
-    <h3><span class="tier tier-A">A</span> Hawkeye &mdash; Bowman</h3>
-    <p><em>Role: kills squishy priority targets before they reach the line. Goblin shamans, Necromancers, berserkers.</em></p>
-    <div class="statblock">
-      <div><span class="k">Ranged Skill</span><span class="v">No cap, raise it</span></div>
-      <div><span class="k">Initiative</span><span class="v">100+</span></div>
-      <div><span class="k">Ranged Def</span><span class="v">35+</span></div>
-      <div><span class="k">Fatigue</span><span class="v">100+ (longbow)</span></div>
-    </div>
-    <p><strong>Backgrounds:</strong> Hunter, Poacher, Bowyer. Anyone with high Ranged Skill and a star in it.</p>
-    <p><strong>Weapons:</strong> War Bow / Longbow for range and headshots. Against unarmored hordes (Goblins, Thralls) the bow shreds.</p>
-    <p><strong>Perk order:</strong> Colossus or Student &rarr; Bow Mastery &rarr; Bullseye &rarr; Quick Hands &rarr; Killing Frenzy &rarr; Berserk &rarr; Overwhelm &rarr; Anticipation &rarr; Bags &amp; Belts.</p>
-    <p style="margin-bottom:0;"><strong>Why:</strong> Bullseye ignores cover and obstacles so he can pick the Necromancer out of a crowd. Bows beat armor poorly but devastate flesh, so pair a bowman with a crossbowman to cover both. Keep him at the back, give him Ranged Defense, and screen him with bodies.</p>
-  </article>
-
-  <!-- CROSSBOW -->
-  <article class="build panel" id="crossbow">
-    <h3><span class="tier tier-A">A</span> Bolt &mdash; Crossbowman</h3>
-    <p><em>Role: armor-piercing ranged damage. Kills knights and armored elites before melee.</em></p>
-    <div class="statblock">
-      <div><span class="k">Ranged Skill</span><span class="v">High</span></div>
-      <div><span class="k">Fatigue</span><span class="v">70+</span></div>
-      <div><span class="k">Ranged Def</span><span class="v">35+</span></div>
-      <div><span class="k">Position</span><span class="v">Back row</span></div>
-    </div>
-    <p><strong>Backgrounds:</strong> Hunter, Poacher, Witch Hunter, Retired Soldier.</p>
-    <p><strong>Weapons:</strong> Heavy Crossbow. It is pre-loaded at battle start if equipped in an active slot, so the first bolt flies immediately.</p>
-    <p><strong>Perk order:</strong> Colossus or Student &rarr; Crossbow Mastery &rarr; Quick Hands &rarr; Bullseye &rarr; Killing Frenzy &rarr; Berserk &rarr; Overwhelm &rarr; Bags &amp; Belts &rarr; Anticipation.</p>
-    <p style="margin-bottom:0;"><strong>Why:</strong> Crossbows pierce armor where bows cannot. With Quick Hands a crossbowman can fire, swap, fire again, or pull a melee weapon when the line collapses. The pair of one bow and one crossbow answers both armored and unarmored threats.</p>
+    <p style="margin-bottom:0;"><strong>Why:</strong> Duelist + Cleaver Mastery pushes bleeds through armor; Decapitate scales with the target's lost HP, so the front line softens and the Bleeder finishes. Use the Berserk-Recover combo (Recover right after a kill) to keep swinging. Run a lighter Nimble version if you can't feed its fatigue.</p>
   </article>
 
   <!-- LONE WOLF -->
   <article class="build panel" id="lonewolf">
-    <h3><span class="tier tier-B">B</span> The Lone Wolf</h3>
-    <p><em>Role: a single dominant brother who fights apart from the company. Demanding, high-skill, high-reward.</em></p>
+    <h3><span class="tier tier-B">B</span> Lone Wolf &mdash; Greataxe Berserker</h3>
+    <p><em>Role: a reckless solo bruiser who splits off to hold or clear a flank alone, abusing the 6-tile greataxe sweep and the Lone Wolf perk's bonus when unsupported.</em></p>
     <div class="statblock">
-      <div><span class="k">Resolve</span><span class="v">High (no rally)</span></div>
-      <div><span class="k">Melee Def</span><span class="v">Very high</span></div>
-      <div><span class="k">All stats</span><span class="v">Elite roll</span></div>
-      <div><span class="k">Position</span><span class="v">Isolated corner</span></div>
+      <div><span class="k">Melee Skill</span><span class="v">90+</span></div>
+      <div><span class="k">Melee Def</span><span class="v">35+</span></div>
+      <div><span class="k">Fatigue</span><span class="v">130+</span></div>
+      <div><span class="k">HP</span><span class="v">85+</span></div>
     </div>
-    <p><strong>Backgrounds:</strong> Only your best brother. Hedge Knight, Sellsword, or a perfect-roll Wildman.</p>
-    <p><strong>Weapons:</strong> Two-handed sword for AoE plus Reach Advantage stacking, so being surrounded raises his defense instead of killing him.</p>
-    <p><strong>Perk order:</strong> Colossus &rarr; Gifted &rarr; Lone Wolf &rarr; Reach Advantage &rarr; Battle Forged &rarr; Berserk &rarr; Fortified Mind &rarr; Recover &rarr; Nine Lives.</p>
-    <p style="margin-bottom:0;"><strong>Why:</strong> Lone Wolf grants a flat stat bonus while standing apart from allies (current patch: +10% at 2 tiles). He needs high Resolve because he gets no Rally support out there, and high defense because he draws a crowd. Strong on Lone Wolf / Gladiator origin runs; a luxury otherwise.</p>
+    <p class="talents"><strong>Talent stars:</strong> Melee Skill, Melee Defense, Fatigue. <strong>Weapons:</strong> Greataxe (Mansplitter for armor) + Longaxe sidearm.</p>
+    <div class="path">
+      <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Recover</span><span class="step"><b>3</b>Battle Forged</span><span class="step"><b>4</b>Brawny</span><span class="step"><b>5</b>Axe Mastery</span><span class="step gate"><b>6</b>Berserk</span><span class="step"><b>7</b>Killing Frenzy</span><span class="step"><b>8</b>Underdog</span><span class="step"><b>9</b>Lone Wolf</span><span class="step"><b>10</b>Indomitable</span><span class="step"><b>11</b>Nine Lives</span>
+    </div>
+    <p style="margin-bottom:0;"><strong>Note:</strong> Niche &mdash; the 6-tile swing risks friendly positioning, so he wants space. Mostly a fun pick; for raw damage the Hammerfall/Reaper are safer. Underdog + Lone Wolf + Indomitable keep him alive while encircled.</p>
   </article>
 
-  <div class="callout secret">
-    <span class="label">Company composition</span>
-    <p>A clean 12-man template for most of the game: <strong>1 sergeant, 1-2 tanks (corners), 3-4 two-handers/cleavers (front), 2-3 polearms (row 2), 2 ranged (1 bow + 1 crossbow)</strong>. Adjust per crisis. Against Goblins lean ranged and high Ranged Defense. Against the Undead lean armor-breakers and decapitation. Against beasts lean spears and cleavers.</p>
+  <div class="callout">
+    <span class="label">A balanced company (12)</span>
+    <p style="margin-bottom:0;">A clean default: <strong>2-3 Anvils, 1 Banner Sergeant, 1 Wallpike, 3 ranged</strong> (mix Hawkeye / Bolt / Skirmisher), and <strong>4-5 two-handers</strong> (Hammerfall + Reaper). Shift the ratio per enemy: more shields + bows vs Goblins; more two-handers and polearms (few shields) vs Orcs; shields-to-hold + two-handers vs the Ancient Dead, swapping bows for Wallpikes. See <a href="enemies.html">Enemy Tactics</a> and <a href="phases.html">Game Phases</a>.</p>
   </div>
 
 </main>
 
 <footer class="footer">
   <div class="wrap">
-    <div class="colophon">
+    <div>
       <h4>The Mercenary Codex</h4>
-      <p>Fan-made strategy compendium for <strong>Battle Brothers</strong>. Accurate to v1.5.2.2. Not affiliated with Overhype Studios or Hooded Horse.</p>
+      <p>Fan-made strategy compendium for <strong>Battle Brothers</strong>. Accurate to v1.5.2.2. Perk paths are recommended orders, not the only valid ones &mdash; adapt to each recruit's stats and traits. Not affiliated with Overhype Studios or Hooded Horse.</p>
     </div>
     <div>
       <h4>Sections</h4>
       <p>
+        <a href="origins.html">Origins</a> &middot;
         <a href="builds.html">Builds</a> &middot;
         <a href="weapons.html">Weapons</a> &middot;
         <a href="perks.html">Perks</a><br>
