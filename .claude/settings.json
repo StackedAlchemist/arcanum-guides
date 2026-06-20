@@ -4,7 +4,9 @@
       "Bash(git commit -q -m ' *)",
       "WebFetch(domain:game8.co)",
       "WebFetch(domain:battlebrothers.fandom.com)",
-      "WebFetch(domain:www.gamersdecide.com)"
+      "WebFetch(domain:www.gamersdecide.com)",
+      "Read(//c/c/Users/billy/OneDrive/Desktop/Stacked Alchemist/Gaming Guides/arcanum-guides/**)",
+      "Read(//c/c/Users/billy/OneDrive/Desktop/Stacked Alchemist/Gaming Guides/arcanum-guides/guides/final-fantasy/**)"
     ]
   }
 }
