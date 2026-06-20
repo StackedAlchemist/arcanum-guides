@@ -213,7 +213,30 @@ Rules:
   meta" pointer (see Diablo IV's Builds page).
 - Keep it short and honest — list what we actually used, not an SEO link farm.
 
-## 10. Feedback / Suggestions
+## 10. Images
+
+Each guide may include art (e.g. Midjourney-generated key art). Store it per
+guide so nothing is shared/cross-linked:
+
+```
+guides/<slug>/images/
+  hero.jpg        Wide banner for the guide hub hero (~1600x600, 8:3)
+  card.jpg        Thumbnail for the main hub game card (~800x450, 16:9)
+  <topic>.jpg     Optional inline art for a page
+```
+
+Rules:
+- **Optimize before commit** — JPG/WebP, reasonably compressed (a hero should be
+  a few hundred KB, not multiple MB). This is a static site; big images hurt load.
+- Always set descriptive `alt` text; mark purely-decorative art `alt=""`.
+- Treat art as **enhancement, not load-bearing** — every page must read fine
+  before images exist and if one fails to load.
+- Generation targets for Midjourney: **hero banner `--ar 8:3`** (wide cinematic
+  key art, room for the title to sit over it), **card thumbnail `--ar 16:9`**.
+- Hero art sits behind/above the existing `.hero` text with a dark gradient
+  overlay so the title stays readable; card art goes at the top of `.game-card`.
+
+## 11. Feedback / Suggestions
 
 The site offers one shared way for visitors to suggest guides or request
 features (a "Share an idea" form on the main hub). It uses a single configured
