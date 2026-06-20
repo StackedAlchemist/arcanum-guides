@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Growth System | FF II Field Guide | The Arcanum</title>
+<meta name="description" content="Final Fantasy II Pixel Remaster: how the activity-based stat-growth system works (stats, weapon skills, spell levels) and how the PR rebalanced it." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">Final Fantasy <span>II</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a class="home" href="../../final-fantasy/index.html">&#10022; All FF</a>
+        <a href="../index.html">Home</a>
+        <a href="growth.html" class="active">Growth</a>
+        <a href="characters.html">Characters</a>
+        <a href="progression.html">Progression</a>
+        <a href="secrets.html">Secrets</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The Engine</span>
+      <h1>The Growth System</h1>
+      <p class="lede">FF II has no levels. Every character is shaped entirely by <em>what they do in battle</em> &mdash; which makes it the most freeform party-building in the classic era, and (in the Pixel Remaster) finally a smooth one.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">01 &middot; How Stats Grow</span><h2 class="s-title">Do the thing, get better at the thing</h2><div class="s-rule"></div>
+        <p>After a battle, each stat has a chance to rise based on the actions you took with it. Use it, and it grows.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Stat</th><th>How it grows</th></tr></thead>
+          <tbody>
+            <tr><td>HP</td><td>Take damage during the fight. (In the PR, total HP <em>lost</em> over the battle counts &mdash; you can heal back to full and still gain.)</td></tr>
+            <tr><td>MP</td><td>Spend MP during the fight (same "total spent" rule in the PR).</td></tr>
+            <tr><td>Strength</td><td>Attack with physical weapons. Drives physical damage.</td></tr>
+            <tr><td>Intelligence</td><td>Cast Black magic. Powers offensive spells.</td></tr>
+            <tr><td>Spirit</td><td>Cast White magic. Powers healing/support spells.</td></tr>
+            <tr><td>Stamina</td><td>Endure hits; raises HP gains and resilience.</td></tr>
+            <tr><td>Agility</td><td>Stay light (low equipment weight) and evade; drives evasion and turn speed.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">02 &middot; Proficiency</span><h2 class="s-title">Weapon &amp; spell levels</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Weapons have skill levels per type</strong> (sword, axe, bow, knife, staff, etc.). The more you attack with a type, the higher its level &mdash; more accuracy and damage. <strong>Pick one weapon type per character</strong> and stick with it so it levels fast.</li>
+          <li><strong>Spells have their own levels.</strong> Each spell (Fire, Cure, Berserk&hellip;) climbs with use, hitting harder/lasting longer and eventually costing less. Leveling spells is the slow part &mdash; commit to a small, focused spell set rather than dabbling.</li>
+          <li><strong>Shields &amp; Evasion</strong> level too &mdash; carrying a shield and getting attacked raises your evasion skill, so dedicated defenders earn their dodge.</li>
+        </ul>
+        <div class="newbox"><span class="label">Pixel Remaster note</span>The PR removed the original's infamous friction: growth is consistent through normal play (no self-attacking to farm HP), HP/MP gains track total <em>lost/spent</em> in a battle, and the per-battle proficiency cap is gone &mdash; so skills and spells level much faster. You can just <em>play</em> and your party grows sensibly.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">03 &middot; The Principle</span><h2 class="s-title">Specialize, don't spread</h2><div class="s-rule"></div>
+        <p>Because growth follows actions, the winning approach is <strong>focus</strong>. A character who attacks with one weapon type and casts two or three chosen spells becomes a powerhouse; one who dabbles in everything stays mediocre at all of it. Decide each character's lane early (see <a href="characters.html">Characters &amp; Builds</a>) and feed it every battle.</p>
+        <div class="callout">A simple, reliable spread: one or two pure physical attackers (single weapon type), one Black caster (a few offensive spells), and a White caster (Cure + buffs) &mdash; with everyone learning <em>Cure</em> as a safety net since MP is freeform.</div>
+      </section>
+
+      <div class="pager">
+        <a href="../index.html">&larr; Home</a>
+        <a href="characters.html">Characters &amp; Builds &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Final Fantasy II (Pixel Remaster) &mdash; Field Guide</p>
+    <p>A fan-made guide under <a href="../../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy II is &copy; Square Enix.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
