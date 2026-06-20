@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Combat, Turns, Stats &amp; Zodiac | FF Tactics Field Guide | The Arcanum</title>
+<meta name="description" content="FF Tactics: The Ivalice Chronicles — combat fundamentals, the CT/Speed turn system, the stats explained, and Zodiac Compatibility." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">FF Tactics <span>Ivalice Chronicles</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a class="home" href="../../final-fantasy/index.html">&#10022; All FF</a>
+        <a href="../index.html">Home</a>
+        <a href="combat.html" class="active">Combat</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="builds.html">Builds</a>
+        <a href="enhanced.html">Enhanced</a>
+        <a href="strategy.html">Strategy</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The Battlefield</span>
+      <h1>Combat, Turns, Stats &amp; Zodiac</h1>
+      <p class="lede">Before the Job system, you have to win the battlefield itself: height, facing, the Speed clock that decides who acts, and the hidden Zodiac multiplier riding on every hit.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">01 &middot; The Grid</span><h2 class="s-title">Combat fundamentals</h2><div class="s-rule"></div>
+        <p>Battles play out on a 3D grid with height. Units act in an order set by Speed; on a turn you typically <strong>Move</strong> and take one <strong>Action</strong> (attack, ability, or item), in either order.</p>
+        <ul class="list">
+          <li><strong>Height and facing.</strong> Higher ground boosts physical hit and damage and extends some ranges. Hitting from the <em>side or back</em> raises hit chance and crit; being hit from behind is dangerous. Position constantly.</li>
+          <li><strong>Charge times.</strong> Many spells and ranged abilities have a cast delay (see CT), so they land on a later tick. Lead the target.</li>
+          <li><strong>Turn order is a resource.</strong> Faster units act more often. Slowing the enemy or speeding yourself is as strong as raw damage.</li>
+          <li><strong>Permadeath rule.</strong> A downed unit becomes a Crystal/Treasure after a countdown; if it expires, the unit is gone for good (generics). Revive or retreat before the count runs out.</li>
+        </ul>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">02 &middot; The Clock</span><h2 class="s-title">The turn system (CT &amp; Speed)</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li>Every tick, each unit's <strong>CT (Charge Time)</strong> rises by its Speed. At CT 100 the unit acts, then CT resets.</li>
+          <li>Higher <strong>Speed</strong> = more frequent turns. This is why Speed is the most valuable stat in the game.</li>
+          <li><strong>Spells and charged abilities</strong> have their own cast CT: select target, the ability charges, and it resolves on a future tick. Fast units can move, get hit, or die before a slow spell lands &mdash; account for the delay and for enemies leaving an AoE.</li>
+        </ul>
+        <div class="callout">Because turn frequency compounds, small Speed advantages snowball over a long battle. Builds that stack Speed (or haste themselves) act dramatically more often than the enemy.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">03 &middot; The Numbers</span><h2 class="s-title">Stats explained</h2><div class="s-rule"></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Stat</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td>HP / MP</td><td>Health and magic pool.</td></tr>
+            <tr><td>Speed</td><td>How fast CT fills = turn frequency. The premium stat.</td></tr>
+            <tr><td>PA (Physical Attack)</td><td>Scales physical/weapon damage.</td></tr>
+            <tr><td>MA (Magick Attack)</td><td>Scales spell and magickal-ability damage.</td></tr>
+            <tr><td>Bravery</td><td>Affects some physical abilities/reaction triggers; very high/low Bravery has side effects.</td></tr>
+            <tr><td>Faith</td><td>Scales magick (yours and damage taken from magick). High Faith = stronger but more vulnerable; very low Faith resists magick but can't cast well.</td></tr>
+            <tr><td>Move / Jump</td><td>Tiles you can move and vertical height you can clear.</td></tr>
+          </tbody>
+        </table></div>
+        <p>Two big build levers: <strong>Faith</strong> governs the whole magick economy (a low-Faith unit is a poor caster but a magick-resistant tank), and <strong>Bravery</strong> interacts with physical reaction abilities and a few class mechanics.</p>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">04 &middot; The Stars</span><h2 class="s-title">Zodiac Compatibility</h2><div class="s-rule"></div>
+        <p>Each unit has a zodiac sign, and a hidden compatibility multiplier between attacker and target modifies damage, healing, and accuracy. In the Enhanced version you can now <strong>view a unit's sign and compatibility directly from the status screen</strong> (a v1.5.0 addition), so you no longer have to guess.</p>
+        <ul class="list">
+          <li><strong>Good compatibility</strong> boosts damage/recovery/accuracy (to ~125% in the favorable cases shown in-game).</li>
+          <li><strong>Bad compatibility</strong> reduces it (to ~75%).</li>
+          <li><strong>Special compatibility</strong> (e.g. certain opposite-sign pairings) can swing dramatically high (~150%) or low; non-human units shift the modifier too.</li>
+        </ul>
+        <div class="callout">Pair healers and buffers with allies they're compatible with, and aim your hardest hitters at enemies they match well against. It's a quiet multiplier that adds up across a battle.</div>
+      </section>
+
+      <div class="pager">
+        <a href="../index.html">&larr; Home</a>
+        <a href="jobs.html">The Job System &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Final Fantasy Tactics: The Ivalice Chronicles &mdash; Field Guide</p>
+    <p>A fan-made guide under <a href="../../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy Tactics is &copy; Square Enix.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>

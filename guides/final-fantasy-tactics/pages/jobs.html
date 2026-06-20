@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Job System | FF Tactics Field Guide | The Arcanum</title>
+<meta name="description" content="FF Tactics: The Ivalice Chronicles — the Job system, the five ability slots that are the real build engine, the job tree, and the standout jobs." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">FF Tactics <span>Ivalice Chronicles</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a class="home" href="../../final-fantasy/index.html">&#10022; All FF</a>
+        <a href="../index.html">Home</a>
+        <a href="combat.html">Combat</a>
+        <a href="jobs.html" class="active">Jobs</a>
+        <a href="builds.html">Builds</a>
+        <a href="enhanced.html">Enhanced</a>
+        <a href="strategy.html">Strategy</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The Classes</span>
+      <h1>The Job System</h1>
+      <p class="lede">Units earn JP to learn job abilities forever, then carry them across classes through five ability slots. A "Monk" isn't a Monk &mdash; it's a Monk with the right secondary, reaction, support and movement glued on. This is where the depth lives.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">05 &middot; The Heart</span><h2 class="s-title">The Job system</h2><div class="s-rule"></div>
+        <p>Units belong to a <strong>Job (class)</strong>, earn <strong>JP (Job Points)</strong> by acting, and spend JP to learn that job's abilities. Mastering jobs and meeting prerequisites unlocks new jobs along a branching tree.</p>
+        <ul class="list">
+          <li>Each job has its own level (driven by JP) and its own ability list.</li>
+          <li>Advanced jobs require levels in prerequisite jobs (climb from Squire/Chemist into combat and mage lines, then into elite hybrids).</li>
+          <li>A unit's <strong>stat growth</strong> depends on the job it levels up in &mdash; so the class you grind matters for the final build, not just the abilities you learn.</li>
+        </ul>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">06 &middot; The Real Build</span><h2 class="s-title">Ability slots</h2><div class="s-rule"></div>
+        <p>This is the actual build system and where the depth lives. A unit equips:</p>
+        <ul class="list">
+          <li><strong>One Job (primary)</strong> &mdash; its full action set.</li>
+          <li><strong>One Secondary command</strong> &mdash; the <em>action</em> abilities of any other job you've learned. The cross-class engine: a Knight with Black Magick, a Monk with White Magick.</li>
+          <li><strong>One Reaction</strong> &mdash; auto-triggers on a condition (counterattack when hit, auto-heal on damage).</li>
+          <li><strong>One Support</strong> &mdash; a passive (equip heavier weapons, two-hand, boost a stat, dual-wield).</li>
+          <li><strong>One Movement</strong> &mdash; movement/positioning passive (+Move, +Jump, move through tiles, teleport).</li>
+        </ul>
+        <div class="callout">The game is won in these slots. Build identity comes from the <strong>combination</strong>, not the primary job alone.</div>
+        <div class="newbox"><span class="label">Enhanced</span>"Remove All Equipment" was added to the status screen, and locked job-unlock conditions are now shown clearly &mdash; planning these builds is much faster.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">07 &middot; The Climb</span><h2 class="s-title">Job tree and progression</h2><div class="s-rule"></div>
+        <p>Broad shape of the tree (names follow the Ivalice Chronicles localization):</p>
+        <ul class="list">
+          <li><strong>Base</strong>: Squire and Chemist &mdash; everyone starts here; Squire's JP-up and Chemist's items are foundational.</li>
+          <li><strong>Physical line</strong>: Knight (armor, break equipment), Archer (ranged, charge shots), Monk (high HP/PA, healing punches), Thief (steal, speed), Geomancer (terrain attacks), Dragoon/Lancer (jump), Samurai (draw-out elemental hits), Ninja (dual-wield, throw, very high Speed).</li>
+          <li><strong>Magick line</strong>: Black Mage (elemental nukes), White Mage (heal/buff), Time Mage (haste/slow/quick, the turn-economy class), Summoner (big AoE MA), Oracle/Mystic (status ailments), Orator/Mediator (recruit, persuade), and the Mathematician/Calculator class.</li>
+          <li><strong>Elite/hybrid</strong>: Mystic Knight/specialty hybrids and the unique story jobs.</li>
+        </ul>
+        <p>Climbing the tree is the long-game project: grind prerequisite jobs not only to unlock the next class but to pick up cross-class abilities your final build wants.</p>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">08 &middot; The Best</span><h2 class="s-title">Standout jobs and why</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Time Mage</strong> &mdash; Haste, Slow, and Quick weaponize the turn economy. Some of the strongest action economy in the game.</li>
+          <li><strong>Ninja</strong> &mdash; innate dual-wield and top-tier Speed; a fast attacker and a premier stat-grind class. Throw adds ranged burst.</li>
+          <li><strong>Monk</strong> &mdash; huge HP and PA, weaponless, with healing and AoE punch arts; strong early and a great secondary on bruisers.</li>
+          <li><strong>Mathematician (Calculator)</strong> &mdash; the notorious build-breaker: cast certain spells free on every unit matching a numeric condition (Height/CT/Level/EXP). Slow to set up, devastating once online.</li>
+          <li><strong>Orator/Mediator</strong> &mdash; recruit enemy humans and some monsters; how you grow a roster of special units and rare classes.</li>
+          <li><strong>Samurai / Summoner</strong> &mdash; top MA and physical-magick burst for clearing groups.</li>
+          <li><strong>Knight</strong> &mdash; equipment/stat breaks neuter dangerous enemies; sturdy frontline.</li>
+        </ul>
+        <p>The "best" job is always relative to the <em>combination</em> you build around it &mdash; see the <a href="builds.html">build archetypes</a>.</p>
+      </section>
+
+      <div class="pager">
+        <a href="combat.html">&larr; Combat, Turns, Stats &amp; Zodiac</a>
+        <a href="builds.html">Builds &amp; Special Units &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Final Fantasy Tactics: The Ivalice Chronicles &mdash; Field Guide</p>
+    <p>A fan-made guide under <a href="../../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy Tactics is &copy; Square Enix.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
