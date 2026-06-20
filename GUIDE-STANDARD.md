@@ -187,4 +187,39 @@ for current tier lists, rather than pinning a snapshot that rots.
 
 ---
 
+## 9. Sources & Further Reading
+
+Every guide credits where its facts came from and points readers to deeper
+references. This is both good practice (attribution) and genuinely useful — we
+distill; the sources exhaust. Add a **Sources & Further Reading** section as the
+last content section of the guide's final page (or on the hub), styled as a
+normal `section.reveal` with a `ul.list` of external links:
+
+```html
+<section class="reveal">
+  <span class="s-tag">NN &middot; Go Deeper</span><h2 class="s-title">Sources &amp; further reading</h2><div class="s-rule"></div>
+  <p>This guide distills the fundamentals; for exhaustive detail these are the references we leaned on:</p>
+  <ul class="list">
+    <li><a href="https://example.com/" target="_blank" rel="noopener">Site name</a> &mdash; what it's good for.</li>
+  </ul>
+</section>
+```
+
+Rules:
+- **All external links** use `target="_blank" rel="noopener"`.
+- Prefer **authoritative/community** sources (official wikis, the developer's
+  patch notes, established community resources) — **affiliate-free**, no referral links.
+- For live-service games, the planner/tier-list links double as the "current
+  meta" pointer (see Diablo IV's Builds page).
+- Keep it short and honest — list what we actually used, not an SEO link farm.
+
+## 10. Feedback / Suggestions
+
+The site offers one shared way for visitors to suggest guides or request
+features (a "Share an idea" form on the main hub). It uses a single configured
+submission endpoint; individual guides just link to it rather than each hosting
+their own form. Update the endpoint in one place if the submission method changes.
+
+---
+
 *Stacked Alchemist property. Fan-made guides, unaffiliated with the games covered.*

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Share an Idea - The Arcanum</title>
+<meta name="description" content="Suggest a guide or a feature for The Arcanum. Tell us what game you want covered or how you'd like to see the site grow.">
+<meta property="og:title" content="Share an Idea - The Arcanum">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head>
+<body>
+
+<canvas id="ambient" aria-hidden="true"></canvas>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="alembic">&#9879;</span>
+      <span>The Arcanum<small>A Stacked Alchemist Property</small></span>
+    </a>
+    <nav class="topbar-links">
+      <a href="index.html">The Collection</a>
+      <a href="suggest.html">Share an Idea</a>
+      <a href="https://stackedalchemist.dev" target="_blank" rel="noopener">Stacked Alchemist</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="sigil-ring" aria-hidden="true"><span class="sigil-core">&#10038;</span></div>
+    <span class="eyebrow">Help shape the codex</span>
+    <h1>Share an Idea</h1>
+    <p class="lede">What game do you want covered next? What would make a guide more useful &mdash; a tool, a layout, a deeper section? This is where you tell us. Every suggestion is read.</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="idea-wrap">
+    <div class="section">
+      <div class="section-label">Suggestion Box</div>
+      <div class="idea-card">
+        <p class="idea-intro">Request a guide, flag something missing, or pitch a feature. Fields marked optional can be left blank &mdash; only the idea itself is required.</p>
+        <form class="idea-form" action="https://formspree.io/f/xpqjvpjo" method="POST">
+          <div class="idea-field">
+            <label for="name">Your name <span class="idea-hint">(optional)</span></label>
+            <input type="text" id="name" name="name" placeholder="What should we call you?">
+          </div>
+          <div class="idea-field">
+            <label for="email">Email <span class="idea-hint">(optional &mdash; only if you'd like a reply)</span></label>
+            <input type="email" id="email" name="email" placeholder="you@example.com">
+          </div>
+          <div class="idea-field">
+            <label for="topic">Game or topic <span class="idea-hint">(optional)</span></label>
+            <input type="text" id="topic" name="topic" placeholder="e.g. Path of Exile 2, or a site feature">
+          </div>
+          <div class="idea-field">
+            <label for="message">Your idea</label>
+            <textarea id="message" name="message" required placeholder="Tell us what you'd like to see, what you're looking for, or how we can make a guide better."></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="New Arcanum idea submission">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+          <button type="submit" class="idea-btn">Send Idea &rarr;</button>
+        </form>
+      </div>
+      <p class="idea-hint" style="margin-top:18px;">Prefer email? Reach us at <a href="mailto:stackedalchemist@gmail.com?subject=Arcanum%20idea">stackedalchemist@gmail.com</a>.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="col">
+      <h4>&#9879; The Arcanum</h4>
+      <p>A gaming property of <a href="https://stackedalchemist.dev" target="_blank" rel="noopener">Stacked Alchemist LLC</a>. Est. 2026 &middot; Mesa, Arizona.</p>
+      <p class="quote">Built from experience. Built for the ones who play to master, not just to pass the time.</p>
+    </div>
+    <div class="col">
+      <h4>Elsewhere</h4>
+      <div class="links">
+        <a href="index.html">The Collection</a>
+        <a href="https://stackedalchemist.dev" target="_blank" rel="noopener">Main site</a>
+        <a href="https://github.com/StackedAlchemist" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p style="margin-top:18px;">&copy; <span id="year">2026</span> Stacked Alchemist LLC. Game names and content belong to their respective developers and publishers. Guides are fan-made and unaffiliated.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" aria-label="Back to top">&uarr; Top</button>
+
+<script src="js/ambient.js"></script>
+<script>document.getElementById("year").textContent=new Date().getFullYear();
+(function(){var t=document.querySelector(".totop");if(!t)return;addEventListener("scroll",function(){t.classList.toggle("show",scrollY>400)},{passive:true});t.addEventListener("click",function(){scrollTo({top:0,behavior:"smooth"})});})();</script>
+</body>
+</html>
