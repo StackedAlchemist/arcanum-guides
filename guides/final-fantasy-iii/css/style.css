@@ -119,3 +119,14 @@ footer a{color:var(--text2);} footer a:hover{color:var(--gold2);}
 .reveal{opacity:0; transform:translateY(16px); transition:opacity 0.55s ease, transform 0.55s ease;}
 .reveal.visible{opacity:1; transform:translateY(0);}
 @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important;} .reveal{opacity:1; transform:none;}}
+
+/* ---- spoiler (native <details>, no JS required) ---- */
+.spoiler{border:1px solid rgba(232,168,92,0.30); border-left:3px solid #e8a85c; border-radius:4px; margin:1.4rem 0; background:rgba(232,168,92,0.05); overflow:hidden;}
+.spoiler>summary{cursor:pointer; list-style:none; padding:0.9rem 1.2rem; font-family:var(--display); font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#e8a85c; display:flex; align-items:center; gap:0.5rem;}
+.spoiler>summary::-webkit-details-marker{display:none;}
+.spoiler>summary::after{content:"Reveal"; margin-left:auto; font-size:0.64rem; letter-spacing:0.1em; color:var(--text3); border:1px solid var(--line); padding:0.18rem 0.55rem; border-radius:3px;}
+.spoiler[open]>summary::after{content:"Hide";}
+.spoiler[open]>summary{border-bottom:1px solid rgba(232,168,92,0.22);}
+.spoiler .spoiler-body{padding:1rem 1.2rem 1.1rem; color:var(--text2); font-size:0.97rem;}
+.spoiler .spoiler-body :last-child{margin-bottom:0;}
+.spoiler .spoiler-body strong{color:#e8a85c;}
