@@ -149,23 +149,35 @@
     return parts.join(", ");
   }
 
+  function wpnPassives(w) {
+    if (!w.fx || !w.fx.length) return `<span style="color:var(--ink-mute)">&mdash;</span>`;
+    const lvls = [4, 10, 20];
+    return `<div class="wpn-fx">` + w.fx.map((f, i) =>
+      (f && f !== "—")
+        ? `<span><b>${lvls[i] || ""}</b>${esc(f)}</span>`
+        : ""
+    ).join("") + `</div>`;
+  }
+
   function buildWeapons() {
     if (typeof WEAPONS === "undefined") return buildStub("weapons");
     const rows = WEAPONS.map(w => {
       const sc = wpnScaling(w);
-      return `<tr data-s="${esc((w.n + " " + w.c + " " + w.el + " " + sc).toLowerCase())}">
+      const fxText = (w.fx || []).join(" ");
+      return `<tr data-s="${esc((w.n + " " + w.c + " " + w.el + " " + sc + " " + fxText).toLowerCase())}">
         <td>${esc(w.n)}</td>
         <td>${esc(w.c)}</td>
         <td>${esc(w.el)}</td>
         <td class="mono" style="font-size:.78rem;color:var(--ink-dim);">${esc(sc)}</td>
+        <td>${wpnPassives(w)}</td>
       </tr>`;
     }).join("");
     return crumb("Equipment", "Weapons")
       + `<h1 class="page-title">Weapons</h1>`
       + `<p class="page-lede">${esc(WEAPONS_INTRO)}</p>`
-      + `<input id="wpn-search" class="wiki-search" type="text" autocomplete="off" placeholder="Search ${WEAPONS.length} weapons by name, character, or element...">`
+      + `<input id="wpn-search" class="wiki-search" type="text" autocomplete="off" placeholder="Search ${WEAPONS.length} weapons by name, character, element, or effect...">`
       + `<p id="wpn-count" class="search-count"></p>`
-      + `<table class="data"><thead><tr><th>Weapon</th><th>Character</th><th>Element</th><th>Scaling (max Lv)</th></tr></thead>`
+      + `<table class="data"><thead><tr><th>Weapon</th><th>Character</th><th>Element</th><th>Scaling</th><th>Passives (Lv 4 / 10 / 20)</th></tr></thead>`
       + `<tbody id="wpn-rows">${rows}</tbody></table>`;
   }
 
