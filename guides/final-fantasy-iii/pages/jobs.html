@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Job System | FF III Field Guide | The Arcanum</title>
+<meta name="description" content="Final Fantasy III Pixel Remaster: how the job-change system, Capacity Points and job levels work, and every job grouped by the Crystal that unlocks it." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">Final Fantasy <span>III</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a class="home" href="../../final-fantasy/index.html">&#10022; All FF</a>
+        <a href="../index.html">Home</a>
+        <a href="jobs.html" class="active">Jobs</a>
+        <a href="best-jobs.html">Best Jobs</a>
+        <a href="progression.html">Progression</a>
+        <a href="secrets.html">Secrets</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The Classes</span>
+      <h1>The Job System</h1>
+      <p class="lede">FF III's job-change system is the original. Any of your four heroes can become any unlocked job &mdash; the art is reading the dungeon ahead and retraining to answer it, while spending your Capacity Points wisely.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">01 &middot; How It Works</span><h2 class="s-title">Jobs, Capacity Points &amp; job levels</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Crystals unlock jobs in four waves.</strong> Everyone starts as an Onion Knight; each Crystal you awaken adds a batch of jobs you can freely assign to any hero.</li>
+          <li><strong>Changing jobs costs Capacity Points (CP)</strong>, earned from battles. Bigger "distance" between the old and new job costs more &mdash; so plan retrains rather than flipping constantly.</li>
+          <li><strong>Job level builds with use</strong> and improves that job's effectiveness (and a few abilities/equip options). A freshly-changed job has a short proficiency dip before it settles in.</li>
+          <li><strong>Stats follow the job.</strong> Physical jobs raise Strength/Vitality, mage jobs raise the relevant Magic stats &mdash; so a long-term caster wants to live in caster jobs.</li>
+        </ul>
+        <div class="newbox"><span class="label">Pixel Remaster note</span>The PR added a <strong>job-level boost</strong> that greatly eases the Famicom original's harsh job-change penalty &mdash; experimenting between jobs is far more forgiving here. This is the 2D Famicom game (the original nameless Light Warriors and the classic Onion Knight), not the DS 3D remake.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">02 &middot; The Roster</span><h2 class="s-title">Every job, by Crystal</h2><div class="s-rule"></div>
+        <p>Jobs unlock progressively as the four Crystals awaken. (Groupings follow the Famicom/Pixel Remaster layout.)</p>
+
+        <h3 class="sub">Start</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Job</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>Onion Knight</td><td>Starting job. Weak for most of the game, but with the full Onion gear and very high levels it becomes the strongest class &mdash; see Secrets.</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3 class="sub">Wind Crystal</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Job</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>Warrior</td><td>Sturdy physical attacker; carries the early game.</td></tr>
+            <tr><td>Monk</td><td>High HP and barehanded damage; great early bruiser.</td></tr>
+            <tr><td>White Mage</td><td>Healing and support magic &mdash; always keep one.</td></tr>
+            <tr><td>Black Mage</td><td>Elemental nukes; your early ranged damage.</td></tr>
+            <tr><td>Red Mage</td><td>Jack of all trades (low-tier black + white + decent melee); excellent until specialists arrive.</td></tr>
+            <tr><td>Thief</td><td>Steal, high speed, escape; situational utility.</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3 class="sub">Fire Crystal</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Job</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>Knight</td><td>Armored frontline that auto-defends low-HP allies; sturdy mid-game tank.</td></tr>
+            <tr><td>Ranger</td><td>Bows (back-row safe) with multi-hit Barrage; reliable ranged damage.</td></tr>
+            <tr><td>Scholar</td><td>Study reveals an enemy's weakness; doubles item healing. The answer to Hein.</td></tr>
+            <tr><td>Geomancer</td><td>Free, safe terrain attacks that never miss; low-risk damage.</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3 class="sub">Water Crystal</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Job</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>Dragoon</td><td>Jump &mdash; leap out of range, then crash for big damage. The required answer to Garuda.</td></tr>
+            <tr><td>Viking</td><td>Massive HP and a Provoke to soak hits; the dedicated tank.</td></tr>
+            <tr><td>Dark Knight</td><td>Souleater hits all enemies and tears through split/clone foes.</td></tr>
+            <tr><td>Evoker</td><td>Early summoner &mdash; summons fire a random (RNG) effect.</td></tr>
+            <tr><td>Bard</td><td>Buff/utility songs; weak in a straight fight.</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3 class="sub">Earth Crystal (final)</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Job</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>Ninja</td><td>Top physical: dual-wield, Throw (shuriken), high speed. An endgame pillar.</td></tr>
+            <tr><td>Sage</td><td>Casts all White, Black <em>and</em> Summon magic. The endgame magic pillar.</td></tr>
+            <tr><td>Summoner</td><td>Full-power summons (not RNG like the Evoker).</td></tr>
+            <tr><td>Devout</td><td>Master White mage &mdash; the best healing in the game.</td></tr>
+            <tr><td>Magus</td><td>Master Black mage &mdash; the strongest offensive magic.</td></tr>
+            <tr><td>Black Belt (Master)</td><td>Endgame Monk &mdash; enormous barehanded physical damage.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <div class="pager">
+        <a href="../index.html">&larr; Home</a>
+        <a href="best-jobs.html">Best Jobs &amp; When to Use Them &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Final Fantasy III (Pixel Remaster) &mdash; Field Guide</p>
+    <p>A fan-made guide under <a href="../../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy III is &copy; Square Enix.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
