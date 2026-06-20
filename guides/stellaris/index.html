@@ -3,109 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Stellaris — Complete Field Guide | The Arcanum</title>
-<meta name="description" content="A complete Stellaris field guide for 4.4 Pegasus with the Nomads DLC: the four X's, empire creation (ethics/authority/civics), economy & pops, research, traditions & ascension, fleet design, diplomacy, megastructures, the Nomads layer, crises, and an opening playbook." />
+<title>Stellaris (4.4 Pegasus + Nomads) — Field Guide | The Arcanum</title>
+<meta name="description" content="A complete Stellaris field guide for 4.4 Pegasus + Nomads: the four X's, empire creation, economy & pops, research, traditions & ascension, fleet design, diplomacy, megastructures, the Nomads layer, crises, and an opening playbook." />
 <meta property="og:title" content="Stellaris — The Arcanum" />
-<meta property="og:description" content="Durable 4X fundamentals plus the new Nomads layer. Built for 4.4 Pegasus." />
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#05070f; --bg2:#0b1022;
-    --panel:rgba(14,19,38,0.82);
-    --cyan:#5ad6e0; --cyan2:#9af0f6; --glow:rgba(90,214,224,0.20);
-    --violet:#8a6fd6; --violet2:#b69cf0;
-    --gold:#e0c46a;
-    --line:rgba(90,214,224,0.18); --line2:rgba(90,214,224,0.07);
-    --text:#dfe7f5; --text2:#93a4c4; --text3:#56688a;
-    --display:'Orbitron', sans-serif;
-    --body:'Rajdhani', 'Segoe UI', sans-serif;
-    --maxw:1000px;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:
-      radial-gradient(60% 50% at 50% -8%, rgba(138,111,214,0.14), transparent 60%),
-      radial-gradient(50% 45% at 85% 25%, rgba(90,214,224,0.08), transparent 60%),
-      radial-gradient(50% 50% at 12% 75%, rgba(138,111,214,0.08), transparent 60%),
-      var(--bg);
-    color:var(--text); font-family:var(--body); font-size:18px; line-height:1.7;
-    min-height:100vh; overflow-x:hidden; letter-spacing:0.01em;
-  }
-  a{color:var(--cyan); text-decoration:none;}
-  #stars{position:fixed; inset:0; z-index:0; pointer-events:none;}
-  .page{position:relative; z-index:1;}
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 1.6rem;}
-  body::after{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
-    background:radial-gradient(120% 100% at 50% 40%, transparent 55%, rgba(0,0,0,0.55));}
-
-  .topbar{position:sticky; top:0; z-index:50; background:linear-gradient(180deg, rgba(5,7,15,0.96), rgba(5,7,15,0.72));
-    backdrop-filter:blur(10px); border-bottom:1px solid var(--line2);}
-  .topbar-inner{max-width:var(--maxw); margin:0 auto; padding:0.8rem 1.6rem; display:flex; align-items:center; justify-content:space-between; gap:1rem;}
-  .brand{font-family:var(--display); font-weight:700; letter-spacing:0.18em; color:var(--cyan2); font-size:0.95rem; text-transform:uppercase;}
-  .topbar a.back{font-family:var(--display); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text2);
-    border:1px solid var(--line); padding:0.4rem 0.8rem; border-radius:3px; transition:0.2s;}
-  .topbar a.back:hover{color:var(--cyan2); border-color:var(--cyan);}
-
-  .hero{text-align:center; padding:4.5rem 1.6rem 2rem; position:relative;}
-  .hero .eyebrow{display:block; font-family:var(--display); letter-spacing:0.3em; text-transform:uppercase; font-size:0.68rem; color:var(--violet2); margin-bottom:0.8rem;}
-  .hero h1{font-family:var(--display); font-weight:800; font-size:clamp(2rem,5.5vw,3.6rem); line-height:1.05; text-transform:uppercase; letter-spacing:0.04em;
-    background:linear-gradient(100deg, var(--cyan2) 20%, #fff 50%, var(--violet2) 90%); background-size:200% 100%;
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:sheen 10s ease-in-out infinite;}
-  .hero .lede{max-width:700px; margin:1.2rem auto 0; color:var(--text2); font-size:1.1rem;}
-  .hero .ver{display:inline-block; margin-top:1rem; font-family:var(--display); font-size:0.72rem; letter-spacing:0.12em; color:var(--cyan);
-    border:1px solid var(--line); padding:0.35rem 0.9rem; border-radius:3px; background:rgba(90,214,224,0.05);}
-  @keyframes sheen{0%,100%{background-position:0% 50%} 50%{background-position:100% 50%}}
-
-  .jump{position:sticky; top:51px; z-index:40; background:rgba(5,7,15,0.92); backdrop-filter:blur(8px); border-top:1px solid var(--line2); border-bottom:1px solid var(--line2);}
-  .jump-inner{max-width:var(--maxw); margin:0 auto; padding:0.5rem 1.6rem; display:flex; gap:0.3rem; overflow-x:auto; scrollbar-width:none;}
-  .jump-inner::-webkit-scrollbar{display:none;}
-  .jump a{flex:0 0 auto; font-family:var(--display); font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text2); padding:0.35rem 0.65rem; border-radius:3px; white-space:nowrap; transition:0.2s;}
-  .jump a:hover, .jump a.active{color:var(--cyan2); background:rgba(90,214,224,0.08);}
-
-  main{padding:3rem 0 5rem;}
-  section{margin-bottom:3.4rem; scroll-margin-top:110px;}
-  .s-tag{font-family:var(--display); letter-spacing:0.16em; text-transform:uppercase; font-size:0.64rem; color:var(--violet2); display:block; margin-bottom:0.4rem;}
-  .s-title{font-family:var(--display); font-weight:700; font-size:clamp(1.4rem,3vw,2.1rem); color:#fff; text-transform:uppercase; letter-spacing:0.02em;}
-  .s-rule{height:1px; width:90px; margin:0.9rem 0 1.6rem; background:linear-gradient(90deg, var(--cyan), var(--violet), transparent);}
-  p{margin-bottom:1rem; color:var(--text2);}
-  p strong, li strong{color:var(--cyan2);}
-  em{color:var(--violet2); font-style:normal;}
-
-  ul.list{list-style:none; margin:1rem 0;}
-  ul.list li{position:relative; padding-left:1.3rem; margin-bottom:0.5rem; color:var(--text2);}
-  ul.list li::before{content:"\25B9"; position:absolute; left:0; top:0; color:var(--cyan); font-size:0.9rem;}
-  h3.sub{font-family:var(--display); font-weight:600; color:#fff; font-size:1rem; text-transform:uppercase; letter-spacing:0.04em; margin:1.5rem 0 0.4rem;}
-
-  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:6px; margin:1.3rem 0;}
-  table{width:100%; border-collapse:collapse; font-size:0.92rem;}
-  th{font-family:var(--display); font-size:0.64rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--cyan2); text-align:left; padding:0.7rem 1rem; background:rgba(90,214,224,0.05); border-bottom:1px solid var(--line);}
-  td{padding:0.7rem 1rem; border-bottom:1px solid var(--line2); color:var(--text2); vertical-align:top;}
-  td:first-child{color:var(--text); font-weight:600;}
-  tr:hover td{background:rgba(90,214,224,0.03);}
-
-  .callout{background:rgba(90,214,224,0.05); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:4px; padding:1.1rem 1.4rem; margin:1.4rem 0; color:var(--text2); font-size:0.96rem;}
-  .callout strong{color:var(--cyan2);}
-  .newbox{background:rgba(138,111,214,0.07); border:1px solid rgba(138,111,214,0.3); border-left:3px solid var(--violet); border-radius:4px; padding:1.1rem 1.4rem; margin:1.4rem 0; color:var(--text2);}
-  .newbox .label{font-family:var(--display); font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--violet2); display:block; margin-bottom:0.4rem;}
-
-  ol.steps{margin:1.2rem 0; padding-left:0; list-style:none; counter-reset:step;}
-  ol.steps li{position:relative; padding:0 0 0 2.6rem; margin-bottom:0.8rem; counter-increment:step; color:var(--text2);}
-  ol.steps li::before{content:counter(step); position:absolute; left:0; top:0; width:1.8rem; height:1.8rem; display:grid; place-items:center; font-family:var(--display); font-weight:700; color:var(--cyan2); border:1px solid var(--line); border-radius:50%; font-size:0.8rem;}
-
-  footer{border-top:1px solid var(--line2); padding:2.2rem 1.6rem; text-align:center;}
-  footer p{font-family:var(--display); font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text3); margin:0.4rem 0;}
-  footer a{color:var(--text2);} footer a:hover{color:var(--cyan2);}
-
-  .totop{position:fixed; right:18px; bottom:18px; z-index:60; background:var(--cyan); color:#04121a; border:none; font-family:var(--display); font-weight:700; font-size:0.8rem; padding:0.5rem 0.75rem; border-radius:3px; cursor:pointer; opacity:0; pointer-events:none; transition:opacity 0.2s;}
-  .totop.show{opacity:0.9; pointer-events:auto;}
-  .reveal{opacity:0; transform:translateY(16px); transition:opacity 0.55s ease, transform 0.55s ease;}
-  .reveal.visible{opacity:1; transform:translateY(0);}
-  @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important;} .reveal{opacity:1; transform:none;}}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -114,40 +19,31 @@
 <div class="page">
   <header class="topbar">
     <div class="topbar-inner">
-      <span class="brand">Stellaris</span>
-      <a class="back" href="../../index.html">&#9879; The Arcanum</a>
+      <a class="brand" href="index.html">Stellaris</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../index.html">&#9879; Arcanum</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="pages/empire.html">Empire</a>
+        <a href="pages/ascension.html">Ascension</a>
+        <a href="pages/war.html">War</a>
+        <a href="pages/nomads.html">Nomads</a>
+        <a href="pages/playbook.html">Playbook</a>
+      </nav>
     </div>
   </header>
 
   <section class="hero">
     <span class="eyebrow">The Arcanum &middot; Complete Field Guide</span>
     <h1>Stellaris</h1>
-    <p class="lede">A grand-strategy 4X where you grow a spacefaring empire from one system: explore, expand, exploit, exterminate. Your identity comes from Ethics, Authority and Civics; your power from economy, tech, traditions and fleet design. This guide leans on durable fundamentals plus the new nomadic layer, since the per-patch "best build" meta shifts constantly.</p>
+    <p class="lede">A grand-strategy 4X where you grow a spacefaring empire from one system: explore, expand, exploit, exterminate. Your identity comes from Ethics, Authority and Civics; your power from economy, tech, traditions and fleet design. This guide leans on durable fundamentals plus the new nomadic layer.</p>
     <span class="ver">Built for 4.4 "Pegasus" + Nomads DLC &middot; June 15 2026</span>
   </section>
 
-  <nav class="jump" aria-label="Sections">
-    <div class="jump-inner">
-      <a href="#loop">Core Loop</a>
-      <a href="#empire">Empire Creation</a>
-      <a href="#economy">Economy &amp; Pops</a>
-      <a href="#research">Research</a>
-      <a href="#traditions">Traditions</a>
-      <a href="#ascension">Ascension</a>
-      <a href="#fleet">Fleet &amp; War</a>
-      <a href="#diplomacy">Diplomacy</a>
-      <a href="#mega">Megastructures</a>
-      <a href="#nomads">Nomads (4.4)</a>
-      <a href="#crises">Crises</a>
-      <a href="#opening">Opening</a>
-      <a href="#tips">Tips</a>
-    </div>
-  </nav>
-
   <main class="wrap">
 
-    <section id="loop" class="reveal">
-      <span class="s-tag">01 &middot; The Loop</span><h2 class="s-title">The core loop &mdash; the four X's</h2><div class="s-rule"></div>
+    <section class="reveal">
+      <span class="s-tag">Start Here</span><h2 class="s-title">The core loop &mdash; the four X's</h2><div class="s-rule"></div>
       <p>Stellaris runs on four pillars: <em>eXplore, eXpand, eXploit, eXterminate</em>.</p>
       <ul class="list">
         <li><strong>Explore</strong> with Science Ships. Survey systems for deposits, anomalies, and archaeology sites. Early exploration sets up everything.</li>
@@ -158,147 +54,35 @@
       <p>Early game is exploration and expansion; mid game is consolidation and tech; late game is megastructures and surviving the end-game Crisis.</p>
     </section>
 
-    <section id="empire" class="reveal">
-      <span class="s-tag">02 &middot; Identity</span><h2 class="s-title">Empire creation</h2><div class="s-rule"></div>
-      <p>Your empire is defined by three things at creation &mdash; the single most important set of choices in the game.</p>
-      <h3 class="sub">Ethics (3 points, fanatic = 2)</h3>
-      <div class="table-wrap"><table>
-        <thead><tr><th>Axis</th><th>Pole A</th><th>Pole B</th></tr></thead>
-        <tbody>
-          <tr><td>War</td><td><strong>Militarist</strong> (war bonuses, fire rate)</td><td><strong>Pacifist</strong> (stability, growth, tall play)</td></tr>
-          <tr><td>Society</td><td><strong>Authoritarian</strong> (slavery, worker output)</td><td><strong>Egalitarian</strong> (specialist output, faction influence)</td></tr>
-          <tr><td>Diplomacy</td><td><strong>Xenophile</strong> (trade, diplo, migration)</td><td><strong>Xenophobe</strong> (pop growth, closed borders)</td></tr>
-          <tr><td>Knowledge</td><td><strong>Materialist</strong> (research, robots)</td><td><strong>Spiritualist</strong> (unity, psionics, anti-AI)</td></tr>
-        </tbody>
-      </table></div>
-      <p>Plus the gestalt ethics that replace the whole spread: <strong>Hive Mind</strong> and <strong>Machine Intelligence</strong> (no factions, no normal happiness, pops are drones).</p>
-      <h3 class="sub">Authority</h3>
-      <p>How you're governed: Democratic (elections, egalitarian synergy), Oligarchic (flexible, long terms), Dictatorial/Imperial (autocratic, authoritarian synergy), the gestalt authorities, and Corporate (Megacorp: branch offices, trade focus).</p>
-      <h3 class="sub">Civics (2 at start, changeable later)</h3>
-      <p>The mechanical edge: Technocracy (research engine), Byzantine Bureaucracy (unity/admin), Merchant Guilds (trade), Fanatic Purifiers (genocidal, no diplomacy), Rogue Servitors / Determined Exterminators (machine variants), Inward Perfection (pacifist tall powerhouse). Civics must be consistent with your ethics and authority.</p>
-      <div class="callout"><strong>The creation principle:</strong> ethics + authority + civics should reinforce <em>one</em> economic and military plan, not pull three directions. A Fanatic Materialist Technocracy is a tech empire; a Militarist Authoritarian Citizen-Service empire is a conquest machine. Decide what you're doing before you pick.</div>
-    </section>
-
-    <section id="economy" class="reveal">
-      <span class="s-tag">03 &middot; The Engine</span><h2 class="s-title">Economy and pops</h2><div class="s-rule"></div>
-      <p>The economy is a chain: <strong>pops work jobs &rarr; jobs make resources &rarr; resources build more capacity.</strong> Core resources: Energy Credits, Minerals, Food, Consumer Goods, Alloys, Research, Unity, Influence, and Strategic Resources (Motes/Gases/Crystals, plus Living Metal/Zro/Dark Matter).</p>
-      <ul class="list">
-        <li><strong>Alloys win wars.</strong> Convert minerals to alloys via foundry jobs; a war economy is an alloy economy.</li>
-        <li><strong>Influence is a bottleneck</strong>, not an afterthought. It gates outpost claims, edicts, and diplomacy. Don't overspend early.</li>
-        <li><strong>Planet designations matter.</strong> Set a designation (mining, tech, forge world) to boost matching jobs. In 4.4, designation bonuses rose and planet automation improved, so a designated + automated planet lands close to expectation.</li>
-        <li><strong>Pops fill jobs by fit.</strong> 4.3&ndash;4.4 reworked job competition: better-suited pops displace worse ones over time, higher strata turn over slowly, and unemployment was removed (pops drop to a fallback category). Hand-manage your capital; automate secondary worlds.</li>
-        <li><strong>Empire size</strong> raises tech and tradition cost. Tall stays small and efficient; wide sprawls and pays the penalty but out-produces by volume. Both are viable.</li>
-      </ul>
-    </section>
-
-    <section id="research" class="reveal">
-      <span class="s-tag">04 &middot; Knowledge</span><h2 class="s-title">Research and the tech tree</h2><div class="s-rule"></div>
-      <p>Three categories run in parallel: <strong>Physics</strong> (energy, shields, research, psionics), <strong>Society</strong> (biology, statecraft, ascension), <strong>Engineering</strong> (materials, propulsion, voidcraft, armor/alloys).</p>
-      <p>Research is a <strong>semi-random card draw</strong>: you're offered a few techs per category and pick one; finishing reveals new draws. Scientist traits, Technocracy, and being on an ascension path weight the draws &mdash; in 4.4, key ascension-path techs get higher draw chances when you're on that path.</p>
-      <div class="callout">Priorities most games: early economy/growth tech, then your win-condition tech (weapons/ships for conquest, research/unity multipliers for tall, robots/genetics for pop output). <strong>Always keep all three categories running &mdash; idle research is wasted.</strong></div>
-    </section>
-
-    <section id="traditions" class="reveal">
-      <span class="s-tag">05 &middot; Doctrine</span><h2 class="s-title">Traditions &amp; Ascension Perks</h2><div class="s-rule"></div>
-      <p><strong>Traditions</strong> are unity-bought trees (Expansion, Discovery, Domination, Prosperity, Supremacy, Diplomacy&hellip;). Each completed tree unlocks an <strong>Ascension Perk</strong> slot. Slots and picks are deliberately scarce &mdash; that scarcity is by design &mdash; so choose trees that match your plan.</p>
-      <p><strong>Ascension Perks</strong> are empire-wide bonuses and gates to ascension paths, megastructures, and ambitions. Notable: the megastructure unlocks, the three ascension-path perks, and in 4.4 the reworked <em>Defender of the Galaxy</em> ambition and the <em>Wanderlust</em> nomad perk.</p>
-    </section>
-
-    <section id="ascension" class="reveal">
-      <span class="s-tag">06 &middot; Transcendence</span><h2 class="s-title">Ascension paths</h2><div class="s-rule"></div>
-      <p>The big mid-game identity commitment. Pick one lane (dabbling is possible, but going deep pulls heavy ethics attraction):</p>
-      <ul class="list">
-        <li><strong>Psionic</strong> (Spiritualist-leaning): tap the Shroud for powerful, RNG-flavored bonuses and patrons. High ceiling, some risk.</li>
-        <li><strong>Genetic</strong> (biology): heavily mod traits, clone/tailor pops; strong output and adaptability.</li>
-        <li><strong>Cybernetic</strong> (Materialist/Spiritualist friendly): cyborg pops, solid all-round bonuses; bridges organic and machine.</li>
-        <li><strong>Synthetic</strong> (Materialist): convert pops to synths for top-tier output &mdash; the classic robot ascension.</li>
-        <li><strong>Virtuality / Nanotech</strong> and newer DLC lanes: Virtuality (a Machine route) is a strong tall/compact play and, per the devs, works well even for Nomads.</li>
-      </ul>
-      <p>No single "best" path &mdash; match it to your empire. Synthetic and Genetic are the reliable output kings; Psionic has the flashiest highs.</p>
-    </section>
-
-    <section id="fleet" class="reveal">
-      <span class="s-tag">07 &middot; The Sword</span><h2 class="s-title">Fleet design and war</h2><div class="s-rule"></div>
-      <p>Combat is fleet-vs-fleet in real time; you design the ships, then let them fight.</p>
-      <ul class="list">
-        <li><strong>Counter the defense layers.</strong> Ships have Hull, Armor, Shields. Energy weapons shred armor and partly bypass shields; kinetics chew shields; missiles/strike craft bypass shield/PD dynamics. <strong>Mix weapon types</strong> &mdash; the classic baseline is roughly half kinetic, half energy.</li>
-        <li><strong>Defense answers the threat.</strong> Shields vs energy-heavy enemies, armor vs kinetic, Point-Defense/flak vs missiles and strike craft.</li>
-        <li><strong>Bigger hulls usually win</strong> once fielded: Corvette &rarr; Destroyer &rarr; Cruiser &rarr; Battleship &rarr; Titan, plus the Juggernaut (mobile shipyard) and Colossus (planet-killer). Mixed-weapon battleships are a hard baseline to beat.</li>
-        <li><strong>Assess before you commit.</strong> A skull icon means the enemy fleet heavily outguns you &mdash; inspect the loadout and build a counter rather than feeding it ships.</li>
-        <li><strong>Make armies before war.</strong> Space combat takes the system; ground armies take the planets. You must occupy systems <em>and</em> colonies to force surrender. Armies die fast to orbital fire &mdash; land only after the system is secured.</li>
-        <li><strong>Go over fleet cap to win, then downsize.</strong> Exceeding command cap costs upkeep but can win a war; trim after.</li>
-      </ul>
-      <div class="newbox"><span class="label">New in 4.4</span>Fleets fight further from system center, ships built at a Juggernaut/Arkship auto-follow it, and the AI upgrades its fleets more readily.</div>
-    </section>
-
-    <section id="diplomacy" class="reveal">
-      <span class="s-tag">08 &middot; The Senate</span><h2 class="s-title">Diplomacy, Federations, the Galactic Community</h2><div class="s-rule"></div>
-      <ul class="list">
-        <li><strong>Federations</strong>: alliances with shared fleets and levels; powerful, but the AI is an unreliable commander &mdash; don't bet survival on allies fighting well.</li>
-        <li><strong>Galactic Community</strong>: a galaxy-wide senate; diplomatic weight decides votes. You can become <strong>Custodian</strong> and potentially form the <strong>Galactic Imperium</strong>. In 4.4, <em>Defender of the Galaxy</em> became a full five-level Ambition: cooperate, take Custodianship, build the Galactic Defense Force, run the Paladin Initiative, and win by defeating two end-game Crises then abdicating.</li>
-        <li><strong>Subjects/vassals</strong>: overlordship with specialist subject types (note: nomadic empires can't use the Overlord specialist subject types).</li>
-      </ul>
-      <p>In 4.4 you can also negotiate to <strong>join or leave an ongoing war</strong> as a non-primary, and fully-occupied empires now suffer escalating war-exhaustion/attrition so stomps end faster.</p>
-    </section>
-
-    <section id="mega" class="reveal">
-      <span class="s-tag">09 &middot; Wonders</span><h2 class="s-title">Megastructures</h2><div class="s-rule"></div>
-      <p>Late-game wonders that set an empire's ceiling (gated behind Ascension Perks and tech): Dyson Sphere (energy), Matter Decompressor (minerals), Science Nexus (research), Ring World (population), Sentry Array (galaxy intel), plus crisis-path structures.</p>
-      <div class="newbox"><span class="label">New in 4.4</span>The <strong>Stellar Cannon</strong> &mdash; a purely offensive megastructure on a neutron star/pulsar &mdash; fires your entire energy stockpile at an enemy system after a 140-day charge, dealing ship damage and colony devastation (10/25/50% by tier). Shots over 50,000 energy also shift planets one step up the dryness scale (long-range terraforming that trips Galactic Community resolutions). Nomads get Arkship <strong>Spinal Mounts</strong> that act like mobile kilostructures (Stellar Engine, Exodus Jump, etc.).</div>
-    </section>
-
-    <section id="nomads" class="reveal">
-      <span class="s-tag">10 &middot; The New Way</span><h2 class="s-title">The Nomads layer (4.4)</h2><div class="s-rule"></div>
-      <p>Nomads adds an entirely different way to play: empires that never claim the map.</p>
-      <ul class="list">
-        <li><strong>Arkships</strong> replace your homeworld &mdash; massive mobile capitals that are colony, shipyard and warship at once, in three classes (Military, Scientific, Civilian), each upgradeable through three tiers with modules, systems and late-game Spinal Mounts. An Arkship maxes at planet size 27, guaranteed, and can flee threats.</li>
-        <li><strong>Waystations &amp; Waylines</strong>: build Waystations to harvest a system without claiming it; adjacent Waystations link into Waylines that spread trade and modifiers. Two nomad empires can share networks via a Wayline Pact.</li>
-        <li><strong>Contracts</strong>: settled empires issue task contracts (military, science, resource, diplomacy); nomads fulfill them for trade, opinion and trust. A settled+nomad co-op game can be genuinely symbiotic.</li>
-        <li><strong>Operational Reserves</strong>: nomads merge energy and minerals into one fungible pool that constantly drains &mdash; it's <em>intended</em> to sit low (not a deficit emergency). The fix for a low reserve is always "go harvest more."</li>
-        <li><strong>Settling &amp; Embarking</strong>: after Adaptability or Versatility you can Settle onto an empty planet; settled empires can Embark onto Arkships (turning starbases into Waystations). The clean escape hatch for Doomsday-origin empires.</li>
-        <li><strong>New origins</strong>: Voidfarers, Heirs of the Khan, The Sacred Path, Forever Cruise &mdash; plus new civics (Caravan Masters, Void Reavers, Star Seekers, Flight Schools, Deep Sleep) and six nomad-exclusive Paragons via the Champion's Forge Live! enclave.</li>
-      </ul>
-      <div class="callout">Nomad warfare is different: Arkships can't be bombarded or invaded, only killed by ship combat (hull damage = devastation). Nomads can't claim planets (invade, occupy, then release or vassalize), take other nomads' Arkships via the Nomad Raid CB, and only need military superiority (not economy+research+military) to subjugate.</div>
-    </section>
-
-    <section id="crises" class="reveal">
-      <span class="s-tag">11 &middot; The Test</span><h2 class="s-title">Mid &amp; late game: crises</h2><div class="s-rule"></div>
-      <ul class="list">
-        <li><strong>Mid-game</strong>: the Great Khan (Marauders unite under a conqueror), wars, and awakening Fallen Empires.</li>
-        <li><strong>End-game Crisis</strong> (timed by your end-game year): a galaxy-ender &mdash; the Prethoryn Scourge (devouring swarm), the Unbidden (extradimensional invaders), or the Contingency (rogue AI). A tech/alloy lead and a prepared fleet are how you survive.</li>
-        <li><strong>Player crisis paths</strong>: you can <em>become</em> the crisis (Nemesis). 4.4's <em>Defender of the Galaxy</em> is the inverse &mdash; the "good guy" ambition built to fight crises.</li>
-      </ul>
-      <p>Set the end-game year and crisis strength at galaxy creation to control pacing; 4.4 added more sliders (including Fallen/Awakened Empire strength).</p>
-    </section>
-
-    <section id="opening" class="reveal">
-      <span class="s-tag">12 &middot; The First Hour</span><h2 class="s-title">Opening playbook</h2><div class="s-rule"></div>
-      <p>A durable early sequence for a standard settled empire:</p>
-      <ol class="steps">
-        <li><strong>Survey aggressively.</strong> Build a second Science Ship and hire a scientist immediately; explore in all directions.</li>
-        <li><strong>Grab choke points and good systems</strong> with early Outposts, but watch Influence &mdash; don't claim junk.</li>
-        <li><strong>Get your economy positive</strong> (energy and minerals first), then start an alloy base for ships.</li>
-        <li><strong>Colonize guaranteed habitables</strong> and nearby good worlds before settling into build-up.</li>
-        <li><strong>Pick a first tradition tree</strong> matching your plan (Expansion wide, Discovery tech, Prosperity economy).</li>
-        <li><strong>Build a small starting fleet</strong> and design your corvettes (turn off auto-best-design so you control loadouts).</li>
-        <li><strong>Plan your ascension lane</strong> by mid-game and steer research toward it.</li>
-      </ol>
-      <div class="callout">In the ship designer at game start, uncheck <strong>"auto-generate designs"</strong> so you keep manual control of your loadouts.</div>
-    </section>
-
-    <section id="tips" class="reveal">
-      <span class="s-tag">13 &middot; Field Notes</span><h2 class="s-title">Durable tips</h2><div class="s-rule"></div>
-      <ul class="list">
-        <li><strong>Keep all three research categories running</strong> at all times. Idle labs are wasted output.</li>
-        <li><strong>Alloys are the war currency.</strong> Build foundry capacity before you plan a conquest.</li>
-        <li><strong>Don't trust the AI to win your wars</strong> in a Federation; bring your own decisive fleet.</li>
-        <li><strong>Designate + automate</strong> secondary planets; hand-manage your capital and key worlds only.</li>
-        <li><strong>Mixed weapons, answered defenses.</strong> Never field a mono-weapon fleet a single counter shuts down.</li>
-        <li><strong>Watch Influence like a resource, because it is one.</strong> It gates expansion and diplomacy.</li>
-        <li><strong>For Nomads, stay in motion.</strong> Your strength is harvesting, Waylines and contracts, not turtling. You'll never out-defend a settled empire's system.</li>
-        <li><strong>Set end-game year and crisis strength to taste</strong> &mdash; the single biggest pacing lever.</li>
-        <li><strong>Back up saves before a major patch.</strong> Compatibility isn't guaranteed; 4.4 auto-disables mod lists on a major update (re-enable once mods update).</li>
-      </ul>
+    <section class="reveal">
+      <span class="s-tag">The Guide</span><h2 class="s-title">Where do you want to go?</h2><div class="s-rule"></div>
+      <div class="hub-cards">
+        <a class="hub-card" href="pages/empire.html">
+          <span class="k">The Foundation</span><h3>Empire, Economy &amp; Research</h3>
+          <p>Ethics / Authority / Civics at creation, the pops-to-resources economy, and the tech card system.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+        <a class="hub-card" href="pages/ascension.html">
+          <span class="k">Doctrine</span><h3>Traditions &amp; Ascension</h3>
+          <p>Unity trees and Ascension Perk slots, and the mid-game ascension paths (Psionic, Genetic, Synthetic&hellip;).</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+        <a class="hub-card" href="pages/war.html">
+          <span class="k">The Sword</span><h3>Fleet, Diplomacy &amp; Megastructures</h3>
+          <p>Ship design and the war loop, Federations and the Galactic Community, and the late-game wonders.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+        <a class="hub-card" href="pages/nomads.html">
+          <span class="k">The New Way</span><h3>The Nomads Layer &amp; Crises</h3>
+          <p>Arkships, Waylines and contracts &mdash; the empire that never claims the map &mdash; plus the end-game crises.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+        <a class="hub-card" href="pages/playbook.html">
+          <span class="k">The First Hour</span><h3>Opening Playbook &amp; Tips</h3>
+          <p>A durable early-game sequence and the field notes that hold across patches.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+      </div>
     </section>
 
   </main>
@@ -310,40 +94,6 @@
 </div>
 
 <button class="totop" aria-label="Back to top">&uarr;</button>
-
-<script>
-/* starfield ambient: twinkling drifting stars + a few bright ones */
-(function(){
-  var c=document.getElementById("stars"); if(!c||!c.getContext) return;
-  var ctx=c.getContext("2d");
-  var reduce=window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var DPR=Math.min(window.devicePixelRatio||1,2), W=0,H=0,raf=null,last=0,S=[];
-  function rnd(a,b){return a+Math.random()*(b-a);}
-  function resize(){W=innerWidth;H=innerHeight;c.width=W*DPR;c.height=H*DPR;c.style.width=W+"px";c.style.height=H+"px";ctx.setTransform(DPR,0,0,DPR,0,0);}
-  function mk(){return{x:rnd(0,W),y:rnd(0,H),r:rnd(0.4,1.6),vy:rnd(2,10),tw:rnd(0.5,1.6),ph:rnd(0,6.28),bright:Math.random()<0.12};}
-  function init(){resize();var n=Math.round(Math.min(220,(W*H)/8000));S=[];for(var i=0;i<n;i++)S.push(mk());}
-  function frame(t){var dt=last?Math.min((t-last)/1000,.05):.016;last=t;ctx.clearRect(0,0,W,H);
-    for(var i=0;i<S.length;i++){var s=S[i];s.y+=s.vy*dt;s.ph+=s.tw*dt;if(s.y>H+2){s.y=-2;s.x=rnd(0,W);}
-      var a=0.35+0.45*Math.sin(s.ph);if(a<0)a=0;
-      if(s.bright){ctx.fillStyle="rgba(154,240,246,"+(a*0.9)+")";ctx.shadowColor="rgba(90,214,224,0.8)";ctx.shadowBlur=6;}
-      else{ctx.fillStyle="rgba(210,225,245,"+(a*0.7)+")";ctx.shadowBlur=0;}
-      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.28);ctx.fill();}
-    ctx.shadowBlur=0;raf=requestAnimationFrame(frame);}
-  function start(){if(!raf){last=0;raf=requestAnimationFrame(frame);}}
-  function stop(){if(raf){cancelAnimationFrame(raf);raf=null;}}
-  function staticField(){init();for(var i=0;i<S.length;i++){var s=S[i];ctx.fillStyle="rgba(210,225,245,0.5)";ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.28);ctx.fill();}}
-  if(reduce){staticField();}else{init();start();}
-  var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(function(){if(reduce)staticField();else init();},200);});
-  document.addEventListener("visibilitychange",function(){if(document.hidden)stop();else if(!reduce)start();});
-})();
-/* reveal */
-(function(){var els=document.querySelectorAll(".reveal");if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("visible");});return;}
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target);}});},{threshold:.1});
-  els.forEach(function(e){io.observe(e);});})();
-/* jump-nav + totop */
-(function(){var links=[].slice.call(document.querySelectorAll(".jump a"));var secs=links.map(function(a){return document.querySelector(a.getAttribute("href"));});var top=document.querySelector(".totop");
-  function onScroll(){var y=window.scrollY+140,cur=0;for(var i=0;i<secs.length;i++){if(secs[i]&&secs[i].offsetTop<=y)cur=i;}links.forEach(function(l,i){l.classList.toggle("active",i===cur);});if(top)top.classList.toggle("show",window.scrollY>500);}
-  window.addEventListener("scroll",onScroll,{passive:true});onScroll();if(top)top.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});})();
-</script>
+<script src="js/site.js"></script>
 </body>
 </html>

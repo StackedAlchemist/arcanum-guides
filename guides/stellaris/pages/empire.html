@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Empire, Economy &amp; Research | Stellaris Field Guide | The Arcanum</title>
+<meta name="description" content="Stellaris 4.4: empire creation (Ethics / Authority / Civics), the pops-to-resources economy, and the semi-random research card system." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">Stellaris</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a href="../index.html">Home</a>
+        <a href="empire.html" class="active">Empire</a>
+        <a href="ascension.html">Ascension</a>
+        <a href="war.html">War</a>
+        <a href="nomads.html">Nomads</a>
+        <a href="playbook.html">Playbook</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The Foundation</span>
+      <h1>Empire, Economy &amp; Research</h1>
+      <p class="lede">Everything downstream &mdash; your wars, your tech, your win condition &mdash; is set by three choices at creation and the resource engine you build on top of them. Get the foundation coherent and the rest follows.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">02 &middot; Identity</span><h2 class="s-title">Empire creation</h2><div class="s-rule"></div>
+        <p>Your empire is defined by three things at creation &mdash; the single most important set of choices in the game.</p>
+        <h3 class="sub">Ethics (3 points, fanatic = 2)</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Axis</th><th>Pole A</th><th>Pole B</th></tr></thead>
+          <tbody>
+            <tr><td>War</td><td><strong>Militarist</strong> (war bonuses, fire rate)</td><td><strong>Pacifist</strong> (stability, growth, tall play)</td></tr>
+            <tr><td>Society</td><td><strong>Authoritarian</strong> (slavery, worker output)</td><td><strong>Egalitarian</strong> (specialist output, faction influence)</td></tr>
+            <tr><td>Diplomacy</td><td><strong>Xenophile</strong> (trade, diplo, migration)</td><td><strong>Xenophobe</strong> (pop growth, closed borders)</td></tr>
+            <tr><td>Knowledge</td><td><strong>Materialist</strong> (research, robots)</td><td><strong>Spiritualist</strong> (unity, psionics, anti-AI)</td></tr>
+          </tbody>
+        </table></div>
+        <p>Plus the gestalt ethics that replace the whole spread: <strong>Hive Mind</strong> and <strong>Machine Intelligence</strong> (no factions, no normal happiness, pops are drones).</p>
+        <h3 class="sub">Authority</h3>
+        <p>How you're governed: Democratic (elections, egalitarian synergy), Oligarchic (flexible, long terms), Dictatorial/Imperial (autocratic, authoritarian synergy), the gestalt authorities, and Corporate (Megacorp: branch offices, trade focus).</p>
+        <h3 class="sub">Civics (2 at start, changeable later)</h3>
+        <p>The mechanical edge: Technocracy (research engine), Byzantine Bureaucracy (unity/admin), Merchant Guilds (trade), Fanatic Purifiers (genocidal, no diplomacy), Rogue Servitors / Determined Exterminators (machine variants), Inward Perfection (pacifist tall powerhouse). Civics must be consistent with your ethics and authority.</p>
+        <div class="callout"><strong>The creation principle:</strong> ethics + authority + civics should reinforce <em>one</em> economic and military plan, not pull three directions. A Fanatic Materialist Technocracy is a tech empire; a Militarist Authoritarian Citizen-Service empire is a conquest machine. Decide what you're doing before you pick.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">03 &middot; The Engine</span><h2 class="s-title">Economy and pops</h2><div class="s-rule"></div>
+        <p>The economy is a chain: <strong>pops work jobs &rarr; jobs make resources &rarr; resources build more capacity.</strong> Core resources: Energy Credits, Minerals, Food, Consumer Goods, Alloys, Research, Unity, Influence, and Strategic Resources (Motes/Gases/Crystals, plus Living Metal/Zro/Dark Matter).</p>
+        <ul class="list">
+          <li><strong>Alloys win wars.</strong> Convert minerals to alloys via foundry jobs; a war economy is an alloy economy.</li>
+          <li><strong>Influence is a bottleneck</strong>, not an afterthought. It gates outpost claims, edicts, and diplomacy. Don't overspend early.</li>
+          <li><strong>Planet designations matter.</strong> Set a designation (mining, tech, forge world) to boost matching jobs. In 4.4, designation bonuses rose and planet automation improved.</li>
+          <li><strong>Pops fill jobs by fit.</strong> 4.3&ndash;4.4 reworked job competition: better-suited pops displace worse ones over time, and unemployment was removed (pops drop to a fallback category). Hand-manage your capital; automate secondary worlds.</li>
+          <li><strong>Empire size</strong> raises tech and tradition cost. Tall stays small and efficient; wide sprawls and pays the penalty but out-produces by volume. Both are viable.</li>
+        </ul>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">04 &middot; Knowledge</span><h2 class="s-title">Research and the tech tree</h2><div class="s-rule"></div>
+        <p>Three categories run in parallel: <strong>Physics</strong> (energy, shields, research, psionics), <strong>Society</strong> (biology, statecraft, ascension), <strong>Engineering</strong> (materials, propulsion, voidcraft, armor/alloys).</p>
+        <p>Research is a <strong>semi-random card draw</strong>: you're offered a few techs per category and pick one; finishing reveals new draws. Scientist traits, Technocracy, and being on an ascension path weight the draws &mdash; in 4.4, key ascension-path techs get higher draw chances when you're on that path.</p>
+        <div class="callout">Priorities most games: early economy/growth tech, then your win-condition tech (weapons/ships for conquest, research/unity multipliers for tall, robots/genetics for pop output). <strong>Always keep all three categories running &mdash; idle research is wasted.</strong></div>
+      </section>
+
+      <div class="pager">
+        <a href="../index.html">&larr; Home</a>
+        <a href="ascension.html">Traditions &amp; Ascension &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Stellaris &mdash; Complete Field Guide &middot; 4.4 Pegasus + Nomads</p>
+    <p>A fan-made guide under <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Stellaris is &copy; Paradox Interactive; this guide is unaffiliated.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
