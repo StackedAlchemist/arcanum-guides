@@ -4,105 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Final Fantasy V (Pixel Remaster) — Field Guide | The Arcanum</title>
-<meta name="description" content="A complete Final Fantasy V Pixel Remaster field guide: the 22-job system, the secondary-ability engine, broken combos (Dual-Wield + Rapid Fire + Spellblade, Dualcast, Mix), Blue Magic, best jobs to master, legendary weapons, Chicken Knife vs Brave Blade, the three worlds, Gilgamesh/Exdeath/Omega/Shinryu, and missables." />
+<meta name="description" content="A complete Final Fantasy V Pixel Remaster guide: the 22-job system, the secondary-ability engine, broken combos (Dual-Wield + Rapid Fire, Dualcast, Mix), Blue Magic, best jobs, legendary weapons, the three worlds, and superbosses." />
 <meta property="og:title" content="Final Fantasy V — The Arcanum" />
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#07110f; --bg2:#0e1d1a;
-    --panel:rgba(14,29,26,0.85);
-    --gold:#d8b65a; --gold2:#f0d98a; --glow:rgba(79,182,168,0.22);
-    --teal:#4fb6a8; --teal2:#8fe0d4;
-    --blue:#5a8fd0;
-    --line:rgba(79,182,168,0.20); --line2:rgba(79,182,168,0.08);
-    --text:#e6ece9; --text2:#9fb4ae; --text3:#5e726c;
-    --display:'Cinzel', Georgia, serif;
-    --body:'EB Garamond', Georgia, serif;
-    --maxw:1000px;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:
-      radial-gradient(60% 50% at 50% -6%, rgba(79,182,168,0.16), transparent 60%),
-      radial-gradient(50% 45% at 85% 25%, rgba(216,182,90,0.07), transparent 60%),
-      radial-gradient(50% 50% at 12% 75%, rgba(90,143,208,0.06), transparent 60%),
-      var(--bg);
-    color:var(--text); font-family:var(--body); font-size:19px; line-height:1.7;
-    min-height:100vh; overflow-x:hidden;
-  }
-  a{color:var(--gold); text-decoration:none;}
-  #motes{position:fixed; inset:0; z-index:0; pointer-events:none;}
-  .page{position:relative; z-index:1;}
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 1.6rem;}
-  body::after{content:""; position:fixed; inset:0; z-index:0; pointer-events:none; background:radial-gradient(120% 100% at 50% 45%, transparent 55%, rgba(0,0,0,0.6));}
-
-  .topbar{position:sticky; top:0; z-index:50; background:linear-gradient(180deg, rgba(7,17,15,0.96), rgba(7,17,15,0.74)); backdrop-filter:blur(10px); border-bottom:1px solid var(--line2);}
-  .topbar-inner{max-width:var(--maxw); margin:0 auto; padding:0.8rem 1.6rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;}
-  .brand{font-family:var(--display); font-weight:700; letter-spacing:0.08em; color:var(--gold2); font-size:1rem;}
-  .topbar .links{display:flex; gap:0.6rem;}
-  .topbar a.back{font-family:var(--display); font-size:0.78rem; letter-spacing:0.05em; color:var(--text2); border:1px solid var(--line); padding:0.35rem 0.8rem; border-radius:3px; transition:0.2s;}
-  .topbar a.back:hover{color:var(--gold2); border-color:var(--gold);}
-
-  .hero{text-align:center; padding:4.2rem 1.6rem 2rem; position:relative;}
-  .hero .crest{font-size:2.4rem; color:var(--teal2); text-shadow:0 0 26px var(--glow); display:block; margin-bottom:0.6rem;}
-  .hero .eyebrow{display:block; font-family:var(--display); letter-spacing:0.26em; text-transform:uppercase; font-size:0.68rem; color:var(--teal2); margin-bottom:0.5rem;}
-  .hero h1{font-family:var(--display); font-weight:900; font-size:clamp(1.8rem,5vw,3.1rem); line-height:1.1;
-    background:linear-gradient(100deg, var(--gold2) 25%, #fff 50%, var(--teal2) 82%); background-size:200% 100%;
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:sheen 11s ease-in-out infinite;}
-  .hero .sub{font-family:var(--display); font-size:0.9rem; letter-spacing:0.12em; color:var(--blue); margin-top:0.3rem;}
-  .hero .lede{max-width:700px; margin:1rem auto 0; color:var(--text2); font-size:1.08rem;}
-  @keyframes sheen{0%,100%{background-position:0% 50%} 50%{background-position:100% 50%}}
-
-  .jump{position:sticky; top:53px; z-index:40; background:rgba(7,17,15,0.93); backdrop-filter:blur(8px); border-top:1px solid var(--line2); border-bottom:1px solid var(--line2);}
-  .jump-inner{max-width:var(--maxw); margin:0 auto; padding:0.5rem 1.6rem; display:flex; gap:0.3rem; overflow-x:auto; scrollbar-width:none;}
-  .jump-inner::-webkit-scrollbar{display:none;}
-  .jump a{flex:0 0 auto; font-family:var(--display); font-size:0.74rem; letter-spacing:0.03em; color:var(--text2); padding:0.35rem 0.65rem; border-radius:3px; white-space:nowrap; transition:0.2s;}
-  .jump a:hover, .jump a.active{color:var(--gold2); background:rgba(216,182,90,0.08);}
-
-  main{padding:2.8rem 0 5rem;}
-  section{margin-bottom:3.4rem; scroll-margin-top:112px;}
-  .s-tag{font-family:var(--display); letter-spacing:0.16em; text-transform:uppercase; font-size:0.64rem; color:var(--teal2); display:block; margin-bottom:0.35rem;}
-  .s-title{font-family:var(--display); font-weight:700; font-size:clamp(1.4rem,3vw,2.1rem); color:#fff; letter-spacing:0.01em;}
-  .s-rule{height:1px; width:90px; margin:0.9rem 0 1.6rem; background:linear-gradient(90deg, var(--gold), var(--teal), transparent);}
-  p{margin-bottom:1rem; color:var(--text2);}
-  p strong, li strong{color:var(--gold2);}
-  em{color:var(--teal2); font-style:italic;}
-
-  ul.list{list-style:none; margin:1rem 0;}
-  ul.list li{position:relative; padding-left:1.3rem; margin-bottom:0.5rem; color:var(--text2);}
-  ul.list li::before{content:"\2756"; position:absolute; left:0; top:0.1rem; color:var(--teal); font-size:0.7rem;}
-  h3.sub{font-family:var(--display); font-weight:600; color:#fff; font-size:1.05rem; margin:1.5rem 0 0.4rem;}
-
-  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:6px; margin:1.3rem 0;}
-  table{width:100%; border-collapse:collapse; font-size:0.92rem;}
-  th{font-family:var(--display); font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold2); text-align:left; padding:0.7rem 1rem; background:rgba(216,182,90,0.05); border-bottom:1px solid var(--line);}
-  td{padding:0.7rem 1rem; border-bottom:1px solid var(--line2); color:var(--text2); vertical-align:top;}
-  td:first-child{color:var(--text); font-weight:600;}
-  tr:hover td{background:rgba(79,182,168,0.04);}
-
-  .callout{background:rgba(216,182,90,0.05); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:4px; padding:1.1rem 1.4rem; margin:1.4rem 0; color:var(--text2); font-size:0.97rem;}
-  .callout strong{color:var(--gold2);}
-  .newbox{background:rgba(79,182,168,0.07); border:1px solid rgba(79,182,168,0.28); border-left:3px solid var(--teal); border-radius:4px; padding:1.1rem 1.4rem; margin:1.4rem 0; color:var(--text2);}
-  .newbox .label{font-family:var(--display); font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal2); display:block; margin-bottom:0.4rem;}
-
-  ol.steps{margin:1.2rem 0; padding-left:0; list-style:none; counter-reset:step;}
-  ol.steps li{position:relative; padding:0 0 0 2.6rem; margin-bottom:0.8rem; counter-increment:step; color:var(--text2);}
-  ol.steps li::before{content:counter(step); position:absolute; left:0; top:0; width:1.8rem; height:1.8rem; display:grid; place-items:center; font-family:var(--display); font-weight:700; color:var(--gold2); border:1px solid var(--line); border-radius:50%; font-size:0.82rem;}
-
-  footer{border-top:1px solid var(--line2); padding:2.2rem 1.6rem; text-align:center;}
-  footer p{font-family:var(--display); font-size:0.7rem; letter-spacing:0.06em; color:var(--text3); margin:0.3rem 0;}
-  footer a{color:var(--text2);} footer a:hover{color:var(--gold2);}
-
-  .totop{position:fixed; right:18px; bottom:18px; z-index:60; background:var(--teal); color:#08130f; border:none; font-family:var(--display); font-weight:700; font-size:0.8rem; padding:0.5rem 0.8rem; border-radius:3px; cursor:pointer; opacity:0; pointer-events:none; transition:opacity 0.2s;}
-  .totop.show{opacity:0.9; pointer-events:auto;}
-  .reveal{opacity:0; transform:translateY(16px); transition:opacity 0.55s ease, transform 0.55s ease;}
-  .reveal.visible{opacity:1; transform:translateY(0);}
-  @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important;} .reveal{opacity:1; transform:none;}}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -111,11 +19,18 @@
 <div class="page">
   <header class="topbar">
     <div class="topbar-inner">
-      <span class="brand">Final Fantasy V</span>
-      <div class="links">
-        <a class="back" href="../final-fantasy/index.html">&#10022; All FF</a>
-        <a class="back" href="../../index.html">&#9879; Arcanum</a>
-      </div>
+      <a class="brand" href="index.html">Final Fantasy <span>V</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../index.html">&#9879; Arcanum</a>
+        <a class="home" href="../final-fantasy/index.html">&#10022; All FF</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="pages/jobs.html">Jobs</a>
+        <a href="pages/combos.html">Combos</a>
+        <a href="pages/weapons.html">Weapons</a>
+        <a href="pages/progression.html">Progression</a>
+        <a href="pages/secrets.html">Secrets</a>
+      </nav>
     </div>
   </header>
 
@@ -124,210 +39,63 @@
     <span class="eyebrow">The Arcanum &middot; Complete Field Guide</span>
     <h1>Final Fantasy V</h1>
     <div class="sub">Pixel Remaster</div>
-    <p class="lede">The job-system masterpiece. Four heroes earn <strong>22 Jobs</strong> from the shattered Crystals, learn abilities permanently, then <em>mix abilities across classes</em> for combos the game never intended. The whole depth is the secondary-ability engine and a few legendary build combos. Spoiler-light on story.</p>
+    <p class="lede">The job-system masterpiece. Four heroes earn <strong>22 Jobs</strong> from the shattered Crystals, learn abilities permanently, then <em>mix abilities across classes</em> for combos the game never intended. The whole depth is the secondary-ability engine and a few legendary build combos.</p>
   </section>
-
-  <nav class="jump" aria-label="Sections">
-    <div class="jump-inner">
-      <a href="#overview">Overview</a>
-      <a href="#jobs">The 22 Jobs</a>
-      <a href="#abilities">Ability Engine</a>
-      <a href="#combos">Broken Combos</a>
-      <a href="#blue">Blue Magic</a>
-      <a href="#best">Best Jobs</a>
-      <a href="#weapons">Legendary Weapons</a>
-      <a href="#worlds">Three Worlds</a>
-      <a href="#bosses">Bosses</a>
-      <a href="#missables">Missables</a>
-      <a href="#tips">Tips</a>
-    </div>
-  </nav>
 
   <main class="wrap">
 
-    <section id="overview" class="reveal">
-      <span class="s-tag">01 &middot; The Shape</span><h2 class="s-title">Overview &amp; the job system</h2><div class="s-rule"></div>
+    <section class="reveal">
+      <span class="s-tag">Start Here</span><h2 class="s-title">Overview &amp; the job system</h2><div class="s-rule"></div>
       <ul class="list">
         <li><strong>Jobs from Crystals.</strong> Each shattered Crystal grants a batch of Jobs. A character set to a Job earns <em>ABP</em> in battle, raising that Job's level and permanently teaching its abilities.</li>
         <li><strong>Mix and match.</strong> Beyond the Job's innate command, you equip <em>one secondary ability</em> (a learned command or passive) from any other job. This cross-class slot is the entire build system.</li>
-        <li><strong>Master a Job</strong> (max its level) to unlock its best ability and, crucially, carry its innate passives onto the <em>Freelancer</em> and <em>Mime</em> jobs.</li>
-        <li><strong>Freelancer &amp; Mime are the endgame vessels.</strong> Freelancer inherits the innate abilities and best stats of every mastered Job (2 ability slots); Mime has no innate command but equips <em>three</em> abilities and inherits passives. Stack your mastered combos here.</li>
+        <li><strong>Master a Job</strong> (max its level) to unlock its best ability and carry its innate passives onto the <em>Freelancer</em> and <em>Mime</em> jobs.</li>
+        <li><strong>Freelancer &amp; Mime are the endgame vessels.</strong> Freelancer inherits the innate abilities and best stats of every mastered Job (2 ability slots); Mime has no innate command but equips <em>three</em> abilities. Stack your mastered combos here.</li>
         <li><strong>The winning idea:</strong> master a handful of key jobs, then run Freelancer/Mime with <em>Dual-Wield + Rapid Fire</em> (physical) or <em>Dualcast</em> (magic).</li>
       </ul>
-      <div class="newbox"><span class="label">Pixel Remaster note</span>The PR is based on the SNES original: <strong>22 jobs</strong>, and the optional superbosses Omega and Shinryu in the Rift. It does <strong>not</strong> include the GBA Advance extras (Gladiator, Cannoneer, Oracle, Necromancer jobs or the Sealed Temple / Enuo). It does add the usual PR quality-of-life (bestiary, boosts, updated translation: Bartz, Lenna, Faris, Galuf, Krile, Exdeath, Gilgamesh).</div>
+      <div class="newbox"><span class="label">Pixel Remaster note</span>The PR is based on the SNES original: <strong>22 jobs</strong>, plus the optional superbosses Omega and Shinryu in the Rift. It does <strong>not</strong> include the GBA Advance extras (Gladiator, Cannoneer, Oracle, Necromancer jobs or the Sealed Temple / Enuo). It does add the usual PR quality-of-life and an updated translation (Bartz, Lenna, Faris, Galuf, Krile, Exdeath, Gilgamesh).</div>
     </section>
 
-    <section id="jobs" class="reveal">
-      <span class="s-tag">02 &middot; The Classes</span><h2 class="s-title">The 22 Jobs</h2><div class="s-rule"></div>
-      <p>Grouped by the Crystal that grants them. The "payoff" column is the ability worth mastering the Job for.</p>
-      <div class="table-wrap"><table>
-        <thead><tr><th>Job</th><th>Command / role</th><th>Mastery payoff</th></tr></thead>
-        <tbody>
-          <tr><td>Knight</td><td>Heavy armor, Cover, Two-Handed</td><td>Equip swords/shields + Two-Handed (2&times; one weapon)</td></tr>
-          <tr><td>Monk</td><td>Barehanded brawler, huge HP</td><td>Barehanded + Counter + the best early HP/Attack</td></tr>
-          <tr><td>Thief</td><td>Steal, Dash, find passages, +Speed</td><td>Artful Dodger (evasion) + reliable Steal/Mug</td></tr>
-          <tr><td>White Mage</td><td>White magic (heal/status)</td><td>Full White magic on any build</td></tr>
-          <tr><td>Black Mage</td><td>Black magic (nukes)</td><td>Full Black magic + Magic stat</td></tr>
-          <tr><td>Blue Mage</td><td>Blue magic + Learning</td><td>Enemy skills: Mighty Guard, White Wind, Lvl 5 Death (see Blue Magic)</td></tr>
-          <tr><td>Berserker</td><td>Uncontrollable, max attack</td><td>Raw physical power (auto-attack only)</td></tr>
-          <tr><td>Mystic Knight</td><td>Spellblade (enchant weapon)</td><td><strong>!Spellblade</strong> &mdash; element/Death/Drain on every hit</td></tr>
-          <tr><td>Time Mage</td><td>Time magic</td><td>Haste, Quick, Slow, Stop, Comet, Meteor, Return</td></tr>
-          <tr><td>Summoner</td><td>Summon magic</td><td>!Summon (Bahamut, Leviathan, etc.) at full Magic</td></tr>
-          <tr><td>Red Mage</td><td>Low-level Black + White</td><td><strong>!Dualcast</strong> &mdash; two spells per turn (the magic win button)</td></tr>
-          <tr><td>Beastmaster</td><td>Control / Catch monsters</td><td>!Control (force enemy skills &mdash; pairs with Learning)</td></tr>
-          <tr><td>Geomancer</td><td>Gaia (terrain attacks), avoid traps</td><td>Free, safe AoE damage + dungeon utility</td></tr>
-          <tr><td>Ninja</td><td>Throw, Image (blink), Dual-Wield</td><td><strong>Dual-Wield</strong> &mdash; equip two weapons (the physical win button)</td></tr>
-          <tr><td>Ranger</td><td>Rapid Fire, Aim, bows</td><td><strong>!Rapid Fire</strong> &mdash; 4 hits ignoring defense/evade</td></tr>
-          <tr><td>Bard</td><td>Sing (songs / stat buffs)</td><td>Romeo's Ballad (party-stop), Apollo's Harp vs Exdeath</td></tr>
-          <tr><td>Dragoon</td><td>Jump (invulnerable airtime), spears</td><td>!Jump + Lance drain; strong, simple damage</td></tr>
-          <tr><td>Dancer</td><td>Dance (random; Sword Dance = 4&times;)</td><td>High-roll burst with Ribbon/dance gear</td></tr>
-          <tr><td>Samurai</td><td>Zeninage (GilToss), Mineuchi</td><td><strong>!Zeninage</strong> (gil = nonelemental AoE) + Shirahadori (auto-block physical)</td></tr>
-          <tr><td>Chemist</td><td>Mix, Drink, Recover</td><td><strong>!Mix</strong> &mdash; Goliath Tonic (2&times; HP), Dragon Power, nukes</td></tr>
-          <tr><td>Freelancer</td><td>Inherits all mastered innates</td><td>Best stats + 2 ability slots &mdash; the endgame carrier</td></tr>
-          <tr><td>Mime</td><td>Mimic; 3 ability slots, no innate</td><td>Stack three command abilities (e.g. Dualcast + Summon + X)</td></tr>
-        </tbody>
-      </table></div>
-    </section>
-
-    <section id="abilities" class="reveal">
-      <span class="s-tag">03 &middot; The Engine</span><h2 class="s-title">The secondary-ability engine</h2><div class="s-rule"></div>
-      <ul class="list">
-        <li><strong>Learn it once, keep it forever.</strong> ABP unlocks a Job's abilities permanently; switch Jobs freely and slot a learned ability as your secondary.</li>
-        <li><strong>Passives stack onto Freelancer/Mime.</strong> Master Ninja and Freelancer keeps Dual-Wield innately; master Monk and it keeps Barehanded/Counter; etc. This is how you assemble a god character.</li>
-        <li><strong>Mime is the combo chassis</strong> &mdash; three ability slots let you run, say, <em>!Dualcast + !Summon + !Time</em> on one character, all inheriting mastered passives.</li>
-        <li><strong>Don't sleep on cheap masteries:</strong> Monk early (HP), Black/White/Time for your casters, then the four pillars below.</li>
-      </ul>
-    </section>
-
-    <section id="combos" class="reveal">
-      <span class="s-tag">04 &middot; The Exploits</span><h2 class="s-title">Broken combos</h2><div class="s-rule"></div>
-      <ol class="steps">
-        <li><strong>Dual-Wield + Rapid Fire</strong> &mdash; equip two strong weapons (Ninja), then <em>!Rapid Fire</em> (Ranger) for 8 hits that ignore defense and evasion. The premier physical build.</li>
-        <li><strong>Spellblade + Rapid Fire + Dual-Wield</strong> &mdash; enchant your weapons with <em>!Spellblade</em> (Flare, Holy, or instant-Death), then Rapid Fire to spray enchanted hits or one-shot whole rooms.</li>
-        <li><strong>Dualcast nuker</strong> &mdash; master Red Mage for <em>!Dualcast</em>, slot offensive Black/Summon/Time magic, and fire two Flares / Meteors / Bahamuts per turn. Pre-cast <em>Quick</em> (Time) for four.</li>
-        <li><strong>!Mix (Chemist)</strong> &mdash; <em>Goliath Tonic</em> doubles a character's max HP; <em>Dragon Power</em> buffs stats; other mixes nuke or full-revive. Cheap ingredients, huge payoffs.</li>
-        <li><strong>!Zeninage (Samurai)</strong> &mdash; throw gil for guaranteed big nonelemental AoE; trivializes crowds if you're rich.</li>
-      </ol>
-      <div class="callout"><strong>The two pillars:</strong> physical carries want <em>Dual-Wield + Rapid Fire</em> (add Spellblade for elements/instakill); magic carries want <em>Dualcast</em>. Master those four jobs (Ninja, Ranger, Mystic Knight, Red Mage) and the back half of the game folds.</div>
-    </section>
-
-    <section id="blue" class="reveal">
-      <span class="s-tag">05 &middot; Enemy Skills</span><h2 class="s-title">Blue Magic worth grabbing</h2><div class="s-rule"></div>
-      <p>Equip <em>Learning</em> (Blue Mage) and survive an enemy casting the spell &mdash; or use Beastmaster <em>!Control</em> to force it. Standouts:</p>
-      <ul class="list">
-        <li><strong>Mighty Guard</strong> &mdash; party-wide Protect + Shell (+ Float). One of the best buffs in the game.</li>
-        <li><strong>White Wind</strong> &mdash; heals the whole party for the caster's current HP. Free, scaling, no MP-heavy cost.</li>
-        <li><strong>Level 5 Death</strong> &mdash; instantly kills every enemy whose level is a multiple of 5 (works on some bosses &mdash; check levels).</li>
-        <li><strong>Aero / Aera / Aeroga</strong> &mdash; reliable early wind damage before you have Black magic.</li>
-        <li><strong>Goblin Punch, Death Claw, Time Slip, Aqua Breath, Missile</strong> &mdash; situational gems for control and damage.</li>
-      </ul>
-    </section>
-
-    <section id="best" class="reveal">
-      <span class="s-tag">06 &middot; Priorities</span><h2 class="s-title">Best jobs to master</h2><div class="s-rule"></div>
-      <ul class="list">
-        <li><strong>Ninja</strong> &mdash; Dual-Wield is non-negotiable for any physical build.</li>
-        <li><strong>Ranger</strong> &mdash; Rapid Fire is the best physical command in the game.</li>
-        <li><strong>Mystic Knight</strong> &mdash; Spellblade turns those hits into elemental/instant-death.</li>
-        <li><strong>Red Mage</strong> &mdash; Dualcast doubles every nuke; the magic equivalent of Rapid Fire.</li>
-        <li><strong>Monk</strong> (early HP), <strong>Black / Time / Summon</strong> (your caster's spell lists), <strong>Chemist</strong> (Mix utility), <strong>Samurai</strong> (Zeninage + Shirahadori).</li>
-        <li>Then settle into <strong>Freelancer or Mime</strong> with the abilities above stacked.</li>
-      </ul>
-    </section>
-
-    <section id="weapons" class="reveal">
-      <span class="s-tag">07 &middot; The Arsenal</span><h2 class="s-title">Legendary weapons &amp; the Knife dilemma</h2><div class="s-rule"></div>
-      <p>The third world hides the <strong>twelve legendary weapons</strong> (Excalibur, Ragnarok, Masamune, Apollo's Harp, Holy Lance, Sage's Staff, Assassin's Dagger, Yoichi's Bow, and more) behind the sealed tablets. A few are build-defining: <em>Masamune</em> grants innate Haste and first-strike; <em>Apollo's Harp</em> deals 4&times; damage to Exdeath; <em>Assassin's Dagger</em> can instant-kill.</p>
-      <div class="callout"><strong>Chicken Knife vs Brave Blade.</strong> You can only take one. The <em>Brave Blade</em> starts strong but loses power every time you flee a battle; the <em>Chicken Knife</em> grows stronger the more battles you've fled (but can randomly make a character flee). For a Dual-Wield + Rapid Fire run, the <strong>Chicken Knife</strong> is usually the pick &mdash; its ceiling is enormous and a stray flee barely matters.</div>
-    </section>
-
-    <section id="worlds" class="reveal">
-      <span class="s-tag">08 &middot; The Journey</span><h2 class="s-title">The three worlds</h2><div class="s-rule"></div>
-      <ul class="list">
-        <li><strong>First World</strong> &mdash; Bartz's world; you earn the Wind/Water/Fire/Earth Crystal job batches as the story breaks each Crystal.</li>
-        <li><strong>Second World</strong> &mdash; Galuf's world and Exdeath's seat of power; the cast and the threat escalate, more jobs and gear open up.</li>
-        <li><strong>Third World</strong> &mdash; the two worlds merge. This is the open endgame: the sealed legendary weapons, optional bosses, the <em>Phantom Village</em>, and the <strong>Interdimensional Rift</strong> (Cleft of Dimensions), the final dungeon that also houses the superbosses.</li>
-      </ul>
-    </section>
-
-    <section id="bosses" class="reveal">
-      <span class="s-tag">09 &middot; The Hunt</span><h2 class="s-title">Bosses &amp; superbosses</h2><div class="s-rule"></div>
-      <ul class="list">
-        <li><strong>Gilgamesh</strong> &mdash; the series' breakout recurring boss debuts here (and the "Clash on the Big Bridge" theme). He shows up several times; later he's almost an ally.</li>
-        <li><strong>Exdeath &rarr; Neo Exdeath</strong> &mdash; the final fight is a multi-part gauntlet; Apollo's Harp, Mighty Guard, and a Dualcast/Rapid-Fire carry close it.</li>
-        <li><strong>Omega</strong> (Rift) &mdash; a mechanical superboss immune to most things and very fast. Rapid Fire + the right enchant, Reflect/Shell, and careful turns; drops the Omega Badge.</li>
-        <li><strong>Shinryu</strong> (Rift) &mdash; opens by casting <em>Tidal Wave</em>, so enter with water immunity (Coral Ring) or it's an instant wipe. Ribbons for its status, then burst it down for the Dragon Seal / Ragnarok payoff.</li>
-        <li><strong>Gil Turtle, Movers</strong>, and other optional fights reward rare gear and big ABP.</li>
-      </ul>
-    </section>
-
-    <section id="missables" class="reveal">
-      <span class="s-tag">10 &middot; Don't Miss</span><h2 class="s-title">Missables &amp; secrets</h2><div class="s-rule"></div>
-      <ul class="list">
-        <li><strong>Blue Magic windows</strong> &mdash; a few enemy skills are easy to skip; most are re-learnable on Rift enemies, but grab Mighty Guard, White Wind, and Level 5 Death when you can (use Control to force them).</li>
-        <li><strong>The twelve legendary weapons</strong> &mdash; don't leave the third world without sweeping the sealed tablets / Phantom Village shops.</li>
-        <li><strong>Chicken Knife / Brave Blade</strong> &mdash; a permanent either/or; pick deliberately (see Weapons).</li>
-        <li><strong>!Catch</strong> rare monsters (Beastmaster) for one-use nukes you can't get otherwise.</li>
-        <li><strong>Master before the merge where you can</strong> &mdash; ABP-rich spots (and the Rift's Movers) make finishing your key jobs painless before the finale.</li>
-      </ul>
-    </section>
-
-    <section id="tips" class="reveal">
-      <span class="s-tag">11 &middot; Field Notes</span><h2 class="s-title">Durable tips</h2><div class="s-rule"></div>
-      <ul class="list">
-        <li><strong>Master four jobs above all:</strong> Ninja (Dual-Wield), Ranger (Rapid Fire), Mystic Knight (Spellblade), Red Mage (Dualcast).</li>
-        <li><strong>Build on Freelancer or Mime</strong> &mdash; that's where mastered passives and multi-slot combos come together.</li>
-        <li><strong>Keep a Mighty Guard / White Wind</strong> Blue Mage for party buffs and free healing.</li>
-        <li><strong>Goliath Tonic (Mix)</strong> to double a carry's HP before a hard boss.</li>
-        <li><strong>Enter Shinryu with water immunity</strong> and everyone Ribbon'd; enter Omega expecting to lose a few attempts.</li>
-        <li><strong>Apollo's Harp</strong> trivializes the Exdeath fights &mdash; bring a Bard or just the weapon.</li>
-        <li><strong>Don't over-think the Knife choice</strong> &mdash; Chicken Knife + Rapid Fire is the path of least resistance.</li>
-      </ul>
+    <section class="reveal">
+      <span class="s-tag">The Guide</span><h2 class="s-title">Where do you want to go?</h2><div class="s-rule"></div>
+      <div class="hub-cards">
+        <a class="hub-card" href="pages/jobs.html">
+          <span class="k">The Classes</span><h3>The 22 Jobs &amp; Abilities</h3>
+          <p>Every job grouped by Crystal with its mastery payoff, and how the secondary-ability engine works.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+        <a class="hub-card" href="pages/combos.html">
+          <span class="k">The Exploits</span><h3>Combos, Blue Magic &amp; Best Jobs</h3>
+          <p>Dual-Wield + Rapid Fire, Dualcast, Mix; the enemy skills to grab; and which jobs to master first.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+        <a class="hub-card" href="pages/weapons.html">
+          <span class="k">The Arsenal</span><h3>Legendary Weapons</h3>
+          <p>The twelve sealed weapons and the famous Chicken Knife vs Brave Blade choice.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+        <a class="hub-card" href="pages/progression.html">
+          <span class="k">The Journey</span><h3>Worlds &amp; Bosses</h3>
+          <p>The three worlds, Gilgamesh and Exdeath, and the Omega / Shinryu superbosses.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+        <a class="hub-card" href="pages/secrets.html">
+          <span class="k">Field Notes</span><h3>Missables &amp; Tips</h3>
+          <p>Blue Magic windows, the legendary weapons, and the durable advice that wins the back half.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+      </div>
     </section>
 
   </main>
 
   <footer>
     <p>Final Fantasy V (Pixel Remaster) &mdash; Field Guide</p>
-    <p>A fan-made guide under <a href="../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy V is &copy; Square Enix. The Pixel Remaster is the SNES-based 22-job version; verify ability names and specifics against in-game text.</p>
+    <p>A fan-made guide under <a href="../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy V is &copy; Square Enix. The PR is the SNES-based 22-job version; verify ability names against in-game text.</p>
   </footer>
 </div>
 
 <button class="totop" aria-label="Back to top">&uarr;</button>
-
-<script>
-/* ambient: drifting crystal motes (teal) */
-(function(){
-  var c=document.getElementById("motes"); if(!c||!c.getContext) return;
-  var ctx=c.getContext("2d");
-  var reduce=window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var DPR=Math.min(window.devicePixelRatio||1,2), W=0,H=0,raf=null,last=0,P=[];
-  function rnd(a,b){return a+Math.random()*(b-a);}
-  function resize(){W=innerWidth;H=innerHeight;c.width=W*DPR;c.height=H*DPR;c.style.width=W+"px";c.style.height=H+"px";ctx.setTransform(DPR,0,0,DPR,0,0);}
-  function spr(rgb){var s=document.createElement("canvas");s.width=s.height=40;var x=s.getContext("2d");var g=x.createRadialGradient(20,20,0,20,20,20);g.addColorStop(0,"rgba("+rgb+",1)");g.addColorStop(.4,"rgba("+rgb+",.5)");g.addColorStop(1,"rgba("+rgb+",0)");x.fillStyle=g;x.beginPath();x.arc(20,20,20,0,7);x.fill();return s;}
-  var teal=spr("143,224,212"), gold=spr("216,182,90");
-  function mk(init){return{x:rnd(0,W),y:init?rnd(0,H):H+10,r:rnd(1,2.6),vy:rnd(6,16),sway:rnd(.3,.9),amp:rnd(8,22),ph:rnd(0,6.28),gold:Math.random()<0.25};}
-  function init(){resize();var n=Math.round(Math.min(48,(W*H)/34000));P=[];for(var i=0;i<n;i++)P.push(mk(true));}
-  function frame(t){var dt=last?Math.min((t-last)/1000,.05):.016;last=t;ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation="lighter";
-    for(var i=0;i<P.length;i++){var p=P[i];p.y-=p.vy*dt;p.ph+=p.sway*dt;var x=p.x+Math.sin(p.ph)*p.amp;
-      if(p.y<-12){P[i]=mk(false);continue;}var a=.22*Math.sin(Math.min((H-p.y)/H,1)*Math.PI)+.05;var sz=p.r*7;
-      ctx.globalAlpha=a<0?0:a;ctx.drawImage(p.gold?gold:teal,x-sz/2,p.y-sz/2,sz,sz);}
-    ctx.globalAlpha=1;ctx.globalCompositeOperation="source-over";raf=requestAnimationFrame(frame);}
-  function start(){if(!raf){last=0;raf=requestAnimationFrame(frame);}}
-  function stop(){if(raf){cancelAnimationFrame(raf);raf=null;}}
-  if(reduce){resize();ctx.globalCompositeOperation="lighter";for(var i=0;i<24;i++){var sz=rnd(5,12);ctx.globalAlpha=rnd(.05,.14);ctx.drawImage(teal,rnd(0,W),rnd(0,H),sz,sz);}ctx.globalAlpha=1;}
-  else{init();start();}
-  var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(function(){if(!reduce)init();},200);});
-  document.addEventListener("visibilitychange",function(){if(document.hidden)stop();else if(!reduce)start();});
-})();
-/* reveal */
-(function(){var els=document.querySelectorAll(".reveal");if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("visible");});return;}
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target);}});},{threshold:.1});
-  els.forEach(function(e){io.observe(e);});})();
-/* jump-nav + totop */
-(function(){var links=[].slice.call(document.querySelectorAll(".jump a"));var secs=links.map(function(a){return document.querySelector(a.getAttribute("href"));});var top=document.querySelector(".totop");
-  function onScroll(){var y=window.scrollY+150,cur=0;for(var i=0;i<secs.length;i++){if(secs[i]&&secs[i].offsetTop<=y)cur=i;}links.forEach(function(l,i){l.classList.toggle("active",i===cur);});if(top)top.classList.toggle("show",window.scrollY>500);}
-  window.addEventListener("scroll",onScroll,{passive:true});onScroll();if(top)top.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});})();
-</script>
+<script src="js/site.js"></script>
 </body>
 </html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The 22 Jobs &amp; Ability Engine | FF V Field Guide | The Arcanum</title>
+<meta name="description" content="Final Fantasy V Pixel Remaster: all 22 jobs grouped by Crystal with their mastery payoffs, and how the secondary-ability engine and Freelancer/Mime work." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">Final Fantasy <span>V</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a class="home" href="../../final-fantasy/index.html">&#10022; All FF</a>
+        <a href="../index.html">Home</a>
+        <a href="jobs.html" class="active">Jobs</a>
+        <a href="combos.html">Combos</a>
+        <a href="weapons.html">Weapons</a>
+        <a href="progression.html">Progression</a>
+        <a href="secrets.html">Secrets</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The Classes</span>
+      <h1>The 22 Jobs &amp; Ability Engine</h1>
+      <p class="lede">FF V's job system is the whole game. You earn jobs from the Crystals, learn their abilities permanently, then bolt one ability from any class onto another. Master the right jobs and the back half folds.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">02 &middot; The Classes</span><h2 class="s-title">The 22 Jobs</h2><div class="s-rule"></div>
+        <p>Grouped by the Crystal that grants them. The "payoff" column is the ability worth mastering the Job for.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Job</th><th>Command / role</th><th>Mastery payoff</th></tr></thead>
+          <tbody>
+            <tr><td>Knight</td><td>Heavy armor, Cover, Two-Handed</td><td>Equip swords/shields + Two-Handed (2&times; one weapon)</td></tr>
+            <tr><td>Monk</td><td>Barehanded brawler, huge HP</td><td>Barehanded + Counter + the best early HP/Attack</td></tr>
+            <tr><td>Thief</td><td>Steal, Dash, find passages, +Speed</td><td>Artful Dodger (evasion) + reliable Steal/Mug</td></tr>
+            <tr><td>White Mage</td><td>White magic (heal/status)</td><td>Full White magic on any build</td></tr>
+            <tr><td>Black Mage</td><td>Black magic (nukes)</td><td>Full Black magic + Magic stat</td></tr>
+            <tr><td>Blue Mage</td><td>Blue magic + Learning</td><td>Enemy skills: Mighty Guard, White Wind, Lvl 5 Death</td></tr>
+            <tr><td>Berserker</td><td>Uncontrollable, max attack</td><td>Raw physical power (auto-attack only)</td></tr>
+            <tr><td>Mystic Knight</td><td>Spellblade (enchant weapon)</td><td><strong>!Spellblade</strong> &mdash; element/Death/Drain on every hit</td></tr>
+            <tr><td>Time Mage</td><td>Time magic</td><td>Haste, Quick, Slow, Stop, Comet, Meteor, Return</td></tr>
+            <tr><td>Summoner</td><td>Summon magic</td><td>!Summon (Bahamut, Leviathan, etc.) at full Magic</td></tr>
+            <tr><td>Red Mage</td><td>Low-level Black + White</td><td><strong>!Dualcast</strong> &mdash; two spells per turn (the magic win button)</td></tr>
+            <tr><td>Beastmaster</td><td>Control / Catch monsters</td><td>!Control (force enemy skills &mdash; pairs with Learning)</td></tr>
+            <tr><td>Geomancer</td><td>Gaia (terrain attacks), avoid traps</td><td>Free, safe AoE damage + dungeon utility</td></tr>
+            <tr><td>Ninja</td><td>Throw, Image (blink), Dual-Wield</td><td><strong>Dual-Wield</strong> &mdash; equip two weapons (the physical win button)</td></tr>
+            <tr><td>Ranger</td><td>Rapid Fire, Aim, bows</td><td><strong>!Rapid Fire</strong> &mdash; 4 hits ignoring defense/evade</td></tr>
+            <tr><td>Bard</td><td>Sing (songs / stat buffs)</td><td>Romeo's Ballad (party-stop), Apollo's Harp vs Exdeath</td></tr>
+            <tr><td>Dragoon</td><td>Jump (invulnerable airtime), spears</td><td>!Jump + Lance drain; strong, simple damage</td></tr>
+            <tr><td>Dancer</td><td>Dance (random; Sword Dance = 4&times;)</td><td>High-roll burst with Ribbon/dance gear</td></tr>
+            <tr><td>Samurai</td><td>Zeninage (GilToss), Mineuchi</td><td><strong>!Zeninage</strong> (gil = nonelemental AoE) + Shirahadori (auto-block)</td></tr>
+            <tr><td>Chemist</td><td>Mix, Drink, Recover</td><td><strong>!Mix</strong> &mdash; Goliath Tonic (2&times; HP), Dragon Power, nukes</td></tr>
+            <tr><td>Freelancer</td><td>Inherits all mastered innates</td><td>Best stats + 2 ability slots &mdash; the endgame carrier</td></tr>
+            <tr><td>Mime</td><td>Mimic; 3 ability slots, no innate</td><td>Stack three command abilities (e.g. Dualcast + Summon + X)</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">03 &middot; The Engine</span><h2 class="s-title">The secondary-ability engine</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Learn it once, keep it forever.</strong> ABP unlocks a Job's abilities permanently; switch Jobs freely and slot a learned ability as your secondary.</li>
+          <li><strong>Passives stack onto Freelancer/Mime.</strong> Master Ninja and Freelancer keeps Dual-Wield innately; master Monk and it keeps Barehanded/Counter; etc. This is how you assemble a god character.</li>
+          <li><strong>Mime is the combo chassis</strong> &mdash; three ability slots let you run, say, <em>!Dualcast + !Summon + !Time</em> on one character, all inheriting mastered passives.</li>
+          <li><strong>Don't sleep on cheap masteries:</strong> Monk early (HP), Black/White/Time for your casters, then the four pillars on the <a href="combos.html">Combos</a> page.</li>
+        </ul>
+      </section>
+
+      <div class="pager">
+        <a href="../index.html">&larr; Home</a>
+        <a href="combos.html">Combos, Blue Magic &amp; Best Jobs &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Final Fantasy V (Pixel Remaster) &mdash; Field Guide</p>
+    <p>A fan-made guide under <a href="../../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy V is &copy; Square Enix.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
