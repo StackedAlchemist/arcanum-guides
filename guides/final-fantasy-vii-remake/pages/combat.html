@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Combat, Materia &amp; Weapons | FF VII Remake Field Guide | The Arcanum</title>
+<meta name="description" content="FF VII Remake Intergrade: the action-ATB combat with Tactical Mode and the Pressure/Stagger loop, the Materia system and best combos, and the per-weapon ability + SP upgrade system." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">FF VII <span>Remake</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a class="home" href="../../final-fantasy/index.html">&#10022; All FF</a>
+        <a href="../index.html">Home</a>
+        <a href="combat.html" class="active">Combat</a>
+        <a href="characters.html">Characters</a>
+        <a href="bosses.html">Bosses</a>
+        <a href="secrets.html">Secrets</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The System</span>
+      <h1>Combat, Materia &amp; Weapons</h1>
+      <p class="lede">Remake's combat is real-time action on top of an ATB economy, and it all funnels into one thing: pressure an enemy, fill the stagger gauge, and unload in the window. Materia and the weapon trees are how you stack the deck.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">01 &middot; The Loop</span><h2 class="s-title">ATB, Tactical Mode &amp; Stagger</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Attack to earn ATB.</strong> Basic attacks and blocking fill ATB segments; you spend them on Abilities, Magic, and Items. You're always building toward a spend.</li>
+          <li><strong>Tactical Mode.</strong> Opening the command menu slows time to a crawl &mdash; use it constantly to queue spells/abilities precisely without flailing in real time.</li>
+          <li><strong>Pressure &rarr; Stagger.</strong> Hitting weaknesses, interrupting casts, parrying, or meeting an enemy's specific condition <em>Pressures</em> it (the stagger gauge fills faster); a full gauge <em>Staggers</em> it for a window of greatly increased damage. Save Abilities, Limit Breaks and ATB Boost for that window.</li>
+          <li><strong>Assess everything.</strong> The Assess Materia reveals weaknesses and stagger/pressure conditions &mdash; the single most important habit, exactly as in Rebirth.</li>
+          <li><strong>Switch characters.</strong> Control whoever the moment needs; the AI builds ATB slowly, so hop between party members to keep everyone's bars moving.</li>
+        </ul>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">02 &middot; Materia</span><h2 class="s-title">The Materia system</h2><div class="s-rule"></div>
+        <p>Materia slot into weapons and armor; <strong>linked slots</strong> let a Support Materia modify the Materia paired with it. Five types: Magic (green), Support (blue), Command (yellow), Complete (purple), Summon (red).</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Combo</th><th>Effect</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td>Elemental + element (weapon)</td><td>Adds that element to your attacks</td><td>Match the enemy weakness to Pressure fast</td></tr>
+            <tr><td>Elemental + element (armor)</td><td>Resist / nullify / absorb that element</td><td>Bosses with a known element (e.g. absorb to heal)</td></tr>
+            <tr><td>Magnify + Healing</td><td>Heals the whole party at once</td><td>Sustain, and essential in Hard Mode</td></tr>
+            <tr><td>HP Absorption + a damage Materia</td><td>Heal off your damage</td><td>Hard Mode (no items)</td></tr>
+            <tr><td>ATB Boost (Command)</td><td>Instantly grants an ATB bar</td><td>Open a stagger or burst a window</td></tr>
+            <tr><td>First Strike</td><td>Start the fight with ATB</td><td>Aggressive openers</td></tr>
+            <tr><td>Steadfast Block</td><td>Build ATB while blocking; less chip</td><td>Hard Mode defense</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout"><strong>Coverage rule:</strong> spread Fire, Ice, Lightning, Wind across the party, keep at least one Healing + Revival, and always run Assess. Level Materia by using it &mdash; spells and Summons grow with AP.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">03 &middot; Gear</span><h2 class="s-title">Weapons &amp; the SP upgrade trees</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Each character has several weapons</strong>, and each weapon has a unique <strong>Weapon Ability</strong>. Use a weapon's ability enough to raise its <em>Proficiency</em> to 100% and you <strong>learn it permanently</strong> &mdash; then you can use that ability with <em>any</em> of that character's weapons.</li>
+          <li><strong>Weapons have SP upgrade trees.</strong> Spend Skill Points (earned by leveling) on cores that boost stats, add Materia slots, and grant passives. You can <strong>reset SP freely</strong>, so re-spec per fight.</li>
+          <li><strong>No weapon is obsolete.</strong> Because weapons scale with your level and SP, an early weapon stays viable &mdash; pick by the stat split and ability you want (physical vs magic), not by "newest."</li>
+        </ul>
+        <div class="newbox"><span class="label">Different from Rebirth</span>Remake uses this <strong>per-weapon ability + SP tree</strong> system; Rebirth replaced it with the shared Folio skill tree and weapon-level slots. If you're coming from Rebirth, learn abilities by using each weapon here, and don't be afraid to reset SP.</div>
+      </section>
+
+      <div class="pager">
+        <a href="../index.html">&larr; Home</a>
+        <a href="characters.html">Characters &amp; Builds &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Final Fantasy VII Remake (Intergrade) &mdash; Field Guide</p>
+    <p>A fan-made guide under <a href="../../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy VII Remake is &copy; Square Enix.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
