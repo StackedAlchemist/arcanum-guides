@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(git commit -q -m ' *)",
-      "WebFetch(domain:game8.co)"
+      "WebFetch(domain:game8.co)",
+      "WebFetch(domain:battlebrothers.fandom.com)",
+      "WebFetch(domain:www.gamersdecide.com)"
     ]
   }
 }
