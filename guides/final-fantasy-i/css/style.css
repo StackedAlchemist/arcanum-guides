@@ -7,6 +7,7 @@
   --panel:rgba(16,20,30,0.85);
   --gold:#d8b65a; --gold2:#f4dd92; --glow:rgba(166,206,245,0.20);
   --sky:#5f9fe0; --sky2:#a6cef5;
+  --spoiler:#e8a85c;
   --steel:#9aa6bc;
   --line:rgba(95,159,224,0.18); --line2:rgba(95,159,224,0.07);
   --text:#e8ecf2; --text2:#a8b0c0; --text3:#5f6678;
@@ -102,6 +103,17 @@ tr:hover td{background:rgba(95,159,224,0.04);}
 .callout strong{color:var(--gold2);}
 .newbox{background:rgba(95,159,224,0.07); border:1px solid rgba(95,159,224,0.28); border-left:3px solid var(--sky); border-radius:4px; padding:1.1rem 1.4rem; margin:1.4rem 0; color:var(--text2);}
 .newbox .label{font-family:var(--display); font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--sky2); display:block; margin-bottom:0.4rem;}
+
+/* ---- spoiler (native <details>, no JS required) ---- */
+.spoiler{border:1px solid rgba(232,168,92,0.30); border-left:3px solid var(--spoiler); border-radius:4px; margin:1.4rem 0; background:rgba(232,168,92,0.05); overflow:hidden;}
+.spoiler>summary{cursor:pointer; list-style:none; padding:0.9rem 1.2rem; font-family:var(--display); font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--spoiler); display:flex; align-items:center; gap:0.5rem;}
+.spoiler>summary::-webkit-details-marker{display:none;}
+.spoiler>summary::after{content:"Reveal"; margin-left:auto; font-size:0.64rem; letter-spacing:0.1em; color:var(--text3); border:1px solid var(--line); padding:0.18rem 0.55rem; border-radius:3px;}
+.spoiler[open]>summary::after{content:"Hide";}
+.spoiler[open]>summary{border-bottom:1px solid rgba(232,168,92,0.22);}
+.spoiler .spoiler-body{padding:1rem 1.2rem 1.1rem; color:var(--text2); font-size:0.97rem;}
+.spoiler .spoiler-body :last-child{margin-bottom:0;}
+.spoiler .spoiler-body strong{color:var(--spoiler);}
 
 ol.steps{margin:1.2rem 0; padding-left:0; list-style:none; counter-reset:step;}
 ol.steps li{position:relative; padding:0 0 0 2.6rem; margin-bottom:0.8rem; counter-increment:step; color:var(--text2);}
