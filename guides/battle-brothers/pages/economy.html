@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economy, Trade &amp; Renown - The Mercenary Codex</title>
+<meta name="description" content="Battle Brothers economy guide: selling loot, trade-goods runs (buy low, sell high), reading a town's buildings and prices, settlement relations vs company renown, and how to raise renown.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">The Mercenary <span>Codex</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+    <nav class="nav">
+      <a href="../../../index.html" style="color:var(--rust);">⚗ The Arcanum</a>
+      <a href="../index.html">Home</a>
+      <a href="origins.html">Origins</a>
+      <a href="builds.html">Builds</a>
+      <a href="weapons.html">Weapons</a>
+      <a href="perks.html">Perks</a>
+      <a href="phases.html">Game Phases</a>
+      <a href="economy.html" class="active">Economy</a>
+      <a href="enemies.html">Enemies</a>
+      <a href="secrets.html">Secrets</a>
+      <a href="patch.html">Patch v1.5.2.2</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">The Ledger</span>
+    <h1>Economy, Trade &amp; Renown</h1>
+    <p class="lede">A company runs on crowns. Contracts pay the bills, loot turns blood into coin, and the merchant's road can fund a war chest if you read the map right. Here is how money, goods, towns, and reputation actually work &mdash; and how to stop leaving crowns on the table.</p>
+  </div>
+</section>
+
+<main class="wrap section">
+
+  <h2>The three income streams</h2>
+  <p>Every crown your company earns comes from one of three places. Most bands live on the first; the wealthy ones work all three.</p>
+  <div class="grid grid-3">
+    <div class="panel">
+      <h3>Contracts</h3>
+      <p>Your bread and butter. Take jobs off a settlement's contract board for guaranteed pay (and renown). Always your most reliable income &mdash; everything else is supplemental.</p>
+    </div>
+    <div class="panel">
+      <h3>Loot</h3>
+      <p>Weapons, armor, shields, helmets and trophies pulled off the dead. Sell what you won't use. Late-game loot from champions and named drops is where the big sale prices live.</p>
+    </div>
+    <div class="panel">
+      <h3>Trade goods</h3>
+      <p>The merchant side-game: buy goods cheap where they're made, haul them somewhere they're wanted, sell high. Optional, but it can bankroll a whole company if you commit to a route.</p>
+    </div>
+  </div>
+
+  <h2>Selling loot the smart way</h2>
+  <ul class="spear">
+    <li><strong>Sell to the right shop.</strong> A <em>Weaponsmith</em> pays best for weapons, an <em>Armorsmith</em> for armor, a <em>Fletcher</em> for bows and ammo. The general <em>Marketplace</em> takes anything but pays less &mdash; use the specialist when there is one.</li>
+    <li><strong>Bigger settlements pay more and have more gold.</strong> A large, prosperous town can actually afford your pile of loot; a poor village runs out of coin after a few sales. Haul serious loot to a city.</li>
+    <li><strong>Don't flood one town.</strong> Dumping twenty suits of armor in one shop tanks the price and drains the shop's gold. Spread big hauls across a couple of settlements, or sell over multiple visits.</li>
+    <li><strong>Repair only keepers.</strong> Damaged loot you intend to <em>sell</em> is usually not worth repairing &mdash; the tools and crowns spent rarely beat the price bump. Repair gear you'll actually equip; sell the rest as-is.</li>
+    <li><strong>Relations move the price.</strong> A settlement that likes you buys your loot higher and sells gear to you cheaper (see Renown vs Relations below). Favor towns you've done contracts for.</li>
+  </ul>
+  <div class="callout">
+    <span class="label">Rule of thumb</span>
+    <p>Carry loot to a <strong>large city you're on good terms with</strong>, sell weapons to the weaponsmith and armor to the armorsmith, and split the haul if it's huge. That single habit is worth thousands of crowns over a campaign.</p>
+  </div>
+
+  <h2>Trade goods: buy low, sell high</h2>
+  <p>Trade goods are commodities &mdash; gems, salt, furs, dyes, copper, amber, lumber, and the like &mdash; that exist only to be bought and resold. The whole game is the <strong>spread</strong>: a settlement that <em>produces</em> a good sells it cheap and pays little for it; a settlement that <em>can't</em> get it pays a premium. Buy at the source, sell far away.</p>
+  <div style="overflow-x:auto;">
+  <table>
+    <thead><tr><th>Trade good</th><th>Cheap at (producers)</th><th>Sells high to</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Gems</td><td>Mining / gem villages</td><td>Large, distant cities</td><td>Highest value per inventory slot &mdash; the premium hauler's pick.</td></tr>
+      <tr><td>Dyes</td><td>Dye-producing villages</td><td>Wealthy cities</td><td>Strong, consistent margins.</td></tr>
+      <tr><td>Salt</td><td>Salt works / coastal villages</td><td>Inland settlements</td><td>Reliable staple profit.</td></tr>
+      <tr><td>Copper / Amber</td><td>Mining &amp; coastal villages</td><td>Distant cities</td><td>Solid mid-tier goods.</td></tr>
+      <tr><td>Furs</td><td>Hunting / northern villages</td><td>Southern cities</td><td>Good when carried away from fur country.</td></tr>
+      <tr><td>Lumber</td><td>Forest villages</td><td>Rebuilding / harbor cities</td><td>Low value normally &mdash; but a <em>rebuilding</em> city pays a fortune (e.g. buy ~175, sell ~375).</td></tr>
+      <tr><td>Peat</td><td>Swamp villages</td><td>&mdash;</td><td>The worst trade good. Skip it.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul class="spear">
+    <li><strong>Distance and danger = markup.</strong> The further (and more dangerous) the haul, the bigger the spread. A short safe hop barely pays; a long road across a region that can't produce the good pays best.</li>
+    <li><strong>A producer pays scraps for its own goods.</strong> Never sell salt to a salt town. Sell it to a town with no salt nearby.</li>
+    <li><strong>Settlement situations swing prices.</strong> A city with raided trade routes, missing villagers, or a disease is <em>undersupplied</em> &mdash; it pays more for what you bring (great to sell into) but stocks little and prices gear high (bad to buy from).</li>
+    <li><strong>Relations are the biggest lever.</strong> Buy from settlements that like you and the whole spread widens. The "buy/sell trade goods" ambition is a clean early nudge into this loop.</li>
+  </ul>
+
+  <h2>Reading a town before you spend</h2>
+  <p>Each settlement is a little economy. Learn to read it at a glance:</p>
+  <div class="grid grid-2">
+    <div class="panel">
+      <h3>Size &amp; prosperity</h3>
+      <p>Villages are small, cheap producers with thin gold and gear. Towns and cities are larger, richer, and stock better equipment &mdash; and have the coin to buy your loot. <strong>Prosperity</strong> rises with safe trade routes and successful contracts; a flourishing city is the best place to both shop and sell.</p>
+    </div>
+    <div class="panel">
+      <h3>The buildings</h3>
+      <p>Buildings decide what's for sale: <em>Marketplace</em> (trade goods &amp; general), <em>Weaponsmith</em>, <em>Armorsmith</em>, <em>Fletcher</em> (bows/ammo), <em>Tannery</em>, <em>Kennels</em> (war dogs), and more. Bigger settlements have more buildings &mdash; and therefore more and better wares.</p>
+    </div>
+  </div>
+  <ul class="spear">
+    <li><strong>Watch the smiths for named gear.</strong> City weapon/armor shops occasionally stock a <em>named</em> item &mdash; check them when you pass through a prosperous town.</li>
+    <li><strong>Stock the consumables that win fights:</strong> tools (repair gear in the field), medicine/bandages, ammunition for ranged brothers, and food to keep the company fed and at full effectiveness.</li>
+    <li><strong>Buy gear where it's cheap and plentiful</strong> &mdash; a well-supplied, friendly city &mdash; not from a struggling settlement that prices everything up.</li>
+    <li><strong>Keep food topped up.</strong> A starving company loses resolve and morale; running out of food mid-expedition is a self-inflicted wound.</li>
+  </ul>
+
+  <h2>Renown vs. Relations &mdash; two reputations</h2>
+  <p>People conflate these, but they're separate systems and you raise them differently.</p>
+  <div class="grid grid-2">
+    <div class="panel">
+      <h3>Relations (per settlement &amp; faction)</h3>
+      <p>How a <em>specific</em> settlement and its noble house feel about you. Raised by completing that settlement's contracts (and good trade); lowered by failing them or attacking their caravans. <strong>This is what moves your buy/sell prices</strong> and your access to a town's services. Some origins start disliked.</p>
+    </div>
+    <div class="panel">
+      <h3>Renown (your whole company)</h3>
+      <p>Your global repute as a mercenary band &mdash; how reliable and competent people judge you to be. It does <strong>not</strong> raise contract <em>difficulty</em>; it raises contract <em>pay</em>, and at high levels it unlocks the big leagues. You start somewhere between &minus;100 and 200 depending on your origin.</p>
+    </div>
+  </div>
+
+  <h2>How to raise renown</h2>
+  <ul class="spear">
+    <li><strong>Complete contracts.</strong> The steady engine &mdash; finish jobs (don't fail them) and renown climbs.</li>
+    <li><strong>Win battles.</strong> Beating enemies, especially tough ones, adds renown on top of contract rewards.</li>
+    <li><strong>Fulfill ambitions.</strong> The single <em>most efficient</em> way to build renown early &mdash; knock out your company ambitions deliberately, not as an afterthought.</li>
+    <li><strong>Don't fail or abandon contracts.</strong> Failure costs renown <em>and</em> relations &mdash; a double hit. Only take jobs you can finish.</li>
+  </ul>
+  <div class="callout secret">
+    <span class="label">What renown unlocks</span>
+    <p>More renown means <strong>better-paying contracts</strong> for the same work. Around <strong>~1,000 renown</strong> you get noticed by the <em>noble houses</em>, unlocking their contracts &mdash; tougher, but far more lucrative and the path into the late game. Difficulty doesn't scale with renown itself; the noble jobs are just harder by nature.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">Last word</span>
+    <p>Money problems in Battle Brothers are almost always a <em>routing</em> problem. Sell loot in rich, friendly cities; run one trade good on a long safe loop; bank renown through ambitions; and never fail a contract. Do that and the war chest takes care of itself &mdash; see <a href="phases.html">Game Phases</a> for when to invest it.</p>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="colophon">
+      <h4>The Mercenary Codex</h4>
+      <p>Fan-made strategy compendium for <strong>Battle Brothers</strong>. Accurate to v1.5.2.2. Not affiliated with Overhype Studios or Hooded Horse.</p>
+    </div>
+    <div>
+      <h4>Sections</h4>
+      <p>
+        <a href="builds.html">Builds</a> &middot;
+        <a href="weapons.html">Weapons</a> &middot;
+        <a href="economy.html">Economy</a><br>
+        <a href="phases.html">Phases</a> &middot;
+        <a href="enemies.html">Enemies</a> &middot;
+        <a href="secrets.html">Secrets</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" aria-label="Back to top">&uarr; Top</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
