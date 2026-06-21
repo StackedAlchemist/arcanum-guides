@@ -143,9 +143,35 @@
     { h: "Notes", get: function (r) { return f.txt(r.note); }, s: function (r) { return r.note; } }
   ];
 
+  /* --- named & legendary item specs --- */
+  function rngCol(h, key) {
+    return { h: h, get: function (r) { return (r[key][0] === 0 && r[key][1] === 0) ? "&mdash;" : r[key][0] + "&ndash;" + r[key][1]; }, s: function (r) { return r[key][1]; }, num: true };
+  }
+  function sCol(h, key) {
+    return { h: h, get: function (r) { return f.txt(r[key]); }, s: function (r) { return r[key]; } };
+  }
+  var nWpnCols    = [c_name, rngCol("Durability", "dur"), sCol("Base Dmg", "regBase"), sCol("Max Roll", "regMax"), sCol("Direct", "direct"), sCol("Vs Armor", "armor"), sCol("Shield", "shield"), sCol("Head", "head"), sCol("Max Fat", "fat"), c_worth];
+  var nRangedCols = [c_name, rngCol("Durability", "dur"), sCol("Base Dmg", "regBase"), sCol("Max Roll", "regMax"), sCol("Direct", "direct"), sCol("Vs Armor", "armor"), sCol("Head", "head"), sCol("Max Fat", "fat"), c_worth];
+  var nShieldCols = [c_name, rngCol("Durability", "dur"), sCol("Melee Def", "mdef"), sCol("Ranged Def", "rdef"), sCol("Max Fat", "fat"), c_worth];
+  var nArmorCols  = [c_name, rngCol("Durability", "dur"), sCol("Max Fat", "fat"), c_worth];
+  var nHelmetCols = [c_name, rngCol("Durability", "dur"), sCol("Max Fat", "fat"), { h: "Vision", get: function (r) { return r.vision ? r.vision : "0"; }, s: function (r) { return r.vision || 0; }, num: true }, c_worth];
+  var lWpnCols    = [c_name, sCol("Durability", "dur"), sCol("Damage", "dmg"), sCol("Direct", "direct"), sCol("Vs Armor", "armor"), sCol("Max Fat", "fat"), sCol("Special", "special"), c_worth];
+  var lArmorCols  = [c_name, sCol("Durability", "dur"), sCol("Max Fat", "fat"), sCol("Special", "special"), c_worth];
+  var lShieldCols = [c_name, sCol("Durability", "dur"), sCol("Melee Def", "mdef"), sCol("Ranged Def", "rdef"), sCol("Max Fat", "fat"), sCol("Special", "special"), c_worth];
+
   var CONFIG = {
     recruits:    { data: "recruits",          cols: recruitsCols },
     "bg-ranges": { data: "bgRanges",          cols: bgRangeCols },
+    "named-1h":      { data: "named.weapons1h", cols: nWpnCols },
+    "named-2h":      { data: "named.weapons2h", cols: nWpnCols },
+    "named-ranged":  { data: "named.ranged",    cols: nRangedCols },
+    "named-shields": { data: "named.shields",   cols: nShieldCols },
+    "named-armors":  { data: "named.armors",    cols: nArmorCols },
+    "named-helmets": { data: "named.helmets",   cols: nHelmetCols },
+    "legendary-weapons": { data: "legendary.weapons", cols: lWpnCols },
+    "legendary-armors":  { data: "legendary.armors",  cols: lArmorCols },
+    "legendary-helmets": { data: "legendary.helmets", cols: lArmorCols },
+    "legendary-shields": { data: "legendary.shields", cols: lShieldCols },
     bows:        { data: "ranged.bows",       cols: rangedDmgCols },
     crossbows:   { data: "ranged.crossbows",  cols: rangedDmgCols },
     firearms:    { data: "ranged.firearms",   cols: rangedDmgCols },

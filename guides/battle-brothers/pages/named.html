@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Named &amp; Legendary Items - The Mercenary Codex</title>
+<meta name="description" content="Battle Brothers Named (Famed) item roll ranges and every Legendary item: the durability, damage, armor, fatigue and defense bands a named weapon/armor/shield can roll, plus the unique Legendaries and their special effects. v1.5.2.2.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">The Mercenary <span>Codex</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+    <nav class="nav">
+      <a href="../../../index.html" style="color:var(--rust);">⚗ The Arcanum</a>
+      <a href="../index.html">Home</a>
+      <a href="origins.html">Origins</a>
+      <a href="hiring.html">Hiring</a>
+      <a href="builds.html">Builds</a>
+      <a href="weapons.html">Weapons</a>
+      <a href="armor.html">Armor</a>
+      <a href="named.html" class="active">Named</a>
+      <a href="perks.html">Perks</a>
+      <a href="phases.html">Game Phases</a>
+      <a href="economy.html">Economy</a>
+      <a href="enemies.html">Enemies</a>
+      <a href="secrets.html">Secrets</a>
+      <a href="patch.html">Patch v1.5.2.2</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">The Reliquary</span>
+    <h1>Named &amp; Legendary Items</h1>
+    <p class="lede">The red glow and the blue glow. <em>Named</em> (Famed) items are ordinary gear that rolled randomized bonuses &mdash; better numbers, a former owner's name. <em>Legendary</em> items are fixed uniques with effects no smith can forge. Here's exactly what a named item <em>can</em> roll, and what every Legendary does.</p>
+  </div>
+</section>
+
+<main class="wrap section">
+
+  <div class="callout">
+    <span class="label">How Named items roll</span>
+    <p>A named item starts from a base weapon/armor, then improves a few stats by random amounts inside fixed bands. <strong>Durability is always modified</strong>, then <strong>two other stats</strong> are improved. The tables below show the resulting possible <strong>min&ndash;max</strong> ranges &mdash; an actual drop lands somewhere inside them, so use the high end as the "god-roll" ceiling, not a guarantee.</p>
+  </div>
+
+  <div class="table-wrap"><table>
+    <caption>Named modifier bands</caption>
+    <thead><tr><th>Type</th><th>Durability</th><th>The other rolled stats</th></tr></thead>
+    <tbody>
+      <tr class="wrow"><td><strong>Weapons</strong></td><td>&times;0.9&ndash;1.4</td><td>Regular dmg &times;1.1&ndash;1.3 &middot; Direct +8&ndash;16% &middot; Armor dmg +10&ndash;30% &middot; Shield dmg &times;1.5&ndash;2 (if &gt;15) &middot; Head +10&ndash;30% (if &gt;0) &middot; Max Fatigue &times;0.5&ndash;0.8 (if &lt;&minus;9) &middot; skill fatigue &minus;1&ndash;3</td></tr>
+      <tr class="wrow"><td><strong>Ranged</strong></td><td>&times;0.9&ndash;1.4</td><td>As weapons, plus accuracy +5&ndash;15% and ammo +1&ndash;3 (throwing)</td></tr>
+      <tr class="wrow"><td><strong>Shields</strong></td><td>&times;1.2&ndash;1.6</td><td>Melee Def &times;1.2&ndash;1.4 &middot; Ranged Def &times;1.2&ndash;1.4 &middot; Max Fatigue &times;0.7&ndash;0.9 &middot; skill fatigue &minus;1&ndash;3</td></tr>
+      <tr class="wrow"><td><strong>Armor</strong></td><td>&times;1.1&ndash;1.25</td><td>Max Fatigue +3&ndash;9 (to a max of &minus;8 total)</td></tr>
+      <tr class="wrow"><td><strong>Helmets</strong></td><td>&times;1.1&ndash;1.25</td><td>Max Fatigue +1&ndash;4 (to a max of &minus;4 total)</td></tr>
+    </tbody>
+  </table></div>
+
+  <input class="searchbar" type="text" data-search data-target=".wrow" placeholder="Search named &amp; legendary items... (try 'greatsword', 'davkul', 'kite')">
+  <p class="search-note"><span data-search-count></span> &mdash; type to filter the reliquary.</p>
+
+  <h2>Named weapons</h2>
+  <p><strong>Base Dmg</strong> is the underlying weapon's damage; <strong>Max Roll</strong> is the highest the named version can reach. Every column sorts.</p>
+  <h3>One-handed</h3>
+  <div data-gear-table="named-1h"></div>
+  <h3>Two-handed</h3>
+  <div data-gear-table="named-2h"></div>
+  <h3>Ranged <span class="mono">(also roll +5&ndash;15% accuracy, +1&ndash;3 ammo)</span></h3>
+  <div data-gear-table="named-ranged"></div>
+
+  <h2>Named shields</h2>
+  <div data-gear-table="named-shields"></div>
+
+  <h2>Named body armor</h2>
+  <p>Named armor only ever improves durability and fatigue &mdash; but the best (Enhanced Coat of Plates at up to 400) outclasses anything craftable.</p>
+  <div data-gear-table="named-armors"></div>
+
+  <h2>Named helmets</h2>
+  <div data-gear-table="named-helmets"></div>
+
+  <h2>Legendary items</h2>
+  <p>Fixed uniques &mdash; same stats every time, with an effect you can't get anywhere else. These are the blue-glow drops worth reorganizing a brother around.</p>
+  <h3>Weapons</h3>
+  <div data-gear-table="legendary-weapons"></div>
+  <h3>Body armor</h3>
+  <div data-gear-table="legendary-armors"></div>
+  <h3>Helmets</h3>
+  <div data-gear-table="legendary-helmets"></div>
+  <h3>Shields</h3>
+  <div data-gear-table="legendary-shields"></div>
+
+  <div class="callout">
+    <span class="label">Where they drop</span>
+    <p>Attackable locations can hold one or two named items beyond what champions carry. The chance scales with the location's <strong>resources and distance from the nearest settlement</strong> &mdash; far-flung <strong>Orc/Goblin Settlements, Barbarian Sanctuaries and Undead Necropolises/Buried Castles</strong> have the best odds (roughly +33% base before the distance bonus), while small hideouts are near-zero. Each item is about equally likely to be a weapon, shield, helmet or armor, and a location's own theme item is twice as likely as a generic one. Legendaries come from specific legendary locations and crisis rewards.</p>
+  </div>
+
+  <h2>Sources &amp; further reading</h2>
+  <div class="callout">
+    <p>Roll ranges are extrapolated from the game scripts on the wiki; we present the facts and write our own notes.</p>
+    <p style="margin-bottom:0;">
+      <a href="https://battlebrothers.fandom.com/wiki/Named_and_Legendary_Items" target="_blank" rel="noopener">Battle Brothers Wiki &mdash; Named and Legendary Items</a> &middot;
+      <a href="weapons.html">Weapons</a> &middot;
+      <a href="armor.html">Armor</a>
+    </p>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="colophon">
+      <h4>The Mercenary Codex</h4>
+      <p>Fan-made strategy compendium for <strong>Battle Brothers</strong>. Accurate to v1.5.2.2. Not affiliated with Overhype Studios or Hooded Horse.</p>
+    </div>
+    <div>
+      <h4>Sections</h4>
+      <p>
+        <a href="weapons.html">Weapons</a> &middot;
+        <a href="armor.html">Armor</a> &middot;
+        <a href="named.html">Named</a><br>
+        <a href="hiring.html">Hiring</a> &middot;
+        <a href="builds.html">Builds</a> &middot;
+        <a href="enemies.html">Enemies</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" aria-label="Back to top">&uarr; Top</button>
+<script src="../data/named.js"></script>
+<script src="../js/gear-tables.js"></script>
+<script src="../js/site.js"></script>
+</body>
+</html>
