@@ -22,6 +22,7 @@
       <a href="origins.html">Origins</a>
       <a href="builds.html">Builds</a>
       <a href="weapons.html">Weapons</a>
+      <a href="armor.html">Armor</a>
       <a href="perks.html">Perks</a>
       <a href="phases.html">Game Phases</a>
       <a href="economy.html">Economy</a>
@@ -84,6 +85,55 @@
     </tbody>
   </table>
 
+  <h2>Melee weapons &mdash; hard stats</h2>
+  <p>Real numbers for every standard melee weapon, sortable by any column. <strong>Vs. Armor %</strong> is how hard the hit chews armor (hammers/maces are highest, daggers lowest); <strong>Ignores Armor %</strong> is the slice that always reaches HP; <strong>Max Fat.</strong> is the fatigue penalty for carrying it. Two-handers add <strong>Head</strong> (bonus chance to hit the head) and <strong>Shield Dmg</strong>. All values are base/standard gear &mdash; Named weapons roll bonuses on top.</p>
+
+  <div class="callout">
+    <span class="label">Reading the numbers</span>
+    <p>Damage is the roll vs. <strong>HP</strong>. Against armor it's scaled by Vs. Armor %, so a 40&times;130% axe shreds plate while a 40&times;60% dagger barely dents it &mdash; but the dagger's Puncture ignores armor entirely. A <strong>head hit adds &times;1.5 to HP</strong> (not armor), which is why high-Head two-handers and the Killer/Executioner perks hit so hard. Orc weapons (Tree Limb, Cudgel, Head Splitter) cost <strong>+5 fatigue per skill</strong> for human wielders &mdash; note their brutal Max Fat. already.</p>
+  </div>
+
+  <h3>Daggers <span class="mono">(armor-ignoring stabs, near-zero fatigue)</span></h3>
+  <div data-gear-table="daggers"></div>
+
+  <h3>Swords &mdash; one-handed <span class="mono">(+10% hit, Riposte, all-rounder)</span></h3>
+  <div data-gear-table="swords1h"></div>
+
+  <h3>Swords &mdash; two-handed <span class="mono">(AoE Swing/Split, fatigue-efficient)</span></h3>
+  <div data-gear-table="swords2h"></div>
+
+  <h3>Axes &mdash; one-handed <span class="mono">(high Vs. Armor, Split Shield)</span></h3>
+  <div data-gear-table="axes1h"></div>
+
+  <h3>Axes &mdash; two-handed <span class="mono">(Round Swing AoE, Decapitate)</span></h3>
+  <div data-gear-table="axes2h"></div>
+
+  <h3>Maces &mdash; one-handed <span class="mono">(Knock Out stun, +fatigue on target)</span></h3>
+  <div data-gear-table="maces1h"></div>
+
+  <h3>Maces &mdash; two-handed <span class="mono">(Daze/stun control, top Vs. Armor)</span></h3>
+  <div data-gear-table="maces2h"></div>
+
+  <h3>Spears &mdash; one-handed <span class="mono">(+20% hit, Spearwall)</span></h3>
+  <div data-gear-table="spears"></div>
+
+  <h3>Spears &mdash; two-handed <span class="mono">(Prong AoE, reach)</span></h3>
+  <div data-gear-table="spears2h"></div>
+
+  <h3>Flails <span class="mono">(ignore shield bonus, target the head)</span></h3>
+  <div data-gear-table="flails"></div>
+
+  <h3>Cleavers <span class="mono">(bleed, Decapitate finisher)</span></h3>
+  <div data-gear-table="cleavers"></div>
+
+  <h3>Hammers <span class="mono">(best armor penetration in the game)</span></h3>
+  <div data-gear-table="hammers"></div>
+
+  <h3>Polearms <span class="mono">(range 2, attack from the back row)</span></h3>
+  <div data-gear-table="polearms"></div>
+
+  <p class="search-note">Tables marked <em>data pending</em> are wired and will fill in automatically once their wiki stats are added to <span class="mono">data/gear.js</span> &mdash; no page edits needed.</p>
+
   <h2>Ranged weapons</h2>
   <table>
     <caption>Pick the projectile to the target's armor</caption>
@@ -98,6 +148,34 @@
       <tr class="wrow"><td><strong>Throwable items (Net, Throwing Net, firebombs)</strong></td><td>Utility, not damage. Net roots a dangerous target for a turn.</td><td>Net a champion or an Unhold, then dogpile it. Quick Hands carries spares.</td><td><span class="tier tier-A">A</span></td></tr>
     </tbody>
   </table>
+
+  <h2>Ranged weapons &mdash; hard stats</h2>
+  <p>The numbers behind the niche. Every column is sortable &mdash; click a header to rank by damage, range, fatigue or armor effectiveness. <strong>Vs. Armor</strong> is how hard the shot chews armor; <strong>Ignores Armor</strong> is the slice of damage that always reaches HP (the "Direct Damage" of the firing skill). All values are base/standard gear; Named bows and crossbows roll bonuses on top.</p>
+
+  <div class="callout">
+    <span class="label">Range &amp; accuracy rules</span>
+    <p>Range is measured in <strong>tiles</strong>. <strong>Bows reach 7 tiles</strong> (most of them); <strong>crossbows and slings reach 6</strong>; <strong>thrown weapons reach 4</strong>; the Handgonne is a 2-tile weapon that punches through cover. Shooting <strong>downhill adds +1 range per height level</strong> above the target (uphill loses it). Accuracy drops with distance per the firing skill below, and a <strong>head hit deals &times;1.5 to HP</strong> (not to armor), so high-range, high-accuracy shooters reward the head-hit perks.</p>
+  </div>
+
+  <h3>Firing skills: accuracy &amp; falloff</h3>
+  <p>This is the table that answers "how far, how accurately." Quick Shot fires twice but loses a tile and falls off fast; Aimed Shot is the long, accurate option; crossbow bolts start at the best base accuracy of all.</p>
+  <div data-gear-table="ranged-skills"></div>
+
+  <h3>Bows <span class="mono">(range 6&ndash;7, weak vs armor, strong vs flesh)</span></h3>
+  <div data-gear-table="bows"></div>
+
+  <h3>Crossbows <span class="mono">(range 6, pre-loaded, armor-piercing)</span></h3>
+  <div data-gear-table="crossbows"></div>
+
+  <h3>Firearms <span class="mono">(huge burst, ignores cover, brutal reload)</span></h3>
+  <div data-gear-table="firearms"></div>
+
+  <h3>Throwing weapons <span class="mono">(range 4, +20% hit up close)</span></h3>
+  <p>Note how <strong>throwing axes (110&ndash;115% vs armor)</strong> and the <strong>Throwing Spear (110%, plus a guaranteed shield-strip)</strong> hit armor far harder than bows do &mdash; thrown steel is your portable anti-armor.</p>
+  <div data-gear-table="throwing"></div>
+
+  <h3>Throwable items <span class="mono">(utility, range 3)</span></h3>
+  <div data-gear-table="throwable"></div>
 
   <div class="callout">
     <span class="label">Damage rules to remember</span>
@@ -129,7 +207,8 @@
       <h4>Sections</h4>
       <p>
         <a href="builds.html">Builds</a> &middot;
-        <a href="weapons.html">Weapons</a> &middot;
+        <a href="weapons.html">Weapons</a>
+      <a href="armor.html">Armor</a> &middot;
         <a href="perks.html">Perks</a><br>
         <a href="phases.html">Phases</a> &middot;
         <a href="enemies.html">Enemies</a> &middot;
@@ -140,6 +219,8 @@
 </footer>
 
 <button class="totop" aria-label="Back to top">&uarr; Top</button>
+<script src="../data/gear.js"></script>
+<script src="../js/gear-tables.js"></script>
 <script src="../js/site.js"></script>
 </body>
 </html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armor, Helmets &amp; Shields - The Mercenary Codex</title>
+<meta name="description" content="Every Battle Brothers body armor, helmet and shield with exact stats: armor value, fatigue penalty, protection-per-fatigue ranking, and which character stats to build for Battle Forged tanks vs Nimble fighters. Updated for v1.5.2.2.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">The Mercenary <span>Codex</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+    <nav class="nav">
+      <a href="../../../index.html" style="color:var(--rust);">⚗ The Arcanum</a>
+      <a href="../index.html">Home</a>
+      <a href="origins.html">Origins</a>
+      <a href="builds.html">Builds</a>
+      <a href="weapons.html">Weapons</a>
+      <a href="armor.html">Armor</a>
+      <a href="perks.html">Perks</a>
+      <a href="phases.html">Game Phases</a>
+      <a href="economy.html">Economy</a>
+      <a href="enemies.html">Enemies</a>
+      <a href="secrets.html">Secrets</a>
+      <a href="patch.html">Patch v1.5.2.2</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">The Quartermaster</span>
+    <h1>Armor, Helmets &amp; Shields</h1>
+    <p class="lede">Armor is a second health bar that also slows you down. Every point of protection costs Fatigue, and a brother who can't swing is a corpse in waiting. The art is buying the most armor each man can carry and still fight &mdash; so the number that matters isn't armor, it's <em>armor per fatigue</em>.</p>
+  </div>
+</section>
+
+<main class="wrap section">
+
+  <div class="callout">
+    <span class="label">How armor works</span>
+    <p>Body armor and helmets each have an <strong>armor value</strong> (its current durability) that soaks damage before HP. Incoming damage hits armor first; the <strong>Vs. Armor %</strong> of the attacker's weapon decides how fast it's stripped, and a slice (the weapon's <strong>Ignores Armor %</strong>) always leaks through to HP. A <strong>head hit</strong> deals &times;1.5 to HP but normal damage to the helmet. When a piece hits 0 durability it gives no protection until repaired. Every piece also carries a <strong>Fatigue penalty</strong> that lowers your usable stamina for the whole fight.</p>
+  </div>
+
+  <input class="searchbar" type="text" data-search data-target=".wrow" placeholder="Search armor, helmets and shields... (try 'mail', 'nomad', 'crafted')">
+  <p class="search-note"><span data-search-count></span> &mdash; type to filter the quartermaster's ledger.</p>
+
+  <h2>Body armor</h2>
+  <p>Sorted however you click. The <strong>Armor / Fat.</strong> column is the efficiency score &mdash; protection bought per point of Fatigue spent &mdash; and it's the single most useful number on this page. Higher is better value; you only accept a worse ratio when you specifically need the raw armor ceiling on a dedicated tank.</p>
+  <div data-gear-table="armor-body"></div>
+  <div class="newbox">
+    <span class="label">Heavy tier pending</span>
+    <p>The list above runs light&rarr;mid (through Mail with Lamellar Plating, 135 armor). The top tier &mdash; <strong>Coat of Plates, Lamellar/Scale Armor, Mail Hauberk, Heraldic Hauberk</strong> and the ~300-armor closed plate &mdash; is wired and will appear here the moment its wiki stats are added to <span class="mono">data/gear.js</span>.</p>
+  </div>
+
+  <h2>Helmets</h2>
+  <p>Same efficiency logic. Heavy closed helms add a <strong>Vision</strong> penalty (tiles of sight lost) &mdash; fine on a frontline tank, costly on an archer who needs to see and shoot far.</p>
+  <div data-gear-table="armor-head"></div>
+  <div class="newbox">
+    <span class="label">Heavy tier pending</span>
+    <p>Mid and heavy helmets (Kettle Hat, Sallet, Barbute, Bascinet, Great Helm and the ~300-armor closed helms) are wired and fill in automatically once their stats are added.</p>
+  </div>
+
+  <h2>Shields</h2>
+  <p>A shield isn't armor &mdash; it adds flat <strong>Melee Defense</strong> and <strong>Ranged Defense</strong> (your chance to be missed) and has its own durability that axes (Split Shield) and flails bypass. Bucklers give the most defense per fatigue but can't Shieldwall; Heater and Kite shields anchor a wall.</p>
+  <div data-gear-table="shields"></div>
+
+  <h2>What's "best"? Read the ratio, then your build</h2>
+  <p>There is no single best armor &mdash; there's the heaviest set a given brother can wear <em>and still act every turn</em>. Two armor philosophies define the game, and they want opposite gear and opposite stats:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Approach</th><th>Armor weight</th><th>How it survives</th><th>Key perks</th><th>Wants high&hellip;</th></tr></thead>
+    <tbody>
+      <tr class="wrow"><td><strong>Battle Forged (heavy)</strong></td><td>200&ndash;300 body + heavy helm</td><td>Huge armor pool; Battle Forged converts armor into damage reduction so blows barely scratch HP.</td><td>Battle Forged, Brawny, Colossus, Steel Brow</td><td><strong>Fatigue</strong>, HP, Melee Skill</td></tr>
+      <tr class="wrow"><td><strong>Nimble (light)</strong></td><td>~130&ndash;150 combined cap</td><td>Nimble cuts HP damage roughly in proportion to how <em>light</em> you are; dodge-heavy.</td><td>Nimble, Dodge, Colossus, Steel Brow</td><td>HP, Melee/Ranged Defense, Fatigue, Initiative</td></tr>
+      <tr class="wrow"><td><strong>Archer / Duelist</strong></td><td>Minimal (head + light body)</td><td>Doesn't get hit &mdash; stays at range or kills first.</td><td>Nimble, Dodge (low-armor builds)</td><td>Fatigue, Initiative, the relevant Skill</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout">
+    <span class="label">The Fatigue math that decides everything</span>
+    <p>Fatigue is the budget armor spends. A brother starts a fight at full Fatigue and <strong>recovers ~15 per turn</strong>; attacks and skills cost fatigue to use. Subtract every armor/helmet/shield/weapon penalty from his max Fatigue &mdash; what's left has to cover at least one good attack per turn. <strong>Brawny</strong> reduces armor's fatigue penalty by 30% and is close to mandatory for heavy sets; <strong>Battle Forged</strong> is what makes 300-armor worth its weight. If a man ends up perpetually exhausted, he's over-armored &mdash; drop to a better Armor/Fat. ratio piece, not a heavier one.</p>
+  </div>
+
+  <h2>Quick "who wears what" cheat sheet</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>The brother</th><th>Body</th><th>Head</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr class="wrow"><td>Frontline tank (Battle Forged)</td><td>Heaviest you can carry (Coat of Plates tier)</td><td>Heavy closed helm</td><td>Holds the line; armor + Battle Forged = near-immunity to chip damage.</td></tr>
+      <tr class="wrow"><td>Two-hander (Reaper)</td><td>High mid-weight, leave Fatigue for swings</td><td>Solid helm, mind vision</td><td>Needs Fatigue to AoE every turn; don't over-armor.</td></tr>
+      <tr class="wrow"><td>Nimble duelist / dagger</td><td>Light (under the Nimble cap)</td><td>Light/medium helm</td><td>Nimble + Dodge survival scales with being light.</td></tr>
+      <tr class="wrow"><td>Archer / crossbow</td><td>Lightest viable</td><td>Zero-vision-penalty helm</td><td>Keeps Fatigue for shots and full sight range to fire far.</td></tr>
+      <tr class="wrow"><td>Polearm backliner</td><td>Light&ndash;mid</td><td>Light helm</td><td>Sits in row two; trades armor for the Fatigue to attack at range 2.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Sources &amp; further reading</h2>
+  <div class="callout">
+    <p>Stats are facts drawn from the Battle Brothers Wiki and cross-checked in-game; the analysis is our own.</p>
+    <p style="margin-bottom:0;">
+      <a href="https://battlebrothers.fandom.com/wiki/Armor" target="_blank" rel="noopener">Battle Brothers Wiki &mdash; Armor</a> &middot;
+      <a href="https://battlebrothers.fandom.com/wiki/Shields" target="_blank" rel="noopener">Shields</a> &middot;
+      <a href="https://battlebrothers.fandom.com/wiki/Attributes" target="_blank" rel="noopener">Attributes &amp; Fatigue</a>
+    </p>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="colophon">
+      <h4>The Mercenary Codex</h4>
+      <p>Fan-made strategy compendium for <strong>Battle Brothers</strong>. Accurate to v1.5.2.2. Not affiliated with Overhype Studios or Hooded Horse.</p>
+    </div>
+    <div>
+      <h4>Sections</h4>
+      <p>
+        <a href="builds.html">Builds</a> &middot;
+        <a href="weapons.html">Weapons</a> &middot;
+        <a href="armor.html">Armor</a><br>
+        <a href="perks.html">Perks</a> &middot;
+        <a href="enemies.html">Enemies</a> &middot;
+        <a href="secrets.html">Secrets</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" aria-label="Back to top">&uarr; Top</button>
+<script src="../data/gear.js"></script>
+<script src="../js/gear-tables.js"></script>
+<script src="../js/site.js"></script>
+</body>
+</html>

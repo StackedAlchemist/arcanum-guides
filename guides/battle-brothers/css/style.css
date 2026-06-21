@@ -291,6 +291,18 @@ tbody tr:nth-child(even) { background: rgba(0,0,0,0.18); }
 tbody tr:hover { background: rgba(124,44,28,0.12); }
 td strong { color: var(--tier-s); }
 
+/* ---------- Data-driven gear tables ---------- */
+.table-wrap { overflow-x: auto; margin: 1.2em 0; border: 1px solid #3a3128; border-radius: 4px; }
+.table-wrap table { margin: 0; }
+.table-wrap td:first-child { color: var(--bone); font-weight: 600; }
+th.sortable { cursor: pointer; user-select: none; white-space: nowrap; }
+th.sortable:hover { color: var(--tier-s); }
+th.sortable::after { content: " \2195"; opacity: 0.3; font-size: 0.8em; }
+th.sortable[data-sortdir="asc"]::after { content: " \2191"; opacity: 1; color: var(--tier-s); }
+th.sortable[data-sortdir="desc"]::after { content: " \2193"; opacity: 1; color: var(--tier-s); }
+.dlc-tag { display: inline-block; font-family: var(--font-util); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--rust); border: 1px solid var(--rust); border-radius: 3px; padding: 1px 6px; white-space: nowrap; }
+.base-tag { font-size: 0.7rem; color: var(--ash); opacity: 0.6; }
+
 /* ---------- Lists ---------- */
 ul.spear, ol.runes { margin: 0 0 1.2em 1.4em; }
 ul.spear li, ol.runes li { margin-bottom: 0.5em; color: #c4b699; }
