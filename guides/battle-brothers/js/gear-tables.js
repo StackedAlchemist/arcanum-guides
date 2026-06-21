@@ -113,7 +113,22 @@
     { h: "Notes", get: function (r) { return f.txt(r.notes); }, s: function (r) { return r.notes; } }
   ];
 
+  /* --- recruits (hiring) column spec --- */
+  var TIER_CLASS = { S: "tier-S", A: "tier-A", B: "tier-B", C: "tier-C", Filler: "tier-D", Avoid: "tier-D" };
+  var TIER_RANK  = { S: 6, A: 5, B: 4, C: 3, Filler: 2, Avoid: 1 };
+  var recruitsCols = [
+    c_name,
+    { h: "Tier", get: function (r) { return '<span class="tier ' + (TIER_CLASS[r.tier] || "") + '">' + r.tier + "</span>"; }, s: function (r) { return TIER_RANK[r.tier] || 0; }, num: true },
+    { h: "Role",   get: function (r) { return f.txt(r.role); }, s: function (r) { return r.role; } },
+    { h: "Cost",   get: function (r) { return f.txt(r.costBand); }, s: function (r) { return r.costBand; } },
+    { h: "Phase",  get: function (r) { return f.txt(r.phase); }, s: function (r) { return r.phase; } },
+    { h: "Tryout", get: function (r) { return f.txt(r.tryout); }, s: function (r) { return r.tryout; } },
+    { h: "Star bias", get: function (r) { return f.txt(r.starBias); }, s: function (r) { return r.starBias; } },
+    { h: "Notes",  get: function (r) { return f.txt(r.notes); }, s: function (r) { return r.notes; } }
+  ];
+
   var CONFIG = {
+    recruits:    { data: "recruits",          cols: recruitsCols },
     bows:        { data: "ranged.bows",       cols: rangedDmgCols },
     crossbows:   { data: "ranged.crossbows",  cols: rangedDmgCols },
     firearms:    { data: "ranged.firearms",   cols: rangedDmgCols },

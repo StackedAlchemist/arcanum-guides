@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hiring &amp; Recruitment - The Mercenary Codex</title>
+<meta name="description" content="Battle Brothers hiring guide: every recruitable background tiered (Hedge Knight to Beggar) with role, cost, game phase and tryout advice, plus how hiring price, wages, tryouts and nicknames actually work. Updated for v1.5.2.2.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">The Mercenary <span>Codex</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+    <nav class="nav">
+      <a href="../../../index.html" style="color:var(--rust);">⚗ The Arcanum</a>
+      <a href="../index.html">Home</a>
+      <a href="origins.html">Origins</a>
+      <a href="hiring.html">Hiring</a>
+      <a href="builds.html">Builds</a>
+      <a href="weapons.html">Weapons</a>
+      <a href="armor.html">Armor</a>
+      <a href="perks.html">Perks</a>
+      <a href="phases.html">Game Phases</a>
+      <a href="economy.html">Economy</a>
+      <a href="enemies.html">Enemies</a>
+      <a href="secrets.html">Secrets</a>
+      <a href="patch.html">Patch v1.5.2.2</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">The Hiring Hall</span>
+    <h1>Hiring &amp; Recruitment</h1>
+    <p class="lede">Your company is only as good as the men you sign. The recruitment screen hides almost everything that matters &mdash; price tells you nothing about quality, and stars stay invisible even after a tryout. Knowing which <em>backgrounds</em> are worth your crowns is the whole game.</p>
+  </div>
+</section>
+
+<main class="wrap section">
+
+  <h2>Core hiring mechanics (read first)</h2>
+  <p>Four facts change how you read every recommendation below.</p>
+  <div class="callout">
+    <span class="label">What you're actually paying for</span>
+    <ul class="spear">
+      <li><strong>Price does not reflect stats, talents or traits.</strong> Hire cost depends only on <em>background</em>, <em>level</em>, and the <em>gear</em> the recruit shows up with. A 600-crown poacher isn't better than a 300-crown one unless he's carrying a weapon.</li>
+      <li><strong>Expensive backgrounds = higher floor and ceiling, not guaranteed quality.</strong> Premium backgrounds have better stat ranges and rarely roll bad traits, but rolls and talents are still random within the range.</li>
+      <li><strong>Wages are fixed per background + level.</strong> If two recruits share background and level but one costs more per day, the pricier one has the <strong>Greedy</strong> trait &mdash; avoid him.</li>
+      <li><strong>You buy their gear whether you want it or not.</strong> Cost includes equipment at market value, so waiting for a poorly-equipped version of your target background genuinely saves money. Naked backgrounds (Wildmen) show their true base cost upfront.</li>
+    </ul>
+  </div>
+  <div class="newbox">
+    <span class="label">Wages, nicknames &amp; visible traits</span>
+    <p>Daily wage scales with level (first 11 levels are the base; beyond that, base &times; 1.03^(level&minus;11)) &mdash; a lv11 Hedge Knight runs ~91/day, ~122/day by lv21. Each brother also eats ~2 provisions/day, so roster size is a food cost. <strong>Nicknames hint at traits</strong> ("the Ox" &rarr; Tough/Strong, "the Slow" &rarr; &minus;Initiative, "the Craven" &rarr; morale penalty) and are a free pre-tryout filter. A few traits (Fat, Huge, Tiny) are visible <em>before</em> paying; everything else &mdash; and <strong>all stars/talents</strong> &mdash; stays hidden.</p>
+  </div>
+
+  <h2>Tryout: when it's worth it</h2>
+  <p>A tryout costs roughly 10% of the hire price and <strong>reveals traits only &mdash; never stars or talents</strong> (hidden stars are intended). So tryout to dodge <em>bad traits</em>, not to find good rolls.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Situation</th><th>Do this</th></tr></thead>
+    <tbody>
+      <tr class="wrow"><td>Premium background (Hedge Knight, Sellsword, Swordmaster, Raider, Noble)</td><td><strong>Skip or optional.</strong> They rarely roll bad traits, so the floor is high. A cheap one is near-instant buy.</td></tr>
+      <tr class="wrow"><td>Cheap/average background, and you already have a solid team</td><td><strong>Always tryout.</strong> A lesser background must roll good traits AND attributes AND talents to earn a veteran's slot. Catch traps (Clumsy Militia, low-Resolve Vagabond) first.</td></tr>
+      <tr class="wrow"><td>Short on cash</td><td>Use tryouts to prioritize which recruits are worth the full hire.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout">
+    <span class="label">How to evaluate a recruit</span>
+    <p>Don't save-scum for perfect stars &mdash; you don't need perfect bros to win. Instead estimate the recruit's <strong>level-11 stat line</strong> (current base + expected growth) and weigh it against the wage. Two valid schools: optimize for level-11 potential (long game), or value bros useful <em>right now</em> &mdash; most of a campaign is played at levels 5&ndash;7, not 11.</p>
+  </div>
+
+  <h2>Backgrounds, tiered</h2>
+  <p>Every recruitable background ranked for combat. Sortable &mdash; click <strong>Tier</strong> to group best-to-worst, or <strong>Phase</strong>/<strong>Cost</strong> to plan a shopping trip. <span class="mono">Star bias</span> is community-observed (backgrounds that can't star a stat tend to concentrate stars in the others); it's not official wiki data.</p>
+  <input class="searchbar" type="text" data-search data-target=".wrow" placeholder="Search backgrounds... (try 'cheap', 'ranged', 'tank', 'early')">
+  <p class="search-note"><span data-search-count></span> &mdash; type to filter the hiring hall.</p>
+  <div data-gear-table="recruits"></div>
+
+  <h2>Campaign hiring arc</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Phase</th><th>Where</th><th>Who to sign</th></tr></thead>
+    <tbody>
+      <tr class="wrow"><td><strong>Early</strong> (low funds)</td><td>Small farming villages, large coastal cities</td><td>Core: Brawlers, Butchers. Filler: Farmhands, Fishermen, Messengers, the odd Thief for a tank. Meatbags only for events/tiles. Keep the company lean &mdash; wages + food will sink you.</td></tr>
+      <tr class="wrow"><td><strong>Mid</strong> (a few thousand banked)</td><td>Towns with relevant buildings</td><td>Fold in a Hunter (priority archer), Militia, Squires, Witchhunters. Tryout these average backgrounds to dodge bad traits (especially Clumsy on Militia).</td></tr>
+      <tr class="wrow"><td><strong>Late</strong> (funds flowing)</td><td>Anywhere premium appears</td><td>Hedge Knights, Sellswords, Raiders, the occasional cheap Noble or Swordmaster. Cheap premium finds (~2K Sellsword/Raider, ~3&ndash;4K Hedge Knight) are near-instant buys. Replace your weakest early bros.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout">
+    <span class="label">Standing habits</span>
+    <p>Keep a roster slot free for event recruits (unless Lone Wolf). Wait for poorly-equipped versions of your target background to save on gear. Check nicknames before paying for a tryout. Evaluate by projected level-11 line vs. wage, not by save-scumming for stars.</p>
+  </div>
+
+  <h2>Sources &amp; further reading</h2>
+  <div class="callout">
+    <p>Mechanics are facts from the Battle Brothers Wiki; tiering and star-bias reflect community consensus, and the analysis is our own.</p>
+    <p style="margin-bottom:0;">
+      <a href="https://battlebrothers.fandom.com/wiki/Character_Backgrounds" target="_blank" rel="noopener">Battle Brothers Wiki &mdash; Character Backgrounds</a> &middot;
+      <a href="https://battlebrothers.fandom.com/wiki/Attributes" target="_blank" rel="noopener">Attributes</a> &middot;
+      <a href="origins.html">Company Origins</a>
+    </p>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="colophon">
+      <h4>The Mercenary Codex</h4>
+      <p>Fan-made strategy compendium for <strong>Battle Brothers</strong>. Accurate to v1.5.2.2. Not affiliated with Overhype Studios or Hooded Horse.</p>
+    </div>
+    <div>
+      <h4>Sections</h4>
+      <p>
+        <a href="origins.html">Origins</a> &middot;
+        <a href="hiring.html">Hiring</a> &middot;
+        <a href="builds.html">Builds</a><br>
+        <a href="weapons.html">Weapons</a> &middot;
+        <a href="armor.html">Armor</a> &middot;
+        <a href="enemies.html">Enemies</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" aria-label="Back to top">&uarr; Top</button>
+<script src="../data/recruits.js"></script>
+<script src="../js/gear-tables.js"></script>
+<script src="../js/site.js"></script>
+</body>
+</html>
