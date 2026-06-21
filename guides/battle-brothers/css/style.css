@@ -257,6 +257,7 @@ em { color: var(--rust); }
 .tier-B { color: var(--tier-b); }
 .tier-C { color: var(--tier-c); }
 .tier-D { color: var(--tier-d); }
+.tier-event { color: #6f8fb0; }
 
 /* ---------- Tables ---------- */
 table {

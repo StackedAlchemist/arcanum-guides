@@ -116,8 +116,8 @@
   ];
 
   /* --- recruits (hiring) column spec --- */
-  var TIER_CLASS = { S: "tier-S", A: "tier-A", B: "tier-B", C: "tier-C", Filler: "tier-D", Avoid: "tier-D" };
-  var TIER_RANK  = { S: 6, A: 5, B: 4, C: 3, Filler: 2, Avoid: 1 };
+  var TIER_CLASS = { S: "tier-S", A: "tier-A", B: "tier-B", C: "tier-C", Filler: "tier-D", Avoid: "tier-D", Event: "tier-event" };
+  var TIER_RANK  = { S: 7, A: 6, B: 5, C: 4, Filler: 3, Avoid: 2, Event: 1 };
   var recruitsCols = [
     c_name,
     { h: "Tier", get: function (r) { return '<span class="tier ' + (TIER_CLASS[r.tier] || "") + '">' + r.tier + "</span>"; }, s: function (r) { return TIER_RANK[r.tier] || 0; }, num: true },
