@@ -129,8 +129,23 @@
     { h: "Notes",  get: function (r) { return f.txt(r.notes); }, s: function (r) { return r.notes; } }
   ];
 
+  /* --- background attribute ranges --- */
+  function statCol(h, key) {
+    return { h: h, get: function (r) { return r[key][0] + "&ndash;" + r[key][1]; }, s: function (r) { return r[key][1]; }, num: true };
+  }
+  var bgRangeCols = [
+    c_name,
+    { h: "Lvl",  get: function (r) { return r.lvl; }, s: function (r) { return parseInt(r.lvl, 10); }, num: true },
+    { h: "Wage", get: function (r) { return r.wage; }, s: function (r) { return r.wage; }, num: true },
+    statCol("HP", "hp"), statCol("M.Skill", "msk"), statCol("R.Skill", "rsk"),
+    statCol("M.Def", "mdef"), statCol("R.Def", "rdef"), statCol("Fatigue", "fat"),
+    statCol("Resolve", "res"), statCol("Init", "init"),
+    { h: "Notes", get: function (r) { return f.txt(r.note); }, s: function (r) { return r.note; } }
+  ];
+
   var CONFIG = {
     recruits:    { data: "recruits",          cols: recruitsCols },
+    "bg-ranges": { data: "bgRanges",          cols: bgRangeCols },
     bows:        { data: "ranged.bows",       cols: rangedDmgCols },
     crossbows:   { data: "ranged.crossbows",  cols: rangedDmgCols },
     firearms:    { data: "ranged.firearms",   cols: rangedDmgCols },
