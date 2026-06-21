@@ -10,20 +10,82 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 <style>
-  /* level-by-level perk path */
-  .path { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
+  /* ============================================================
+     Builds page - polished armory styling (bloody + gold gleam)
+     Scoped to this page; harmonizes with the shared palette.
+     ============================================================ */
+  :root { --line: rgba(201,168,76,0.18); }
+
+  /* ---- build panels: blood edge, gold gleam, lift on hover ---- */
+  .build {
+    position: relative; border-radius: 3px; overflow: hidden;
+    background:
+      radial-gradient(130% 90% at 0% 0%, rgba(124,44,28,0.12), transparent 55%),
+      linear-gradient(160deg, var(--parch-dark), var(--parch-darker));
+    border: 1px solid #3a3128; border-left: 3px solid var(--blood);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .build::before {                 /* gold gleam hairline across the top */
+    content:""; position:absolute; left:0; right:0; top:0; height:1px; pointer-events:none;
+    background: linear-gradient(90deg, transparent, var(--rust) 16%, var(--tier-s) 50%, var(--rust) 84%, transparent);
+    opacity:.55;
+  }
+  .build:hover {
+    transform: translateY(-2px); border-left-color: var(--blood-bright);
+    box-shadow: 0 16px 36px -20px #000, inset 0 0 40px rgba(0,0,0,.4), 0 0 0 1px rgba(201,162,39,0.10);
+  }
+  .build > h3 { display:flex; align-items:center; gap:.55rem; letter-spacing:.02em; }
+
+  /* ---- stat chips ---- */
+  .statblock { border-radius:3px; overflow:hidden; box-shadow: inset 0 0 0 1px rgba(201,162,39,0.07); }
+  .statblock div { position:relative; background: linear-gradient(165deg, #2a241e, var(--parch-darker)); transition: background .18s ease; }
+  .statblock div::after { content:""; position:absolute; left:14px; bottom:9px; width:16px; height:2px; background:var(--blood); opacity:.55; }
+  .statblock div:hover { background: linear-gradient(165deg, #332b22, #241e19); }
+  .statblock .v { text-shadow: 0 0 14px rgba(201,162,39,0.12); }
+
+  /* ---- perk path: chain of beads, blood numerals, gold gates ---- */
+  .path { display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 6px; }
   .path .step {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 0.82rem; padding: 3px 9px 3px 3px; border-radius: 3px;
-    background: rgba(201,168,76,0.06); border: 1px solid var(--line, rgba(201,168,76,0.18));
+    display:inline-flex; align-items:center; gap:7px;
+    font-size:.82rem; padding:3px 11px 3px 3px; border-radius:14px;
+    background: rgba(216,205,176,0.04); border:1px solid var(--line); color:var(--vellum);
+    transition: border-color .15s ease, background .15s ease, transform .15s ease;
   }
+  .path .step:hover { border-color:var(--tier-s); background: rgba(201,162,39,0.08); transform: translateY(-1px); }
   .path .step b {
-    display: inline-grid; place-items: center; width: 1.25rem; height: 1.25rem;
-    font-family: 'IM Fell English SC', serif; font-size: 0.72rem;
-    background: var(--rust, #7c2c1c); color: #f0e6d2; border-radius: 2px;
+    display:inline-grid; place-items:center; width:1.35rem; height:1.35rem; line-height:1;
+    font-family:'IM Fell English SC', serif; font-size:.72rem;
+    background: radial-gradient(circle at 35% 28%, #a23a23, #5e1f12); color:#f0e6d2; border-radius:50%;
+    box-shadow: 0 0 0 1px rgba(201,162,39,0.30), inset 0 1px 1px rgba(255,255,255,0.16);
   }
-  .path .step.gate { background: rgba(124,44,28,0.10); }
+  .path .step.gate { border-color: rgba(201,162,39,0.40); }
+  .path .step.gate b { background: radial-gradient(circle at 35% 28%, #e0c14e, #8a6512); color:#1a1611; box-shadow: 0 0 8px rgba(201,162,39,0.35), inset 0 1px 1px rgba(255,255,255,0.3); }
+
+  /* ---- level-up priority line ---- */
+  .levelup { font-size:.93rem; margin:.3rem 0 .9rem; padding:.55rem .85rem; border-left:2px solid var(--rust); background: rgba(138,106,47,0.07); border-radius:0 3px 3px 0; }
+  .levelup b { color:var(--tier-s); font-family:var(--font-util); letter-spacing:.05em; text-transform:uppercase; font-size:.72rem; }
   .talents { font-style: italic; }
+
+  /* ---- compendium tables: pristine, sticky gold headers, blood hover ---- */
+  .ctable { overflow-x:auto; border:1px solid #3a3128; border-radius:4px; margin:1.1em 0 1.7em; box-shadow: inset 0 0 30px rgba(0,0,0,0.35); }
+  .ctable table { margin:0; }
+  .ctable thead th {
+    position:sticky; top:0; z-index:1;
+    background: linear-gradient(180deg, #2e2820, #221c16);
+    border-bottom:2px solid var(--blood); box-shadow: 0 1px 0 rgba(201,162,39,0.22);
+  }
+  .ctable tbody tr { transition: background .12s ease; }
+  .ctable tbody tr:nth-child(even) { background: rgba(0,0,0,0.22); }
+  .ctable tbody tr:hover { background: rgba(124,44,28,0.14); box-shadow: inset 2px 0 0 var(--blood); }
+  .ctable td:first-child { color:var(--bone); }
+  .ctable code { font-family:var(--font-util); color:var(--tier-s); font-size:.92em; letter-spacing:.02em; }
+
+  /* ---- attribute-bands reference ---- */
+  .bands td:first-child { color:var(--bone); font-weight:600; }
+  .bands .sz { font-family:var(--font-util); font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; }
+  .bands .big { color:#cf7a52; } .bands .mod { color:var(--tier-s); } .bands .sml { color:var(--ash); }
+
+  @media (prefers-reduced-motion: reduce){ .build, .path .step, .statblock div, .ctable tbody tr { transition:none; } .build:hover{ transform:none; } }
 </style>
 </head>
 <body>
@@ -72,6 +134,30 @@
     <p style="margin-bottom:0;">When recruiting, chase <strong>talent stars</strong> in a build's primary attributes: each star adds about <strong>+0.5 per level</strong> to that stat, i.e. roughly <strong>+5 by level 11</strong> if you level it every time. A 1-star Poacher at 50 Ranged Skill ends up like a 0-star Hunter at 55. Starting values plus stars are what decide whether a recruit can reach the targets listed &mdash; not the background name alone. Always avoid the dealbreaker traits: <strong>Asthmatic, Dastard</strong>, and (on melee bros) <strong>Fainthearted/Irrational</strong>.</p>
   </div>
 
+  <div class="callout">
+    <span class="label">How attributes grow each level &mdash; the part the game hides</span>
+    <p style="margin-bottom:0.5em;">Levelling an attribute is a <strong>dice roll, not a fixed bonus</strong>. Every level-up you may raise <strong>exactly three</strong> attributes, and each is offered a <em>rolled</em> value inside its own band &mdash; so the same brother gains a different amount each level, and the "+" is never the same twice. You pick the three best rolls on the table.</p>
+    <p style="margin-bottom:0;">A <strong>talent star</strong> shifts that band upward: <strong>1&#9733;</strong> adds +1 to the roll's floor, <strong>2&#9733;</strong> +2 to the floor, <strong>3&#9733;</strong> +2 floor <em>and</em> +1 ceiling. Over a run that's roughly <strong>+5 to the stat per star by level 11</strong> if you raise it every time &mdash; so a 3&#9733; Melee Skill recruit ends ~15 above a 0&#9733; one. Above level 11 there's no perk point and rolls shrink to +1, so <strong>level 11 is the finished brother</strong>. Each build below lists the three attributes to prioritise every level.</p>
+  </div>
+
+  <div class="ctable bands">
+  <table>
+    <caption>What each attribute rolls on level-up (raise 3 per level)</caption>
+    <thead><tr><th>Attribute</th><th>Per-level roll</th><th>Priority for&hellip;</th></tr></thead>
+    <tbody>
+      <tr><td>Hitpoints</td><td><span class="sz big">Large</span> &nbsp;~+2 to +5</td><td>everyone &mdash; survivability floor</td></tr>
+      <tr><td>Fatigue</td><td><span class="sz big">Large</span> &nbsp;~+2 to +5</td><td>anyone in armor or swinging two-handers; the "action budget"</td></tr>
+      <tr><td>Initiative</td><td><span class="sz big">Large</span> &nbsp;~+2 to +5</td><td>Dodge duelists, throwers, archers</td></tr>
+      <tr><td>Melee Skill</td><td><span class="sz mod">Moderate</span> &nbsp;+1 to +3</td><td>every melee attacker &mdash; your accuracy</td></tr>
+      <tr><td>Ranged Skill</td><td><span class="sz mod">Moderate</span> &nbsp;+1 to +3</td><td>archers, crossbows, throwers</td></tr>
+      <tr><td>Resolve</td><td><span class="sz mod">Moderate</span> &nbsp;+1 to +3</td><td>sergeants; anyone facing Fearsome/fear</td></tr>
+      <tr><td>Melee Defense</td><td><span class="sz sml">Small</span> &nbsp;+1 to +2</td><td>tanks, duelists &mdash; precious, take every good roll</td></tr>
+      <tr><td>Ranged Defense</td><td><span class="sz sml">Small</span> &nbsp;+1 to +2</td><td>backline, light fighters vs archers</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="search-note" style="margin-top:-0.6em;">Melee/Ranged Skill, Resolve and the two Defenses are exact; HP, Fatigue and Initiative roll the largest amounts (your in-game roll is the source of truth).</p>
+
   <div class="phasebar">
     <a href="#anvil">Anvil (Tank)</a>
     <a href="#hammerfall">Hammerfall (2H Hammer)</a>
@@ -107,6 +193,7 @@
     <div class="path">
       <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Shield Expert</span><span class="step"><b>3</b>Battle Forged</span><span class="step"><b>4</b>Recover</span><span class="step"><b>5</b>Underdog</span><span class="step"><b>6</b>Steel Brow</span><span class="step gate"><b>7</b>Indomitable</span><span class="step"><b>8</b>Rotation</span><span class="step"><b>9</b>Weapon Mastery</span><span class="step"><b>10</b>Nine Lives</span><span class="step"><b>11</b>Fortified Mind</span>
     </div>
+    <p class="levelup"><b>Level-up priority</b> &mdash; raise these three each level: <strong>Melee Defense &middot; Fatigue &middot; Resolve</strong>. Take <em>HP</em> when Defense rolls low.</p>
     <p><strong>Weapons:</strong> Kite shield + a one-hander. Carry a spear (hit bonus, hold the line), a mace (stun), and a hammer (armor) via Quick Hands / Bags &amp; Belts and swap to the threat.</p>
     <p style="margin-bottom:0;"><strong>Why &amp; variants:</strong> Underdog stops flankers shredding his defense; Indomitable + Recover negates armor-piercing alpha. For a pure wall, drop Weapon Mastery for <em>Taunt</em> or a second defensive perk. One or two per company.</p>
   </article>
@@ -127,6 +214,7 @@
     <div class="path">
       <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Recover</span><span class="step"><b>3</b>Battle Forged</span><span class="step"><b>4</b>Brawny</span><span class="step"><b>5</b>Hammer Mastery</span><span class="step gate"><b>6</b>Berserk</span><span class="step"><b>7</b>Killing Frenzy</span><span class="step"><b>8</b>Underdog</span><span class="step"><b>9</b>Rotation</span><span class="step"><b>10</b>Indomitable</span><span class="step"><b>11</b>Quick Hands</span>
     </div>
+    <p class="levelup"><b>Level-up priority</b> &mdash; raise these three each level: <strong>Melee Skill &middot; Fatigue &middot; HP</strong>. Grab <em>Melee Defense</em> on a high roll early.</p>
     <p style="margin-bottom:0;"><strong>Notes:</strong> Starts weak &mdash; level him in the back rank or with a shield until Battle Forged + decent armor come online. Sidearm a Rondel Dagger (Quick Hands) to strip armor off downed foes. Pair with throwers/Executioner to exploit the injuries he causes.</p>
   </article>
 
@@ -145,6 +233,7 @@
     <div class="path">
       <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Recover</span><span class="step"><b>3</b>Battle Forged</span><span class="step"><b>4</b>Brawny</span><span class="step"><b>5</b>Sword Mastery</span><span class="step gate"><b>6</b>Berserk</span><span class="step"><b>7</b>Killing Frenzy</span><span class="step"><b>8</b>Reach Advantage</span><span class="step"><b>9</b>Underdog</span><span class="step"><b>10</b>Rotation</span><span class="step"><b>11</b>Quick Hands</span>
     </div>
+    <p class="levelup"><b>Level-up priority</b> &mdash; raise these three each level: <strong>Melee Skill &middot; Fatigue &middot; HP</strong>. Grab <em>Melee Defense</em> on a high roll early.</p>
     <p style="margin-bottom:0;"><strong>Why:</strong> Reach Advantage stacks melee defense as he swings, so he can hold a flank. Start each fight with a polearm equipped, then Quick Hands to the greatsword once the enemy closes. Use the greataxe instead only if you want the 6-tile reckless swing.</p>
   </article>
 
@@ -163,6 +252,7 @@
     <div class="path">
       <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Pathfinder</span><span class="step"><b>3</b>Backstabber</span><span class="step"><b>4</b>Polearm Mastery</span><span class="step"><b>5</b>Battle Forged</span><span class="step gate"><b>6</b>Anticipation</span><span class="step"><b>7</b>Berserk</span><span class="step"><b>8</b>Killing Frenzy</span><span class="step"><b>9</b>Brawny</span><span class="step"><b>10</b>Rotation</span><span class="step"><b>11</b>Quick Hands</span>
     </div>
+    <p class="levelup"><b>Level-up priority</b> &mdash; raise these three each level: <strong>Melee Skill &middot; HP &middot; Ranged Defense</strong>. Take <em>Melee Defense</em> on a high roll.</p>
     <p style="margin-bottom:0;"><strong>Why &amp; variants:</strong> Backstabber fixes the polearm's mediocre melee skill since you always attack engaged enemies. Polearm Mastery's reduced AP lets him step-and-stab in one turn. Take <em>Quick Hands + Cleaver Mastery</em> to carry a whip for disarming and armor-stripping &mdash; the best utility upgrade in the company.</p>
   </article>
 
@@ -181,6 +271,7 @@
     <div class="path">
       <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Fortified Mind</span><span class="step"><b>3</b>Quick Hands</span><span class="step"><b>4</b>Recover</span><span class="step"><b>5</b>Rally the Troops</span><span class="step gate"><b>6</b>Anticipation</span><span class="step"><b>7</b>Polearm Mastery</span><span class="step"><b>8</b>Relentless</span><span class="step"><b>9</b>Pathfinder</span><span class="step"><b>10</b>Nimble</span><span class="step"><b>11</b>Backstabber</span>
     </div>
+    <p class="levelup"><b>Level-up priority</b> &mdash; raise these three each level: <strong>Resolve &middot; HP &middot; Ranged Defense</strong>. Take <em>Fatigue</em> when Resolve rolls low.</p>
     <p style="margin-bottom:0;"><strong>Why:</strong> Quick Hands swaps between the Battle Standard and a Billhook so he buffs <em>and</em> deals damage. Relentless keeps his initiative high so he can Rally before the line acts &mdash; the Relentless-Rally-Recover loop turns one sergeant into a panic-proof company. Build a backup; if he dies mid-fight you can cascade. One per company (two for Geist fights).</p>
   </article>
 
@@ -199,6 +290,7 @@
     <div class="path">
       <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Fast Adaptation</span><span class="step"><b>3</b>Bullseye</span><span class="step"><b>4</b>Bow Mastery</span><span class="step"><b>5</b>Nimble</span><span class="step gate"><b>6</b>Anticipation</span><span class="step"><b>7</b>Footwork</span><span class="step"><b>8</b>Berserk</span><span class="step"><b>9</b>Killing Frenzy</span><span class="step"><b>10</b>Recover</span><span class="step"><b>11</b>Overwhelm</span>
     </div>
+    <p class="levelup"><b>Level-up priority</b> &mdash; raise these three each level: <strong>Ranged Skill &middot; Fatigue &middot; HP</strong>. Grab <em>Ranged Defense</em> on a high roll.</p>
     <p style="margin-bottom:0;"><strong>Why:</strong> Bow Mastery adds range and cuts fatigue; Bullseye hits foes in cover; Footwork (not Rotation) escapes melee. Berserk + Killing Frenzy means he last-shots wounded enemies and snowballs. Recommended armor: Noble Mail + Sallet (20 total fatigue) for ~53% Nimble reduction. Swap Overwhelm for <em>Head Hunter</em> if his resolve is low.</p>
   </article>
 
@@ -216,6 +308,7 @@
     <div class="path">
       <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Quick Hands</span><span class="step"><b>3</b>Bullseye</span><span class="step"><b>4</b>Crossbow Mastery</span><span class="step"><b>5</b>Nimble</span><span class="step gate"><b>6</b>Anticipation</span><span class="step"><b>7</b>Footwork</span><span class="step"><b>8</b>Berserk</span><span class="step"><b>9</b>Killing Frenzy</span><span class="step"><b>10</b>Recover</span><span class="step"><b>11</b>Executioner</span>
     </div>
+    <p class="levelup"><b>Level-up priority</b> &mdash; raise these three each level: <strong>Ranged Skill &middot; HP &middot; Fatigue</strong>. Grab <em>Ranged Defense</em> on a high roll.</p>
     <p style="margin-bottom:0;"><strong>Why:</strong> Crossbow Mastery removes the reload turn &mdash; the build's whole point. Quick Hands swaps to a handgonne for big unarmored AoE (Wiedergangers, Webknechts) or to throwing weapons in a pinch. Keep at least one bow and one crossbow user so you can use any famed ranged weapon you find.</p>
   </article>
 
@@ -234,6 +327,7 @@
     <div class="path">
       <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Fast Adaptation</span><span class="step"><b>3</b>Bullseye</span><span class="step"><b>4</b>Bow Mastery</span><span class="step"><b>5</b>Nimble</span><span class="step gate"><b>6</b>Quick Hands</span><span class="step"><b>7</b>Anticipation</span><span class="step"><b>8</b>Footwork</span><span class="step"><b>9</b>Axe Mastery</span><span class="step"><b>10</b>Backstabber</span><span class="step"><b>11</b>Berserk</span>
     </div>
+    <p class="levelup"><b>Level-up priority</b> &mdash; raise these three each level: <strong>Ranged Skill &middot; Melee Skill &middot; Fatigue</strong>. Take <em>HP</em> when a skill rolls low.</p>
     <p style="margin-bottom:0;"><strong>Why:</strong> Quick Hands lets him bow at range and Longaxe shields the moment a wall closes. Backstabber props up his split melee skill. For a pure-damage variant, drop Backstabber/Anticipation for Berserk + Killing Frenzy and lean ranged. Same armor as Hawkeye.</p>
   </article>
 
@@ -252,6 +346,7 @@
     <div class="path">
       <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Quick Hands</span><span class="step"><b>3</b>Bullseye</span><span class="step"><b>4</b>Bags and Belts</span><span class="step"><b>5</b>Nimble</span><span class="step gate"><b>6</b>Throwing Mastery</span><span class="step"><b>7</b>Anticipation</span><span class="step"><b>8</b>Executioner</span><span class="step"><b>9</b>Duelist</span><span class="step"><b>10</b>Berserk</span><span class="step"><b>11</b>Killing Frenzy</span>
     </div>
+    <p class="levelup"><b>Level-up priority</b> &mdash; raise these three each level: <strong>Ranged Skill &middot; Fatigue &middot; HP</strong>. Grab <em>Ranged Defense</em> on a high roll.</p>
     <p style="margin-bottom:0;"><strong>Why:</strong> Throwing Mastery + Duelist makes javelins ignore armor; Executioner amplifies damage on the injuries the front line sets up. The firelance special scales off Ranged Skill, hits 2 tiles, and burns &mdash; a perfect emergency button when something engages him. Farm heavy throwables off Barbarian Reavers.</p>
   </article>
 
@@ -271,6 +366,7 @@
     <div class="path">
       <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Dodge</span><span class="step"><b>3</b>Pathfinder</span><span class="step"><b>4</b>Weapon Mastery</span><span class="step"><b>5</b>Nimble</span><span class="step gate"><b>6</b>Underdog</span><span class="step"><b>7</b>Duelist</span><span class="step"><b>8</b>Berserk</span><span class="step"><b>9</b>Killing Frenzy</span><span class="step"><b>10</b>Footwork</span><span class="step"><b>11</b>Lone Wolf</span>
     </div>
+    <p class="levelup"><b>Level-up priority</b> &mdash; raise these three each level: <strong>Melee Defense &middot; Melee Skill &middot; Initiative</strong>. Take <em>HP</em> on a high roll; Initiative feeds Dodge.</p>
     <p style="margin-bottom:0;"><strong>Why:</strong> Dodge converts his huge Initiative into defense, so at low fatigue his total defense rivals a tank. Babysit him until level 10-11, then he solos camps. Swap Lone Wolf for <em>Indomitable</em> or <em>Resilient</em> (bleeds are death to Nimble) if he sticks near the group. Keep armor near 15 fatigue penalty to max Nimble.</p>
   </article>
 
@@ -289,6 +385,7 @@
     <div class="path">
       <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Recover</span><span class="step"><b>3</b>Quick Hands</span><span class="step"><b>4</b>Cleaver Mastery</span><span class="step"><b>5</b>Battle Forged</span><span class="step gate"><b>6</b>Duelist</span><span class="step"><b>7</b>Underdog</span><span class="step"><b>8</b>Berserk</span><span class="step"><b>9</b>Killing Frenzy</span><span class="step"><b>10</b>Indomitable</span><span class="step"><b>11</b>Reach Advantage</span>
     </div>
+    <p class="levelup"><b>Level-up priority</b> &mdash; raise these three each level: <strong>Melee Skill &middot; Fatigue &middot; Melee Defense</strong>. Take <em>HP</em> when Defense rolls low.</p>
     <p style="margin-bottom:0;"><strong>Why:</strong> Duelist + Cleaver Mastery pushes bleeds through armor; Decapitate scales with the target's lost HP, so the front line softens and the Bleeder finishes. Use the Berserk-Recover combo (Recover right after a kill) to keep swinging. Run a lighter Nimble version if you can't feed its fatigue.</p>
   </article>
 
@@ -306,6 +403,7 @@
     <div class="path">
       <span class="step"><b>1</b>Colossus</span><span class="step"><b>2</b>Recover</span><span class="step"><b>3</b>Battle Forged</span><span class="step"><b>4</b>Brawny</span><span class="step"><b>5</b>Axe Mastery</span><span class="step gate"><b>6</b>Berserk</span><span class="step"><b>7</b>Killing Frenzy</span><span class="step"><b>8</b>Underdog</span><span class="step"><b>9</b>Lone Wolf</span><span class="step"><b>10</b>Indomitable</span><span class="step"><b>11</b>Nine Lives</span>
     </div>
+    <p class="levelup"><b>Level-up priority</b> &mdash; raise these three each level: <strong>Melee Skill &middot; Fatigue &middot; HP</strong>. Grab <em>Melee Defense</em> on a high roll.</p>
     <p style="margin-bottom:0;"><strong>Note:</strong> Niche &mdash; the 6-tile swing risks friendly positioning, so he wants space. Mostly a fun pick; for raw damage the Hammerfall/Reaper are safer. Underdog + Lone Wolf + Indomitable keep him alive while encircled.</p>
   </article>
 
@@ -320,7 +418,7 @@
   </div>
 
   <h3>Tanks</h3>
-  <div style="overflow-x:auto;">
+  <div class="ctable">
   <table>
     <thead><tr><th>Build</th><th>Path</th><th>Weapon</th><th>Perk path (1&rarr;11)</th><th>Stat targets (top roll)</th></tr></thead>
     <tbody>
@@ -332,7 +430,7 @@
   </div>
 
   <h3>Frontline two-handers</h3>
-  <div style="overflow-x:auto;">
+  <div class="ctable">
   <table>
     <thead><tr><th>Build</th><th>Path</th><th>Weapon</th><th>Perk path (1&rarr;11)</th><th>Stat targets (top roll)</th></tr></thead>
     <tbody>
@@ -348,7 +446,7 @@
   </div>
 
   <h3>Duelists</h3>
-  <div style="overflow-x:auto;">
+  <div class="ctable">
   <table>
     <thead><tr><th>Build</th><th>Path</th><th>Weapon</th><th>Perk path (1&rarr;11)</th><th>Stat targets (top roll)</th></tr></thead>
     <tbody>
@@ -363,7 +461,7 @@
   </div>
 
   <h3>Banner &amp; Sergeant</h3>
-  <div style="overflow-x:auto;">
+  <div class="ctable">
   <table>
     <thead><tr><th>Build</th><th>Path</th><th>Weapon</th><th>Perk path (1&rarr;11)</th><th>Stat targets (top roll)</th></tr></thead>
     <tbody>
@@ -378,7 +476,7 @@
   </div>
 
   <h3>Ranged &amp; backline</h3>
-  <div style="overflow-x:auto;">
+  <div class="ctable">
   <table>
     <thead><tr><th>Build</th><th>Path</th><th>Weapon</th><th>Perk path (1&rarr;11)</th><th>Stat targets (top roll)</th></tr></thead>
     <tbody>
