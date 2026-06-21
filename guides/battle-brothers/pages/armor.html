@@ -89,6 +89,45 @@
     <p>Fatigue is the budget armor spends. A brother starts a fight at full Fatigue and <strong>recovers ~15 per turn</strong>; attacks and skills cost fatigue to use. Subtract every armor/helmet/shield/weapon penalty from his max Fatigue &mdash; what's left has to cover at least one good attack per turn. <strong>Brawny</strong> reduces armor's fatigue penalty by 30% and is close to mandatory for heavy sets; <strong>Battle Forged</strong> is what makes 300-armor worth its weight. If a man ends up perpetually exhausted, he's over-armored &mdash; drop to a better Armor/Fat. ratio piece, not a heavier one.</p>
   </div>
 
+  <h2>What actually counts as "light" vs "heavy"?</h2>
+  <p>There's no weight <em>label</em> in the game &mdash; a set is "light" or "heavy" only in terms of which survival perk it feeds, and the two perks read your armor in completely different ways. This is the bit that confuses everyone:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Perk</th><th>What it actually reads</th><th>So you want&hellip;</th></tr></thead>
+    <tbody>
+      <tr class="wrow"><td><strong>Nimble</strong> <span class="mono">(light)</span></td><td>The <strong>combined Fatigue penalty of body + helmet only</strong>. Weapons, shields and bags don't count, and <strong>Brawny does not help it.</strong></td><td>That combined penalty as low as possible &mdash; ideally <strong>15 or under</strong>.</td></tr>
+      <tr class="wrow"><td><strong>Battle Forged</strong> <span class="mono">(heavy)</span></td><td>Your <strong>total armor points</strong> (body + helmet). It cuts incoming armor damage by 5% of your <em>current</em> total armor value.</td><td>As many armor points as you can carry &mdash; the heaviest plate.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout">
+    <span class="label">The Nimble breakpoint is 15</span>
+    <p>Nimble gives its <strong>full ~60% HP-damage reduction while body + helmet together cost 15 Fatigue or less</strong>; every point above 15 chips that reduction down. So "light" isn't a particular armor &mdash; it's a <strong>combined body+helmet Fatigue penalty kept in roughly the 15&ndash;25 band</strong>. And because only those two pieces count, a "light" brother can still be wearing a genuinely protective set.</p>
+  </div>
+
+  <div class="table-wrap"><table>
+    <caption>Nimble weight bands &mdash; body + helmet Fatigue combined (examples use our own armor stats)</caption>
+    <thead><tr><th>Combined Fatigue</th><th>Nimble result</th><th>Example set &mdash; armor points</th></tr></thead>
+    <tbody>
+      <tr class="wrow"><td><strong>&le; 15</strong></td><td>Full ~60% reduction</td><td>Leather Lamellar (95) + <strong>Sallet</strong> (120) = &minus;15 &rarr; <strong>215 armor</strong>, no vision loss</td></tr>
+      <tr class="wrow"><td>16&ndash;25</td><td>Strong but decaying (~50%)</td><td>Noble Mail (160) + Sallet (120) = &minus;20 &rarr; <strong>280 armor</strong></td></tr>
+      <tr class="wrow"><td>26+</td><td>Falling off &mdash; not worth Nimble</td><td>any 200+ body with a heavy helm &mdash; go Battle Forged instead</td></tr>
+    </tbody>
+  </table></div>
+  <p class="search-note" style="margin-top:-0.6em;">The <strong>Sallet</strong> (120 armor, only &minus;5 Fatigue, zero vision penalty) is the single best Nimble helmet &mdash; it's what lets a light set still hit ~200+ armor under the breakpoint.</p>
+
+  <h2>How much armor Fatigue can you actually carry?</h2>
+  <p>Work backwards from recovery. A brother <strong>recovers a flat +15 Fatigue at the start of each turn</strong> (12 if Asthmatic, 18 with Iron Lungs). Every attack spends Fatigue, so the number that matters is <strong>usable Fatigue = max Fatigue &minus; every gear penalty</strong> (body + helmet + shield + the weapon's Max-Fatigue cost). Keep it high enough to act <em>every</em> turn.</p>
+  <ul class="spear">
+    <li><strong>Endgame target: ~75 usable Fatigue after all gear.</strong> That covers the +15/turn tick plus a heavy swing, so the brother never stalls.</li>
+    <li><strong>Floor: enough for one main attack each turn</strong> on top of the +15 recovery. Most attacks cost 10&ndash;25 Fatigue; drop below that and he wastes turns catching his breath.</li>
+    <li><strong>Brawny is what makes heavy armor wearable</strong> &mdash; it cuts the body+helmet penalty by 30% and is close to mandatory on Battle Forged plate-wearers (it does <em>not</em> reduce weapon or shield Fatigue, and does nothing for Nimble).</li>
+  </ul>
+  <div class="callout">
+    <span class="label">Worked example &mdash; a Battle Forged two-hander</span>
+    <p>Base Fatigue <strong>130</strong>. Coat of Plates (&minus;42) + Full Helm (&minus;20) = &minus;62 from armor; a Greatsword adds &minus;12. Raw, that leaves only ~56 usable. Add <strong>Brawny</strong> and the &minus;62 armor becomes ~&minus;43, so usable Fatigue climbs to about <strong>75</strong> &mdash; right in the sweet spot. That's why heavy hitters want a <em>high base Fatigue</em> <strong>and</strong> Brawny: without it, a Coat of Plates leaves them too winded to swing.</p>
+  </div>
+  <p style="margin-bottom:0;"><strong>Quick gut check by base (no-armor) Fatigue:</strong> under ~100 &rarr; stay light and go Nimble &middot; ~110&ndash;125 &rarr; mid plate with Brawny &middot; <strong>130+ &rarr; full Coat-of-Plates Battle Forged</strong>. Archers and Nimble duelists ignore all of this and simply keep body + helmet at or under ~20 Fatigue.</p>
+
   <h2>Quick "who wears what" cheat sheet</h2>
   <div class="table-wrap"><table>
     <thead><tr><th>The brother</th><th>Body</th><th>Head</th><th>Why</th></tr></thead>
