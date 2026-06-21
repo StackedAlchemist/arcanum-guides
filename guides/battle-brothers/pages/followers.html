@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Followers (Retinue) - The Mercenary Codex</title>
+<meta name="description" content="Battle Brothers Retinue guide: every company follower (Cartographer, Lookout, Negotiator, Recruiter, Scavenger, Drill Sergeant, Surgeon, Paymaster and more), what each does, and the best picks for early, mid and late game.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  :root { --line: rgba(201,168,76,0.18); }
+  /* phase pick cards */
+  .phase-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin:1.3em 0; }
+  .phase { position:relative; border:1px solid #3a3128; border-left:3px solid var(--blood); border-radius:4px; overflow:hidden;
+    background: linear-gradient(160deg,var(--parch-dark),var(--parch-darker)); box-shadow: inset 0 0 30px rgba(0,0,0,0.35); padding:16px 18px; }
+  .phase::before { content:""; position:absolute; left:0; right:0; top:0; height:1px;
+    background:linear-gradient(90deg,transparent,var(--rust) 16%,var(--tier-s) 50%,var(--rust) 84%,transparent); opacity:.5; }
+  .phase h3 { margin-top:0; color:var(--bone); font-size:1.05rem; }
+  .phase .when { font-family:var(--font-util); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:.5rem; }
+  .phase ul { list-style:none; margin:0; }
+  .phase li { padding:.28rem 0 .28rem 1.1rem; position:relative; font-size:.92rem; color:var(--vellum); border-top:1px solid var(--line); }
+  .phase li:first-child { border-top:none; }
+  .phase li::before { content:"\25C6"; position:absolute; left:0; top:.45rem; color:var(--tier-s); font-size:.6rem; }
+  .phase li b { color:var(--bone); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">The Mercenary <span>Codex</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+    <nav class="nav">
+      <a href="../../../index.html" style="color:var(--rust);">⚗ The Arcanum</a>
+      <a href="../index.html">Home</a>
+      <a href="origins.html">Origins</a>
+      <a href="hiring.html">Hiring</a>
+      <a href="followers.html" class="active">Followers</a>
+      <a href="builds.html">Builds</a>
+      <a href="weapons.html">Weapons</a>
+      <a href="armor.html">Armor</a>
+      <a href="named.html">Named</a>
+      <a href="perks.html">Perks</a>
+      <a href="phases.html">Game Phases</a>
+      <a href="economy.html">Economy</a>
+      <a href="enemies.html">Enemies</a>
+      <a href="secrets.html">Secrets</a>
+      <a href="patch.html">Patch v1.5.2.2</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">The Retinue</span>
+    <h1>Company Followers</h1>
+    <p class="lede">Followers don't swing a sword &mdash; they run the company behind it. Each is a non-combatant who hangs a <em>permanent, company-wide</em> bonus on your banner: cheaper recruits, faster healing, recovered ammo, fatter contracts. You get only a handful of slots, so the art is matching the follower to the stage of your campaign.</p>
+  </div>
+</section>
+
+<main class="wrap section">
+
+  <div class="callout">
+    <span class="label">How the Retinue works</span>
+    <p style="margin-bottom:0.5em;">You hire followers from the company screen for an <strong>up-front cost plus a daily wage</strong>. <strong>Slots unlock as your company renown rises</strong> &mdash; the higher your renown tier (Competent, Professional&hellip;), the more followers you can keep and the better the ones on offer. Some have <strong>requirements</strong> before they'll join (the Lookout, for example, wants you to have <em>discovered 10 locations yourself</em>).</p>
+    <p style="margin-bottom:0;">You can <strong>swap a follower for another</strong> at any time for a fee, so the roster isn't permanent &mdash; rotate them as your needs change. Treat the wage like any upkeep: a follower has to <em>pay for itself</em> in saved crowns, saved time, or saved brothers.</p>
+  </div>
+
+  <input class="searchbar" type="text" data-search data-target=".wrow" placeholder="Search followers... (try 'ammo', 'recruit', 'heal', 'explore')">
+  <p class="search-note"><span data-search-count></span> &mdash; type to filter the retinue.</p>
+
+  <h2>The followers</h2>
+  <p>What each one actually does, and when it earns its wage. Sortable thinking: the best follower is the one whose bonus you're <em>currently bleeding crowns or men without</em>.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Follower</th><th>What it does</th><th>Earns its wage when&hellip;</th></tr></thead>
+    <tbody>
+      <tr class="wrow"><td><strong>The Recruiter</strong></td><td>Adds <strong>2&ndash;4 extra recruits</strong> to every town's hiring pool, <strong>&minus;10% hire cost</strong> and <strong>&minus;50% tryout cost</strong>.</td><td>You're fishing for good cheap brothers &mdash; early game, or rebuilding after losses.</td></tr>
+      <tr class="wrow"><td><strong>The Drill Sergeant</strong></td><td><strong>+20% combat XP</strong> for the whole company, and men in reserve never lose mood.</td><td>You're leveling fresh recruits or replacements &mdash; superb early and after a wipe.</td></tr>
+      <tr class="wrow"><td><strong>The Surgeon</strong></td><td>Improves the chance a downed brother <strong>survives with an injury instead of dying</strong>.</td><td>Deaths still hurt &mdash; early game and against lethal late crises.</td></tr>
+      <tr class="wrow"><td><strong>The Scavenger</strong></td><td>Recovers part of the <strong>ammo you spend</strong> each battle and produces <strong>tools when you destroy armor</strong>.</td><td>You field archers/throwers or fight constantly &mdash; near-universal value.</td></tr>
+      <tr class="wrow"><td><strong>The Quartermaster</strong></td><td>Raises stockpile caps: <strong>+100 ammo, +50 tools, +50 medicine</strong>.</td><td>You run long expeditions or a heavy ranged line and keep hitting the caps.</td></tr>
+      <tr class="wrow"><td><strong>The Lookout</strong></td><td><strong>+25% sight radius</strong> and reveals detailed footprint/track info.</td><td>You want to see fights before they see you &mdash; strong early when you must dodge bad matchups.</td></tr>
+      <tr class="wrow"><td><strong>The Cartographer</strong></td><td>Pays you crowns for <strong>discovering new locations</strong> (more the farther from a settlement, double for legendary sites).</td><td>You're exploring the map aggressively &mdash; turns scouting into steady early-mid income.</td></tr>
+      <tr class="wrow"><td><strong>The Negotiator</strong></td><td>Improves <strong>relations gains (~+50%)</strong> and softens losses, and sweetens negotiated contract pay.</td><td>You're climbing renown/relations toward the noble-house unlock &mdash; mid game.</td></tr>
+      <tr class="wrow"><td><strong>The Paymaster</strong></td><td>Reduces your company's <strong>daily wages / upkeep</strong>.</td><td>Your roster (or high-wage hires like Gladiators) is draining you &mdash; mid-late.</td></tr>
+      <tr class="wrow"><td><strong>The Blacksmith</strong></td><td>Faster / cheaper <strong>repairs</strong>, including patching gear between back-to-back fights.</td><td>You run heavy armor and fight in chains &mdash; Lone Wolf / Gladiator starts especially.</td></tr>
+      <tr class="wrow"><td><strong>The Beast Master</strong></td><td>Supplies and maintains <strong>war dogs</strong> for the company.</td><td>You lean on dogs to pin skirmishers and screen your line.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="newbox">
+    <span class="label">Roster note</span>
+    <p>This covers the core followers and their effects. The full Retinue also includes more situational hires (Cook, Alchemist, Brigand and others) and each follower has <strong>exact up-front/wage costs, renown requirements and upgrade tiers</strong>. Paste the wiki's <em>Retinue</em> page and I'll fold the complete roster + precise numbers in, like the gear and background tables.</p>
+  </div>
+
+  <h2>Best picks by stage</h2>
+  <p>You won't have many slots, so don't spread thin &mdash; take the two or three that solve your <em>current</em> problem.</p>
+  <div class="phase-grid">
+    <div class="phase">
+      <span class="when">Early game</span>
+      <h3>Build a roster &amp; stop bleeding men</h3>
+      <ul>
+        <li><b>Recruiter</b> &mdash; more, cheaper recruits to assemble a real company fast.</li>
+        <li><b>Drill Sergeant</b> &mdash; +20% XP rushes green bros to usable levels.</li>
+        <li><b>Surgeon</b> &mdash; turns would-be deaths into survivable injuries while you're fragile.</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <span class="when">Mid game</span>
+      <h3>Scale income, renown &amp; logistics</h3>
+      <ul>
+        <li><b>Negotiator</b> &mdash; faster relations/renown toward the noble-house unlock.</li>
+        <li><b>Scavenger</b> &mdash; ammo + tools start paying for themselves as fights pile up.</li>
+        <li><b>Cartographer</b> &mdash; if you're still exploring, scouting becomes steady cash.</li>
+        <li><b>Paymaster</b> &mdash; once the roster grows, rein in the daily wage bill.</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <span class="when">Late game</span>
+      <h3>Sustain crises &amp; a big roster</h3>
+      <ul>
+        <li><b>Paymaster</b> &mdash; a full veteran roster's upkeep is brutal; this is the biggest saver.</li>
+        <li><b>Quartermaster</b> + <b>Scavenger</b> &mdash; keep ammo and tools flowing through long crisis fights.</li>
+        <li><b>Blacksmith</b> &mdash; repair heavy plate between back-to-back battles.</li>
+        <li><b>Surgeon</b> &mdash; still earns its keep against lethal late enemies.</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <span class="when">Good at any time</span>
+      <h3>Near-universal value</h3>
+      <ul>
+        <li><b>Scavenger</b> &mdash; ammo + tools matter in almost every company.</li>
+        <li><b>Lookout</b> &mdash; vision to pick fights and avoid ambushes, all game.</li>
+        <li><b>Drill Sergeant</b> &mdash; you're nearly always levelling <em>someone</em>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="label">The one rule</span>
+    <p style="margin-bottom:0;">A follower is worth its wage only if you're <strong>actually using the thing it improves</strong>. A Cartographer is gold while you're exploring and dead weight once you've mapped the region; a Scavenger is wasted on a company that never throws a javelin. Re-read your last ten days of play &mdash; where are you losing crowns, time, ammo or brothers? Hire the follower that plugs that leak, and swap it out when the leak moves.</p>
+  </div>
+
+  <h2>Sources &amp; further reading</h2>
+  <div class="callout">
+    <p>Follower effects are facts from the Battle Brothers Wiki and dev blogs; the stage rankings and analysis are our own.</p>
+    <p style="margin-bottom:0;">
+      <a href="https://battlebrothers.fandom.com/wiki/Retinue" target="_blank" rel="noopener">Battle Brothers Wiki &mdash; Retinue</a> &middot;
+      <a href="economy.html">Economy &amp; Renown</a> &middot;
+      <a href="hiring.html">Hiring</a>
+    </p>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="colophon">
+      <h4>The Mercenary Codex</h4>
+      <p>Fan-made strategy compendium for <strong>Battle Brothers</strong>. Accurate to v1.5.2.2. Not affiliated with Overhype Studios or Hooded Horse.</p>
+    </div>
+    <div>
+      <h4>Sections</h4>
+      <p>
+        <a href="origins.html">Origins</a> &middot;
+        <a href="hiring.html">Hiring</a> &middot;
+        <a href="followers.html">Followers</a><br>
+        <a href="economy.html">Economy</a> &middot;
+        <a href="builds.html">Builds</a> &middot;
+        <a href="phases.html">Phases</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" aria-label="Back to top">&uarr; Top</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
