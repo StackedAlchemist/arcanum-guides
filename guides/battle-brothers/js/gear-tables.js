@@ -82,7 +82,9 @@
   var c_shield = { h: "Shield Dmg", get: function (r) { return f.txt(r.shieldDmg); }, s: function (r) { return r.shieldDmg || 0; }, num: true };
 
   var meleeCols   = [c_name, c_worth, c_dmg, c_ign, c_vs, c_dur, c_fat, c_src];
-  var axe1hCols   = [c_name, c_worth, c_dmg, c_ign, c_vs, c_shield, c_dur, c_fat, c_src];
+  var shieldDmgCols = [c_name, c_worth, c_dmg, c_ign, c_vs, c_shield, c_dur, c_fat, c_src];
+  var axe1hCols   = shieldDmgCols;
+  var headCols    = [c_name, c_worth, c_dmg, c_ign, c_vs, c_head, c_dur, c_fat, c_src];
   var melee2hCols = [c_name, c_worth, c_dmg, c_ign, c_vs, c_head, c_shield, c_dur, c_fat, c_src];
 
   /* --- armor / shield column specs --- */
@@ -143,10 +145,13 @@
     maces1h:     { data: "melee.maces1h",     cols: meleeCols },
     maces2h:     { data: "melee.maces2h",     cols: melee2hCols },
     spears:      { data: "melee.spears",      cols: meleeCols },
-    spears2h:    { data: "melee.spears2h",    cols: melee2hCols },
-    flails:      { data: "melee.flails",      cols: melee2hCols },
-    cleavers:    { data: "melee.cleavers",    cols: meleeCols },
-    hammers:     { data: "melee.hammers",     cols: melee2hCols },
+    spears2h:    { data: "melee.spears2h",    cols: headCols },
+    flails1h:    { data: "melee.flails1h",    cols: headCols },
+    flails2h:    { data: "melee.flails2h",    cols: headCols },
+    cleavers1h:  { data: "melee.cleavers1h",  cols: meleeCols },
+    cleavers2h:  { data: "melee.cleavers2h",  cols: shieldDmgCols },
+    hammers1h:   { data: "melee.hammers1h",   cols: shieldDmgCols },
+    hammers2h:   { data: "melee.hammers2h",   cols: melee2hCols },
     polearms:    { data: "melee.polearms",    cols: melee2hCols },
     "armor-body":{ data: "armor.body",        cols: bodyArmorCols },
     "armor-head":{ data: "armor.head",        cols: headArmorCols },

@@ -54,16 +54,24 @@ window.BB_GEAR = {
       { name: "Warbrand",            worth: 1600, dmgMin: 50, dmgMax: 75,  ignoreArmor: 20, vsArmor: 75,  headChance: "+5%", durability: 64, fatigue: -10, dlc: "" },
       { name: "Longsword",           worth: 1700, dmgMin: 65, dmgMax: 85,  ignoreArmor: 25, vsArmor: 100, headChance: "+5%", shieldDmg: 12, durability: 60, fatigue: -10, dlc: "Beasts & Exploration" },
       { name: "Greatsword",          worth: 3200, dmgMin: 85, dmgMax: 100, ignoreArmor: 25, vsArmor: 100, headChance: "+5%", shieldDmg: 16, durability: 72, fatigue: -12, dlc: "" },
-      { name: "Executioner's Sword", worth: 2900, dmgMin: 95, dmgMax: 110, ignoreArmor: 35, vsArmor: 90,  headChance: "+5%", shieldDmg: 16, durability: 72, fatigue: -12, dlc: "v1.5.2.2 (guide canon)" }
+      { name: "Executioner's Sword", worth: 2900, dmgMin: 95, dmgMax: 110, ignoreArmor: 35, vsArmor: 90,  headChance: "+5%", shieldDmg: 16, durability: 72, fatigue: -12, dlc: "" }
     ],
     axes1h: [
       { name: "Hatchet",            worth: 210,  dmgMin: 25, dmgMax: 40, ignoreArmor: 30, vsArmor: 110, shieldDmg: 8,  durability: 52, fatigue: -6,  dlc: "" },
       { name: "Crude Axe",          worth: 800,  dmgMin: 30, dmgMax: 40, ignoreArmor: 40, vsArmor: 120, shieldDmg: 12, durability: 82, fatigue: -12, dlc: "Warriors of the North" },
       { name: "Handaxe",            worth: 900,  dmgMin: 30, dmgMax: 45, ignoreArmor: 30, vsArmor: 120, shieldDmg: 12, durability: 68, fatigue: -10, dlc: "" },
       { name: "Fighting Axe",       worth: 2800, dmgMin: 35, dmgMax: 55, ignoreArmor: 30, vsArmor: 130, shieldDmg: 16, durability: 80, fatigue: -12, dlc: "" },
-      { name: "Head Splitter (Orc)",worth: 1100, dmgMin: 35, dmgMax: 65, ignoreArmor: 30, vsArmor: 130, shieldDmg: 16, durability: 64, fatigue: -22, dlc: "" }
+      { name: "Head Splitter (Orc)",worth: 1100, dmgMin: 35, dmgMax: 65, ignoreArmor: 30, vsArmor: 130, shieldDmg: 16, durability: 64, fatigue: -22, dlc: "" },
+      { name: "Axehammer",          worth: 800,  dmgMin: 20, dmgMax: 30, ignoreArmor: 60, vsArmor: 200, shieldDmg: 14, durability: 96, fatigue: -10, dlc: "Warriors of the North" }
     ],
-    axes2h: [], /* TODO: Greataxe, Two-Handed Axe, Bardiche, Orc Greataxe, Axehammer */
+    axes2h: [
+      { name: "Woodcutter's Axe", worth: 400,  dmgMin: 35, dmgMax: 70,  ignoreArmor: 40, vsArmor: 125, headChance: "±0%", shieldDmg: 30, durability: 48, fatigue: -14, dlc: "" },
+      { name: "Heavy Rusty Axe",  worth: 2000, dmgMin: 75, dmgMax: 90,  ignoreArmor: 50, vsArmor: 150, headChance: "±0%", shieldDmg: 36, durability: 96, fatigue: -16, dlc: "Warriors of the North" },
+      { name: "Bardiche",         worth: 2200, dmgMin: 75, dmgMax: 95,  ignoreArmor: 40, vsArmor: 130, headChance: "±0%", shieldDmg: 24, durability: 64, fatigue: -16, dlc: "Warriors of the North" },
+      { name: "Greataxe",         worth: 2400, dmgMin: 80, dmgMax: 100, ignoreArmor: 40, vsArmor: 150, headChance: "±0%", shieldDmg: 36, durability: 80, fatigue: -16, dlc: "" },
+      { name: "Man Splitter (Orc)",worth: 1500,dmgMin: 90, dmgMax: 120, ignoreArmor: 40, vsArmor: 160, headChance: "±0%", shieldDmg: 42, durability: 64, fatigue: -34, dlc: "" },
+      { name: "Longaxe",          worth: 1200, dmgMin: 70, dmgMax: 95,  ignoreArmor: 30, vsArmor: 110, headChance: "+5%", shieldDmg: 24, durability: 72, fatigue: -14, dlc: "" }
+    ],
     maces1h: [
       { name: "Wooden Stick",        worth: 35,   dmgMin: 15, dmgMax: 25, ignoreArmor: 40, vsArmor: 50,  durability: 32, fatigue: -6,  dlc: "" },
       { name: "Claw Club",           worth: 100,  dmgMin: 20, dmgMax: 30, ignoreArmor: 50, vsArmor: 75,  durability: 76, fatigue: -10, dlc: "Warriors of the North" },
@@ -97,10 +105,60 @@ window.BB_GEAR = {
       { name: "Warfork", worth: 400, dmgMin: 40, dmgMax: 60, ignoreArmor: 25, vsArmor: 100, headChance: "+5%", durability: 50, fatigue: -10, dlc: "Warriors of the North" },
       { name: "Spetum",  worth: 750, dmgMin: 55, dmgMax: 75, ignoreArmor: 25, vsArmor: 100, headChance: "+5%", durability: 60, fatigue: -14, dlc: "Beasts & Exploration" }
     ],
-    flails: [],   /* TODO: Flail, Spiked Flail, Three-Headed Flail, 2H Flail */
-    cleavers: [], /* TODO: Cleaver, Hooked Blade, Serpentine Cleaver, 2H Cleaver */
-    hammers: [],  /* TODO: Skull Hammer, War Hammer, 2H Hammer/Maul, Barbarian variants */
-    polearms: []  /* TODO: Pike, Billhook, Glaive, Longaxe, Bardiche, Pollaxe(canon) */
+    flails1h: [
+      { name: "Wooden Flail",            worth: 40,   dmgMin: 10, dmgMax: 25, ignoreArmor: 30, vsArmor: 50,  headChance: "+10%", durability: 32, fatigue: -6,  dlc: "" },
+      { name: "Reinforced Wooden Flail", worth: 300,  dmgMin: 20, dmgMax: 45, ignoreArmor: 30, vsArmor: 80,  headChance: "+10%", durability: 40, fatigue: -7,  dlc: "" },
+      { name: "Flail",                   worth: 1300, dmgMin: 25, dmgMax: 55, ignoreArmor: 30, vsArmor: 100, headChance: "+10%", durability: 72, fatigue: -8,  dlc: "" },
+      { name: "Three-Headed Flail",      worth: 1500, dmgMin: 30, dmgMax: 75, ignoreArmor: 30, vsArmor: 100, headChance: "+10%", durability: 60, fatigue: -10, dlc: "Beasts & Exploration" }
+    ],
+    flails2h: [
+      { name: "Two-Handed Wooden Flail", worth: 500,  dmgMin: 30, dmgMax: 60,  ignoreArmor: 30, vsArmor: 80,  headChance: "+15%", durability: 56, fatigue: -14, dlc: "Beasts & Exploration" },
+      { name: "Two-Handed Flail",        worth: 1400, dmgMin: 45, dmgMax: 90,  ignoreArmor: 30, vsArmor: 115, headChance: "+15%", durability: 80, fatigue: -16, dlc: "Beasts & Exploration" },
+      { name: "Berserk Chain (Orc)",     worth: 1300, dmgMin: 50, dmgMax: 100, ignoreArmor: 30, vsArmor: 125, headChance: "+15%", durability: 64, fatigue: -30, dlc: "" }
+    ],
+    cleavers1h: [
+      { name: "Antler Cleaver",     worth: 120,  dmgMin: 20, dmgMax: 30, ignoreArmor: 35, vsArmor: 75,  durability: 48, fatigue: -8,  dlc: "Warriors of the North" },
+      { name: "Butcher's Cleaver",  worth: 110,  dmgMin: 20, dmgMax: 35, ignoreArmor: 25, vsArmor: 75,  durability: 40, fatigue: -6,  dlc: "" },
+      { name: "Falx",               worth: 350,  dmgMin: 25, dmgMax: 35, ignoreArmor: 25, vsArmor: 80,  durability: 30, fatigue: -6,  dlc: "" },
+      { name: "Blunt Cleaver",      worth: 600,  dmgMin: 30, dmgMax: 40, ignoreArmor: 35, vsArmor: 80,  durability: 66, fatigue: -10, dlc: "Warriors of the North" },
+      { name: "Scramasax",          worth: 700,  dmgMin: 30, dmgMax: 45, ignoreArmor: 25, vsArmor: 80,  durability: 56, fatigue: -8,  dlc: "" },
+      { name: "Khopesh",            worth: 1300, dmgMin: 35, dmgMax: 55, ignoreArmor: 25, vsArmor: 120, durability: 42, fatigue: -10, dlc: "" },
+      { name: "Military Cleaver",   worth: 1900, dmgMin: 40, dmgMax: 60, ignoreArmor: 25, vsArmor: 90,  durability: 80, fatigue: -12, dlc: "" },
+      { name: "Head Chopper (Orc)", worth: 1100, dmgMin: 40, dmgMax: 70, ignoreArmor: 25, vsArmor: 110, durability: 52, fatigue: -18, dlc: "" },
+      { name: "Thorned Whip",       worth: 400,  dmgMin: 15, dmgMax: 25, ignoreArmor: 20, vsArmor: 30,  durability: 40, fatigue: -6,  dlc: "Warriors of the North" },
+      { name: "Battle Whip",        worth: 450,  dmgMin: 15, dmgMax: 30, ignoreArmor: 10, vsArmor: 25,  durability: 40, fatigue: -6,  dlc: "Warriors of the North / Blazing Deserts" }
+    ],
+    cleavers2h: [
+      { name: "Two-Handed Saif",     worth: 1800, dmgMin: 50, dmgMax: 70, ignoreArmor: 25, vsArmor: 90,  durability: 54, fatigue: -10, dlc: "Blazing Deserts" },
+      { name: "Rusty Warblade",      worth: 1600, dmgMin: 60, dmgMax: 80, ignoreArmor: 35, vsArmor: 110, shieldDmg: 16, durability: 52, fatigue: -18, dlc: "Warriors of the North" },
+      { name: "Crypt Cleaver",       worth: 2000, dmgMin: 60, dmgMax: 80, ignoreArmor: 25, vsArmor: 120, shieldDmg: 16, durability: 48, fatigue: -16, dlc: "" },
+      { name: "Two-Handed Scimitar", worth: 2400, dmgMin: 65, dmgMax: 85, ignoreArmor: 25, vsArmor: 110, shieldDmg: 16, durability: 64, fatigue: -14, dlc: "Blazing Deserts" }
+    ],
+    hammers1h: [
+      { name: "Pickaxe",       worth: 120,  dmgMin: 15, dmgMax: 30, ignoreArmor: 50, vsArmor: 150, durability: 56,  fatigue: -10, dlc: "" },
+      { name: "Axehammer",     worth: 800,  dmgMin: 20, dmgMax: 30, ignoreArmor: 60, vsArmor: 200, shieldDmg: 14, durability: 96, fatigue: -10, dlc: "Warriors of the North" },
+      { name: "Military Pick", worth: 900,  dmgMin: 20, dmgMax: 35, ignoreArmor: 50, vsArmor: 200, durability: 80,  fatigue: -8,  dlc: "" },
+      { name: "Warhammer",     worth: 2300, dmgMin: 30, dmgMax: 40, ignoreArmor: 50, vsArmor: 225, durability: 100, fatigue: -8,  dlc: "" }
+    ],
+    hammers2h: [
+      { name: "Two-Handed Mallet",       worth: 500,  dmgMin: 40, dmgMax: 70, ignoreArmor: 50, vsArmor: 150, shieldDmg: 20, durability: 50,  fatigue: -14, dlc: "Beasts & Exploration" },
+      { name: "Two-Handed Skull Hammer", worth: 1300, dmgMin: 45, dmgMax: 65, ignoreArmor: 60, vsArmor: 180, shieldDmg: 26, durability: 120, fatigue: -16, dlc: "Warriors of the North" },
+      { name: "Two-Handed Hammer",       worth: 2000, dmgMin: 60, dmgMax: 90, ignoreArmor: 50, vsArmor: 200, shieldDmg: 26, durability: 120, fatigue: -18, dlc: "" },
+      { name: "Polehammer",              worth: 1500, dmgMin: 50, dmgMax: 75, ignoreArmor: 50, vsArmor: 185, headChance: "+5%", durability: 100, fatigue: -14, dlc: "Beasts & Exploration" }
+    ],
+    polearms: [
+      { name: "Pitchfork",                 worth: 150,  dmgMin: 30, dmgMax: 50, ignoreArmor: 30, vsArmor: 75,  headChance: "+5%", durability: 40, fatigue: -14, dlc: "" },
+      { name: "Broken Ancient Bladed Pike",worth: 350,  dmgMin: 35, dmgMax: 55, ignoreArmor: 30, vsArmor: 80,  headChance: "+5%", durability: 26, fatigue: -12, dlc: "" },
+      { name: "Hooked Blade",              worth: 700,  dmgMin: 40, dmgMax: 70, ignoreArmor: 30, vsArmor: 110, headChance: "+5%", durability: 55, fatigue: -12, dlc: "" },
+      { name: "Jagged Pike",               worth: 800,  dmgMin: 50, dmgMax: 70, ignoreArmor: 25, vsArmor: 90,  headChance: "+5%", durability: 40, fatigue: -8,  dlc: "" },
+      { name: "Battle Standard",           worth: 1500, dmgMin: 50, dmgMax: 70, ignoreArmor: 30, vsArmor: 100, headChance: "±0%", durability: 64, fatigue: -15, dlc: "" },
+      { name: "Ancient Bladed Pike",       worth: 600,  dmgMin: 55, dmgMax: 80, ignoreArmor: 30, vsArmor: 125, headChance: "+5%", durability: 30, fatigue: -14, dlc: "" },
+      { name: "Warscythe",                 worth: 700,  dmgMin: 55, dmgMax: 80, ignoreArmor: 30, vsArmor: 105, headChance: "±0%", durability: 36, fatigue: -16, dlc: "" },
+      { name: "Pike",                      worth: 900,  dmgMin: 60, dmgMax: 80, ignoreArmor: 30, vsArmor: 100, headChance: "+5%", durability: 64, fatigue: -14, dlc: "" },
+      { name: "Swordlance",                worth: 1300, dmgMin: 60, dmgMax: 80, ignoreArmor: 30, vsArmor: 90,  headChance: "±0%", durability: 52, fatigue: -14, dlc: "Blazing Deserts" },
+      { name: "Billhook",                  worth: 1400, dmgMin: 55, dmgMax: 85, ignoreArmor: 30, vsArmor: 140, headChance: "+5%", durability: 72, fatigue: -14, dlc: "" },
+      { name: "Pollaxe",                   worth: 3000, dmgMin: 50, dmgMax: 75, ignoreArmor: 40, vsArmor: 110, headChance: "+5%", shieldDmg: 24, durability: 72, fatigue: -13, dlc: "" }
+    ]
   },
 
   /* ================= ARMOR ================= */
