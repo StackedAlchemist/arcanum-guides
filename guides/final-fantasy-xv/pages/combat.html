@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Combat &amp; Warp-Strikes | FF XV Field Guide | The Arcanum</title>
+<meta name="description" content="Final Fantasy XV combat: warp-strikes and point-warps, four-weapon switching, phasing and parries, the MP and Stasis economy, Armiger, and Wait Mode." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">Final Fantasy <span>XV</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a class="home" href="../../final-fantasy/index.html">&#10022; All FF</a>
+        <a href="../index.html">Home</a>
+        <a href="combat.html" class="active">Combat</a>
+        <a href="party.html">The Brotherhood</a>
+        <a href="ascension.html">Ascension</a>
+        <a href="weapons.html">Weapons &amp; Magic</a>
+        <a href="endgame.html">Hunts &amp; Endgame</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The Fundamentals</span>
+      <h1>Combat &amp; Warp-Strikes</h1>
+      <p class="lede">XV's combat is fast and forgiving on the surface &mdash; hold one button to attack, one to defend &mdash; but underneath is a positioning game built on <em>warping</em> and an <em>MP economy</em> that punishes mashing. Learn to warp, phase and manage MP, and you'll out-tempo anything in Lucis.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">01 &middot; The Buttons</span><h2 class="s-title">Your kit</h2><div class="s-rule"></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Action</th><th>Default (PS4)</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td>Attack</td><td>Hold &#9711;</td><td>Auto-combos with the equipped weapon. The <em>attack changes</em> with your movement &mdash; standing, running, after a dodge, or in the air all produce different strings.</td></tr>
+            <tr><td>Defend / Phase</td><td>Hold L1</td><td>While held and you have MP, Noctis <strong>phases</strong> through incoming attacks (spending MP per dodge). The core defensive tool.</td></tr>
+            <tr><td>Parry</td><td>Attack + Defend on the prompt</td><td>When an enemy winds up a <em>parryable</em> blow, a prompt flashes &mdash; answer it to parry and open a heavy counter (often a brother link-strike).</td></tr>
+            <tr><td>Warp-Strike</td><td>Hold/press Triangle on a target</td><td>Teleport onto an enemy for a hit whose damage <strong>scales with distance</strong>. Costs MP. Your opener, gap-closer and finisher.</td></tr>
+            <tr><td>Point-Warp</td><td>Triangle on a warp point</td><td>Warp to a ledge/structure to hang safely &mdash; <strong>recovers MP and HP</strong> and breaks line of sight. How you reset a fight.</td></tr>
+            <tr><td>Switch weapon</td><td>D-pad</td><td>Swap among your four equipped weapons mid-combo to cover air, ground, ranged and armor-break needs.</td></tr>
+            <tr><td>Technique</td><td>L1 + face button</td><td>Order a brother's Technique (see <a href="party.html">The Brotherhood</a>). Builds on its own Tech bar.</td></tr>
+            <tr><td>Item</td><td>R1 + face button</td><td>Quick-use potions, elixirs and spells. There is no heal spell by default &mdash; items keep you alive.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">02 &middot; The economy</span><h2 class="s-title">MP, Stasis &amp; the rhythm of a fight</h2><div class="s-rule"></div>
+        <p>Almost everything good costs MP: warping, phasing, Armiger. Your skill ceiling is really <em>MP management</em>.</p>
+        <ul class="list">
+          <li><strong>Stasis is the punishment.</strong> Burn your MP bar to zero and you enter <em>Stasis</em> &mdash; no warping, no phasing, no Armiger &mdash; until you recover. Don't phase-spam your way into being defenceless.</li>
+          <li><strong>Point-warp to refuel.</strong> Warping to a warp point steadily restores MP (and HP) while you hang there, hidden. The loop is: warp-strike in, fight, retreat to a perch when MP runs low, drop back in.</li>
+          <li><strong>"Danger" instead of instant death.</strong> At 0 HP you enter Danger &mdash; a shrinking max-HP downed state where a brother or a Phoenix Down can revive you. Heal before the timer runs out or it's game over.</li>
+          <li><strong>Warp-strike for damage <em>and</em> safety.</strong> A long-range warp-strike hits hardest and repositions you out of a telegraph at the same time. Distance = damage.</li>
+        </ul>
+        <div class="callout"><strong>The core loop:</strong> warp-strike to open &rarr; combo and switch weapons for weak points &rarr; phase the big hits &rarr; when MP dips, point-warp to a perch to refuel &rarr; drop back in. Manage that and most fights are a formality.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">03 &middot; Weak points &amp; weapons</span><h2 class="s-title">Hit the right thing with the right weapon</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Different weapons, different jobs.</strong> Greatswords and the warp-strike break armor and stagger; daggers shred fast; polearms reach and hit air; firearms and machinery poke from range. Equipping a spread of four covers every situation &mdash; details on <a href="weapons.html">Weapons &amp; Magic</a>.</li>
+          <li><strong>Weaknesses are real.</strong> Use <em>Libra</em> / Analyze (and Prompto's Analyze) to read an enemy's elemental and weapon weaknesses, then load the right element via Ignis's <em>Enhancement</em> or an elemancy spell.</li>
+          <li><strong>Blindside &amp; link-strikes.</strong> Attacking from behind an enemy triggers a <em>blindside</em> bonus and can chain a brother into a cooperative link-strike for big damage.</li>
+        </ul>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">04 &middot; Power moves</span><h2 class="s-title">Armiger, Armiger Unleashed &amp; Wait Mode</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Armiger.</strong> A gauge fills as you fight and land Royal Arms hits; unleash it to call the 13 phantom blades of the Lucii and enter a high-damage, hard-to-stagger state for its duration. Save it for tough enemies or a clutch moment.</li>
+          <li><strong>Armiger Unleashed</strong> <em>(Royal/Windows Edition)</em> &mdash; a special free-form Armiger combo you can trigger when the gauge is full, layering even more burst on top.</li>
+          <li><strong>Wait Mode.</strong> An optional tactical layer: stop moving and time slows, letting you survey the field and tag weak points (it trades a small damage penalty for breathing room). Tune it &mdash; or turn it off &mdash; in the settings to match how active you want combat to feel.</li>
+        </ul>
+        <div class="newbox"><span class="label">Two free habits</span>Open every engagement with a long-range warp-strike, and treat warp points as your "reload." New players die in Stasis with a full party watching &mdash; veterans never let the MP bar bottom out without a perch in mind.</div>
+      </section>
+
+      <div class="pager">
+        <a href="../index.html">&larr; Guide Home</a>
+        <a href="party.html">The Brotherhood &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Final Fantasy XV &mdash; Field Guide</p>
+    <p>A fan-made guide under <a href="../../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy XV is &copy; Square Enix.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
