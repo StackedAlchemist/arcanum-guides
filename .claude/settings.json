@@ -13,7 +13,27 @@
       "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --hide-scrollbars --window-size=1100,2800 --screenshot=\"/c/tmp/stel-nomads.png\" --virtual-time-budget=2400 \"file:///c:/Users/billy/OneDrive/Desktop/Stacked%20Alchemist/Gaming%20Guides/arcanum-guides/guides/stellaris/pages/nomads.html\")",
       "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --hide-scrollbars --window-size=1100,3000 --screenshot=\"/c/tmp/stel-playbook.png\" --virtual-time-budget=2400 \"file:///c:/Users/billy/OneDrive/Desktop/Stacked%20Alchemist/Gaming%20Guides/arcanum-guides/guides/stellaris/pages/playbook.html\")",
       "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --hide-scrollbars --window-size=1300,4200 --screenshot=\"/c/tmp/bb-builds.png\" --virtual-time-budget=2600 \"file:///c:/Users/billy/OneDrive/Desktop/Stacked%20Alchemist/Gaming%20Guides/arcanum-guides/guides/battle-brothers/pages/builds.html\")",
-      "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --hide-scrollbars --window-size=1300,1400 --screenshot=\"/c/tmp/bb-econ2.png\" --virtual-time-budget=2400 \"file:///c:/Users/billy/OneDrive/Desktop/Stacked%20Alchemist/Gaming%20Guides/arcanum-guides/guides/battle-brothers/pages/economy.html\")"
+      "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --hide-scrollbars --window-size=1300,1400 --screenshot=\"/c/tmp/bb-econ2.png\" --virtual-time-budget=2400 \"file:///c:/Users/billy/OneDrive/Desktop/Stacked%20Alchemist/Gaming%20Guides/arcanum-guides/guides/battle-brothers/pages/economy.html\")",
+      "WebFetch(domain:en.namu.wiki)",
+      "WebFetch(domain:mygamingtutorials.com)",
+      "WebFetch(domain:r.jina.ai)",
+      "WebFetch(domain:www.magicgameworld.com)",
+      "WebFetch(domain:bloodngold.com)",
+      "WebFetch(domain:web.archive.org)",
+      "Bash(python -c \"from PIL import Image; im=Image.open\\('bb-weapons.png'\\); im.crop\\(\\(0,2250,1280,3750\\)\\).save\\('bb-crop.png'\\); print\\('ok',im.size\\)\")",
+      "Bash(py -c \"from PIL import Image; im=Image.open\\('bb-weapons.png'\\); im.crop\\(\\(0,2250,1280,3750\\)\\).save\\('bb-crop.png'\\); print\\('ok',im.size\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --dump-dom \"https://battlebrothers.fandom.com/wiki/Hammers\")",
+      "Bash(python -c \"from PIL import Image; im=Image.open\\('C:/tmp/bb-hiring.png'\\); print\\(im.size\\); im.crop\\(\\(0,1500,1280,3300\\)\\).save\\('C:/tmp/h1.png'\\)\")",
+      "Bash(python -c \"from PIL import Image; im=Image.open\\('C:/tmp/bb-w.png'\\); im.crop\\(\\(0,4500,1280,6100\\)\\).save\\('C:/tmp/wB.png'\\)\")",
+      "Bash(python -c \"from PIL import Image; im=Image.open\\('C:/tmp/bb-w.png'\\); im.crop\\(\\(0,6100,1280,7700\\)\\).save\\('C:/tmp/wC.png'\\)\")",
+      "Bash(python -c \"from PIL import Image; im=Image.open\\('C:/tmp/bb-w.png'\\); im.crop\\(\\(0,7700,1280,9000\\)\\).save\\('C:/tmp/wD.png'\\)\")",
+      "Bash(python -c \"from PIL import Image; im=Image.open\\('C:/tmp/bb-a.png'\\); im.crop\\(\\(0,5200,1280,6600\\)\\).save\\('C:/tmp/aHel.png'\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(python -c \"from PIL import Image; im=Image.open\\('C:/tmp/bb-bld.png'\\); im.crop\\(\\(0,6900,1280,8100\\)\\).save\\('C:/tmp/b3.png'\\)\")",
+      "Bash(python -c \"from PIL import Image; im=Image.open\\('C:/tmp/bb-arm.png'\\); im.crop\\(\\(0,8400,1280,9500\\)\\).save\\('C:/tmp/ar2.png'\\)\")",
+      "Bash(python -c \"from PIL import Image; im=Image.open\\('C:/tmp/bb-arm2.png'\\); im.crop\\(\\(0,11950,1280,12500\\)\\).save\\('C:/tmp/ar4.png'\\)\")",
+      "Bash(git commit *)"
     ],
     "additionalDirectories": [
       "c:\\c\\Users\\billy\\OneDrive\\Desktop\\Stacked Alchemist\\Gaming Guides\\arcanum-guides\\guides\\diablo-4\\pages"
