@@ -199,6 +199,12 @@ main{padding:2.4rem 0 4rem; position:relative; z-index:2;}
   background:linear-gradient(100deg, transparent, rgba(121,212,255,0.07), transparent); transform:skewX(-18deg); transition:left .5s;}
 .card:hover{transform:translateY(-5px); border-color:var(--emerald); box-shadow:0 20px 50px -22px #000, var(--glow-em);}
 .card:hover::after{left:130%;}
+.card .thumb{margin:-1.2rem -1.25rem 1rem; height:158px; background-size:cover; background-position:center top;
+  border-bottom:1px solid var(--steel); position:relative;}
+.card .thumb::after{content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg, rgba(8,11,17,0) 35%, var(--gunmetal) 98%);}
+.card.big .thumb{height:196px;}
+.card:hover .thumb{filter:saturate(1.12) brightness(1.05);}
 .card .ct{display:flex; align-items:flex-start; justify-content:space-between; gap:.8rem;}
 .card h3{font-family:var(--cyber); font-weight:600; font-size:1.18rem; color:#fff; letter-spacing:.01em; line-height:1.2;}
 .card .blurb{color:var(--text2); font-size:.9rem; margin:.55rem 0 .9rem; flex:1;}

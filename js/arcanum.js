@@ -81,7 +81,8 @@
     var open = '<a class="card' + (big ? " big" : "") + (clickable ? "" : " dim") + '"' + accent +
       (clickable ? ' href="' + esc(g.href) + '"' : ' aria-disabled="true"') +
       ' data-title="' + esc(g.title).toLowerCase() + '" data-genres="' + esc((g.genres || []).join(" ")).toLowerCase() + '" data-blurb="' + esc(g.blurb).toLowerCase() + '">';
-    return open +
+    var thumb = g.card ? '<div class="thumb" style="background-image:url(\'' + esc(g.card) + '\')"></div>' : "";
+    return open + thumb +
       '<div class="ct"><h3>' + esc(g.title) + "</h3>" + badge + "</div>" +
       '<p class="blurb">' + esc(g.blurb) + "</p>" +
       '<div class="foot"><div class="tags">' + tags + "</div>" +

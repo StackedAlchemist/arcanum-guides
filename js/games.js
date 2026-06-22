@@ -45,6 +45,7 @@ const GAMES = [
     status: "live",
     featured: true,
     accent: "#7c2c1c",
+    card: "assets/images/bb-card.jpg",
     updated: "Jun 2026"
   },
   {
@@ -56,6 +57,7 @@ const GAMES = [
     status: "live",
     featured: true,
     accent: "#c9871f",
+    card: "assets/images/satisfactory-card.jpg",
     updated: "Updated Jun 2026"
   },
   {
@@ -81,6 +83,7 @@ const GAMES = [
     status: "live",
     featured: false,
     accent: "#5a3f8a",
+    card: "assets/images/stellaris-card.jpg",
     updated: "Jun 2026"
   },
   {

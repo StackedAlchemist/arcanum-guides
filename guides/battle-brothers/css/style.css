@@ -164,6 +164,11 @@ em { color: var(--rust); }
   text-align: center;
   border-bottom: 1px solid var(--steel);
   overflow: hidden;
+  background-image:
+    linear-gradient(180deg, rgba(12,9,7,0.58), rgba(12,9,7,0.90)),
+    url("../../../assets/images/bb-hero.jpg");
+  background-size: cover;
+  background-position: center;
 }
 .hero::before {
   content: "";
