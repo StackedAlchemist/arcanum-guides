@@ -1,100 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Arcanum - Game Guides by Stacked Alchemist</title>
-<meta name="description" content="Deep, current game guides forged by Stacked Alchemist. Builds, strategies, and secrets for the games worth mastering.">
-<meta property="og:title" content="The Arcanum - Game Guides by Stacked Alchemist">
-<meta property="og:description" content="Deep, current game guides forged by Stacked Alchemist.">
-<meta property="og:type" content="website">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Arcanum — Game Mastery Guides, forged by Stacked Alchemist</title>
+<meta name="description" content="Deep, current game mastery guides forged by Stacked Alchemist. Builds, strategies, enemy tactics and the secrets the tutorials never tell you — for the ones who play to master. RTS, ARPG, JRPG, simulation and more." />
+<meta name="theme-color" content="#05070a" />
+<link rel="canonical" href="https://thearcanumguides.com/" />
+<meta property="og:title" content="The Arcanum — forged for the ones who play to master" />
+<meta property="og:description" content="Deep, current game mastery guides forged by Stacked Alchemist." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thearcanumguides.com/" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/hub.css">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/arcanum.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "The Arcanum",
+  "alternateName": "The Arcanum Guides",
+  "url": "https://thearcanumguides.com/",
+  "description": "Deep, current game mastery guides forged by Stacked Alchemist.",
+  "publisher": { "@type": "Organization", "name": "Stacked Alchemist LLC", "url": "https://stackedalchemist.dev" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://thearcanumguides.com/#search?q={query}",
+    "query-input": "required name=query"
+  }
+}
+</script>
 </head>
 <body>
 
-<canvas id="ambient" aria-hidden="true"></canvas>
+<canvas id="storm" aria-hidden="true"></canvas>
+<div id="flash" aria-hidden="true"></div>
 
-<header class="topbar">
-  <div class="topbar-inner">
-    <a class="brand" href="index.html">
-      <span class="alembic">&#9879;</span>
-      <span>The Arcanum<small>A Stacked Alchemist Property</small></span>
-    </a>
-    <nav class="topbar-links">
-      <a href="suggest.html">Share an Idea</a>
-      <a href="https://stackedalchemist.dev" target="_blank" rel="noopener">Stacked Alchemist</a>
-      <a href="https://stackedalchemist.dev/lab.html" target="_blank" rel="noopener">The Laboratory</a>
-      <a href="https://stackedalchemist.dev/mission.html" target="_blank" rel="noopener">The Mission</a>
-    </nav>
-  </div>
-</header>
+<div class="page">
 
-<section class="hero">
-  <div class="hero-glyphs" aria-hidden="true">
-    <span style="--x:7%;--y:28%;--d:0s;--t:19s;">&#9879;</span>
-    <span style="--x:90%;--y:20%;--d:3s;--t:23s;">&#9791;</span>
-    <span style="--x:15%;--y:74%;--d:6s;--t:21s;">&#9881;</span>
-    <span style="--x:84%;--y:70%;--d:2s;--t:25s;">&#9788;</span>
-    <span style="--x:49%;--y:86%;--d:8s;--t:20s;">&#10038;</span>
-    <span style="--x:73%;--y:44%;--d:5s;--t:27s;">&#9790;</span>
-  </div>
-  <div class="wrap">
-    <div class="sigil-ring" aria-hidden="true"><span class="sigil-core">&#9879;</span></div>
-    <span class="eyebrow">Forged for the ones who play to master</span>
-    <h1>The Arcanum</h1>
-    <p class="lede">Deep, current game guides. Builds, strategies, enemy tactics, and the secrets the tutorials never tell you. One game at a time, done properly.</p>
-    <span class="hub-counts" id="hub-counts"></span>
-
-    <div class="search-zone">
-      <input type="text" id="hub-search" placeholder="Search the collection by game or genre...">
-      <p id="search-note"></p>
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="index.html">
+        <span class="alembic">&#9879;</span>
+        <span>The <b>Arcanum</b><span class="sub">Stacked Alchemist Forge</span></span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <div class="has-dd">
+          <button class="navbtn" aria-haspopup="true">Games &#9662;</button>
+          <div class="dd" id="dd-games"></div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="forge.html">The Forge</a>
+        <a href="suggest.html">Share an Idea</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<main class="wrap">
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-glyphs" aria-hidden="true">
+      <span style="--x:7%;--y:26%;--d:0s;--t:19s;">&#9879;</span>
+      <span style="--x:90%;--y:18%;--d:3s;--t:23s;">&#9889;</span>
+      <span style="--x:14%;--y:72%;--d:6s;--t:21s;">&#9881;</span>
+      <span style="--x:85%;--y:68%;--d:2s;--t:25s;">&#9790;</span>
+      <span style="--x:49%;--y:84%;--d:8s;--t:20s;">&#10070;</span>
+      <span style="--x:72%;--y:42%;--d:5s;--t:27s;">&#9211;</span>
+    </div>
+    <div class="inner">
+      <div class="sigil" aria-hidden="true">&#9879;</div>
+      <span class="eyebrow">Forged for the ones who play to master</span>
+      <h1 data-glitch="THE ARCANUM">The Arcanum</h1>
+      <p class="tagline">An arcane library struck by lightning &mdash; deep guides for the games worth mastering.</p>
+      <div class="counts" id="counts"></div>
 
-  <!-- FEATURED -->
-  <section class="section" id="featured-section">
-    <div class="section-label">Featured</div>
-    <div class="featured-grid" id="featured-grid"></div>
+      <div class="search-zone">
+        <input type="text" id="search" autocomplete="off" placeholder="Search the collection — game or genre (try &lsquo;RTS&rsquo;, &lsquo;ARPG&rsquo;, &lsquo;Factorio&rsquo;)" />
+        <p id="search-note"></p>
+      </div>
+    </div>
   </section>
 
-  <!-- BY GENRE (built by hub.js) -->
-  <div class="section">
-    <div class="section-label">The Full Collection</div>
-    <div id="genre-sections"></div>
-  </div>
+  <main class="wrap">
 
-</main>
-
-<footer class="footer">
-  <div class="wrap">
-    <div class="col">
-      <h4>&#9879; The Arcanum</h4>
-      <p>A gaming property of <a href="https://stackedalchemist.dev" target="_blank" rel="noopener">Stacked Alchemist LLC</a>. Est. 2026 &middot; Mesa, Arizona.</p>
-      <p class="quote">Built from experience. Built for the ones who play to master, not just to pass the time.</p>
-    </div>
-    <div class="col">
-      <h4>Elsewhere</h4>
-      <div class="links">
-        <a href="suggest.html">Share an Idea</a>
-        <a href="https://stackedalchemist.dev" target="_blank" rel="noopener">Main site</a>
-        <a href="https://stackedalchemist.dev/lab.html" target="_blank" rel="noopener">The Laboratory</a>
-        <a href="https://github.com/StackedAlchemist" target="_blank" rel="noopener">GitHub</a>
+    <!-- personal intro -->
+    <section class="section reveal">
+      <div class="lorebox">
+        <p>I grew up on <strong>Mario RPG</strong>, <strong>Joust</strong> and <strong>Rampage</strong>, cut my teeth on <strong>Brood War</strong> macro and <strong>Diablo</strong> loot, raided in <strong>WoW</strong>, and now lose weekends to <strong>Factorio</strong> trains and <strong>Satisfactory</strong> belts. I love deep systems &mdash; the kind that reward a tactician who reads the machine and bends it.</p>
+        <p>The Arcanum is where I forge that obsession into <strong>mastery guides</strong>: no padding, no SEO sludge, just the builds, the math, and the secrets the tutorials never tell you. If you play to master, not just to pass the time &mdash; this is your library.</p>
       </div>
-      <p style="margin-top:18px;">&copy; <span id="year">2026</span> Stacked Alchemist LLC. Game names and content belong to their respective developers and publishers. Guides are fan-made and unaffiliated.</p>
-    </div>
-  </div>
-</footer>
+    </section>
 
-<button class="totop" aria-label="Back to top">&uarr; Top</button>
+    <!-- genre rail -->
+    <section class="section reveal">
+      <div class="section-label">Choose your discipline</div>
+      <div class="genre-rail" id="genre-rail"></div>
+    </section>
+
+    <!-- featured -->
+    <section class="section reveal" id="featured-section">
+      <div class="section-label">Featured Workings</div>
+      <div class="featured-grid" id="featured-grid"></div>
+    </section>
+
+    <!-- full collection by genre -->
+    <section class="section">
+      <div class="section-label">The Full Collection</div>
+      <div id="genre-sections"></div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="col">
+        <svg class="crest" viewBox="0 0 54 64" fill="none" aria-hidden="true">
+          <path d="M27 2 L50 11 V32 C50 48 40 57 27 62 C14 57 4 48 4 32 V11 Z" stroke="#15c98a" stroke-width="1.6" fill="rgba(21,201,138,0.05)"/>
+          <path d="M27 12 L33 26 L27 22 L21 26 Z" fill="#2aa6ff" opacity="0.9"/>
+          <path d="M27 24 L31 34 L27 31 L23 34 Z" fill="#79d4ff" opacity="0.8"/>
+          <path d="M24 36 L30 36 L25 46 L31 46 L22 58 L26 47 L21 47 Z" fill="#3df0b4"/>
+          <circle cx="27" cy="9" r="1.4" fill="#c9a24b"/>
+        </svg>
+        <h4>&#9879; The Arcanum</h4>
+        <p>A gaming property of <a href="https://stackedalchemist.dev" target="_blank" rel="noopener">Stacked Alchemist LLC</a>. Est. 2026 &middot; Mesa, Arizona.</p>
+        <p class="sig">&ldquo;Forged by Stacked Alchemist &mdash; for the ones who play to master.&rdquo;</p>
+      </div>
+      <div class="col">
+        <h4>Navigate</h4>
+        <div class="links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About the Alchemist</a>
+          <a href="forge.html">The Forge &mdash; Updates</a>
+          <a href="suggest.html">Share an Idea</a>
+        </div>
+      </div>
+      <div class="col">
+        <h4>Elsewhere</h4>
+        <div class="links">
+          <a href="https://stackedalchemist.dev" target="_blank" rel="noopener">Main site</a>
+          <a href="https://stackedalchemist.dev/lab.html" target="_blank" rel="noopener">The Laboratory</a>
+          <a href="https://github.com/StackedAlchemist" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="fine">
+        &copy; <span id="year">2026</span> Stacked Alchemist LLC &middot; Ravenclaw at heart &middot; Last forged <span data-last-forged>recently</span>. Game names and content belong to their respective developers and publishers. Guides are fan-made and unaffiliated.
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
 
 <script src="js/games.js"></script>
-<script src="js/hub.js"></script>
-<script src="js/ambient.js"></script>
+<script src="js/storm.js"></script>
+<script src="js/arcanum.js"></script>
 </body>
 </html>

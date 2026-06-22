@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Forge — Updates &amp; Devlog | The Arcanum</title>
+<meta name="description" content="The Forge: what's new in The Arcanum. New guides, big updates, and what's heating up next — a running devlog from Stacked Alchemist." />
+<meta name="theme-color" content="#05070a" />
+<link rel="canonical" href="https://thearcanumguides.com/forge.html" />
+<meta property="og:title" content="The Forge — Updates | The Arcanum" />
+<meta property="og:description" content="What's new in The Arcanum — new guides and updates." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/arcanum.css">
+<style>
+  .timeline{position:relative; margin:1.5rem 0; padding-left:1.8rem;}
+  .timeline::before{content:""; position:absolute; left:6px; top:6px; bottom:6px; width:2px; background:linear-gradient(var(--emerald), var(--volt), transparent);}
+  .entry{position:relative; margin-bottom:1.6rem;}
+  .entry::before{content:""; position:absolute; left:-1.8rem; top:.5rem; width:13px; height:13px; border-radius:50%; background:var(--gunmetal); border:2px solid var(--emerald); box-shadow:var(--glow-em);}
+  .entry .date{font-family:var(--mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--volt-glow);}
+  .entry .e-card{border:1px solid var(--steel); border-left:2px solid var(--emerald); border-radius:8px; background:var(--gunmetal); padding:1rem 1.2rem; margin-top:.4rem;}
+  .entry h3{font-family:var(--cyber); font-weight:600; font-size:1.1rem; color:#fff; margin-bottom:.3rem;}
+  .entry p{color:var(--text2); font-size:.92rem; margin:0;}
+  .entry .tags{margin-top:.6rem; display:flex; gap:.3rem; flex-wrap:wrap;}
+  .entry .tag{font-family:var(--mono); font-size:.56rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text3); border:1px solid var(--line); padding:.16rem .42rem; border-radius:4px;}
+</style>
+</head>
+<body>
+
+<canvas id="storm" aria-hidden="true"></canvas>
+<div id="flash" aria-hidden="true"></div>
+
+<div class="page">
+  <header class="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="index.html"><span class="alembic">&#9879;</span><span>The <b>Arcanum</b><span class="sub">Stacked Alchemist Forge</span></span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="has-dd"><button class="navbtn" aria-haspopup="true">Games &#9662;</button><div class="dd" id="dd-games"></div></div>
+        <a href="about.html">About</a>
+        <a href="forge.html" class="active">The Forge</a>
+        <a href="suggest.html">Share an Idea</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="breadcrumbs"><a href="index.html">The Arcanum</a><span>&rsaquo;</span>The Forge</div>
+
+    <section class="hero" style="padding:3rem 0 1.2rem;">
+      <div class="inner" style="text-align:left;">
+        <span class="eyebrow">What's heating in the forge</span>
+        <h1 style="font-size:clamp(2.2rem,7vw,4rem);">The Forge</h1>
+        <p class="tagline">New guides, big updates, and what's on the anvil next.</p>
+      </div>
+    </section>
+
+    <main>
+      <section class="reveal">
+        <div class="timeline">
+
+          <div class="entry">
+            <div class="date">Latest &middot; Jun 2026</div>
+            <div class="e-card">
+              <h3>Final Fantasy XV joins the library</h3>
+              <p>A full multi-page FF XV guide &mdash; warp-strike combat, the Brotherhood's Techniques, the Ascension grid, weapons &amp; Royal Arms, elemancy, hunts and the menace dungeons. <a href="guides/final-fantasy/index.html">See the FF hub &rarr;</a></p>
+              <div class="tags"><span class="tag">New Guide</span><span class="tag">JRPG</span></div>
+            </div>
+          </div>
+
+          <div class="entry">
+            <div class="date">Jun 2026</div>
+            <div class="e-card">
+              <h3>Final Fantasy XVI forged</h3>
+              <p>The complete XVI guide: the stagger loop, all eight Eikons and their abilities, the Mastery build system, every boss and the Hunt board, plus both DLC. <a href="guides/final-fantasy-xvi/index.html">Open the guide &rarr;</a></p>
+              <div class="tags"><span class="tag">New Guide</span><span class="tag">Action-RPG</span></div>
+            </div>
+          </div>
+
+          <div class="entry">
+            <div class="date">Jun 2026</div>
+            <div class="e-card">
+              <h3>Battle Brothers — Build Planner groundwork</h3>
+              <p>Extracted the full perk tree to a data file and slugged the gear/background datasets &mdash; the foundation for an interactive, shareable build planner. <a href="guides/battle-brothers/index.html">Open the codex &rarr;</a></p>
+              <div class="tags"><span class="tag">Update</span><span class="tag">Tooling</span></div>
+            </div>
+          </div>
+
+          <div class="entry">
+            <div class="date">Ongoing</div>
+            <div class="e-card">
+              <h3>On the anvil</h3>
+              <p>Filling out the Final Fantasy mainline (VIII, IX, X, XII, XIII), plus deeper RTS and automation coverage. Want something bumped up the queue? <a href="suggest.html">Tell the forge.</a></p>
+              <div class="tags"><span class="tag">Roadmap</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="last-forged"><span class="spark">&#9889;</span> Last forged <span data-last-forged>recently</span> &middot; Forged by Stacked Alchemist</p>
+
+        <div class="pager">
+          <a href="index.html">&larr; The Collection</a>
+          <a href="about.html">About the Alchemist &rarr;</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="col">
+        <h4>&#9879; The Arcanum</h4>
+        <p>A gaming property of <a href="https://stackedalchemist.dev" target="_blank" rel="noopener">Stacked Alchemist LLC</a>.</p>
+        <p class="sig">&ldquo;Forged by Stacked Alchemist.&rdquo;</p>
+      </div>
+      <div class="col"><h4>Navigate</h4><div class="links"><a href="index.html">Home</a><a href="about.html">About</a><a href="forge.html">The Forge</a><a href="suggest.html">Share an Idea</a></div></div>
+      <div class="col"><h4>Elsewhere</h4><div class="links"><a href="https://stackedalchemist.dev" target="_blank" rel="noopener">Main site</a><a href="https://github.com/StackedAlchemist" target="_blank" rel="noopener">GitHub</a></div></div>
+      <div class="fine">&copy; <span id="year">2026</span> Stacked Alchemist LLC. Fan-made; unaffiliated with the games covered.</div>
+    </div>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="js/games.js"></script>
+<script src="js/storm.js"></script>
+<script src="js/arcanum.js"></script>
+</body>
+</html>

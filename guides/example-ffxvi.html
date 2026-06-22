@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Final Fantasy XVI — Mastery Guide (New Design) | The Arcanum</title>
+<meta name="description" content="Final Fantasy XVI mastery guide in The Arcanum's cyber-fantasy design: the stagger combat loop, the Eikon roster, mastery loadouts, and bosses & hunts — with sidebar nav, accordions and comparison tables." />
+<meta name="theme-color" content="#05070a" />
+<link rel="canonical" href="https://thearcanumguides.com/guides/example-ffxvi.html" />
+<meta property="og:title" content="Final Fantasy XVI — Mastery Guide | The Arcanum" />
+<meta property="og:description" content="The stagger loop, the Eikons, mastery loadouts, bosses & hunts." />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/arcanum.css">
+<style>
+  .imgph{border:1px dashed var(--steel); border-radius:10px; aspect-ratio:16/7; display:grid; place-items:center;
+    background:radial-gradient(60% 100% at 70% 10%, rgba(42,166,255,0.12), transparent 60%), var(--gunmetal); margin:1.2rem 0 .5rem; position:relative; overflow:hidden;}
+  .imgph span{font-family:var(--mono); font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text3);}
+  .cap{font-family:var(--lore); font-style:italic; font-size:.95rem; color:var(--text2); margin:0 0 1.2rem;}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Final Fantasy XVI — Mastery Guide",
+  "about": { "@type": "VideoGame", "name": "Final Fantasy XVI", "gamePlatform": ["PlayStation 5", "PC"], "publisher": "Square Enix" },
+  "author": { "@type": "Organization", "name": "Stacked Alchemist" },
+  "publisher": { "@type": "Organization", "name": "Stacked Alchemist LLC" },
+  "isPartOf": { "@type": "WebSite", "name": "The Arcanum", "url": "https://thearcanumguides.com/" }
+}
+</script>
+</head>
+<body>
+
+<canvas id="storm" aria-hidden="true"></canvas>
+<div id="flash" aria-hidden="true"></div>
+
+<div class="page">
+  <header class="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html"><span class="alembic">&#9879;</span><span>The <b>Arcanum</b><span class="sub">Stacked Alchemist Forge</span></span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <div class="has-dd"><button class="navbtn" aria-haspopup="true">Games &#9662;</button><div class="dd" id="dd-games"></div></div>
+        <a href="../about.html">About</a>
+        <a href="../forge.html">The Forge</a>
+        <a href="../suggest.html">Share an Idea</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="breadcrumbs">
+      <a href="../index.html">The Arcanum</a><span>&rsaquo;</span>
+      <a href="final-fantasy/index.html">Final Fantasy</a><span>&rsaquo;</span>
+      Final Fantasy XVI
+    </div>
+
+    <!-- guide hero -->
+    <div class="guide-hero reveal">
+      <div class="art" aria-hidden="true"><span class="ph">GAME ART / EIKON KEY-ART &middot; placeholder</span></div>
+      <div class="body">
+        <span class="kicker">Action-RPG &middot; Mastery Guide</span>
+        <h1>Final Fantasy XVI</h1>
+        <p class="sub">The stagger loop, the eight Eikons, the Mastery build system, and every fight in Valisthea &mdash; distilled for the ones who play to master.</p>
+      </div>
+    </div>
+
+    <!-- unlocked badges -->
+    <div class="badge-row reveal">
+      <span class="ubadge"><span class="dot"></span>Combat &amp; Stagger</span>
+      <span class="ubadge"><span class="dot"></span>Eikons</span>
+      <span class="ubadge"><span class="dot"></span>Mastery Loadouts</span>
+      <span class="ubadge"><span class="dot"></span>Bosses &amp; Hunts</span>
+    </div>
+
+    <main>
+      <div class="guide-layout">
+
+        <!-- sidebar TOC -->
+        <aside class="toc">
+          <div class="h">On this page</div>
+          <a href="#combat">Combat &amp; Stagger</a>
+          <a href="#eikons">The Eikons</a>
+          <a href="#loadouts">Mastery Loadouts</a>
+          <a href="#bosses">Bosses &amp; Hunts</a>
+        </aside>
+
+        <div class="prose">
+
+          <section id="combat" class="reveal">
+            <h2>Combat &amp; Stagger</h2><div class="rule"></div>
+            <p>XVI is a character-action game wearing a Final Fantasy crest. Damage matters, but <em>stagger</em> matters more. Every notable enemy carries a <strong>Will gauge</strong> &mdash; chip it to zero to <strong>Stagger</strong> them, opening a window where a climbing damage multiplier lets your biggest abilities erase health bars.</p>
+            <div class="imgph"><span>GIF &middot; a clean stagger &rarr; Gigaflare dump</span></div>
+            <p class="cap">The core loop: build Will with cheap abilities, then unload everything the instant the bar breaks.</p>
+            <ul class="list">
+              <li><strong>Break with one set, dump with the other.</strong> Some abilities shred Will; others hit HP hard. Hold the heavy hitters for the stagger window.</li>
+              <li><strong>Precision Dodge</strong> (last-instant R1) slows time and sets up a counter &mdash; your best offense is a perfect evade.</li>
+              <li><strong>Magic Burst</strong> &mdash; tap Magic at the end of a melee string to cancel recovery and fire free damage. Make it muscle memory.</li>
+            </ul>
+            <div class="callout"><span class="label">Master's note</span>Holding a long-cooldown ability <em>for</em> the stagger, instead of firing it on cooldown, is the single biggest skill jump in the game.</div>
+          </section>
+
+          <section id="eikons" class="reveal">
+            <h2>The Eikons</h2><div class="rule"></div>
+            <p>Eikons are your classes. Each grants a <strong>Feat</strong> (a signature move) and two ability slots; you equip three at once and swap mid-combo. <strong>Mastering</strong> an ability lets you equip it under any Eikon &mdash; the whole build game.</p>
+            <div class="table-wrap"><table>
+              <thead><tr><th>Eikon</th><th>Element</th><th>Signature pick</th></tr></thead>
+              <tbody>
+                <tr><td>Phoenix</td><td>Fire</td><td>Phoenix Shift &mdash; the warp-dash you keep on everything.</td></tr>
+                <tr><td>Garuda</td><td>Wind</td><td>Gouge &mdash; the best sustained Will-builder.</td></tr>
+                <tr><td>Ramuh</td><td>Lightning</td><td>Blind Justice &mdash; ranged homing for fliers.</td></tr>
+                <tr><td>Titan</td><td>Earth</td><td>Titanic Block &mdash; a parry that powers his kit.</td></tr>
+                <tr><td>Bahamut</td><td>Light</td><td>Gigaflare &mdash; the headline damage dump.</td></tr>
+                <tr><td>Shiva</td><td>Ice</td><td>Diamond Dust &mdash; a premier stagger nuke.</td></tr>
+                <tr><td>Odin</td><td>Dark</td><td>Zantetsuken &mdash; stack, then release into a stagger.</td></tr>
+              </tbody>
+            </table></div>
+            <details class="acc">
+              <summary>The late-game Eikon (story spoiler)</summary>
+              <div class="acc-body"><p>The antagonist wields <strong>Ultima</strong>, and the finale hands Clive sweeping Ultima powers for their duration &mdash; spectacle rather than a permanent build Eikon, so plan loadouts around the eight above.</p></div>
+            </details>
+          </section>
+
+          <section id="loadouts" class="reveal">
+            <h2>Mastery Loadouts</h2><div class="rule"></div>
+            <p>A build is your three Eikons, the two abilities under each, and your accessories. Respec is free &mdash; tailor it per fight. Three that work:</p>
+            <div class="loadouts">
+              <div class="loadout"><h4>All-Rounder</h4><ul>
+                <li><b>Garuda</b> · Gouge + Wicked Wheel</li>
+                <li><b>Bahamut</b> · Gigaflare + Satellite</li>
+                <li><b>Odin</b> · Dancing Steel + Gungnir</li>
+              </ul></div>
+              <div class="loadout"><h4>Stagger Nuke</h4><ul>
+                <li><b>Shiva</b> · Diamond Dust</li>
+                <li><b>Bahamut</b> · Gigaflare</li>
+                <li><b>Ramuh</b> · Judgment Bolt</li>
+              </ul></div>
+              <div class="loadout"><h4>Ranged / Flier</h4><ul>
+                <li><b>Ramuh</b> · Blind Justice (Feat)</li>
+                <li><b>Bahamut</b> · Wings of Light + Satellite</li>
+                <li><b>Garuda</b> · Gouge</li>
+              </ul></div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>Loadout</th><th>Will-break</th><th>Burst</th><th>Best vs</th></tr></thead>
+              <tbody>
+                <tr><td>All-Rounder</td><td>High</td><td>High</td><td>Everything &mdash; the default carry</td></tr>
+                <tr><td>Stagger Nuke</td><td>Medium</td><td>Very High</td><td>Hunts &amp; bosses you can break reliably</td></tr>
+                <tr><td>Ranged / Flier</td><td>Medium</td><td>Medium</td><td>Aerial and kiting targets</td></tr>
+              </tbody>
+            </table></div>
+          </section>
+
+          <section id="bosses" class="reveal">
+            <h2>Bosses &amp; Hunts</h2><div class="rule"></div>
+            <p>Fights come in two shapes: grounded action bosses you beat with the stagger loop, and the colossal Eikon-vs-Eikon set-pieces that trade difficulty for spectacle. The optional <strong>Hunt Board</strong> posts Notorious Marks &mdash; your pipeline for rare crafting materials.</p>
+            <div class="table-wrap"><table>
+              <thead><tr><th>Sample mark</th><th>Rank</th><th>Note</th></tr></thead>
+              <tbody>
+                <tr><td>Atlas</td><td>S</td><td>An iron colossus &mdash; huge slow telegraphs, then dump.</td></tr>
+                <tr><td>Svarog</td><td>S</td><td>A flying dragon &mdash; bring ranged Feats.</td></tr>
+                <tr><td>Gorgimera</td><td>A</td><td>A mixed-element gear check.</td></tr>
+              </tbody>
+            </table></div>
+            <p>For the full guide &mdash; combat deep-dive, every Eikon ability, complete builds, all bosses and progression &mdash; see the <a href="final-fantasy-xvi/index.html">full Final Fantasy XVI guide</a>.</p>
+          </section>
+
+          <p class="last-forged"><span class="spark">&#9889;</span> Last forged <span data-last-forged>recently</span> &middot; Forged by Stacked Alchemist</p>
+
+          <div class="pager">
+            <a href="final-fantasy/index.html">&larr; All Final Fantasy</a>
+            <a href="final-fantasy-xvi/index.html">Full FF XVI guide &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="col">
+        <h4>&#9879; The Arcanum</h4>
+        <p>A gaming property of <a href="https://stackedalchemist.dev" target="_blank" rel="noopener">Stacked Alchemist LLC</a>.</p>
+        <p class="sig">&ldquo;Forged by Stacked Alchemist.&rdquo;</p>
+      </div>
+      <div class="col"><h4>Navigate</h4><div class="links"><a href="../index.html">Home</a><a href="../about.html">About</a><a href="../forge.html">The Forge</a><a href="../suggest.html">Share an Idea</a></div></div>
+      <div class="col"><h4>Elsewhere</h4><div class="links"><a href="https://stackedalchemist.dev" target="_blank" rel="noopener">Main site</a><a href="https://github.com/StackedAlchemist" target="_blank" rel="noopener">GitHub</a></div></div>
+      <div class="fine">&copy; <span id="year">2026</span> Stacked Alchemist LLC. Final Fantasy XVI is &copy; Square Enix. Fan-made; unaffiliated.</div>
+    </div>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/games.js"></script>
+<script src="../js/storm.js"></script>
+<script src="../js/arcanum.js"></script>
+</body>
+</html>

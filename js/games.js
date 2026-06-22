@@ -61,13 +61,13 @@ const GAMES = [
   {
     slug: "final-fantasy",
     title: "Final Fantasy",
-    blurb: "Series hub linking every Final Fantasy guide. Nine live: all six Pixel Remasters, VII Remake & Rebirth, and Tactics - with the rest of the catalog in the forge.",
+    blurb: "Series hub linking every Final Fantasy guide. Eleven live: all six Pixel Remasters, VII Remake & Rebirth, Tactics, and FF XV & XVI - with the rest of the catalog in the forge.",
     genres: ["RPG", "JRPG"],
     href: "guides/final-fantasy/index.html",
     status: "live",
     featured: true,
     accent: "#3b5c8a",
-    updated: "9 guides live"
+    updated: "11 guides live"
   },
 
   /* ===== STRATEGY / TACTICAL / RTS ===== */
