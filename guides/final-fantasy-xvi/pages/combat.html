@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Combat &amp; Stagger | FF XVI Field Guide | The Arcanum</title>
+<meta name="description" content="Final Fantasy XVI combat: the action system, the Will gauge and stagger loop, Precision Dodge and Counter, Magic Bursts, Torgal commands, the Limit Break, and the Timely accessory rings." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">Final Fantasy <span>XVI</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav">
+        <a class="home" href="../../../index.html">&#9879; Arcanum</a>
+        <a class="home" href="../../final-fantasy/index.html">&#10022; All FF</a>
+        <a href="../index.html">Home</a>
+        <a href="combat.html" class="active">Combat</a>
+        <a href="eikons.html">Eikons</a>
+        <a href="builds.html">Builds</a>
+        <a href="bosses.html">Bosses &amp; Hunts</a>
+        <a href="progression.html">Progression</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">The Fundamentals</span>
+      <h1>Combat &amp; the Stagger Loop</h1>
+      <p class="lede">XVI is a character-action game wearing a Final Fantasy crest. Damage matters, but <em>stagger</em> matters more &mdash; almost everything you do is in service of breaking an enemy's Will and cashing in the window. Learn this loop and the rest of the game opens up.</p>
+      <div class="rule"></div>
+    </div>
+
+    <main>
+
+      <section class="reveal">
+        <span class="s-tag">01 &middot; The Buttons</span><h2 class="s-title">Your basic kit</h2><div class="s-rule"></div>
+        <p>Before any Eikon powers, Clive has a compact action toolkit. Everything below is always available and costs no resources.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Action</th><th>Default (PS5)</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td>Attack</td><td>Square</td><td>The sword combo. Hold the final hit to charge. Your bread-and-butter Will damage between abilities.</td></tr>
+            <tr><td>Magic</td><td>Triangle</td><td>A ranged elemental bolt (the element matches your equipped Eikon). Can be charged for a bigger hit.</td></tr>
+            <tr><td>Magic Burst</td><td>Square &rarr; Triangle</td><td>Tap Magic at the end of a melee hit to <em>cancel the recovery</em> and fire instantly &mdash; free extra damage on every combo. Make it muscle memory.</td></tr>
+            <tr><td>Dodge</td><td>R1</td><td>A quick evade. Dodging at the last instant triggers <strong>Precision Dodge</strong> (see below).</td></tr>
+            <tr><td>Lunge</td><td>Square in mid-air / after dodge</td><td>Gap-closer onto a target; keeps pressure up and repositions you out of an attack.</td></tr>
+            <tr><td>Eikonic Feat</td><td>R2 + face button</td><td>Your equipped Eikon's signature move (Phoenix Shift dash, Titan's block, etc.). One per Eikon.</td></tr>
+            <tr><td>Eikonic Ability</td><td>R2 + Square / Circle</td><td>The two equipped abilities for the active Eikon. These are on cooldowns and do the heavy lifting.</td></tr>
+            <tr><td>Switch Eikon</td><td>L2 (hold) + D-pad / R3</td><td>Cycle between your three equipped Eikons mid-fight to change Feat, element and abilities on the fly.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">02 &middot; The Core Loop</span><h2 class="s-title">Will, stagger &amp; the damage window</h2><div class="s-rule"></div>
+        <p>Most enemies above trash level have two bars: <strong>HP</strong> (yellow) and a <strong>Will gauge</strong> (the segment below it). You almost never beat a big enemy by grinding HP &mdash; you break Will.</p>
+        <ul class="list">
+          <li><strong>Drain the Will gauge.</strong> Hits chip it down. When it empties, the enemy is <strong>Staggered</strong>: knocked into a long helpless state with a <em>damage multiplier</em> that climbs toward <strong>1.5&times;</strong> or more as you wail on them.</li>
+          <li><strong>Partial Stagger.</strong> Drop the Will gauge to half and a "Stagger" prompt flickers &mdash; some abilities do bonus Will damage to a half-broken target, snowballing the break.</li>
+          <li><strong>Two jobs, two toolsets.</strong> Some abilities are <em>Will-breakers</em> (they barely scratch HP but shred the gauge); others are <em>damage-dumps</em> (huge HP numbers, poor Will). You break with one set and dump with the other.</li>
+          <li><strong>Don't waste the window.</strong> The instant an enemy staggers, unload your longest, highest-damage abilities &mdash; Gigaflare, Zantetsuken, the charged finishers &mdash; plus your <strong>Limit Break</strong> if it's ready. A clean stagger dump can erase a boss's whole health bar.</li>
+        </ul>
+        <div class="callout"><strong>The mental model:</strong> build the gauge to zero as fast as you can with cheap Will abilities, then in the stagger window spend everything that hits hard. Holding a big damage cooldown <em>for</em> the stagger is the single biggest skill jump in the game.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">03 &middot; Defense</span><h2 class="s-title">Precision Dodge, Counter &amp; Titanic Block</h2><div class="s-rule"></div>
+        <p>There's no shield button in the base kit &mdash; your defense is timing. Dodging is also your best offense, because a perfect dodge buys a free punish.</p>
+        <ul class="list">
+          <li><strong>Precision Dodge (R1, last-instant).</strong> Evade just before a blow connects and time briefly slows. You're invulnerable through it and perfectly placed to retaliate.</li>
+          <li><strong>Precision Counter.</strong> Attack out of a Precision Dodge for <em>Burning Strike</em> &mdash; a boosted counter that does strong Will damage. Dodge-into-attack is the rhythm of every hard fight.</li>
+          <li><strong>Titanic Block (Titan's Feat).</strong> If you equip Titan, his Feat is a <em>parry</em>: block with the right timing to negate a hit and open a heavy counter. A precise guard answers attacks a dodge can't.</li>
+          <li><strong>Cinematic clashes.</strong> Big set-piece blows trigger a prompt &mdash; hit it to win a clash. These are spectacle, not failure states; missing one just costs damage.</li>
+        </ul>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">04 &middot; Your Wolf</span><h2 class="s-title">Torgal, healing &amp; the Limit Break</h2><div class="s-rule"></div>
+        <ul class="list">
+          <li><strong>Torgal commands (D-pad).</strong> Send the wolf to <em>Sic</em> (attack/launch), <em>Ravage</em> (a damage flurry) or <em>Heal</em> (restores a chunk of Clive's HP, on a cooldown). Sic launches small enemies for air combos and keeps Will damage flowing while your abilities recharge. Folding Torgal into combos is most of the game's combo depth.</li>
+          <li><strong>Potions, not a heal spell.</strong> You heal with <em>Potions</em> and <em>High Potions</em> (limited stock, restocked at the Hideaway). Torgal's Heal and certain abilities supplement them. Manage the count &mdash; running dry in a long Eikon fight is the usual death.</li>
+          <li><strong>Limit Break (L3 + R3).</strong> A meter fills as you fight; pop it to enter a temporary state with greatly boosted damage and steady self-healing, and to break through some scripted moments. Save it to layer on top of a stagger for a burst that deletes health bars.</li>
+        </ul>
+        <div class="newbox"><span class="label">Magic Burst, again</span>The fastest way to raise your damage today: end <em>every</em> melee string with a tapped Magic Burst, and weave Torgal's Sic between ability cooldowns. Two free habits, no AP spent, and your Will damage roughly doubles.</div>
+      </section>
+
+      <section class="reveal">
+        <span class="s-tag">05 &middot; Accessibility</span><h2 class="s-title">Timely rings &amp; difficulty</h2><div class="s-rule"></div>
+        <p>XVI lets you tune the challenge with equippable accessories rather than a menu slider. <strong>Story Focused</strong> mode simply starts you with these "Timely" rings equipped; you can add or remove them in either mode at any time.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Timely accessory</th><th>Effect</th></tr></thead>
+          <tbody>
+            <tr><td>Ring of Timely Evasion</td><td>Auto-dodges most incoming attacks for you.</td></tr>
+            <tr><td>Ring of Timely Strikes</td><td>Performs elaborate combos from a single attack button.</td></tr>
+            <tr><td>Ring of Timely Focus</td><td>Slows time when an enemy is about to strike, so you can react.</td></tr>
+            <tr><td>Ring of Timely Healing</td><td>Auto-uses potions when your HP drops low.</td></tr>
+            <tr><td>Ring of Timely Assistance</td><td>Has Torgal act automatically.</td></tr>
+          </tbody>
+        </table></div>
+        <p>Each Timely ring occupies an accessory slot, so playing on full assists trades away build slots &mdash; a natural nudge to drop them as you improve. <strong>Final Fantasy Mode</strong>, unlocked after a first clear, is the real difficulty step: remixed, tougher enemy placements and a higher level cap (see <a href="progression.html">Progression</a>).</p>
+      </section>
+
+      <div class="pager">
+        <a href="../index.html">&larr; Guide Home</a>
+        <a href="eikons.html">Eikons &amp; Abilities &rarr;</a>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Final Fantasy XVI &mdash; Field Guide</p>
+    <p>A fan-made guide under <a href="../../final-fantasy/index.html">Final Fantasy</a> &middot; <a href="../../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy XVI is &copy; Square Enix.</p>
+  </footer>
+</div>
+
+<button class="totop" aria-label="Back to top">&uarr;</button>
+<script src="../js/site.js"></script>
+</body>
+</html>
