@@ -5,7 +5,8 @@ window.FF7R_SIMULATOR = {
   access: [
     { label: "Standard Simulator", chapter: 2, note: "Available once Chadley sets up the Grasslands terminal." },
     { label: "Shinra Manor VR", chapter: 11, note: "Separate suite in Nibelheim Manor — Item Master trial and endgame specs." },
-    { label: "Brutal / Legendary", chapter: 14, note: "Unlocks after defeating Gilgamesh on his island." },
+    { label: "Gilgamesh Island", chapter: 12, note: "All Protorelics + all Summon Entity materia + Tiny Bronco sea travel (Ch.12)." },
+    { label: "Brutal / Legendary", chapter: 12, note: "Unlocks after defeating Gilgamesh on his island." },
     { label: "Six-Person Bouts", chapter: 12, note: "Requires full party roster and high intel completion." }
   ],
 
@@ -73,7 +74,7 @@ window.FF7R_SIMULATOR = {
     {
       id: "brutal",
       name: "Brutal Challenges",
-      chapter: 14,
+      chapter: 12,
       desc: "Post-Gilgamesh super-fights. No items, strict conditions. Best accessories and final Elemental/Magnify copies.",
       challenges: [
         { name: "Requiem for the Second", reward: "Elemental (3rd copy)", note: "Final Elemental orb in the game." },
@@ -97,15 +98,26 @@ window.FF7R_SIMULATOR = {
     }
   ],
 
+  summonEntity: [
+    { name: "Titan", chapter: 2, unlock: "Combat Simulator unlocked (Grasslands, Ch.2)", island: "Ch.12+ — pairs with Bahamut Arisen" },
+    { name: "Phoenix", chapter: 4, unlock: "Reach Junon region", island: "Ch.12+ — pairs with Kujata" },
+    { name: "Alexander", chapter: 5, unlock: "Reach Corel region", island: "Ch.12+ — pairs with Odin" },
+    { name: "Kujata", chapter: 6, unlock: "Reach Gongaga region", island: "Ch.12+ — pairs with Phoenix" },
+    { name: "Bahamut Arisen", chapter: 7, unlock: "Reach Cosmo Canyon region", island: "Ch.12+ — pairs with Titan" },
+    { name: "Odin", chapter: 9, unlock: "Reach Nibel region", island: "Ch.12+ — pairs with Alexander" }
+  ],
+
   summons: [
     { name: "Ifrit", chapter: 2, source: "Starting materia (Red XIII)" },
     { name: "Shiva", chapter: 2, source: "Starting materia (Aerith)" },
     { name: "Chocobo & Moogle", chapter: 2, source: "Starting materia (Cloud)" },
-    { name: "Titan", chapter: 11, source: "Nibel Regional / Battle Intel progression" },
-    { name: "Phoenix", chapter: 14, source: "Gilgamesh Island — dual boss reward" },
-    { name: "Kujata", chapter: 14, source: "Gilgamesh Island — dual boss reward" },
-    { name: "Bahamut Arisen", chapter: 14, source: "Gilgamesh Island — dual boss reward" },
-    { name: "Odin", chapter: 14, source: "Gilgamesh Island — dual boss reward" },
-    { name: "Alexander", chapter: 14, source: "Gilgamesh Island — dual boss reward" }
-  ]
+    { name: "Titan", chapter: 2, source: "Summon Entity — Combat Simulator (Grasslands)" },
+    { name: "Phoenix", chapter: 4, source: "Summon Entity — reach Junon region" },
+    { name: "Alexander", chapter: 5, source: "Summon Entity — reach Corel region" },
+    { name: "Kujata", chapter: 6, source: "Summon Entity — reach Gongaga region" },
+    { name: "Bahamut Arisen", chapter: 7, source: "Summon Entity — reach Cosmo Canyon region" },
+    { name: "Odin", chapter: 9, source: "Summon Entity — reach Nibel region" }
+  ],
+
+  gilgameshNote: "Gilgamesh Island (Ch.12+ sailing) requires all Protorelics and all six Summon Entity clears — island fights are dual-summon rematches, not where you first earn the materia. Beating Gilgamesh unlocks Brutal Challenges."
 };

@@ -60,8 +60,12 @@
       return "<tr><td>" + esc(a.label) + "</td><td>Ch." + a.chapter + "</td><td>" + esc(a.note) + "</td></tr>";
     }).join("");
 
+    var summonEntity = (DATA.summonEntity || []).map(function (s) {
+      return "<tr><td><strong>" + esc(s.name) + "</strong></td><td>Ch." + s.chapter + "+</td><td>" + esc(s.unlock) + "</td><td>" + esc(s.island) + "</td></tr>";
+    }).join("");
+
     var summons = DATA.summons.map(function (s) {
-      return "<tr><td>" + esc(s.name) + "</td><td>Ch." + s.chapter + "</td><td>" + esc(s.source) + "</td></tr>";
+      return "<tr><td>" + esc(s.name) + "</td><td>Ch." + s.chapter + "+</td><td>" + esc(s.source) + "</td></tr>";
     }).join("");
 
     root.innerHTML =
@@ -72,11 +76,17 @@
       '<div class="table-wrap reveal"><table><thead><tr><th>Suite</th><th>Chapter</th><th>Notes</th></tr></thead><tbody>' +
       access + "</tbody></table></div>" +
       DATA.categories.map(renderCategory).join("") +
-      '<span class="section-tag reveal">Summons</span>' +
-      '<h2 class="section-title reveal">Summon Materia Sources</h2>' +
+      '<span class="section-tag reveal">Summon Entity</span>' +
+      '<h2 class="section-title reveal">Summon Materia by Region</h2>' +
       '<div class="section-rule reveal"></div>' +
-      '<p class="reveal" style="color:var(--text2);margin-bottom:1rem;">Each character has one red summon slot on their weapon. Starters are story-given; endgame summons require Gilgamesh Island.</p>' +
-      '<div class="table-wrap reveal"><table><thead><tr><th>Summon</th><th>Chapter</th><th>Source</th></tr></thead><tbody>' +
+      (DATA.gilgameshNote ? '<div class="callout reveal">' + esc(DATA.gilgameshNote) + "</div>" : "") +
+      '<p class="reveal" style="color:var(--text2);margin-bottom:1rem;">Each character has one red summon slot. <strong>Ifrit, Shiva, and Chocobo &amp; Moogle</strong> are story starters; the rest unlock from <strong>Summon Entity</strong> VR fights as you reach each region — not from Gilgamesh Island first.</p>' +
+      '<div class="table-wrap reveal"><table><thead><tr><th>Summon</th><th>From</th><th>Unlock Requirement</th><th>Island Rematch</th></tr></thead><tbody>' +
+      summonEntity + "</tbody></table></div>" +
+      '<span class="section-tag reveal">All Summons</span>' +
+      '<h2 class="section-title reveal">Full Summon List</h2>' +
+      '<div class="section-rule reveal"></div>' +
+      '<div class="table-wrap reveal"><table><thead><tr><th>Summon</th><th>From</th><th>Source</th></tr></thead><tbody>' +
       summons + "</tbody></table></div>";
 
     if (typeof initReveal === "function") initReveal();

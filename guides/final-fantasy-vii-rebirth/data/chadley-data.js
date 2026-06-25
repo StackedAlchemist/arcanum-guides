@@ -57,5 +57,5 @@ window.FF7R_CHADLEY = {
     "Magnify and Elemental do not come from Data Points; they come from Battle Intel and Brutal Challenges (see Combat Simulator page)."
   ],
 
-  protorelicNote: "Collect all six regional Protorelics to unlock the Phenomenon Intel trail to Gilgamesh Island — required for endgame summons and Gotterdammerung."
+  protorelicNote: "Collect all six regional Protorelics to unlock Gilgamesh Island (Ch.12+). Summon materia come from Summon Entity fights at terminals as you reach each region — the island is a dual-boss rematch gate before Gilgamesh and Brutal Challenges."
 };
