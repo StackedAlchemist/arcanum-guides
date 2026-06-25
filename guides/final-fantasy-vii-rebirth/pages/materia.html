@@ -6,6 +6,7 @@
 <title>Materia | FF7 Rebirth Guide</title>
 <link rel="stylesheet" href="../css/style.css" />
 <link rel="stylesheet" href="../css/lifestream.css" />
+<link rel="stylesheet" href="../css/systems.css" />
 <style>
 .materia-hero {
   padding: 100px 2rem 3rem;
@@ -183,7 +184,12 @@
       <li><a href="field-guide.html">Field Guide</a></li>
     <li><a href="characters.html">Characters</a></li>
     <li><a href="materia.html">Materia</a></li>
+    <li><a href="chadley.html">Chadley</a></li>
+    <li><a href="combat-simulator.html">Combat Sim</a></li>
     <li><a href="builds.html">Builds</a></li>
+    <li><a href="gear.html">Gear</a></li>
+    <li><a href="crafting.html">Crafting</a></li>
+    <li><a href="weapons.html">Weapons</a></li>
     <li><a href="parties.html">Party Setup</a></li>
     <li><a href="bosses.html">Bosses</a></li>
     <li><a href="queensblood.html">Queen's Blood</a></li>
@@ -328,93 +334,20 @@
 
   </div>
 
-  <!-- LIMITED COPIES TABLE -->
-  <span class="section-tag reveal">Scarcity Reference</span>
-  <h3 class="section-title reveal" style="font-size:1.3rem;">Limited Materia - Copy Counts</h3>
-  <div class="section-rule reveal"></div>
+  <!-- FULL CATALOG -->
+  <div class="mat-crosslinks reveal">
+    <a class="mat-crosslink" href="#mat-unique">Field / Quest Only</a>
+    <a class="mat-crosslink" href="#mat-limited">Limited Copies</a>
+    <a class="mat-crosslink" href="#mat-unlimited">Unlimited Shop</a>
+    <a class="mat-crosslink" href="chadley.html">Chadley &amp; Intel</a>
+    <a class="mat-crosslink" href="combat-simulator.html">Combat Simulator</a>
+  </div>
 
   <div class="callout reveal">
-    <strong>This is the most important page in the guide.</strong> Most materia can be purchased or won multiple times. These cannot. Plan your party loadouts around these limits - you cannot give everyone the same build.
+    <strong>Plan around scarcity.</strong> Three tiers: <em>field-only</em> materia (one copy, never restocked), <em>limited</em> copies (finite sources across the whole game), and <em>unlimited</em> shop stock once a vendor is unlocked. Chadley Data Point exchanges are always one-time. See the <a class="xref" href="chadley.html">Chadley page</a> and <a class="xref" href="combat-simulator.html">Combat Simulator page</a> for how intel unlocks each tier.
   </div>
 
-  <div class="limited-wrap reveal">
-    <table>
-      <thead>
-        <tr>
-          <th>Materia</th>
-          <th>Type</th>
-          <th>Copies</th>
-          <th>How To Get All</th>
-          <th>Best On</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Elemental</td>
-          <td><span class="tag tag-blue">Support</span></td>
-          <td><span class="copies-badge copies-3">3 total</span></td>
-          <td>Mt. Nibel world area · Brutal Challenge: Requiem for the Second (post-Gilgamesh) · 3rd source via world exploration</td>
-          <td>Cloud weapon (damage) · Armor (absorption) · flex</td>
-        </tr>
-        <tr>
-          <td>Magnify</td>
-          <td><span class="tag tag-blue">Support</span></td>
-          <td><span class="copies-badge copies-3">3 total</span></td>
-          <td>Mt. Nibel area · Cait Sith joins with one · "Victim of Circumstance" sidequest Ch.12 · Brutal Challenge: Hellions' Intonement</td>
-          <td>Red XIII (Magnify+Healing = party AoE cure) · AoE mage · flex</td>
-        </tr>
-        <tr>
-          <td>Fire and Ice (combo)</td>
-          <td><span class="tag tag-green">Magic</span></td>
-          <td><span class="copies-badge copies-1">1 ONLY</span></td>
-          <td>Chadley: Grasslands Data Points reward. One and done.</td>
-          <td>Any caster - frees a whole slot by combining two elements</td>
-        </tr>
-        <tr>
-          <td>Lightning and Wind (combo)</td>
-          <td><span class="tag tag-green">Magic</span></td>
-          <td><span class="copies-badge copies-1">1 ONLY</span></td>
-          <td>Chadley: Junon Region Data Points reward. One and done.</td>
-          <td>Non-Yuffie mages - Yuffie has all elements naturally via Ninjutsu</td>
-        </tr>
-        <tr>
-          <td>Comet</td>
-          <td><span class="tag tag-green">Magic</span></td>
-          <td><span class="copies-badge copies-1">1-2 total</span></td>
-          <td>Chadley: Nibel Data Points. Non-elemental nuke. Very rare.</td>
-          <td>Yuffie. Period. Her magic stat + Comet = enormous damage</td>
-        </tr>
-        <tr>
-          <td>Refocus</td>
-          <td><span class="tag tag-yellow">Command</span></td>
-          <td><span class="copies-badge copies-1">1 ONLY</span></td>
-          <td>Chadley reward. Grants 3 full ATB bars temporarily.</td>
-          <td>Cloud or Tifa - whoever leads your burst window</td>
-        </tr>
-        <tr>
-          <td>Gotterdammerung</td>
-          <td><span class="tag tag-gold">Accessory</span></td>
-          <td><span class="copies-badge copies-1">1 ONLY</span></td>
-          <td>Beat Brutal Challenge: Rulers of the Outer World after defeating Gilgamesh. Hardest unlock in the game.</td>
-          <td>Cloud. Near-permanent Limit Break state. Completely broken.</td>
-        </tr>
-        <tr>
-          <td>HP Absorption</td>
-          <td><span class="tag tag-blue">Support</span></td>
-          <td><span class="copies-badge copies-buy">Purchasable</span></td>
-          <td>Chadley stores after completing Combat Assignments per region. Multiple copies available through grinding.</td>
-          <td>Physical attackers - heals % of damage dealt per hit</td>
-        </tr>
-        <tr>
-          <td>MP Absorption</td>
-          <td><span class="tag tag-blue">Support</span></td>
-          <td><span class="copies-badge copies-buy">Purchasable</span></td>
-          <td>Chadley stores. Critical for Hard Mode where MP never recharges at save points.</td>
-          <td>Aerith primary · Yuffie secondary - your MP-hungry casters</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <div id="materia-catalog"></div>
 
 </div><!-- end content -->
 
@@ -424,8 +357,10 @@
 
 <!-- THREE.JS CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="../data/materia-data.js"></script>
 <script src="../js/shared.js"></script>
 <script src="../js/lifestream.js"></script>
+<script src="../js/materia-catalog.js"></script>
 <script>
 // =====================================================
 // THREE.JS MATERIA ORBS

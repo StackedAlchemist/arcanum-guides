@@ -2,7 +2,11 @@
 window.FF7R_DATA = {
   meta: {
     storageKey: "arcanum.ff7r.party-equip",
-    maxPartySize: 3
+    maxPartySize: 3,
+    partyRules: {
+      story: "First playthrough and story missions: Cloud is locked into the active trio — you choose the other two.",
+      ngPlus: "New Game+ and free-roam after Chapter 14: pick any three party members. Cloud is optional."
+    }
   },
 
   phases: {

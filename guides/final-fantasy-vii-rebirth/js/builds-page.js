@@ -17,15 +17,16 @@
   function loadState() {
     try {
       var raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return { chapter: 1, party: ["cloud", "aerith", "barret"], weapons: {} };
+      if (!raw) return { chapter: 1, party: ["cloud", "aerith", "barret"], weapons: {}, ngPlus: false };
       var s = JSON.parse(raw);
       return {
         chapter: s.chapter || 1,
         party: Array.isArray(s.party) ? s.party : ["cloud", "aerith", "barret"],
-        weapons: s.weapons || {}
+        weapons: s.weapons || {},
+        ngPlus: !!s.ngPlus
       };
     } catch (e) {
-      return { chapter: 1, party: ["cloud", "aerith", "barret"], weapons: {} };
+      return { chapter: 1, party: ["cloud", "aerith", "barret"], weapons: {}, ngPlus: false };
     }
   }
 
@@ -128,7 +129,7 @@
 
   function renderEquipResult(result) {
     if (!result.members.length) {
-      return '<p class="equip-empty">Select at least Cloud plus two party members.</p>';
+      return '<p class="equip-empty">Select three party members for your lineup.</p>';
     }
 
     var summary = result.summary.length
@@ -199,10 +200,16 @@
       return '<option value="' + c.num + '"' + sel + ">Ch. " + c.num + " — " + esc(c.title) + "</option>";
     }).join("");
 
+    var ngPlus = !!state.ngPlus;
+    var partyLabel = ngPlus
+      ? "Party Members <em>(3 max — any characters)</em>"
+      : "Party Members <em>(3 max — Cloud required)</em>";
+
     var charChecks = unlocked.map(function (ch) {
       var on = state.party.indexOf(ch.id) !== -1;
-      var locked = ch.alwaysInParty ? " disabled checked" : (on ? " checked" : "");
-      var note = ch.alwaysInParty ? ' <span class="equip-lock">(required)</span>' : "";
+      var storyLock = !ngPlus && ch.alwaysInParty;
+      var locked = storyLock ? " disabled checked" : (on ? " checked" : "");
+      var note = storyLock ? ' <span class="equip-lock">(required)</span>' : "";
       return (
         '<label class="equip-char-pick ' + ch.cssClass + '">' +
         '<input type="checkbox" data-party-char="' + ch.id + '"' + locked + ">" +
@@ -238,8 +245,14 @@
       '<label class="equip-label" for="equip-chapter">Current Chapter</label>' +
       '<select id="equip-chapter" class="equip-select">' + chapterOpts + "</select>" +
       "</div>" +
+      '<div class="equip-control-block">' +
+      '<label class="equip-ng-toggle">' +
+      '<input type="checkbox" id="equip-ngplus"' + (ngPlus ? " checked" : "") + ">" +
+      "<span><strong>New Game+</strong> — free party selection (Cloud optional)</span>" +
+      "</label>" +
+      "</div>" +
       '<div class="equip-control-block equip-party-picks">' +
-      '<span class="equip-label">Party Members <em>(3 max — Cloud required)</em></span>' +
+      '<span class="equip-label">' + partyLabel + "</span>" +
       '<div class="equip-char-grid">' + charChecks + "</div>" +
       "</div>" +
       (weaponRows
@@ -256,13 +269,17 @@
     var chSel = document.getElementById("equip-chapter");
     if (chSel) state.chapter = parseInt(chSel.value, 10) || 1;
 
-    var party = ["cloud"];
+    var ngEl = document.getElementById("equip-ngplus");
+    state.ngPlus = ngEl ? ngEl.checked : false;
+
+    var party = [];
     document.querySelectorAll("[data-party-char]").forEach(function (inp) {
-      if (inp.checked && inp.dataset.partyChar !== "cloud") {
-        party.push(inp.dataset.partyChar);
-      }
+      if (inp.checked) party.push(inp.dataset.partyChar);
     });
-    state.party = party.slice(0, DATA.meta.maxPartySize);
+    if (!state.ngPlus && party.indexOf("cloud") === -1) party.unshift("cloud");
+    state.party = party.filter(function (id, i, arr) {
+      return arr.indexOf(id) === i;
+    }).slice(0, DATA.meta.maxPartySize);
 
     state.weapons = state.weapons || {};
     document.querySelectorAll(".equip-weapon-select").forEach(function (sel) {
@@ -273,10 +290,14 @@
   }
 
   function enforcePartyLimit() {
-    var checked = Array.prototype.slice.call(
-      document.querySelectorAll("[data-party-char]:checked:not([data-party-char='cloud'])")
-    );
-    if (checked.length > DATA.meta.maxPartySize - 1) {
+    var ngEl = document.getElementById("equip-ngplus");
+    var ngPlus = ngEl ? ngEl.checked : false;
+    var selector = ngPlus
+      ? "[data-party-char]:checked"
+      : "[data-party-char]:checked:not([data-party-char='cloud'])";
+    var max = ngPlus ? DATA.meta.maxPartySize : DATA.meta.maxPartySize - 1;
+    var checked = Array.prototype.slice.call(document.querySelectorAll(selector));
+    if (checked.length > max) {
       checked[checked.length - 1].checked = false;
     }
   }
@@ -298,6 +319,9 @@
   function bindEquipper() {
     var chSel = document.getElementById("equip-chapter");
     if (chSel) chSel.addEventListener("change", refreshEquipper);
+
+    var ngEl = document.getElementById("equip-ngplus");
+    if (ngEl) ngEl.addEventListener("change", refreshEquipper);
 
     document.querySelectorAll("[data-party-char]").forEach(function (inp) {
       inp.addEventListener("change", function () {

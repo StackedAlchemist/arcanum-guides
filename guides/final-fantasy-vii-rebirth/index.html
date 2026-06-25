@@ -8,6 +8,7 @@
 <meta property="og:title" content="Final Fantasy VII Rebirth — The Arcanum" />
 <meta property="og:description" content="Complete FF7 Rebirth field guide: builds, bosses, Queen's Blood, affinity, and Hard Mode survival." />
 <meta property="og:type" content="website" />
+<meta property="og:image" content="images/hero-midgar.png" />
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/lifestream.css" />
 <style>
@@ -16,8 +17,35 @@
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   text-align: center;
-  padding: 80px 2rem 4rem;
+  padding: 88px 2rem 4rem;
   position: relative;
+}
+
+.hero-banner {
+  width: min(1100px, 100%);
+  margin: 0 auto 2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border2);
+  box-shadow: 0 16px 60px rgba(0,0,0,0.55), 0 0 40px rgba(0,255,170,0.08);
+  position: relative;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.45) 100%);
+  pointer-events: none;
 }
 
 .hero-eyebrow {
@@ -154,7 +182,11 @@
     <li><a href="pages/field-guide.html">Field Guide</a></li>
     <li><a href="pages/characters.html">Characters</a></li>
     <li><a href="pages/materia.html">Materia</a></li>
+    <li><a href="pages/chadley.html">Chadley</a></li>
+    <li><a href="pages/combat-simulator.html">Combat Sim</a></li>
     <li><a href="pages/builds.html">Builds</a></li>
+    <li><a href="pages/gear.html">Gear</a></li>
+    <li><a href="pages/crafting.html">Crafting</a></li>
     <li><a href="pages/weapons.html">Weapons</a></li>
     <li><a href="pages/parties.html">Party Setup</a></li>
     <li><a href="pages/bosses.html">Bosses</a></li>
@@ -164,9 +196,12 @@
 </nav>
 
 <div class="hero">
+  <div class="hero-banner">
+    <img src="images/hero-midgar.png" alt="Final Fantasy VII Rebirth — Midgar after the plate falls" width="1920" height="840" loading="eager" decoding="async">
+  </div>
   <p class="hero-eyebrow">The Unknown Journey Continues</p>
-  <h1 class="hero-title ls-glow-white">Final Fantasy VII<br><span>Rebirth</span></h1>
-  <p class="hero-sub">Complete field guide. Builds, boss strategies, Queen's Blood, affinity — everything needed for the restart.</p>
+  <h1 class="hero-title ls-glow-white" style="font-size:clamp(1.5rem,3.5vw,2.75rem);margin-bottom:0.75rem;">Complete Field Guide</h1>
+  <p class="hero-sub" style="margin-bottom:2.5rem;">Builds, boss strategies, Queen's Blood, affinity — everything needed for the restart.</p>
   <p class="hero-sub" style="margin-top:-2.5rem;margin-bottom:2.5rem;font-size:0.92rem;opacity:0.85;">Remake trilogy: <a href="../final-fantasy-vii-remake/index.html" style="color:var(--ls2)">Remake + Intergrade</a> &middot; <strong style="color:var(--ls)">Rebirth</strong> &middot; <a href="../final-fantasy-vii-revelation/index.html" style="color:var(--gold)">Revelation</a> <span style="color:var(--text3)">(Spring 2027)</span></p>
 
   <div class="nav-hub">
@@ -183,12 +218,32 @@
     <a href="pages/materia.html" class="hub-card hub-materia">
       <div class="hub-icon">🔮</div>
       <span class="hub-label">Materia</span>
-      <span class="hub-desc">3D orbs, all types, limited copy counts.</span>
+      <span class="hub-desc">Full catalog: field-only, limited, and shop stock.</span>
+    </a>
+    <a href="pages/chadley.html" class="hub-card hub-materia">
+      <div class="hub-icon">🔬</div>
+      <span class="hub-label">Chadley</span>
+      <span class="hub-desc">Intel types, terminals, Data Point exchanges.</span>
+    </a>
+    <a href="pages/combat-simulator.html" class="hub-card hub-materia">
+      <div class="hub-icon">🎯</div>
+      <span class="hub-label">Combat Sim</span>
+      <span class="hub-desc">Battle Intel, Brutal Challenges, summons.</span>
     </a>
     <a href="pages/builds.html" class="hub-card hub-builds">
       <div class="hub-icon">🛡️</div>
       <span class="hub-label">Builds</span>
       <span class="hub-desc">Optimal loadouts per character and mode.</span>
+    </a>
+    <a href="pages/gear.html" class="hub-card hub-builds">
+      <div class="hub-icon">🧥</div>
+      <span class="hub-label">Gear</span>
+      <span class="hub-desc">Who gets limited armor and accessories.</span>
+    </a>
+    <a href="pages/crafting.html" class="hub-card hub-materia">
+      <div class="hub-icon">⚗️</div>
+      <span class="hub-label">Crafting</span>
+      <span class="hub-desc">Mats by region, chips, and what to wait on.</span>
     </a>
     <a href="pages/parties.html" class="hub-card hub-party">
       <div class="hub-icon">👥</div>

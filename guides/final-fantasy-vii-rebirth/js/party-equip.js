@@ -215,7 +215,7 @@ window.FF7R_PartyEquip = (function () {
     var weapons = options.weapons || {};
     var phase = chapterToPhase(chapter);
 
-    if (party.indexOf("cloud") === -1) party.unshift("cloud");
+    if (!options.ngPlus && party.indexOf("cloud") === -1) party.unshift("cloud");
     party = party.filter(function (id, idx, arr) {
       return arr.indexOf(id) === idx;
     }).slice(0, DATA.meta.maxPartySize);
