@@ -1,0 +1,48 @@
+/* Diablo IV — hellfire gothic: blood red, ember, tarnished gold */
+:root {
+  --bg: #0b0706;
+  --bg2: #150c09;
+  --panel: rgba(22, 12, 9, 0.85);
+  --accent: #bf352c;
+  --accent2: #e2584a;
+  --accent-alt: #e0863a;
+  --accent-alt2: #f3ad5e;
+  --highlight: #cf9a4f;
+  --highlight2: #eec078;
+  --glow: rgba(191, 53, 44, 0.24);
+  --line: rgba(191, 53, 44, 0.18);
+  --line2: rgba(191, 53, 44, 0.07);
+  --text: #e9ddd5;
+  --text2: #b29c93;
+  --text3: #6d574f;
+  --nav-home: var(--accent2);
+  --hero-grad-1: var(--accent-alt2);
+  --hero-grad-2: var(--accent2);
+  --spoiler: #e8a85c;
+  --table-hover: rgba(191, 53, 44, 0.04);
+  --display: "Grenze Gotisch", Georgia, serif;
+  --body: "Spectral", Georgia, serif;
+  --maxw: 1000px;
+
+  --blood: var(--accent);
+  --blood2: var(--accent2);
+  --ember: var(--accent-alt);
+  --ember2: var(--accent-alt2);
+  --gold: var(--highlight);
+  --gold2: var(--highlight2);
+  --ash: var(--text3);
+
+  --fx-type: motes;
+  --fx-mote-a: 243, 173, 94;
+  --fx-mote-b: 226, 88, 74;
+  --fx-mote-b-chance: 0.4;
+  --fx-density: 1;
+}
+
+body {
+  background:
+    radial-gradient(60% 50% at 50% -6%, rgba(191, 53, 44, 0.18), transparent 60%),
+    radial-gradient(50% 45% at 85% 25%, rgba(224, 134, 58, 0.08), transparent 60%),
+    radial-gradient(50% 50% at 12% 78%, rgba(191, 53, 44, 0.07), transparent 60%),
+    var(--bg);
+}

@@ -1,0 +1,41 @@
+/* Final Fantasy V — wind crystal: teal jobs + gold */
+:root {
+  --bg: #07110f;
+  --bg2: #0e1d1a;
+  --panel: rgba(14, 29, 26, 0.85);
+  --accent: #4fb6a8;
+  --accent2: #8fe0d4;
+  --accent-alt: #d8b65a;
+  --accent-alt2: #d8b65a;
+  --highlight: #f0d98a;
+  --highlight2: #f0d98a;
+  --glow: rgba(79, 182, 168, 0.22);
+  --line: rgba(79, 182, 168, 0.20);
+  --line2: rgba(79, 182, 168, 0.08);
+  --text: #e6ece9;
+  --text2: #9fb4ae;
+  --text3: #5e726c;
+  --nav-home: #8fe0d4;
+  --hero-grad-1: #f0d98a;
+  --hero-grad-2: #8fe0d4;
+  --display: "Cinzel", Georgia, serif;
+  --body: "EB Garamond", Georgia, serif;
+  --maxw: 1000px;
+  --gold: #d8b65a;
+  --gold2: #f0d98a;
+  --teal: var(--accent);
+  --teal2: var(--accent2);
+  --blue: #5a8fd0;
+
+  --fx-type: motes;
+  --fx-mote-a: 143, 224, 212;
+  --fx-mote-b: 240, 217, 138;
+  --fx-mote-b-chance: 0.34;
+}
+body {
+  background:
+    radial-gradient(60% 50% at 50% -6%, rgba(79, 182, 168, 0.16), transparent 60%),
+    radial-gradient(50% 45% at 85% 25%, rgba(216, 182, 90, 0.07), transparent 60%),
+    radial-gradient(50% 50% at 12% 75%, rgba(90, 143, 208, 0.06), transparent 60%),
+    var(--bg);
+}

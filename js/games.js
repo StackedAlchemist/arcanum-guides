@@ -63,7 +63,7 @@ const GAMES = [
   {
     slug: "final-fantasy",
     title: "Final Fantasy",
-    blurb: "Series hub linking every Final Fantasy guide. Eleven live: all six Pixel Remasters, VII Remake & Rebirth, Tactics, and FF XV & XVI - with the rest of the catalog in the forge.",
+    blurb: "Series hub linking every Final Fantasy guide. Eleven live: all six Pixel Remasters, VII Remake & Rebirth, Tactics, and FF XV & XVI. FF VII Revelation (Spring 2027) is on the card — rest of the catalog in the forge.",
     genres: ["RPG", "JRPG"],
     href: "guides/final-fantasy/index.html",
     status: "live",
@@ -194,7 +194,7 @@ const GAMES = [
   {
     slug: "clair-obscur-expedition-33",
     title: "Clair Obscur: Expedition 33",
-    blurb: "Full data-driven wiki: all 8 Expeditioners, combat, attributes, status engines, Luminas, and new-player help &mdash; with weapons, Pictos, bosses, and walkthroughs rolling out in batches.",
+    blurb: "Full data-driven wiki: six combat Expeditioners plus Esquie and Renoir, combat, attributes, status engines, Luminas, weapons, Pictos, bosses, and new-player help &mdash; with world and walkthrough pages rolling out in batches.",
     genres: ["RPG", "JRPG"],
     href: "guides/clair-obscur-expedition-33/index.html",
     status: "live",

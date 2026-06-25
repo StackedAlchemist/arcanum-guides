@@ -1,0 +1,41 @@
+/* Final Fantasy VI — magitek opera: amethyst esper + gold */
+:root {
+  --bg: #0c0a12;
+  --bg2: #16101f;
+  --panel: rgba(22, 16, 31, 0.85);
+  --accent: #9a6fd0;
+  --accent2: #c4a6f0;
+  --accent-alt: #d8b65a;
+  --accent-alt2: #d8b65a;
+  --highlight: #f0d98a;
+  --highlight2: #f0d98a;
+  --glow: rgba(154, 111, 208, 0.22);
+  --line: rgba(154, 111, 208, 0.20);
+  --line2: rgba(154, 111, 208, 0.08);
+  --text: #e9e2d9;
+  --text2: #aaa0b6;
+  --text3: #6a6076;
+  --nav-home: #c4a6f0;
+  --hero-grad-1: #f0d98a;
+  --hero-grad-2: #c4a6f0;
+  --display: "Cinzel", Georgia, serif;
+  --body: "EB Garamond", Georgia, serif;
+  --maxw: 1000px;
+  --gold: #d8b65a;
+  --gold2: #f0d98a;
+  --amethyst: var(--accent);
+  --amethyst2: var(--accent2);
+  --teal: #5ab0a0;
+
+  --fx-type: motes;
+  --fx-mote-a: 196, 166, 240;
+  --fx-mote-b: 240, 217, 138;
+  --fx-mote-b-chance: 0.35;
+}
+body {
+  background:
+    radial-gradient(60% 50% at 50% -6%, rgba(154, 111, 208, 0.16), transparent 60%),
+    radial-gradient(50% 45% at 85% 25%, rgba(216, 182, 90, 0.07), transparent 60%),
+    radial-gradient(50% 50% at 12% 75%, rgba(90, 176, 160, 0.06), transparent 60%),
+    var(--bg);
+}

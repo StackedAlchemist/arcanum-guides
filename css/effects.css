@@ -1,0 +1,29 @@
+/* ============================================================
+   Canvas effect layers — driven by css/themes/* --fx-* tokens
+   and js/guide-runtime.js. Add the matching <canvas> to HTML:
+     motes  → <canvas id="motes" aria-hidden="true"></canvas>
+     stars  → <canvas id="stars" aria-hidden="true"></canvas>
+   Lifestream (FF VII Rebirth) keeps its own lifestream.css canvases.
+   ============================================================ */
+
+#motes,
+#stars,
+#bg-canvas,
+#ls-deep,
+#ls-mid,
+#ls-surface {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#ls-deep { z-index: 0; }
+#ls-mid { z-index: 1; }
+#ls-surface { z-index: 2; }
+
+.page,
+.page-wrap {
+  position: relative;
+  z-index: 1;
+}

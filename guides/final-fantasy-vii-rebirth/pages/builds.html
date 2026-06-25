@@ -96,6 +96,7 @@
   align-items: center;
   gap: 0.6rem;
   font-size: 0.85rem;
+  flex-wrap: wrap;
 }
 
 .mat-orb {
@@ -132,8 +133,24 @@
   margin-bottom: 0.35rem;
 }
 .weapon-rec strong { color: var(--char-color); }
+.weapon-rec a { color: var(--ls); }
 
-/* Per-character accent colors (same as characters page) */
+.hard-mode-block {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border2);
+}
+.hard-mode-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ff5566;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* Per-character accent colors */
 .char-cloud   { --char-color: #88ccff; --char-glow: rgba(100,180,255,0.4); }
 .char-barret  { --char-color: #ffcc44; --char-glow: rgba(255,200,50,0.4); }
 .char-tifa    { --char-color: #ff9966; --char-glow: rgba(255,140,80,0.4); }
@@ -143,10 +160,188 @@
 .char-cait    { --char-color: #c8a84b; --char-glow: rgba(200,168,75,0.4); }
 
 .callout { margin-bottom: 2.5rem; }
+
+/* —— Party Equiper —— */
+.party-equip-panel {
+  margin-bottom: 4rem;
+  scroll-margin-top: 5rem;
+}
+
+.equip-intro {
+  font-size: 0.92rem;
+  color: var(--text2);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.equip-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+  padding: 1.25rem;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+}
+
+.equip-control-block { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.equip-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+.equip-label em { text-transform: none; letter-spacing: 0; font-style: italic; }
+
+.equip-select {
+  max-width: 420px;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.88rem;
+}
+
+.equip-char-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.equip-char-pick {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  font-size: 0.82rem;
+  color: var(--text2);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.equip-char-pick:hover { border-color: var(--char-color, var(--ls)); }
+.equip-char-pick input { accent-color: var(--ls); }
+.equip-lock { font-size: 0.72rem; color: var(--text3); font-style: italic; }
+
+.equip-weapon-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.equip-weapon-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border2);
+}
+.equip-weapon-row:last-child { border-bottom: none; }
+
+.equip-weapon-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  color: var(--char-color, var(--text));
+  min-width: 110px;
+}
+
+.equip-weapon-select {
+  flex: 1;
+  min-width: 200px;
+  max-width: 340px;
+  padding: 0.4rem 0.6rem;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.weapon-loc-link {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ls);
+  white-space: nowrap;
+}
+
+.equip-result {
+  padding: 1.25rem;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+}
+
+.equip-meta {
+  font-size: 0.88rem;
+  color: var(--text2);
+  margin-bottom: 0.75rem;
+}
+
+.equip-summary {
+  margin: 0 0 1rem 1.1rem;
+  padding: 0;
+  font-size: 0.84rem;
+  color: var(--text2);
+  line-height: 1.55;
+}
+
+.equip-result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.equip-member-card {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border2);
+  border-top: 2px solid var(--char-color, var(--ls));
+  border-radius: 4px;
+  padding: 1.1rem;
+}
+
+.equip-member-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.equip-member-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.95rem;
+  color: var(--char-color, var(--ls));
+}
+
+.equip-member-role {
+  font-size: 0.72rem;
+  color: var(--text3);
+  font-style: italic;
+}
+
+.equip-tag {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ls);
+  border: 1px solid var(--border);
+  padding: 0.05rem 0.35rem;
+  border-radius: 2px;
+  margin-left: 0.35rem;
+}
+
+.equip-na { font-size: 0.82rem; color: var(--text3); font-style: italic; }
 </style>
 </head>
 <body>
-<!-- LIFESTREAM LAYERS — do not move or reorder -->
 <canvas id="ls-deep"></canvas>
 <canvas id="ls-mid"></canvas>
 <canvas id="ls-surface"></canvas>
@@ -157,11 +352,13 @@
 
   <nav>
     <a class="nav-logo" href="../index.html">FF7 REBIRTH GUIDE</a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
     <ul class="nav-links">
       <li><a href="field-guide.html">Field Guide</a></li>
       <li><a href="characters.html">Characters</a></li>
       <li><a href="materia.html">Materia</a></li>
       <li><a href="builds.html">Builds</a></li>
+      <li><a href="weapons.html">Weapons</a></li>
       <li><a href="parties.html">Party Setup</a></li>
       <li><a href="bosses.html">Bosses</a></li>
       <li><a href="queensblood.html">Queen's Blood</a></li>
@@ -178,308 +375,28 @@
   <div class="content">
 
     <div class="callout reveal">
-      <strong>Build Philosophy:</strong> Pair offensive magic materia with Elemental on weapons to add elemental damage to regular attacks. On Hard Mode, MP conservation is everything — equip MP Up, use Magnify+Cure sparingly, and keep ATB Boost on Aerith for emergency revivals. Limited-copy materia goes to your main damage dealer first.
+      <strong>Build phases:</strong> Early (Ch 1–6), Mid (Ch 7–10), and Late (Ch 11+) reflect when materia and weapons come online — not difficulty. Use the <a class="xref" href="#party-equip">Party Equiper</a> below to wire limited materia across your active trio. Hard Mode overlays are separate: no items, no rest MP — see each character's Hard Mode card.
     </div>
 
-    <!-- CLOUD -->
-    <div class="char-section char-cloud reveal">
-      <div class="char-section-header">
-        <span class="char-section-name">Cloud Strife</span>
-        <span class="char-section-role">Primary Attacker / Flexible</span>
-      </div>
-      <div class="build-tabs">
-        <span class="build-tab">Physical DPS</span>
-        <span class="build-tab">Magic Hybrid</span>
-        <span class="build-tab">Hard Mode</span>
-      </div>
-      <div class="build-grid">
-        <div class="build-card glass-card build-phase-early">
-          <div class="build-phase">Early Game</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Buster Sword or Hardedge</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Fire / Ice / Lightning</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Elemental + Fire</span><span class="materia-pair">(Weapon pair)</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-yellow"></div><span class="materia-name">Steadfast Block</span></div>
-          </div>
-          <div class="build-notes">Focus on learning Punisher Mode timing. Elemental on weapon adds free damage to all normal attacks vs weak enemies.</div>
-        </div>
-        <div class="build-card glass-card build-phase-mid">
-          <div class="build-phase">Mid Game</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Twin Stinger</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Fire / Ice / Lightning</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Elemental + best element</span><span class="materia-pair">(Weapon)</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">ATB Boost</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up × 2</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-yellow"></div><span class="materia-name">Precision Defense Focus</span></div>
-          </div>
-          <div class="build-notes">Twin Stinger gives a linked slot, great for paired materia. Precision Defense Focus lets you charge ATB by blocking — synergizes perfectly with Punisher Mode.</div>
-        </div>
-        <div class="build-card glass-card build-phase-hard">
-          <div class="build-phase">Hard Mode</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Gotterdammerung (if obtained)</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Elemental + Ice</span><span class="materia-pair">(Weapon)</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">ATB Boost</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">MP Up</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-yellow"></div><span class="materia-name">Steadfast Block</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Cure / Raise</span></div>
-          </div>
-          <div class="build-notes">Cloud often needs to self-sustain on Hard. Keep Cure on him as backup. ATB Boost turns a full ATB bar into an emergency action — save it for stagger windows or revivals.</div>
-        </div>
-      </div>
+    <div id="party-equip-mount"></div>
+
+    <div class="reveal">
+      <span class="section-tag">Per-Character Reference</span>
+      <h2 class="section-title">Story Phase Builds</h2>
+      <div class="section-rule"></div>
     </div>
 
-    <!-- BARRET -->
-    <div class="char-section char-barret reveal">
-      <div class="char-section-header">
-        <span class="char-section-name">Barret Wallace</span>
-        <span class="char-section-role">Ranged DPS / Tank</span>
-      </div>
-      <div class="build-grid">
-        <div class="build-card glass-card build-phase-early">
-          <div class="build-phase">Early Game</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Big Bertha</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Fire / Ice / Lightning</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-yellow"></div><span class="materia-name">Charging Uppercut</span></div>
-          </div>
-          <div class="build-notes">Barret's early job is to stay alive and deal consistent ranged damage. Keep HP Up prioritized — his high HP pool is a party asset.</div>
-        </div>
-        <div class="build-card glass-card build-phase-mid">
-          <div class="build-phase">Mid Game</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> EKG Cannon</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Magnify + Cure</span><span class="materia-pair">(Armor pair)</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Lightning</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up × 2</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">Barrier</span></div>
-          </div>
-          <div class="build-notes">Magnify+Cure on Barret turns him into a passive healer — cast Cura once and it hits the whole party. Frees Aerith's ATB for damage.</div>
-        </div>
-        <div class="build-card glass-card build-phase-hard">
-          <div class="build-phase">Hard Mode</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Missing Score</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Magnify + Cure</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">MP Up × 2</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up × 2</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">Barrier</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Raise</span></div>
-          </div>
-          <div class="build-notes">On Hard, Barret is primarily your walking Magnify+Cure bot and damage sponge. Missing Score scaling off AP on equipped materia gives great damage late.</div>
-        </div>
-      </div>
-    </div>
+    <div id="builds-root"></div>
 
-    <!-- TIFA -->
-    <div class="char-section char-tifa reveal">
-      <div class="char-section-header">
-        <span class="char-section-name">Tifa Lockhart</span>
-        <span class="char-section-role">Melee Burst / Physical DPS</span>
-      </div>
-      <div class="build-grid">
-        <div class="build-card glass-card build-phase-early">
-          <div class="build-phase">Early Game</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Metal Knuckles</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Elemental + Fire</span><span class="materia-pair">(Weapon)</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-yellow"></div><span class="materia-name">Focused Strike</span></div>
-          </div>
-          <div class="build-notes">Focus on learning the Unbridled Strength charge timing above all else. Elemental on weapon gives her ranged magic reach she otherwise lacks.</div>
-        </div>
-        <div class="build-card glass-card build-phase-mid">
-          <div class="build-phase">Mid Game</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Purple Pain</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Elemental + Ice</span><span class="materia-pair">(Weapon)</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">ATB Boost</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-yellow"></div><span class="materia-name">Starshower</span></div>
-          </div>
-          <div class="build-notes">Purple Pain boosts magic attack, which amplifies her Unbridled Strength powered-up attacks. ATB Boost extends burst windows during stagger.</div>
-        </div>
-        <div class="build-card glass-card build-phase-hard">
-          <div class="build-phase">Hard Mode</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Purple Pain / Feathered Gloves</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Elemental + target weakness</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">ATB Boost</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up + MP Up</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Raise</span></div>
-          </div>
-          <div class="build-notes">On Hard, Tifa is your primary stagger damage dealer. Get her in, get gloves charged to max, and unload during stagger. Keep Raise for emergency revives.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- AERITH -->
-    <div class="char-section char-aerith reveal">
-      <div class="char-section-header">
-        <span class="char-section-name">Aerith Gainsborough</span>
-        <span class="char-section-role">Magic / Healer / Support</span>
-      </div>
-      <div class="build-grid">
-        <div class="build-card glass-card build-phase-early">
-          <div class="build-phase">Early Game</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Guard Stick</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Fire / Ice / Lightning</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Cure</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">MP Up</span></div>
-          </div>
-          <div class="build-notes">Early Aerith: keep her alive, keep MP up. She's the party's only reliable healing early on. Start learning Ward placement immediately.</div>
-        </div>
-        <div class="build-card glass-card build-phase-mid">
-          <div class="build-phase">Mid Game</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Silver Staff</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Magnify + Cure</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Fire / Ice</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">ATB Boost</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">MP Up × 2</span></div>
-          </div>
-          <div class="build-notes">Aerith becomes the party's magic engine. Place Wards before encounters, cast spells inside them. Magnify+Cure on Aerith is wasteful if Barret has it — let her deal damage instead.</div>
-        </div>
-        <div class="build-card glass-card build-phase-hard">
-          <div class="build-phase">Hard Mode</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Mythril Rod</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Warding + Subversion</span><span class="materia-pair">(Armor pair)</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">MP Up × 2</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">ATB Boost</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Raise</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Cure (emergency only)</span></div>
-          </div>
-          <div class="build-notes">Hard Mode Aerith is your most critical character. Warding+Subversion on armor halves MP costs of status magic. ATB Boost for emergency Planet's Protection. Every spell through a Ward. Raise is her most important materia — never let her die.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RED XIII -->
-    <div class="char-section char-red reveal">
-      <div class="char-section-header">
-        <span class="char-section-name">Red XIII</span>
-        <span class="char-section-role">Balanced / Counter Specialist</span>
-      </div>
-      <div class="build-grid">
-        <div class="build-card glass-card build-phase-early">
-          <div class="build-phase">Early Game</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Mythril Hairpin</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Fire / Ice / Lightning</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-yellow"></div><span class="materia-name">Stardust Ray</span></div>
-          </div>
-          <div class="build-notes">Let Red XIII take hits intentionally early to build Vengeance gauge. Stardust Ray is exceptional for stagger pressure on armored enemies.</div>
-        </div>
-        <div class="build-card glass-card build-phase-mid">
-          <div class="build-phase">Mid → Late</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Gold Hairpin</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Elemental + Lightning</span><span class="materia-pair">(Weapon)</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Thundara/Thundaga</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">ATB Boost</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up + MP Up</span></div>
-          </div>
-          <div class="build-notes">Vengeance Mode attacks are physical so elemental on weapon adds damage. ATB Boost during Vengeance Mode + stagger window is enormous burst.</div>
-        </div>
-        <div class="build-card glass-card build-phase-hard">
-          <div class="build-phase">Hard Mode</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Behemoth Horn</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Elemental + Ice</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">MP Up × 2</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Raise</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">Barrier</span></div>
-          </div>
-          <div class="build-notes">Red XIII in Hard Mode is reliable filler damage and a Raise carrier. His self-sustain via Vengeance means he needs less external healing than other characters.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- YUFFIE -->
-    <div class="char-section char-yuffie reveal">
-      <div class="char-section-header">
-        <span class="char-section-name">Yuffie Kisaragi</span>
-        <span class="char-section-role">Elemental DPS / Ninjutsu Specialist</span>
-      </div>
-      <div class="build-grid">
-        <div class="build-card glass-card build-phase-early">
-          <div class="build-phase">Early Game</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> 4-Point Shuriken</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Fire / Ice / Lightning</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-yellow"></div><span class="materia-name">Windstorm</span></div>
-          </div>
-          <div class="build-notes">Learn to switch elements on the fly with Doppelganger. Yuffie's power spike is fully realized once you have multiple elemental materia to cycle through.</div>
-        </div>
-        <div class="build-card glass-card build-phase-mid">
-          <div class="build-phase">Mid → Late</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Conformer</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Fire + Ice + Lightning + Wind</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">ATB Boost</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up + MP Up</span></div>
-          </div>
-          <div class="build-notes">Yuffie scales entirely off elemental coverage. At this point she should have all 4 primary elements ready to swap. Art of War into elemental Ninjutsu into stagger = top DPS in game.</div>
-        </div>
-        <div class="build-card glass-card build-phase-hard">
-          <div class="build-phase">Hard Mode</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Conformer</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Fire + Ice + Lightning + Wind</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">MP Up × 2</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">ATB Boost</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Raise</span></div>
-          </div>
-          <div class="build-notes">Yuffie is arguably the strongest Hard Mode damage dealer. Her Ninjutsu costs no MP — only ATB — so she conserves resources while dealing enormous damage. Always have her element set before pulling aggro.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CAIT SITH -->
-    <div class="char-section char-cait reveal">
-      <div class="char-section-header">
-        <span class="char-section-name">Cait Sith</span>
-        <span class="char-section-role">Support / Wildcard</span>
-      </div>
-      <div class="build-grid">
-        <div class="build-card glass-card build-phase-early">
-          <div class="build-phase">Early → Mid</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Poker Stick</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Magnify + Cure</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Lightning / Fire</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">HP Up</span></div>
-          </div>
-          <div class="build-notes">Cait works well as a Magnify+Cure carrier early on, freeing other characters for pure damage. Use Toy Soldiers for passive damage on priority targets.</div>
-        </div>
-        <div class="build-card glass-card build-phase-hard">
-          <div class="build-phase">Hard Mode</div>
-          <div class="weapon-rec"><strong>Weapon:</strong> Saved by Zero</div>
-          <div class="materia-slot-row">
-            <div class="materia-slot"><div class="mat-orb mat-blue"></div><span class="materia-name">Magnify + Cure</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-green"></div><span class="materia-name">MP Up × 2</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-purple"></div><span class="materia-name">Barrier</span></div>
-            <div class="materia-slot"><div class="mat-orb mat-red"></div><span class="materia-name">Raise</span></div>
-          </div>
-          <div class="build-notes">Hard Mode Cait is all support. His ATB generation rate is exceptional — keep him on field to charge ATB, cast Barrier on the party pre-fight, and use Slots as a Hail Mary on dangerous phase transitions.</div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /content -->
+  </div>
 
   <footer><p class="footer-text">FF7 REBIRTH — COMPLETE FIELD GUIDE</p></footer>
 </div>
 
+<script src="../data/game-data.js"></script>
 <script src="../js/shared.js"></script>
 <script src="../js/lifestream.js"></script>
+<script src="../js/party-equip.js"></script>
+<script src="../js/builds-page.js"></script>
 </body>
 </html>

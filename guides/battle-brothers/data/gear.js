@@ -136,7 +136,6 @@ window.BB_GEAR = {
     ],
     hammers1h: [
       { id: "pickaxe", name: "Pickaxe",       worth: 120,  dmgMin: 15, dmgMax: 30, ignoreArmor: 50, vsArmor: 150, durability: 56,  fatigue: -10, dlc: "" },
-      { id: "axehammer", name: "Axehammer",     worth: 800,  dmgMin: 20, dmgMax: 30, ignoreArmor: 60, vsArmor: 200, shieldDmg: 14, durability: 96, fatigue: -10, dlc: "Warriors of the North" },
       { id: "military-pick", name: "Military Pick", worth: 900,  dmgMin: 20, dmgMax: 35, ignoreArmor: 50, vsArmor: 200, durability: 80,  fatigue: -8,  dlc: "" },
       { id: "warhammer", name: "Warhammer",     worth: 2300, dmgMin: 30, dmgMax: 40, ignoreArmor: 50, vsArmor: 225, durability: 100, fatigue: -8,  dlc: "" }
     ],

@@ -1,0 +1,30 @@
+/* ============================================================
+   THE ARCANUM — shared guide foundation
+   Layout lives in guide-field.css / guide-codex.css / guide-wiki.css.
+   Colors & atmosphere live in css/themes/<game>.css per guide.
+   The hub (index, about, forge) keeps css/arcanum.css + hub.css.
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.is-hidden { display: none !important; }

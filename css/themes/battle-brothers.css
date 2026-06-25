@@ -1,0 +1,66 @@
+/* Battle Brothers — medieval ledger: dried blood, rusted brass, vellum */
+:root {
+  --cx-bg-body: #100d0a;
+  --cx-panel: #2b2520;
+  --cx-panel-deep: #201b16;
+  --cx-panel-darker: #201b16;
+  --cx-card-bg-1: #2a241d;
+  --cx-card-bg-2: #1c1812;
+  --cx-primary: #7c2c1c;
+  --cx-primary-bright: #a23a23;
+  --cx-secondary: #8a6a2f;
+  --cx-text: #c4b699;
+  --cx-text-dim: #c4b699;
+  --cx-highlight: #d8cdb0;
+  --cx-muted: #6e6453;
+  --cx-border: #3a3128;
+  --cx-line: #4a4a4a;
+  --cx-tier-s: #c9a227;
+  --cx-tier-a: #7d9b4e;
+  --cx-tier-b: #5a8aa6;
+  --cx-tier-c: #9a7b4f;
+  --cx-tier-d: #8a5a4a;
+  --cx-radius: 0;
+  --cx-radius-sm: 0;
+  --cx-callout-radius: 0;
+  --cx-font-display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --cx-font-body: "EB Garamond", "Garamond", Georgia, serif;
+  --cx-font-util: "IM Fell English SC", "Cinzel", Georgia, serif;
+  --cx-topbar-bg: linear-gradient(180deg, #16120d 0%, #0d0a07 100%);
+  --cx-topbar-border: var(--cx-primary);
+  --cx-footer-bg: #0c0906;
+  --cx-table-head-bg: #221c16;
+  --cx-list-marker: "\2020";
+  --cx-totop-fg: #d8cdb0;
+
+  /* legacy aliases (inline styles, page CSS) */
+  --ink: #1a1611;
+  --vellum: #cabb96;
+  --vellum-dim: #a8966f;
+  --parch-dark: var(--cx-panel);
+  --parch-darker: var(--cx-panel-deep);
+  --blood: var(--cx-primary);
+  --blood-bright: var(--cx-primary-bright);
+  --rust: var(--cx-secondary);
+  --bone: var(--cx-highlight);
+  --ash: var(--cx-muted);
+  --steel: var(--cx-line);
+  --tier-s: var(--cx-tier-s);
+  --tier-a: var(--cx-tier-a);
+  --tier-b: var(--cx-tier-b);
+  --tier-c: var(--cx-tier-c);
+  --tier-d: var(--cx-tier-d);
+  --font-display: var(--cx-font-display);
+  --font-body: var(--cx-font-body);
+  --font-util: var(--cx-font-util);
+  --maxw: 1180px;
+
+  --fx-type: none;
+}
+
+body {
+  background-color: var(--cx-bg-body);
+  background-image:
+    radial-gradient(ellipse at top, #1f1a14 0%, #100d0a 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}

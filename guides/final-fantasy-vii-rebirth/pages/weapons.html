@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Weapons | FF7 Rebirth Guide</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/lifestream.css" />
+<style>
+.weapon-char-section { margin-bottom: 3.5rem; }
+
+.weapon-section-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.2rem;
+  color: var(--char-color, var(--ls));
+  margin-bottom: 1rem;
+  text-shadow: 0 0 24px var(--char-glow, var(--ls-glow));
+}
+
+.weapon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.weapon-card {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border2);
+  border-top: 2px solid var(--char-color, var(--ls));
+  border-radius: 4px;
+  overflow: hidden;
+  scroll-margin-top: 6rem;
+}
+
+.weapon-card:target {
+  border-color: var(--char-color, var(--ls));
+  box-shadow: 0 0 24px var(--char-glow, var(--ls-glow));
+}
+
+.weapon-card-head {
+  padding: 1rem 1.25rem 0.75rem;
+  border-bottom: 1px solid var(--border2);
+}
+
+.weapon-char {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text3);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.weapon-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1rem;
+  color: var(--char-color, var(--ls));
+  margin: 0 0 0.35rem;
+}
+
+.weapon-chapter {
+  font-size: 0.75rem;
+  color: var(--text3);
+  font-style: italic;
+}
+
+.weapon-card-body { padding: 1rem 1.25rem 1.25rem; }
+
+.weapon-detail {
+  font-size: 0.86rem;
+  color: var(--text2);
+  line-height: 1.55;
+  margin-bottom: 0.55rem;
+}
+.weapon-detail strong { color: var(--text); }
+
+.weapon-muted { color: var(--text3); }
+
+.weapon-notes {
+  font-size: 0.82rem;
+  color: var(--text3);
+  font-style: italic;
+  border-top: 1px solid var(--border2);
+  padding-top: 0.65rem;
+  margin: 0.65rem 0 0.85rem;
+}
+
+.weapon-back-link {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ls);
+}
+
+.char-cloud  { --char-color: #88ccff; --char-glow: rgba(100,180,255,0.4); }
+.char-barret { --char-color: #ffcc44; --char-glow: rgba(255,200,50,0.4); }
+.char-tifa   { --char-color: #ff9966; --char-glow: rgba(255,140,80,0.4); }
+.char-aerith { --char-color: #ff88aa; --char-glow: rgba(255,100,150,0.4); }
+.char-red    { --char-color: #ff7744; --char-glow: rgba(255,100,60,0.4); }
+.char-yuffie { --char-color: #44ff99; --char-glow: rgba(0,255,130,0.4); }
+.char-cait   { --char-color: #c8a84b; --char-glow: rgba(200,168,75,0.4); }
+</style>
+</head>
+<body>
+<canvas id="ls-deep"></canvas>
+<canvas id="ls-mid"></canvas>
+<canvas id="ls-surface"></canvas>
+<div class="ls-vignette"></div>
+<div class="ls-fog"></div>
+<div class="ls-pulse"></div>
+<div class="page-wrap">
+
+  <nav>
+    <a class="nav-logo" href="../index.html">FF7 REBIRTH GUIDE</a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+    <ul class="nav-links">
+      <li><a href="field-guide.html">Field Guide</a></li>
+      <li><a href="characters.html">Characters</a></li>
+      <li><a href="materia.html">Materia</a></li>
+      <li><a href="builds.html">Builds</a></li>
+      <li><a href="weapons.html">Weapons</a></li>
+      <li><a href="parties.html">Party Setup</a></li>
+      <li><a href="bosses.html">Bosses</a></li>
+      <li><a href="queensblood.html">Queen's Blood</a></li>
+      <li><a href="affinity.html">Affinity</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <span class="page-eyebrow">Gear Locations</span>
+    <h1 class="page-title ls-glow-white">Weapons</h1>
+    <div class="page-rule"></div>
+  </div>
+
+  <div class="content">
+
+    <div class="callout reveal">
+      <strong>Missed a weapon?</strong> Each entry shows where to find it in the field and whether Chadley's shop sells it once you've passed that chapter. Deep links from the <a class="xref" href="builds.html#party-equip">Party Equiper</a> land here on the exact weapon card.
+    </div>
+
+    <div id="weapons-root"></div>
+
+  </div>
+
+  <footer><p class="footer-text">FF7 REBIRTH — COMPLETE FIELD GUIDE</p></footer>
+</div>
+
+<script src="../data/game-data.js"></script>
+<script src="../js/shared.js"></script>
+<script src="../js/lifestream.js"></script>
+<script src="../js/weapons-page.js"></script>
+</body>
+</html>

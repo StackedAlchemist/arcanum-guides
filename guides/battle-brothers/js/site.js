@@ -38,7 +38,7 @@
      Add class "searchbar" + data-target="<css selector of rows>"
      Rows that don't match the typed text get .is-hidden       */
   var search = document.querySelector("[data-search]");
-  if (search) {
+  if (search && !search._bbBound) {
     var targetSel = search.getAttribute("data-target");
     var rows = Array.prototype.slice.call(document.querySelectorAll(targetSel));
     var counter = document.querySelector("[data-search-count]");

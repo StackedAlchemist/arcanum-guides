@@ -1,0 +1,42 @@
+/* Final Fantasy XVI — Valisthea: ember Eikon fire + aether blue */
+:root {
+  --bg: #0c0807;
+  --bg2: #160e0b;
+  --panel: rgba(22, 14, 11, 0.86);
+  --accent: #e0552c;
+  --accent2: #ff8a5c;
+  --accent-alt: #d8a85a;
+  --accent-alt2: #d8a85a;
+  --highlight: #f0cf8a;
+  --highlight2: #f0cf8a;
+  --glow: rgba(224, 85, 44, 0.24);
+  --line: rgba(224, 85, 44, 0.20);
+  --line2: rgba(224, 85, 44, 0.08);
+  --text: #ece2db;
+  --text2: #b6a59b;
+  --text3: #7a685e;
+  --nav-home: #a9d0f5;
+  --hero-grad-1: #f0cf8a;
+  --hero-grad-2: #ff8a5c;
+  --display: "Cinzel", Georgia, serif;
+  --body: "EB Garamond", Georgia, serif;
+  --maxw: 1000px;
+  --gold: #d8a85a;
+  --gold2: #f0cf8a;
+  --ember: var(--accent);
+  --ember2: var(--accent2);
+  --aether: #6fa8dc;
+  --aether2: #a9d0f5;
+
+  --fx-type: motes;
+  --fx-mote-a: 255, 138, 92;
+  --fx-mote-b: 169, 208, 245;
+  --fx-mote-b-chance: 0.3;
+}
+body {
+  background:
+    radial-gradient(60% 50% at 50% -6%, rgba(224, 85, 44, 0.18), transparent 60%),
+    radial-gradient(50% 45% at 85% 25%, rgba(111, 168, 220, 0.08), transparent 60%),
+    radial-gradient(50% 50% at 12% 75%, rgba(216, 168, 90, 0.06), transparent 60%),
+    var(--bg);
+}

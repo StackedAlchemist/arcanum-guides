@@ -13,7 +13,7 @@
 // ============================================================
 
 const PICTOS_INTRO = "Pictos are equippable items: each grants stat bonuses plus one passive effect, and you can equip up to 3 per character. Use a Picto for 4 battles to master it and permanently unlock its effect as a Lumina for the whole team. Pictos level up through use, so the stat bonuses shown grow as the Picto levels. " +
-  "There are 193 Pictos. Search by name, effect, or type below.";
+  "There are 192 Pictos. Search by name, effect, or type below.";
 
 const PICTOS = [
   { n: "Dodger", lv: 1, t: "Support", e: "Gain 1 AP on Perfect Dodge. Once per turn.", s: "12 Speed, 3% Crit Rate" },
@@ -195,19 +195,19 @@ const PICTOS = [
   { n: "Healing Fire", lv: 13, t: "Defensive", e: "Recover 25% Health when attacking a Burning target. Once per turn.", s: "240 Defense, 118 Speed" },
   { n: "Energising Revive", lv: 8, t: "Support", e: "Plus 3 AP to all allies when revived", s: "270 Health, 96 Defense" },
   { n: "Revive Paradox", lv: 11, t: "Support", e: "Play immediately when revived", s: "92 Speed, 14% Crit Rate" },
-  { n: "Accelerating Shots", lv: 28, t: "", e: "20% chance to gain Rush on Free Aim Shot", s: "4,869 Health, 301 Defense" },
-  { n: "Auto Powerful", lv: 19, t: "", e: "Apply Powerful for 3 turns on battle start", s: "241 Speed, 20% Crit Rate" },
-  { n: "Break Specialist", lv: 28, t: "", e: "Break damage is increased by 50%, but base damage is reduced by 20%", s: "2,705 Health, 546 Speed" },
-  { n: "Critical Stun", lv: 20, t: "", e: "100% Critical Chance on hitting a Stunned target", s: "681 Defense, 23% Crit Rate" },
-  { n: "Defensive Mode", lv: 7, t: "", e: "On receiving damage, consume 1 AP to take 30% less damage, if possible", s: "216 Health, 71 Defense" },
-  { n: "Empowering Parry", lv: 28, t: "", e: "Each successful Parry increases damage by 5% until the end of the following turn. Taking any damage removes this buff", s: "546 Speed, 32% Crit Rate" },
-  { n: "Gradient Breaker", lv: 28, t: "", e: "50% chance to apply Mark when attacking a Marked target", s: "546 Speed, 32% Crit Rate" },
-  { n: "Healing Death", lv: 10, t: "", e: "On death, the rest of the Expedition recover all Health", s: "78 Speed, 13% Crit Rate" },
-  { n: "Painter", lv: 28, t: "", e: "Convert all Physical damage to Void damage", s: "519 Speed, 31% Crit Rate" },
-  { n: "Piercing Shot", lv: 12, t: "", e: "25% increased Free Aim damage. Free Aim shots ignore Shields", s: "546 Health, 15% Crit Rate" },
-  { n: "Rejuvenating Revive", lv: 12, t: "", e: "Apply Regen for 3 turns when revived", s: "546 Health, 218 Defense" },
-  { n: "Slowing Break", lv: 28, t: "", e: "Apply Slow on Break", s: "1,501 Defense, 546 Speed" },
-  { n: "Powerful Mark", lv: 33, t: "", e: "Gain Powerful on hitting a Marked enemy", s: "1,089 Speed, 19% Crit Rate" }
+  { n: "Accelerating Shots", lv: 28, t: "Offensive", e: "20% chance to gain Rush on Free Aim Shot", s: "4,869 Health, 301 Defense" },
+  { n: "Auto Powerful", lv: 19, t: "Support", e: "Apply Powerful for 3 turns on battle start", s: "241 Speed, 20% Crit Rate" },
+  { n: "Break Specialist", lv: 28, t: "Offensive", e: "Break damage is increased by 50%, but base damage is reduced by 20%", s: "2,705 Health, 546 Speed" },
+  { n: "Critical Stun", lv: 20, t: "Offensive", e: "100% Critical Chance on hitting a Stunned target", s: "681 Defense, 23% Crit Rate" },
+  { n: "Defensive Mode", lv: 7, t: "Defensive", e: "On receiving damage, consume 1 AP to take 30% less damage, if possible", s: "216 Health, 71 Defense" },
+  { n: "Empowering Parry", lv: 28, t: "Defensive", e: "Each successful Parry increases damage by 5% until the end of the following turn. Taking any damage removes this buff", s: "546 Speed, 32% Crit Rate" },
+  { n: "Gradient Breaker", lv: 28, t: "Offensive", e: "50% chance to apply Mark when attacking a Marked target", s: "546 Speed, 32% Crit Rate" },
+  { n: "Healing Death", lv: 10, t: "Support", e: "On death, the rest of the Expedition recover all Health", s: "78 Speed, 13% Crit Rate" },
+  { n: "Painter", lv: 28, t: "Offensive", e: "Convert all Physical damage to Void damage", s: "519 Speed, 31% Crit Rate" },
+  { n: "Piercing Shot", lv: 12, t: "Offensive", e: "25% increased Free Aim damage. Free Aim shots ignore Shields", s: "546 Health, 15% Crit Rate" },
+  { n: "Rejuvenating Revive", lv: 12, t: "Support", e: "Apply Regen for 3 turns when revived", s: "546 Health, 218 Defense" },
+  { n: "Slowing Break", lv: 28, t: "Offensive", e: "Apply Slow on Break", s: "1,501 Defense, 546 Speed" },
+  { n: "Powerful Mark", lv: 33, t: "Offensive", e: "Gain Powerful on hitting a Marked enemy", s: "1,089 Speed, 19% Crit Rate" }
 ];
 
 if (typeof module !== "undefined") module.exports = { PICTOS, PICTOS_INTRO };

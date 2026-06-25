@@ -84,6 +84,23 @@ function initNav() {
   });
 }
 
+// ===== MOBILE NAV =====
+function initMobileNav() {
+  const nav = document.querySelector('nav');
+  const toggle = document.querySelector('.nav-toggle');
+  if (!nav || !toggle) return;
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
 // ===== BOSS ACCORDION =====
 function initAccordions() {
   document.querySelectorAll('.accordion-header').forEach(header => {
@@ -101,5 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLifestream('bg-canvas');
   initReveal();
   initNav();
+  initMobileNav();
   initAccordions();
 });

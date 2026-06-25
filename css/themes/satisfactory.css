@@ -1,0 +1,73 @@
+/* Satisfactory — FICSIT industrial: orange, hazard amber, coolant cyan */
+:root {
+  --cx-bg-body: #0c0f12;
+  --cx-panel: #1d242c;
+  --cx-panel-deep: #161b21;
+  --cx-panel-darker: #161b21;
+  --cx-card-bg-1: var(--cx-panel);
+  --cx-card-bg-2: var(--cx-panel-deep);
+  --cx-primary: #fa9549;
+  --cx-primary-bright: #ffb072;
+  --cx-secondary: #f5c542;
+  --cx-tertiary: #4fc3dc;
+  --cx-text: #aebccb;
+  --cx-text-dim: #aebccb;
+  --cx-highlight: #e7edf2;
+  --cx-muted: #6f7d8c;
+  --cx-border: #28323c;
+  --cx-line: #3a4651;
+  --cx-tier-s: #f5c542;
+  --cx-tier-a: #7ed957;
+  --cx-tier-b: #4fc3dc;
+  --cx-tier-c: #fa9549;
+  --cx-tier-d: #e5634d;
+  --cx-radius: 6px;
+  --cx-radius-sm: 4px;
+  --cx-callout-radius: 0 5px 5px 0;
+  --cx-font-display: "Rajdhani", "Oxanium", "Segoe UI", sans-serif;
+  --cx-font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --cx-font-mono: "JetBrains Mono", "Consolas", monospace;
+  --cx-font-util: var(--cx-font-mono);
+  --cx-font-size: 17px;
+  --cx-font-size-mobile: 16px;
+  --cx-topbar-bg: linear-gradient(180deg, #11161c 0%, #0a0d10 100%);
+  --cx-topbar-border: var(--cx-primary);
+  --cx-footer-bg: #090c0f;
+  --cx-table-head-bg: #1a2128;
+  --cx-divider: repeating-linear-gradient(90deg, var(--cx-primary) 0 18px, transparent 18px 32px);
+  --cx-list-marker: "\25B8";
+  --cx-totop-fg: #1a1206;
+
+  --void: var(--cx-bg-body);
+  --slate: var(--cx-panel-deep);
+  --slate-2: var(--cx-panel);
+  --slate-3: var(--cx-border);
+  --steel: var(--cx-line);
+  --ficsit: var(--cx-primary);
+  --ficsit-bright: var(--cx-primary-bright);
+  --hazard: var(--cx-secondary);
+  --coolant: var(--cx-tertiary);
+  --paper: var(--cx-highlight);
+  --paper-dim: var(--cx-text);
+  --muted: var(--cx-muted);
+  --tier-s: var(--cx-tier-s);
+  --tier-a: var(--cx-tier-a);
+  --tier-b: var(--cx-tier-b);
+  --tier-c: var(--cx-tier-c);
+  --tier-d: var(--cx-tier-d);
+  --font-display: var(--cx-font-display);
+  --font-body: var(--cx-font-body);
+  --font-mono: var(--cx-font-mono);
+  --maxw: 1180px;
+
+  --fx-type: none;
+}
+
+body {
+  background-color: var(--cx-bg-body);
+  background-image:
+    radial-gradient(ellipse at top, #131922 0%, var(--cx-bg-body) 72%),
+    linear-gradient(transparent 95%, rgba(250, 149, 73, 0.04) 95%),
+    linear-gradient(90deg, transparent 95%, rgba(250, 149, 73, 0.04) 95%);
+  background-size: auto, 26px 26px, 26px 26px;
+}

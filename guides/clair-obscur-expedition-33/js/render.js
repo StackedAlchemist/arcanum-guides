@@ -57,7 +57,7 @@
       </a>`).join("");
     return crumb("Characters", "Characters")
       + `<h1 class="page-title">Characters</h1>`
-      + `<p class="page-lede">The eight playable members of Expedition 33. All join by mid-Act II; the active party holds three, with reserves swapping in for any KO'd member.</p>`
+      + `<p class="page-lede">Six combat members of Expedition 33, plus Esquie (traversal companion) and Renoir (story antagonist). The active party holds three, with reserves swapping in for any KO'd member.</p>`
       + `<div class="card-grid">${cards}</div>`;
   }
 
@@ -114,10 +114,13 @@
     const off = stanceTable("Offensive / Engine", STATUS_EFFECTS.offensive, "name", "effect");
     const def = stanceTable("Defensive / Buff", STATUS_EFFECTS.defensive, "name", "effect");
     const aff = stanceTable("Elemental Affinities", STATUS_EFFECTS.affinities, "name", "effect");
+    const stains = STATUS_EFFECTS.stains
+      ? stanceTable("Elemental Stains (Lune)", STATUS_EFFECTS.stains, "name", "effect")
+      : "";
     return crumb("Characters", "Status Effects")
       + `<h1 class="page-title">Status Effects</h1>`
       + `<p class="page-lede">${esc(STATUS_EFFECTS.intro)}</p>`
-      + off + def + aff;
+      + off + def + aff + stains;
   }
 
   function buildPictos() {

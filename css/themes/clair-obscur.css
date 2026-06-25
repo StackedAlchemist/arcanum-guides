@@ -1,0 +1,47 @@
+/* Clair Obscur: Expedition 33 — painterly dusk, gilt script, ember accents */
+:root {
+  --wiki-bg: #0a0908;
+  --wiki-bg-raise: #12100e;
+  --wiki-card: #181412;
+  --wiki-card-hi: #201a17;
+  --wiki-line: rgba(212, 168, 88, 0.14);
+  --wiki-line-hi: rgba(212, 168, 88, 0.34);
+  --wiki-accent: #d4a858;
+  --wiki-accent-hi: #f0d080;
+  --wiki-secondary: #a84828;
+  --wiki-secondary-hi: #d06840;
+  --wiki-ink: #ece4d4;
+  --wiki-ink-dim: #b3a896;
+  --wiki-ink-mute: #7d7468;
+  --wiki-good: #3fae8e;
+  --wiki-warn: #d8a23a;
+  --wiki-font-display: "Cinzel", serif;
+  --wiki-font-body: "Inter", system-ui, sans-serif;
+  --wiki-font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* legacy aliases */
+  --bg: var(--wiki-bg);
+  --bg-raise: var(--wiki-bg-raise);
+  --card: var(--wiki-card);
+  --card-hi: var(--wiki-card-hi);
+  --line: var(--wiki-line);
+  --line-hi: var(--wiki-line-hi);
+  --gold: var(--wiki-accent);
+  --gold-hi: var(--wiki-accent-hi);
+  --ember: var(--wiki-secondary);
+  --ember-hi: var(--wiki-secondary-hi);
+  --ink: var(--wiki-ink);
+  --ink-dim: var(--wiki-ink-dim);
+  --ink-mute: var(--wiki-ink-mute);
+  --good: var(--wiki-good);
+  --warn: var(--wiki-warn);
+
+  --fx-type: none;
+}
+
+body {
+  background:
+    radial-gradient(70% 55% at 18% 0%, rgba(168, 72, 40, 0.12), transparent 55%),
+    radial-gradient(60% 50% at 88% 12%, rgba(212, 168, 88, 0.08), transparent 50%),
+    var(--wiki-bg);
+}

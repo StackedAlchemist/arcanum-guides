@@ -14,14 +14,14 @@ const CHARACTERS = [
     role: "Engineer / Overcharge striker",
     weapon: "Gun & Sword",
     quote: "For those who come after.",
-    summary: "A resourceful, dedicated Engineer chosen to lead Expedition 33. The first playable character. His attacks are basic but hit hard with the right upgrades, and his whole kit revolves around building and unleashing Overcharge.",
+    summary: "A resourceful, dedicated Engineer chosen to lead Expedition 33. The first playable character. His attacks are basic but hit hard with the right upgrades, and his whole kit revolves around building and unleashing Overcharge. Gustave dies in Act I after the Renoir fight; Verso inherits his weapon pool.",
     mechanic: {
       name: "Overcharge",
       detail: "Gustave builds charges by attacking, then dumps them in one devastating Lightning hit. Lumiere Assault deals low physical damage over multiple hits, but critical hits generate an extra Overcharge charge. Overcharge damage scales with the number of charges spent. He also has a free-aim system to target enemy weak points."
     },
     startingSkills: ["Lumiere Assault", "Overcharge"],
     buildNotes: "Stack charge generation and crit, then release Overcharge in the burst window. A reliable, beginner-friendly damage core for the early game.",
-    actStatus: "Starting character (Act I)"
+    actStatus: "Starting character (Act I) — leaves the roster after Renoir"
   },
   {
     slug: "lune",
@@ -32,7 +32,7 @@ const CHARACTERS = [
     summary: "A passionate Scholar and Mage charting the Expedition's path. Daughter of two prominent researchers, she carries both their work and the weight of keeping the Expedition alive. The first companion you meet.",
     mechanic: {
       name: "Elemental Stains",
-      detail: "Lune generates and consumes Stains to power her skills. Five types: Ice, Fire, Lightning, Earth, and Light (Light substitutes for any element). Skills generate some Stains and consume others, so you cycle elements to keep her engine running. She also applies and exploits Elemental Affinities."
+      detail: "Lune generates and consumes Stains to power her skills. Six types: Ice, Fire, Lightning, Earth, Light, and Dark (Light substitutes for any element). Skills generate some Stains and consume others, so you cycle elements to keep her engine running. She also applies and exploits Elemental Affinities."
     },
     affinities: [
       { name: "Weakness",   effect: "Takes 50% more damage" },

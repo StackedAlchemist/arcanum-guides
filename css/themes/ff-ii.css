@@ -1,0 +1,42 @@
+/* Final Fantasy II — Wild Rose rebellion: crimson rose + gold */
+:root {
+  --bg: #0f0a0c;
+  --bg2: #1a1014;
+  --panel: rgba(26, 16, 20, 0.85);
+  --accent: #d0566e;
+  --accent2: #f29bac;
+  --accent-alt: #d8b65a;
+  --accent-alt2: #d8b65a;
+  --highlight: #f0d98a;
+  --highlight2: #f0d98a;
+  --glow: rgba(208, 86, 110, 0.22);
+  --line: rgba(208, 86, 110, 0.18);
+  --line2: rgba(208, 86, 110, 0.07);
+  --text: #ece2e4;
+  --text2: #b6a2a8;
+  --text3: #756069;
+  --nav-home: #f29bac;
+  --hero-grad-1: #f0d98a;
+  --hero-grad-2: #f29bac;
+  --spoiler: #e8a85c;
+  --display: "Cinzel", Georgia, serif;
+  --body: "EB Garamond", Georgia, serif;
+  --maxw: 1000px;
+  --gold: #d8b65a;
+  --gold2: #f0d98a;
+  --rose: var(--accent);
+  --rose2: var(--accent2);
+  --steel: #8fa0c0;
+
+  --fx-type: motes;
+  --fx-mote-a: 242, 155, 172;
+  --fx-mote-b: 240, 217, 138;
+  --fx-mote-b-chance: 0.32;
+}
+body {
+  background:
+    radial-gradient(60% 50% at 50% -6%, rgba(208, 86, 110, 0.16), transparent 60%),
+    radial-gradient(50% 45% at 85% 25%, rgba(216, 182, 90, 0.07), transparent 60%),
+    radial-gradient(50% 50% at 12% 75%, rgba(143, 160, 192, 0.06), transparent 60%),
+    var(--bg);
+}

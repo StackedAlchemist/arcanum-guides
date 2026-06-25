@@ -1,0 +1,8 @@
+/* Battle Brothers — hero & page-specific atmosphere */
+.hero {
+  background-image:
+    linear-gradient(180deg, rgba(12, 9, 7, 0.58), rgba(12, 9, 7, 0.90)),
+    url("../../../assets/images/bb-hero.jpg");
+  background-size: cover;
+  background-position: center;
+}

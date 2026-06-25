@@ -11,83 +11,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --crystal:#6fd6ff;
-    --crystal2:#9b7bff;
-    --glow:rgba(111,214,255,0.18);
-    --dark:#05070f;
-    --panel:rgba(10,16,32,0.92);
-    --border:rgba(111,214,255,0.16);
-    --border2:rgba(111,214,255,0.07);
-    --text:#dbe6f5;
-    --text2:#8aa0c4;
-    --text3:#4a5a7a;
-    --gold:#e7c66a;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    background:
-      radial-gradient(1200px 600px at 50% -10%, rgba(155,123,255,0.10), transparent 60%),
-      radial-gradient(900px 500px at 80% 20%, rgba(111,214,255,0.06), transparent 55%),
-      var(--dark);
-    color:var(--text);
-    font-family:'Spectral',Georgia,serif;
-    line-height:1.65;
-    min-height:100vh;
-  }
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 1.4rem;}
-
-  /* topbar */
-  .topbar{border-bottom:1px solid var(--border);background:rgba(5,7,15,0.7);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;}
-  .topbar-inner{max-width:1080px;margin:0 auto;padding:0.9rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-  .brand{font-family:'Cinzel',serif;letter-spacing:0.12em;font-weight:600;font-size:1.05rem;color:var(--crystal);}
-  .brand span{color:var(--text2);font-weight:500;}
-  .topbar a.back{font-family:'Cinzel',serif;font-size:0.82rem;letter-spacing:0.08em;color:var(--text2);border:1px solid var(--border);padding:0.4rem 0.8rem;border-radius:4px;transition:0.2s;}
-  .topbar a.back:hover{color:var(--crystal);border-color:var(--crystal);}
-
-  /* hero */
-  .hero{text-align:center;padding:4rem 1.4rem 2.4rem;}
-  .sigil{font-size:2.6rem;color:var(--crystal);text-shadow:0 0 30px var(--glow);display:block;margin-bottom:0.6rem;}
-  .eyebrow{font-family:'Cinzel',serif;letter-spacing:0.32em;text-transform:uppercase;font-size:0.72rem;color:var(--text3);}
-  .hero h1{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(2.1rem,5vw,3.4rem);margin:0.5rem 0;background:linear-gradient(120deg,var(--crystal),var(--crystal2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-  .hero .lede{max-width:640px;margin:0.6rem auto 0;color:var(--text2);font-size:1.05rem;}
-
-  /* era blocks */
-  .era{padding:1.6rem 0;}
-  .era-head{display:flex;align-items:baseline;gap:0.9rem;border-bottom:1px solid var(--border2);padding-bottom:0.5rem;margin-bottom:1.2rem;}
-  .era-head h2{font-family:'Cinzel',serif;font-weight:600;font-size:1.2rem;color:var(--text);letter-spacing:0.04em;}
-  .era-head .count{font-size:0.78rem;color:var(--text3);font-family:'Cinzel',serif;letter-spacing:0.1em;}
-
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem;}
-  .title-card{
-    position:relative;display:block;border:1px solid var(--border);border-top:2px solid var(--crystal);
-    border-radius:8px;background:var(--panel);padding:1.1rem 1.1rem 0.9rem;transition:0.22s;overflow:hidden;
-  }
-  .title-card::after{content:"";position:absolute;inset:0;background:radial-gradient(400px 120px at 50% -20%,var(--glow),transparent 70%);opacity:0;transition:0.22s;pointer-events:none;}
-  .title-card .name{font-family:'Cinzel',serif;font-weight:600;font-size:1.02rem;margin-bottom:0.25rem;color:var(--text);}
-  .title-card .sub{font-size:0.82rem;color:var(--text2);min-height:2.4em;}
-  .title-card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:0.7rem;}
-  .badge{font-family:'Cinzel',serif;font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.18rem 0.5rem;border-radius:3px;}
-  .badge.live{color:var(--dark);background:var(--crystal);font-weight:700;}
-  .badge.forge{color:var(--text3);border:1px solid var(--border);}
-  .badge.request{color:var(--gold);border:1px solid rgba(231,198,106,0.45);}
-  .go{font-size:0.78rem;color:var(--text3);}
-
-  .title-card.available{cursor:pointer;}
-  .title-card.available:hover{transform:translateY(-3px);border-color:var(--crystal);box-shadow:0 10px 30px -12px var(--glow);}
-  .title-card.available:hover::after{opacity:1;}
-  .title-card.available .go{color:var(--crystal);}
-  .title-card.forge-card{opacity:0.62;}
-  .title-card.forge-card:hover{opacity:0.82;}
-
-  footer{border-top:1px solid var(--border);margin-top:2.5rem;padding:1.8rem 1.4rem;text-align:center;color:var(--text3);font-size:0.82rem;}
-  footer a{color:var(--text2);}
-  footer a:hover{color:var(--crystal);}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<canvas id="motes" aria-hidden="true"></canvas>
 
 <header class="topbar">
   <div class="topbar-inner">
@@ -109,20 +37,20 @@
     <div class="era-head"><h2>Compilation of VII</h2><span class="count">The flagship</span></div>
     <div class="grid">
       <a class="title-card available" href="../final-fantasy-vii-remake/index.html">
-        <div class="name">FF VII Remake (Intergrade)</div>
-        <div class="sub">Part 1 &mdash; the escape from Midgar. Combat &amp; the stagger loop, Materia, the weapon/SP system, bosses, Hard Mode, and the Yuffie episode.</div>
-        <div class="foot"><span class="badge live">Live</span><span class="go">Open guide &rarr;</span></div>
+        <div class="name">FF VII Remake</div>
+        <div class="sub">Part 1 &mdash; the escape from Midgar. Covers the <strong>base Remake</strong> story and the <strong>Intergrade</strong> release (PS5/PC): INTERmission with Yuffie, Fort Condor, plus combat, Materia, bosses &amp; Hard Mode.</div>
+        <div class="foot"><span class="badge live">Live</span><span class="go">Remake + Intergrade &rarr;</span></div>
       </a>
       <a class="title-card available" href="../final-fantasy-vii-rebirth/index.html">
         <div class="name">FF VII Rebirth</div>
         <div class="sub">Part 2 &mdash; characters, materia, builds, party setup, bosses, Queen's Blood, and affinity. The full guide.</div>
         <div class="foot"><span class="badge live">Live</span><span class="go">Open guide &rarr;</span></div>
       </a>
-      <div class="title-card forge-card">
+      <a class="title-card forge-card" href="../final-fantasy-vii-revelation/index.html">
         <div class="name">FF VII Revelation</div>
-        <div class="sub">Part 3 &mdash; the finale of the Remake trilogy. Announced at Summer Game Fest 2026; releasing <strong>Spring 2027</strong>. Guide goes up once it's out.</div>
-        <div class="foot"><span class="badge forge">Spring 2027</span><span class="go">Announced</span></div>
-      </div>
+        <div class="sub">Part 3 &mdash; the finale of the Remake trilogy. Announced at Summer Game Fest 2026; slated for <strong>Spring 2027</strong>. Stub page now; full guide at launch.</div>
+        <div class="foot"><span class="badge soon">Coming soon</span><span class="go">Spring 2027 &rarr;</span></div>
+      </a>
       <div class="title-card forge-card">
         <div class="name">FF VII (1997 / 2013)</div>
         <div class="sub">The original. Materia routing, secrets, and the classic endgame grind.</div>
@@ -211,5 +139,6 @@
   <p>A fan-made guide collection under <a href="../../index.html">The Arcanum</a> &middot; Stacked Alchemist. Final Fantasy is &copy; Square Enix; this guide is unaffiliated.</p>
 </footer>
 
+<script src="js/site.js"></script>
 </body>
 </html>

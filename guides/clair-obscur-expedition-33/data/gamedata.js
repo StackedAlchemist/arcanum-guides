@@ -46,6 +46,14 @@ const STATUS_EFFECTS = {
     { name: "Nullify",    effect: "Takes no damage" },
     { name: "Absorb",     effect: "Heals instead of taking damage" }
   ],
+  stains: [
+    { name: "Ice Stain",        effect: "Lune's ice element; generated and consumed by her ice skills." },
+    { name: "Fire Stain",       effect: "Lune's fire element; pairs with Burn engines and Immolation." },
+    { name: "Lightning Stain",  effect: "Lune's lightning element; cycles into her burst skills." },
+    { name: "Earth Stain",      effect: "Lune's earth element; defensive and setup stain." },
+    { name: "Light Stain",      effect: "Substitutes for any other stain type when consumed." },
+    { name: "Dark Stain",       effect: "Lune's dark element; used by endgame weapons and late-cycle skills." }
+  ],
   status: "live"
 };
 

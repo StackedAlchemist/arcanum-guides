@@ -10,7 +10,7 @@ clair-obscur-expedition-33/
   css/wiki.css        # Arcanum forge identity (gold/ember/dark)
   data/
     nav.js            # THE SPINE: the 5 buckets + every page (slug, title, type, status)
-    characters.js     # all 8 playable characters + kits
+    characters.js     # 6 combat members + Esquie + Renoir + kits
     gamedata.js       # Luminas, Status Effects, article pages
   js/
     render.js         # THE HAMMER: reads nav + data, builds every page
@@ -24,15 +24,16 @@ clair-obscur-expedition-33/
 
 ## Page status (this build)
 
-5 buckets, 33 pages. **7 live, 26 stubs.**
+5 buckets, 33 pages. **10 live, 23 stubs.**
 
 Live now (real, current content):
 - General Information, Combat (General bucket)
 - Characters index + all 8 character detail pages, Attributes, Status Effects (Characters bucket)
-- Luminas (Equipment bucket)
+- Weapons, Pictos, Luminas (Equipment bucket)
+- Bosses (World bucket)
 - New Player Help (Guides bucket)
 
-Stubs (structure live, data pending research batches): Patch Notes, DLC, Controls, Secrets, Skills, Weapons, Pictos, Outfits, Items, Music Records, The Curator, all of World (Locations, Quests, NPCs, Merchants, Enemies, Bosses, Lost Gestrals, Journals, Story & Lore), Walkthrough, Game Progress Route, Boss Guides, Trophy Guide, New Game Plus.
+Stubs (structure live, data pending research batches): Patch Notes, DLC, Controls, Secrets, Skills, Outfits, Items, Music Records, The Curator, remaining World (Locations, Quests, NPCs, Merchants, Enemies, Lost Gestrals, Journals, Story & Lore), Walkthrough, Game Progress Route, Boss Guides, Trophy Guide, New Game Plus.
 
 ## Why so many stubs?
 

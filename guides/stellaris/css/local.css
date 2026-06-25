@@ -1,0 +1,30 @@
+/* Stellaris — hero imagery & UI tone */
+.hero {
+  overflow: hidden;
+  background-image:
+    linear-gradient(180deg, rgba(7, 9, 18, 0.56), rgba(7, 9, 18, 0.90)),
+    url("../../../assets/images/stellaris-hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h1,
+.page-head h1,
+.hub-card h3,
+.s-title,
+h3.sub {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.hero .eyebrow {
+  font-family: var(--display);
+  letter-spacing: 0.3em;
+  font-size: 0.66rem;
+  color: var(--accent-alt2);
+}
+
+.hub-card h3 { font-size: 1.05rem; }
+.hub-card .k { font-family: var(--display); font-size: 0.6rem; }
+.s-tag { font-family: var(--display); font-size: 0.62rem; }
+th { font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; }

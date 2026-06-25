@@ -1,0 +1,42 @@
+/* Final Fantasy XV — Lucian road trip: crystal blue + warm amber */
+:root {
+  --bg: #080a12;
+  --bg2: #0e121f;
+  --panel: rgba(14, 18, 31, 0.86);
+  --accent: #5aa0e0;
+  --accent2: #9ccbf0;
+  --accent-alt: #d8b46a;
+  --accent-alt2: #d8b46a;
+  --highlight: #f0d699;
+  --highlight2: #f0d699;
+  --glow: rgba(90, 160, 224, 0.22);
+  --line: rgba(90, 160, 224, 0.20);
+  --line2: rgba(90, 160, 224, 0.08);
+  --text: #e6ebf2;
+  --text2: #a3b0c4;
+  --text3: #5e6c82;
+  --nav-home: #f3c98a;
+  --hero-grad-1: #f0d699;
+  --hero-grad-2: #9ccbf0;
+  --display: "Cinzel", Georgia, serif;
+  --body: "EB Garamond", Georgia, serif;
+  --maxw: 1000px;
+  --gold: #d8b46a;
+  --gold2: #f0d699;
+  --crystal: var(--accent);
+  --crystal2: var(--accent2);
+  --amber: #e0a85a;
+  --amber2: #f3c98a;
+
+  --fx-type: motes;
+  --fx-mote-a: 156, 203, 240;
+  --fx-mote-b: 243, 201, 138;
+  --fx-mote-b-chance: 0.32;
+}
+body {
+  background:
+    radial-gradient(60% 50% at 50% -6%, rgba(90, 160, 224, 0.16), transparent 60%),
+    radial-gradient(50% 45% at 85% 25%, rgba(224, 168, 90, 0.07), transparent 60%),
+    radial-gradient(50% 50% at 12% 75%, rgba(216, 180, 106, 0.06), transparent 60%),
+    var(--bg);
+}

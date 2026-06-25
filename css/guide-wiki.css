@@ -1,0 +1,364 @@
+/* ============================================================
+   Wiki layout — Clair Obscur Expedition 33, etc.
+   Expects tokens from css/themes/<game>.css (--wiki-*)
+   ============================================================ */
+
+body {
+  background: var(--wiki-bg);
+  color: var(--wiki-ink);
+  font-family: var(--wiki-font-body, "Inter", system-ui, sans-serif);
+  line-height: 1.65;
+  font-size: 15px;
+}
+
+a {
+  color: var(--wiki-accent);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+a:hover { color: var(--wiki-accent-hi); }
+
+.mono { font-family: var(--wiki-font-mono, "JetBrains Mono", ui-monospace, monospace); }
+
+.wiki {
+  display: grid;
+  grid-template-columns: 264px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: var(--wiki-bg-raise);
+  border-right: 1px solid var(--wiki-line);
+  padding: 1.5rem 1rem 3rem;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.35rem;
+}
+
+.brand .glyph { color: var(--wiki-accent); font-size: 1.4rem; }
+
+.brand .name {
+  font-family: var(--wiki-font-display, "Cinzel", serif);
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--wiki-ink);
+}
+
+.brand:hover .name { color: var(--wiki-accent-hi); }
+
+.brand-sub {
+  font-family: var(--wiki-font-mono, "JetBrains Mono", monospace);
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  color: var(--wiki-ink-mute);
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+}
+
+.nav-bucket { margin-bottom: 1.4rem; }
+
+.nav-bucket h4 {
+  font-family: var(--wiki-font-display, "Cinzel", serif);
+  font-size: 0.68rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--wiki-accent);
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--wiki-line);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.32rem 0.5rem;
+  border-radius: 2px;
+  color: var(--wiki-ink-dim);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.nav-link:hover { background: var(--wiki-card); color: var(--wiki-accent-hi); }
+.nav-link.active { background: var(--wiki-card-hi); color: var(--wiki-accent); }
+
+.nav-link .stub-dot {
+  font-size: 0.55rem;
+  color: var(--wiki-ink-mute);
+  font-family: var(--wiki-font-mono, "JetBrains Mono", monospace);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.content { padding: 2.5rem 3rem 5rem; max-width: 1100px; }
+
+.crumb {
+  font-family: var(--wiki-font-mono, "JetBrains Mono", monospace);
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  color: var(--wiki-ink-mute);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.crumb a { color: var(--wiki-ink-mute); }
+.crumb a:hover { color: var(--wiki-accent); }
+
+h1.page-title {
+  font-family: var(--wiki-font-display, "Cinzel", serif);
+  font-size: 2rem;
+  letter-spacing: 1px;
+  color: var(--wiki-ink);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.page-lede {
+  color: var(--wiki-ink-dim);
+  font-size: 1.02rem;
+  margin-bottom: 2rem;
+  max-width: 68ch;
+}
+
+h2.sec {
+  font-family: var(--wiki-font-display, "Cinzel", serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  color: var(--wiki-accent);
+  margin: 2.2rem 0 0.8rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--wiki-line);
+}
+
+.content p { margin-bottom: 1rem; color: var(--wiki-ink-dim); max-width: 72ch; }
+.content p strong { color: var(--wiki-ink); }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.card {
+  background: var(--wiki-card);
+  border: 1px solid var(--wiki-line);
+  border-radius: 3px;
+  padding: 1.1rem 1.2rem;
+  transition: all 0.18s;
+  cursor: pointer;
+  display: block;
+}
+
+.card:hover {
+  border-color: var(--wiki-line-hi);
+  background: var(--wiki-card-hi);
+  transform: translateY(-2px);
+}
+
+.card h3 {
+  font-family: var(--wiki-font-display, "Cinzel", serif);
+  font-size: 1rem;
+  color: var(--wiki-ink);
+  margin-bottom: 0.25rem;
+}
+
+.card .role {
+  font-size: 0.76rem;
+  color: var(--wiki-secondary-hi);
+  font-family: var(--wiki-font-mono, "JetBrains Mono", monospace);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.55rem;
+}
+
+.card .blurb { font-size: 0.85rem; color: var(--wiki-ink-dim); line-height: 1.5; }
+
+.wiki-search {
+  width: 100%;
+  max-width: 540px;
+  display: block;
+  background: var(--wiki-bg-raise);
+  border: 1px solid var(--wiki-line);
+  border-left: 3px solid var(--wiki-accent);
+  color: var(--wiki-ink);
+  font-family: var(--wiki-font-body, "Inter", sans-serif);
+  font-size: 0.9rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 2px;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.wiki-search:focus {
+  outline: none;
+  border-color: var(--wiki-line-hi);
+  border-left-color: var(--wiki-secondary);
+}
+
+.wiki-search::placeholder { color: var(--wiki-ink-mute); }
+
+.search-count {
+  font-family: var(--wiki-font-mono, "JetBrains Mono", monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--wiki-ink-mute);
+  margin-bottom: 1rem;
+}
+
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0 1.6rem;
+  font-size: 0.88rem;
+}
+
+table.data th {
+  text-align: left;
+  font-family: var(--wiki-font-display, "Cinzel", serif);
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--wiki-accent);
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--wiki-line-hi);
+}
+
+table.data td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--wiki-line);
+  color: var(--wiki-ink-dim);
+  vertical-align: top;
+}
+
+table.data td:first-child { color: var(--wiki-ink); font-weight: 500; white-space: nowrap; }
+table.data tr:hover td { background: var(--wiki-card); }
+
+.wpn-fx { display: flex; flex-direction: column; gap: 0.25rem; }
+.wpn-fx span { font-size: 0.76rem; line-height: 1.4; color: var(--wiki-ink-dim); }
+
+.wpn-fx b {
+  display: inline-block;
+  min-width: 1.4rem;
+  margin-right: 0.45rem;
+  font-family: var(--wiki-font-mono, "JetBrains Mono", monospace);
+  font-size: 0.6rem;
+  text-align: center;
+  color: var(--wiki-accent);
+  border: 1px solid var(--wiki-line);
+  border-radius: 2px;
+  padding: 0 0.2rem;
+}
+
+.detail-head { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
+.detail-quote { font-style: italic; color: var(--wiki-secondary-hi); margin: 0.2rem 0 1.4rem; font-size: 1.05rem; }
+
+.kv {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0.4rem 1rem;
+  margin: 1rem 0 1.6rem;
+}
+
+.kv dt {
+  font-family: var(--wiki-font-mono, "JetBrains Mono", monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--wiki-ink-mute);
+}
+
+.kv dd { color: var(--wiki-ink-dim); }
+
+.mech-box {
+  background: var(--wiki-bg-raise);
+  border: 1px solid var(--wiki-line);
+  border-left: 2px solid var(--wiki-secondary);
+  border-radius: 3px;
+  padding: 1.1rem 1.3rem;
+  margin: 1.2rem 0;
+}
+
+.mech-box h3 {
+  font-family: var(--wiki-font-display, "Cinzel", serif);
+  color: var(--wiki-accent);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.chip {
+  display: inline-block;
+  font-family: var(--wiki-font-mono, "JetBrains Mono", monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  padding: 2px 9px;
+  border-radius: 2px;
+  margin: 0 0.3rem 0.3rem 0;
+  background: color-mix(in srgb, var(--wiki-accent) 10%, transparent);
+  color: var(--wiki-accent);
+  border: 1px solid var(--wiki-line);
+}
+
+.stub-notice {
+  background: color-mix(in srgb, var(--wiki-warn) 7%, transparent);
+  border: 1px solid color-mix(in srgb, var(--wiki-warn) 25%, transparent);
+  border-radius: 3px;
+  padding: 1.1rem 1.3rem;
+  margin: 1.5rem 0;
+  color: var(--wiki-ink-dim);
+}
+
+.stub-notice strong {
+  color: var(--wiki-warn);
+  font-family: var(--wiki-font-display, "Cinzel", serif);
+  letter-spacing: 0.5px;
+}
+
+.note {
+  background: var(--wiki-bg-raise);
+  border: 1px solid var(--wiki-line);
+  border-radius: 3px;
+  padding: 0.9rem 1.1rem;
+  margin: 1.2rem 0;
+  font-size: 0.85rem;
+  color: var(--wiki-ink-dim);
+}
+
+.note .label {
+  font-family: var(--wiki-font-mono, "JetBrains Mono", monospace);
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--wiki-accent);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+@media (max-width: 820px) {
+  .wiki { grid-template-columns: 1fr; }
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--wiki-line);
+  }
+  .content { padding: 1.75rem 1.25rem 4rem; }
+  .kv { grid-template-columns: 1fr; gap: 0.15rem; }
+  .kv dt { margin-top: 0.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover { transform: none; }
+}

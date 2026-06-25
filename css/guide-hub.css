@@ -1,0 +1,253 @@
+/* ============================================================
+   Series hub layout — Final Fantasy collection index, etc.
+   Colors from css/themes/final-fantasy.css (or per-hub theme).
+   ============================================================ */
+
+@import url("effects.css");
+
+body {
+  color: var(--hub-text);
+  font-family: var(--hub-body, "Spectral", Georgia, serif);
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+body > header,
+body > section,
+body > main,
+body > footer {
+  position: relative;
+  z-index: 1;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  max-width: var(--hub-maxw, 1080px);
+  margin: 0 auto;
+  padding: 0 1.4rem;
+}
+
+.topbar {
+  border-bottom: 1px solid var(--hub-border);
+  background: var(--hub-topbar, rgba(5, 7, 15, 0.7));
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topbar-inner {
+  max-width: var(--hub-maxw, 1080px);
+  margin: 0 auto;
+  padding: 0.9rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-family: var(--hub-display, "Cinzel", serif);
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--hub-accent);
+}
+
+.brand span { color: var(--hub-text2); font-weight: 500; }
+
+.topbar a.back {
+  font-family: var(--hub-display, "Cinzel", serif);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--hub-text2);
+  border: 1px solid var(--hub-border);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.topbar a.back:hover {
+  color: var(--hub-accent);
+  border-color: var(--hub-accent);
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 1.4rem 2.4rem;
+  position: relative;
+}
+
+.sigil {
+  font-size: 2.6rem;
+  color: var(--hub-accent);
+  text-shadow: 0 0 30px var(--hub-glow);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.eyebrow {
+  font-family: var(--hub-display, "Cinzel", serif);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--hub-text3);
+}
+
+.hero h1 {
+  font-family: var(--hub-display, "Cinzel", serif);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  margin: 0.5rem 0;
+  background: linear-gradient(120deg, var(--hub-accent), var(--hub-accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero .lede {
+  max-width: 640px;
+  margin: 0.6rem auto 0;
+  color: var(--hub-text2);
+  font-size: 1.05rem;
+}
+
+.era { padding: 1.6rem 0; }
+
+.era-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  border-bottom: 1px solid var(--hub-border2);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.era-head h2 {
+  font-family: var(--hub-display, "Cinzel", serif);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--hub-text);
+  letter-spacing: 0.04em;
+}
+
+.era-head .count {
+  font-size: 0.78rem;
+  color: var(--hub-text3);
+  font-family: var(--hub-display, "Cinzel", serif);
+  letter-spacing: 0.1em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.title-card {
+  position: relative;
+  display: block;
+  border: 1px solid var(--hub-border);
+  border-top: 2px solid var(--hub-accent);
+  border-radius: 8px;
+  background: var(--hub-panel);
+  padding: 1.1rem 1.1rem 0.9rem;
+  transition: 0.22s;
+  overflow: hidden;
+}
+
+.title-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(400px 120px at 50% -20%, var(--hub-glow), transparent 70%);
+  opacity: 0;
+  transition: 0.22s;
+  pointer-events: none;
+}
+
+.title-card .name {
+  font-family: var(--hub-display, "Cinzel", serif);
+  font-weight: 600;
+  font-size: 1.02rem;
+  margin-bottom: 0.25rem;
+  color: var(--hub-text);
+}
+
+.title-card .sub {
+  font-size: 0.82rem;
+  color: var(--hub-text2);
+  min-height: 2.4em;
+}
+
+.title-card .foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.7rem;
+}
+
+.badge {
+  font-family: var(--hub-display, "Cinzel", serif);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.5rem;
+  border-radius: 3px;
+}
+
+.badge.live {
+  color: var(--hub-bg);
+  background: var(--hub-accent);
+  font-weight: 700;
+}
+
+.badge.forge {
+  color: var(--hub-text3);
+  border: 1px solid var(--hub-border);
+}
+
+.badge.soon {
+  color: var(--hub-gold);
+  border: 1px solid color-mix(in srgb, var(--hub-gold) 45%, transparent);
+}
+
+.badge.request {
+  color: var(--hub-gold);
+  border: 1px solid color-mix(in srgb, var(--hub-gold) 45%, transparent);
+}
+
+.go { font-size: 0.78rem; color: var(--hub-text3); }
+
+.title-card.available { cursor: pointer; }
+
+.title-card.available:hover {
+  transform: translateY(-3px);
+  border-color: var(--hub-accent);
+  box-shadow: 0 10px 30px -12px var(--hub-glow);
+}
+
+.title-card.available:hover::after { opacity: 1; }
+.title-card.available .go { color: var(--hub-accent); }
+.title-card.forge-card { opacity: 0.62; }
+.title-card.forge-card:hover { opacity: 0.82; }
+a.title-card.forge-card { cursor: pointer; }
+a.title-card.forge-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--hub-accent);
+  box-shadow: 0 8px 24px -12px var(--hub-glow);
+}
+
+footer {
+  border-top: 1px solid var(--hub-border);
+  margin-top: 2.5rem;
+  padding: 1.8rem 1.4rem;
+  text-align: center;
+  color: var(--hub-text3);
+  font-size: 0.82rem;
+}
+
+footer a { color: var(--hub-text2); }
+footer a:hover { color: var(--hub-accent); }

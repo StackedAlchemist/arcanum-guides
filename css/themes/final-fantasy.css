@@ -1,0 +1,45 @@
+/* Final Fantasy series hub — crystal shard + violet ether */
+:root {
+  --hub-bg: #05070f;
+  --hub-panel: rgba(10, 16, 32, 0.92);
+  --hub-accent: #6fd6ff;
+  --hub-accent2: #9b7bff;
+  --hub-glow: rgba(111, 214, 255, 0.18);
+  --hub-gold: #e7c66a;
+  --hub-border: rgba(111, 214, 255, 0.16);
+  --hub-border2: rgba(111, 214, 255, 0.07);
+  --hub-text: #dbe6f5;
+  --hub-text2: #8aa0c4;
+  --hub-text3: #4a5a7a;
+  --hub-display: "Cinzel", Georgia, serif;
+  --hub-body: "Spectral", Georgia, serif;
+  --hub-maxw: 1080px;
+  --hub-topbar: rgba(5, 7, 15, 0.7);
+
+  /* legacy aliases (inline references) */
+  --crystal: var(--hub-accent);
+  --crystal2: var(--hub-accent2);
+  --dark: var(--hub-bg);
+  --panel: var(--hub-panel);
+  --border: var(--hub-border);
+  --border2: var(--hub-border2);
+  --text: var(--hub-text);
+  --text2: var(--hub-text2);
+  --text3: var(--hub-text3);
+  --gold: var(--hub-gold);
+  --glow: var(--hub-glow);
+
+  /* canvas effect hooks */
+  --fx-type: motes;
+  --fx-mote-a: 111, 214, 255;
+  --fx-mote-b: 155, 123, 255;
+  --fx-mote-b-chance: 0.38;
+  --fx-density: 1;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(155, 123, 255, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 80% 20%, rgba(111, 214, 255, 0.06), transparent 55%),
+    var(--hub-bg);
+}

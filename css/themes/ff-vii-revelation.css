@@ -1,0 +1,35 @@
+/* FF VII Revelation — Part 3 (announced; Spring 2027) */
+:root {
+  --bg: #08060f;
+  --bg2: #120e1c;
+  --panel: rgba(18, 14, 28, 0.88);
+  --accent: #b69cf0;
+  --accent2: #d4b8ff;
+  --accent-alt: #e7c66a;
+  --accent-alt2: #f0d98a;
+  --highlight: #e7c66a;
+  --highlight2: #f0d98a;
+  --glow: rgba(182, 156, 240, 0.22);
+  --line: rgba(182, 156, 240, 0.18);
+  --line2: rgba(182, 156, 240, 0.07);
+  --text: #e8e2f2;
+  --text2: #a89cc4;
+  --text3: #6a5e82;
+  --nav-home: #f0d98a;
+  --hero-grad-1: #f0d98a;
+  --hero-grad-2: #d4b8ff;
+  --spoiler: #e8a85c;
+  --display: "Cinzel", Georgia, serif;
+  --body: "EB Garamond", Georgia, serif;
+  --maxw: 1000px;
+
+  --fx-type: none;
+}
+
+body {
+  background:
+    radial-gradient(60% 50% at 50% -6%, rgba(182, 156, 240, 0.14), transparent 60%),
+    radial-gradient(50% 45% at 85% 25%, rgba(231, 198, 106, 0.06), transparent 60%),
+    radial-gradient(50% 50% at 12% 75%, rgba(143, 232, 208, 0.04), transparent 60%),
+    var(--bg);
+}

@@ -72,7 +72,7 @@ window.BB_PERKS = {
       { id: "footwork",         name: "Footwork",         key: false, active: true,  effect: "Disengage from melee without an opportunity attack (3 AP / 20 Fat)." }
     ]},
     { tier: 6, label: "Tier 6 &mdash; the survival fork", perks: [
-      { id: "battle-forged",    name: "Battle Forged",    key: true,  active: false, effect: "Heavy-armor specialist: armor damage taken reduced by 5% of your total armor value." },
+      { id: "battle-forged",    name: "Battle Forged",    key: true,  active: false, effect: "Heavy-armor specialist: HP damage taken reduced by 5% of your total armor value." },
       { id: "nimble",           name: "Nimble",           key: true,  active: false, effect: "Light-armor specialist: up to &minus;60% HP damage, scaling with how light you are." },
       { id: "berserk",          name: "Berserk",          key: true,  active: false, effect: "Killing a foe refunds 4 AP, once per turn &mdash; chain kills." },
       { id: "head-hunter",      name: "Head Hunter",      key: false, active: false, effect: "A hit to the head guarantees your next hit also lands on the head." }

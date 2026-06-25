@@ -1,0 +1,48 @@
+/* Stellaris — deep space: cyan telemetry, violet nebula */
+:root {
+  --bg: #05070f;
+  --bg2: #0b1022;
+  --panel: rgba(14, 19, 38, 0.82);
+  --accent: #5ad6e0;
+  --accent2: #9af0f6;
+  --accent-alt: #8a6fd6;
+  --accent-alt2: #b69cf0;
+  --highlight: #e0c46a;
+  --highlight2: #e0c46a;
+  --glow: rgba(90, 214, 224, 0.20);
+  --line: rgba(90, 214, 224, 0.18);
+  --line2: rgba(90, 214, 224, 0.07);
+  --text: #dfe7f5;
+  --text2: #93a4c4;
+  --text3: #56688a;
+  --nav-home: #b69cf0;
+  --hero-grad-1: #9af0f6;
+  --hero-grad-2: #b69cf0;
+  --spoiler: #e8a85c;
+  --table-hover: rgba(90, 214, 224, 0.03);
+  --list-marker: "\25B9";
+  --totop-fg: #04121a;
+  --display: "Orbitron", sans-serif;
+  --body: "Rajdhani", "Segoe UI", sans-serif;
+  --maxw: 1000px;
+
+  --cyan: var(--accent);
+  --cyan2: var(--accent2);
+  --violet: var(--accent-alt);
+  --violet2: var(--accent-alt2);
+  --gold: var(--highlight);
+
+  --fx-type: stars;
+  --fx-star-bright: 154, 240, 246;
+  --fx-star-glow: 90, 214, 224;
+  --fx-density: 1;
+}
+
+body {
+  background:
+    radial-gradient(60% 50% at 50% -8%, rgba(138, 111, 214, 0.14), transparent 60%),
+    radial-gradient(50% 45% at 85% 25%, rgba(90, 214, 224, 0.08), transparent 60%),
+    radial-gradient(50% 50% at 12% 75%, rgba(138, 111, 214, 0.08), transparent 60%),
+    var(--bg);
+  letter-spacing: 0.01em;
+}

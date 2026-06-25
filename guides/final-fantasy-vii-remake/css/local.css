@@ -1,0 +1,37 @@
+/* Midgar — faint industrial grid over slate surfaces */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(79, 109, 122, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 109, 122, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 78% 68% at 50% 42%, black 18%, transparent 72%);
+}
+
+.trilogy-line {
+  margin-top: 0.75rem;
+  font-size: 0.98rem;
+  color: var(--text-muted);
+}
+
+.trilogy-line a {
+  color: var(--hover-glow);
+}
+
+.trilogy-line a:hover {
+  color: var(--primary);
+}
+
+.trilogy-line .muted {
+  color: var(--secondary);
+}
+
+.panel,
+.card {
+  background: linear-gradient(160deg, var(--card), var(--surface));
+}

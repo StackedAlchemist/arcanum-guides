@@ -80,7 +80,7 @@
     <thead><tr><th>Approach</th><th>Armor weight</th><th>How it survives</th><th>Key perks</th><th>Wants high&hellip;</th></tr></thead>
     <tbody>
       <tr class="wrow"><td><strong>Battle Forged (heavy)</strong></td><td>200&ndash;300 body + heavy helm</td><td>Huge armor pool; Battle Forged converts armor into damage reduction so blows barely scratch HP.</td><td>Battle Forged, Brawny, Colossus, Steel Brow</td><td><strong>Fatigue</strong>, HP, Melee Skill</td></tr>
-      <tr class="wrow"><td><strong>Nimble (light)</strong></td><td>~130&ndash;150 combined cap</td><td>Nimble cuts HP damage roughly in proportion to how <em>light</em> you are; dodge-heavy.</td><td>Nimble, Dodge, Colossus, Steel Brow</td><td>HP, Melee/Ranged Defense, Fatigue, Initiative</td></tr>
+      <tr class="wrow"><td><strong>Nimble (light)</strong></td><td>Low body+helmet Fatigue penalty</td><td>Nimble cuts HP damage by up to 60%, minus 4% for each point of combined body+helmet Fatigue; dodge-heavy.</td><td>Nimble, Dodge, Colossus, Steel Brow</td><td>HP, Melee/Ranged Defense, Fatigue, Initiative</td></tr>
       <tr class="wrow"><td><strong>Archer / Duelist</strong></td><td>Minimal (head + light body)</td><td>Doesn't get hit &mdash; stays at range or kills first.</td><td>Nimble, Dodge (low-armor builds)</td><td>Fatigue, Initiative, the relevant Skill</td></tr>
     </tbody>
   </table></div>
@@ -95,26 +95,27 @@
   <div class="table-wrap"><table>
     <thead><tr><th>Perk</th><th>What it actually reads</th><th>So you want&hellip;</th></tr></thead>
     <tbody>
-      <tr class="wrow"><td><strong>Nimble</strong> <span class="mono">(light)</span></td><td>The <strong>combined Fatigue penalty of body + helmet only</strong>. Weapons, shields and bags don't count, and <strong>Brawny does not help it.</strong></td><td>That combined penalty as low as possible &mdash; ideally <strong>15 or under</strong>.</td></tr>
-      <tr class="wrow"><td><strong>Battle Forged</strong> <span class="mono">(heavy)</span></td><td>Your <strong>total armor points</strong> (body + helmet). It cuts incoming armor damage by 5% of your <em>current</em> total armor value.</td><td>As many armor points as you can carry &mdash; the heaviest plate.</td></tr>
+      <tr class="wrow"><td><strong>Nimble</strong> <span class="mono">(light)</span></td><td>The <strong>combined Fatigue penalty of body + helmet only</strong>. Weapons, shields and bags don't count, and <strong>Brawny does not help it.</strong></td><td>That combined penalty as low as possible &mdash; every point costs you 4% of Nimble's max reduction.</td></tr>
+      <tr class="wrow"><td><strong>Battle Forged</strong> <span class="mono">(heavy)</span></td><td>Your <strong>total armor points</strong> (body + helmet). It cuts incoming <strong>HP damage</strong> by 5% of your <em>current</em> total armor value.</td><td>As many armor points as you can carry &mdash; the heaviest plate.</td></tr>
     </tbody>
   </table></div>
 
   <div class="callout">
-    <span class="label">The Nimble breakpoint is 15</span>
-    <p>Nimble gives its <strong>full ~60% HP-damage reduction while body + helmet together cost 15 Fatigue or less</strong>; every point above 15 chips that reduction down. So "light" isn't a particular armor &mdash; it's a <strong>combined body+helmet Fatigue penalty kept in roughly the 15&ndash;25 band</strong>. And because only those two pieces count, a "light" brother can still be wearing a genuinely protective set.</p>
+    <span class="label">The Nimble formula</span>
+    <p>Nimble reduces incoming <strong>HP damage</strong> by <strong>60% &minus; (4% &times; combined body+helmet Fatigue penalty)</strong>, floored at 0%. At <strong>&minus;15 combined</strong> you get <strong>no reduction at all</strong>. Full 60% only happens at <strong>0 combined</strong> &mdash; in practice, aim for <strong>&minus;10 or lower</strong> to keep meaningful protection. "Light" isn't a particular armor tier; it's how cheap your body+helmet are on the Fatigue meter.</p>
   </div>
 
   <div class="table-wrap"><table>
     <caption>Nimble weight bands &mdash; body + helmet Fatigue combined (examples use our own armor stats)</caption>
     <thead><tr><th>Combined Fatigue</th><th>Nimble result</th><th>Example set &mdash; armor points</th></tr></thead>
     <tbody>
-      <tr class="wrow"><td><strong>&le; 15</strong></td><td>Full ~60% reduction</td><td>Leather Lamellar (95) + <strong>Sallet</strong> (120) = &minus;15 &rarr; <strong>215 armor</strong>, no vision loss</td></tr>
-      <tr class="wrow"><td>16&ndash;25</td><td>Strong but decaying (~50%)</td><td>Noble Mail (160) + Sallet (120) = &minus;20 &rarr; <strong>280 armor</strong></td></tr>
-      <tr class="wrow"><td>26+</td><td>Falling off &mdash; not worth Nimble</td><td>any 200+ body with a heavy helm &mdash; go Battle Forged instead</td></tr>
+      <tr class="wrow"><td><strong>0&ndash;5</strong></td><td>Strong (~40&ndash;60%)</td><td>Padded Surcoat (50) + Full Aketon Cap (50) = &minus;6 &rarr; <strong>36% reduction</strong>, 100 armor</td></tr>
+      <tr class="wrow"><td><strong>6&ndash;10</strong></td><td>Moderate (~20&ndash;36%)</td><td>Padded Vest (60) + <strong>Sallet</strong> (120) = &minus;10 &rarr; <strong>20% reduction</strong>, 180 armor</td></tr>
+      <tr class="wrow"><td>11&ndash;14</td><td>Weak (~4&ndash;16%)</td><td>Reinforced Leather (100) + Sallet (120) = &minus;14 &rarr; <strong>4% reduction</strong>, 220 armor</td></tr>
+      <tr class="wrow"><td><strong>15+</strong></td><td>Zero &mdash; Nimble does nothing</td><td>Leather Lamellar (95) + Sallet (120) = &minus;15 &rarr; go Battle Forged instead</td></tr>
     </tbody>
   </table></div>
-  <p class="search-note" style="margin-top:-0.6em;">The <strong>Sallet</strong> (120 armor, only &minus;5 Fatigue, zero vision penalty) is the single best Nimble helmet &mdash; it's what lets a light set still hit ~200+ armor under the breakpoint.</p>
+  <p class="search-note" style="margin-top:-0.6em;">The <strong>Sallet</strong> (120 armor, only &minus;5 Fatigue, zero vision penalty) is the single best Nimble helmet &mdash; pair it with the lightest viable body to keep combined Fatigue in the single digits.</p>
 
   <h2>How much armor Fatigue can you actually carry?</h2>
   <p>Work backwards from recovery. A brother <strong>recovers a flat +15 Fatigue at the start of each turn</strong> (12 if Asthmatic, 18 with Iron Lungs). Every attack spends Fatigue, so the number that matters is <strong>usable Fatigue = max Fatigue &minus; every gear penalty</strong> (body + helmet + shield + the weapon's Max-Fatigue cost). Keep it high enough to act <em>every</em> turn.</p>
@@ -127,7 +128,7 @@
     <span class="label">Worked example &mdash; a Battle Forged two-hander</span>
     <p>Base Fatigue <strong>130</strong>. Coat of Plates (&minus;42) + Full Helm (&minus;20) = &minus;62 from armor; a Greatsword adds &minus;12. Raw, that leaves only ~56 usable. Add <strong>Brawny</strong> and the &minus;62 armor becomes ~&minus;43, so usable Fatigue climbs to about <strong>75</strong> &mdash; right in the sweet spot. That's why heavy hitters want a <em>high base Fatigue</em> <strong>and</strong> Brawny: without it, a Coat of Plates leaves them too winded to swing.</p>
   </div>
-  <p style="margin-bottom:0;"><strong>Quick gut check by base (no-armor) Fatigue:</strong> under ~100 &rarr; stay light and go Nimble &middot; ~110&ndash;125 &rarr; mid plate with Brawny &middot; <strong>130+ &rarr; full Coat-of-Plates Battle Forged</strong>. Archers and Nimble duelists ignore all of this and simply keep body + helmet at or under ~20 Fatigue.</p>
+  <p style="margin-bottom:0;"><strong>Quick gut check by base (no-armor) Fatigue:</strong> under ~100 &rarr; stay light and go Nimble &middot; ~110&ndash;125 &rarr; mid plate with Brawny &middot; <strong>130+ &rarr; full Coat-of-Plates Battle Forged</strong>. Archers and Nimble duelists ignore all of this and simply keep combined body+helmet Fatigue at <strong>&minus;10 or lower</strong> whenever possible.</p>
 
   <h2>Quick "who wears what" cheat sheet</h2>
   <div class="table-wrap"><table>

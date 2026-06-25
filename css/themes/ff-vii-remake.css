@@ -1,0 +1,181 @@
+/* ============================================================
+   Final Fantasy VII Remake — Midgar design tokens
+   Lifestream green on industrial slate (nature vs industry).
+   ============================================================ */
+
+:root {
+  /* —— Surfaces —— */
+  --bg: #111315;
+  --surface: #1c1f24;
+  --card: #252a30;
+
+  /* —— Accents —— */
+  --primary: #00d98b;
+  --hover-glow: #4fffc3;
+  --secondary: #4f6d7a;
+  --danger: #b22222;
+  --gold: #d9b44a;
+
+  /* —— Text —— */
+  --text: #e7ecef;
+  --text-muted: #aab5bf;
+
+  /* —— guide-field semantic map —— */
+  --bg2: var(--surface);
+  --panel: color-mix(in srgb, var(--card) 92%, transparent);
+  --accent: var(--primary);
+  --accent2: var(--hover-glow);
+  --accent-alt: var(--secondary);
+  --accent-alt2: var(--hover-glow);
+  --highlight: var(--gold);
+  --highlight2: #e8c96a;
+  --glow: rgba(79, 255, 195, 0.22);
+  --line: rgba(0, 217, 139, 0.18);
+  --line2: rgba(79, 109, 122, 0.24);
+  --text2: var(--text-muted);
+  --text3: var(--secondary);
+  --nav-home: var(--danger);
+  --hero-grad-1: var(--hover-glow);
+  --hero-grad-2: var(--primary);
+  --totop-fg: var(--bg);
+  --display: "Cinzel", Georgia, serif;
+  --body: "EB Garamond", Georgia, serif;
+  --maxw: 1000px;
+
+  /* legacy aliases */
+  --mako: var(--primary);
+  --mako2: var(--hover-glow);
+  --mako-deep: #00b877;
+  --mako-glow: var(--glow);
+  --carbon: var(--bg);
+  --gunmetal: var(--surface);
+  --steel-dark: var(--card);
+  --steel: var(--secondary);
+  --steel-mid: #6c8794;
+  --steel-light: var(--text-muted);
+  --chrome: #c8ced2;
+  --chrome-bright: var(--text);
+  --chrome-hi: var(--text);
+  --crimson: var(--danger);
+  --crimson-bright: #d63a3a;
+  --amber: var(--gold);
+  --amber-hi: var(--highlight2);
+  --gold2: var(--highlight2);
+  --red: var(--danger);
+  --red2: var(--crimson-bright);
+  --ls: var(--primary);
+  --ls2: var(--hover-glow);
+
+  /* canvas motes — mako drift + hover-glow sparks */
+  --fx-type: motes;
+  --fx-mote-a: 0, 217, 139;
+  --fx-mote-b: 79, 255, 195;
+  --fx-mote-b-chance: 0.3;
+  --fx-density: 1.05;
+}
+
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(55% 42% at 50% -6%, rgba(0, 217, 139, 0.12), transparent 58%),
+    radial-gradient(38% 32% at 10% 92%, rgba(0, 217, 139, 0.05), transparent 52%),
+    radial-gradient(40% 34% at 90% 18%, rgba(79, 109, 122, 0.14), transparent 50%),
+    linear-gradient(180deg, var(--surface) 0%, var(--bg) 45%, #0d0f11 100%);
+}
+
+.topbar {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 98%, transparent), color-mix(in srgb, var(--bg) 90%, transparent));
+  border-bottom-color: var(--line2);
+  box-shadow: 0 1px 0 rgba(0, 217, 139, 0.07);
+}
+
+.brand {
+  color: var(--hover-glow);
+  text-shadow: 0 0 20px var(--glow);
+}
+
+.brand span {
+  color: var(--text-muted);
+}
+
+.hero .crest {
+  color: var(--primary);
+  text-shadow: 0 0 28px var(--glow);
+}
+
+.hub-card {
+  background: var(--panel);
+  border-top-color: var(--primary);
+}
+
+.hub-card:hover {
+  border-top-color: var(--hover-glow);
+  box-shadow: 0 12px 30px -14px var(--glow);
+}
+
+.hub-card .k {
+  color: var(--secondary);
+}
+
+.callout {
+  border-left-color: var(--primary);
+  background: rgba(0, 217, 139, 0.04);
+}
+
+.callout strong {
+  color: var(--hover-glow);
+}
+
+.newbox {
+  border-left-color: var(--gold);
+  background: rgba(217, 180, 74, 0.06);
+}
+
+.newbox .label {
+  color: var(--gold);
+}
+
+th {
+  color: var(--gold);
+  background: rgba(79, 109, 122, 0.1);
+}
+
+tr:hover td {
+  background: rgba(0, 217, 139, 0.04);
+}
+
+a {
+  color: var(--primary);
+}
+
+a:hover {
+  color: var(--hover-glow);
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--hover-glow);
+  background: rgba(0, 217, 139, 0.07);
+}
+
+.nav a.home {
+  color: var(--danger);
+}
+
+.nav a.home:hover,
+.nav a.home.active {
+  color: var(--crimson-bright);
+  background: rgba(178, 34, 34, 0.08);
+}
+
+.totop {
+  background: var(--primary);
+}
+
+.totop:hover {
+  background: var(--hover-glow);
+}
+
+body::after {
+  background: radial-gradient(120% 100% at 50% 38%, transparent 46%, rgba(0, 0, 0, 0.68));
+}

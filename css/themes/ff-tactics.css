@@ -1,0 +1,41 @@
+/* Final Fantasy Tactics — Ivalice war table: crimson lion + parchment gold */
+:root {
+  --bg: #070b16;
+  --bg2: #0f1628;
+  --panel: rgba(16, 22, 40, 0.85);
+  --accent: #c05068;
+  --accent2: #e08698;
+  --accent-alt: #d8b65a;
+  --accent-alt2: #d8b65a;
+  --highlight: #f0d98a;
+  --highlight2: #f0d98a;
+  --glow: rgba(216, 182, 90, 0.20);
+  --line: rgba(216, 182, 90, 0.20);
+  --line2: rgba(216, 182, 90, 0.08);
+  --text: #e9e3d4;
+  --text2: #a9a487;
+  --text3: #6a6750;
+  --nav-home: #7c9cd0;
+  --hero-grad-1: #f0d98a;
+  --hero-grad-2: #e08698;
+  --display: "Cinzel", Georgia, serif;
+  --body: "EB Garamond", Georgia, serif;
+  --maxw: 1000px;
+  --gold: #d8b65a;
+  --gold2: #f0d98a;
+  --crimson: var(--accent);
+  --crimson2: var(--accent2);
+  --steel: #7c9cd0;
+
+  --fx-type: motes;
+  --fx-mote-a: 224, 134, 152;
+  --fx-mote-b: 240, 217, 138;
+  --fx-mote-b-chance: 0.36;
+}
+body {
+  background:
+    radial-gradient(60% 50% at 50% -6%, rgba(192, 80, 104, 0.14), transparent 60%),
+    radial-gradient(50% 45% at 85% 25%, rgba(216, 182, 90, 0.08), transparent 60%),
+    radial-gradient(50% 50% at 12% 75%, rgba(124, 156, 208, 0.06), transparent 60%),
+    var(--bg);
+}
