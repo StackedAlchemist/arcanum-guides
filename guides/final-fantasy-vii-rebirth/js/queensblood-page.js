@@ -48,7 +48,7 @@
       return (
         '<div class="qb-phase-section reveal" id="qb-phase-' + p.id + '">' +
         '<span class="section-tag">' + esc(p.label) + "</span>" +
-        '<h2 class="section-title">' + esc(p.label) + " Decks</h2>' +
+        '<h2 class="section-title">' + esc(p.label) + " Decks</h2>" +
         '<div class="section-rule"></div>' +
         '<p class="mat-avail-desc">Minimum chapter ' + p.minChapter + ". Cards gated later are noted in each deck.</p>" +
         deckHtml + "</div>"
